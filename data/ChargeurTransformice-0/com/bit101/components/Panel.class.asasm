@@ -1,0 +1,667 @@
+class
+ refid "com.bit101.components:Panel"
+ instance QName(PackageNamespace("com.bit101.components"), "Panel")
+  extends QName(PackageNamespace("com.bit101.components"), "Component")
+  flag SEALED
+  flag PROTECTEDNS
+  protectedns ProtectedNamespace("com.bit101.components:Panel")
+  iinit
+   refid "com.bit101.components:Panel/instance/init"
+   param QName(PackageNamespace("flash.display"), "DisplayObjectContainer")
+   param QName(PackageNamespace(""), "Number")
+   param QName(PackageNamespace(""), "Number")
+   flag HAS_OPTIONAL
+   optional Null()
+   optional Integer(0)
+   optional Integer(0)
+   body
+    maxstack 4
+    localcount 4
+    initscopedepth 10
+    maxscopedepth 11
+    code
+     getlocal0
+     pushscope
+
+     getlocal0
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+     getproperty         Multiname("FOND_FENETRE", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+     initproperty        Multiname("couleurFond", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+     getlocal0
+     getlocal1
+     getlocal2
+     getlocal3
+     constructsuper      3
+
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+  trait slot QName(ProtectedNamespace("com.bit101.components:Panel"), "_mask") type QName(PackageNamespace("flash.display"), "Sprite") end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Panel"), "_background") type QName(PackageNamespace("flash.display"), "Sprite") end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Panel"), "_color") type QName(PackageNamespace(""), "int") value Integer(-1) end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Panel"), "_shadow") type QName(PackageNamespace(""), "Boolean") value True() end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Panel"), "_gridSize") type QName(PackageNamespace(""), "int") value Integer(10) end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Panel"), "_showGrid") type QName(PackageNamespace(""), "Boolean") value False() end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Panel"), "_gridColor") type QName(PackageNamespace(""), "uint") value Integer(13684944) end
+  trait slot QName(PackageNamespace(""), "afficherFond") type QName(PackageNamespace(""), "Boolean") value False() end
+  trait slot QName(PackageNamespace(""), "couleurFond") type QName(PackageNamespace(""), "int") end
+  trait slot QName(PackageNamespace(""), "effetBiseau") type QName(PackageNamespace(""), "Boolean") value False() end
+  trait slot QName(PackageNamespace(""), "bordureRondeUniquementBas") type QName(PackageNamespace(""), "Boolean") value False() end
+  trait slot QName(PackageNamespace(""), "content") type QName(PackageNamespace("flash.display"), "Sprite") end
+  trait method QName(ProtectedNamespace("com.bit101.components:Panel"), "init") flag OVERRIDE
+   method
+    refid "com.bit101.components:Panel/instance/com.bit101.components:Panel:init"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 3
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      callsupervoid       Multiname("init", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 0
+      findpropstrict      Multiname("setSize", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            100
+      dup
+      callpropvoid        Multiname("setSize", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(ProtectedNamespace("com.bit101.components:Panel"), "addChildren") flag OVERRIDE
+   method
+    refid "com.bit101.components:Panel/instance/com.bit101.components:Panel:addChildren"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      findpropstrict      Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      constructprop       Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+      setproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callsupervoid       Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 1
+      getlocal0
+      findpropstrict      Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      constructprop       Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+      setproperty         Multiname("_mask", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_mask", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushfalse
+      setproperty         Multiname("mouseEnabled", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getlocal0
+      getproperty         Multiname("_mask", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callsupervoid       Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 1
+      getlocal0
+      findpropstrict      Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      constructprop       Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+      setproperty         Multiname("content", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getlocal0
+      getproperty         Multiname("content", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callsupervoid       Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 1
+      getlocal0
+      getproperty         Multiname("content", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_mask", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("mask", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(PackageNamespace(""), "addChild") flag OVERRIDE
+   method
+    refid "com.bit101.components:Panel/instance/addChild"
+    param QName(PackageNamespace("flash.display"), "DisplayObject")
+    returns QName(PackageNamespace("flash.display"), "DisplayObject")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("content", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal1
+      callpropvoid        Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      getlocal1
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(PackageNamespace(""), "addRawChild")
+   method
+    refid "com.bit101.components:Panel/instance/addRawChild"
+    param QName(PackageNamespace("flash.display"), "DisplayObject")
+    returns QName(PackageNamespace("flash.display"), "DisplayObject")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      callsupervoid       Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 1
+      getlocal1
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(PackageNamespace(""), "draw") flag OVERRIDE
+   method
+    refid "com.bit101.components:Panel/instance/draw"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 9
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      callsupervoid       Multiname("draw", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 0
+      getlocal0
+      getproperty         Multiname("afficherFond", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iffalse             L63
+
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("clear", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            2
+      getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("FOND_TITRE_FENETRE", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            1
+      pushtrue
+      callpropvoid        Multiname("lineStyle", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 4
+
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("couleurFond", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("beginFill", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      getlocal0
+      getproperty         Multiname("bordureRondeUniquementBas", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iffalse             L42
+
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            0
+      dup
+      getlex              Multiname("_width", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            0
+      dup
+      pushbyte            6
+      dup
+      callpropvoid        Multiname("drawRoundRectComplex", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 8
+
+      jump                L51
+
+L42:
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            0
+      dup
+      getlex              Multiname("_width", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            10
+      callpropvoid        Multiname("drawRoundRect", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 5
+
+L51:
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("endFill", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      getlocal0
+      getproperty         Multiname("effetBiseau", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iffalse             L63
+
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("EFFET_BISEAU_FENETRE", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("filters", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+L63:
+      getlocal0
+      callpropvoid        Multiname("drawGrid", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      getlocal0
+      getproperty         Multiname("_mask", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("clear", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      getlocal0
+      getproperty         Multiname("_mask", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushint             16711680
+      callpropvoid        Multiname("beginFill", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      getlocal0
+      getproperty         Multiname("_mask", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            0
+      dup
+      getlex              Multiname("_width", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("drawRect", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 4
+
+      getlocal0
+      getproperty         Multiname("_mask", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("endFill", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(ProtectedNamespace("com.bit101.components:Panel"), "drawGrid")
+   method
+    refid "com.bit101.components:Panel/instance/com.bit101.components:Panel:drawGrid"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 3
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_showGrid", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iftrue              L6
+
+      returnvoid
+
+L6:
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            0
+      getlocal0
+      getproperty         Multiname("_gridColor", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("lineStyle", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
+
+      pushbyte            0
+      coerce_a
+      setlocal1
+
+      jump                L36
+
+L17:
+      label
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal1
+      pushbyte            0
+      callpropvoid        Multiname("moveTo", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
+
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal1
+      getlex              Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("lineTo", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
+
+      getlocal1
+      getlocal0
+      getproperty         Multiname("_gridSize", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      add
+      coerce_a
+      setlocal1
+
+L36:
+      getlocal1
+      getlex              Multiname("_width", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iflt                L17
+
+      pushbyte            0
+      coerce_a
+      setlocal1
+
+      jump                L62
+
+L43:
+      label
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            0
+      getlocal1
+      callpropvoid        Multiname("moveTo", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
+
+      getlocal0
+      getproperty         Multiname("_background", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("_width", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal1
+      callpropvoid        Multiname("lineTo", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
+
+      getlocal1
+      getlocal0
+      getproperty         Multiname("_gridSize", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      add
+      coerce_a
+      setlocal1
+
+L62:
+      getlocal1
+      getlex              Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iflt                L43
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "shadow")
+   method
+    refid "com.bit101.components:Panel/instance/shadow/setter"
+    param QName(PackageNamespace(""), "Boolean")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 4
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_shadow", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_shadow", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iffalse             L16
+
+      findproperty        Multiname("filters", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      findpropstrict      Multiname("getShadow", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            2
+      pushtrue
+      callproperty        Multiname("getShadow", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
+      newarray            1
+      initproperty        Multiname("filters", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      jump                L19
+
+L16:
+      findproperty        Multiname("filters", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      newarray            0
+      initproperty        Multiname("filters", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+L19:
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "shadow")
+   method
+    refid "com.bit101.components:Panel/instance/shadow/getter"
+    returns QName(PackageNamespace(""), "Boolean")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_shadow", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "color")
+   method
+    refid "com.bit101.components:Panel/instance/color/setter"
+    param QName(PackageNamespace(""), "int")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_color", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findpropstrict      Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "color")
+   method
+    refid "com.bit101.components:Panel/instance/color/getter"
+    returns QName(PackageNamespace(""), "int")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_color", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "gridSize")
+   method
+    refid "com.bit101.components:Panel/instance/gridSize/setter"
+    param QName(PackageNamespace(""), "int")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_gridSize", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findpropstrict      Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "gridSize")
+   method
+    refid "com.bit101.components:Panel/instance/gridSize/getter"
+    returns QName(PackageNamespace(""), "int")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_gridSize", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "showGrid")
+   method
+    refid "com.bit101.components:Panel/instance/showGrid/setter"
+    param QName(PackageNamespace(""), "Boolean")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_showGrid", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findpropstrict      Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "showGrid")
+   method
+    refid "com.bit101.components:Panel/instance/showGrid/getter"
+    returns QName(PackageNamespace(""), "Boolean")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_showGrid", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "gridColor")
+   method
+    refid "com.bit101.components:Panel/instance/gridColor/setter"
+    param QName(PackageNamespace(""), "uint")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_gridColor", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findpropstrict      Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "gridColor")
+   method
+    refid "com.bit101.components:Panel/instance/gridColor/getter"
+    returns QName(PackageNamespace(""), "uint")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_gridColor", [PrivateNamespace(null, "com.bit101.components:Panel/instance"), PrivateNamespace(null, "com.bit101.components:Panel"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Panel"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+ end ; instance
+ cinit
+  refid "com.bit101.components:Panel/class/init"
+  body
+   maxstack 1
+   localcount 1
+   initscopedepth 9
+   maxscopedepth 10
+   code
+    getlocal0
+    pushscope
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+end ; class

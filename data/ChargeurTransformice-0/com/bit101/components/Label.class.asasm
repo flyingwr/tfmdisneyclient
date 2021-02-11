@@ -1,0 +1,607 @@
+class
+ refid "com.bit101.components:Label"
+ instance QName(PackageNamespace("com.bit101.components"), "Label")
+  extends QName(PackageNamespace("com.bit101.components"), "Component")
+  flag SEALED
+  flag PROTECTEDNS
+  protectedns ProtectedNamespace("com.bit101.components:Label")
+  iinit
+   refid "com.bit101.components:Label/instance/init"
+   param QName(PackageNamespace("flash.display"), "DisplayObjectContainer")
+   param QName(PackageNamespace(""), "Number")
+   param QName(PackageNamespace(""), "Number")
+   param QName(PackageNamespace(""), "String")
+   param QName(PackageNamespace(""), "int")
+   param QName(PackageNamespace(""), "int")
+   param QName(PackageNamespace(""), "String")
+   flag HAS_OPTIONAL
+   optional Null()
+   optional Integer(0)
+   optional Integer(0)
+   optional Utf8("")
+   optional Integer(-1)
+   optional Integer(-1)
+   optional Utf8("")
+   body
+    maxstack 4
+    localcount 8
+    initscopedepth 10
+    maxscopedepth 11
+    code
+     getlocal0
+     pushscope
+
+     getlocal0
+     getlocal            5
+     initproperty        Multiname("_backgroundColor", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+     getlocal0
+     getlocal            6
+     initproperty        Multiname("_fontColor", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+     getlocal0
+     getlocal            4
+     initproperty        Multiname("text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+     getlocal0
+     getlocal            7
+     pushstring          ""
+     equals
+     iffalse             L20
+
+     getlex              Multiname("TextFormatAlign", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+     getproperty         Multiname("LEFT", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+     coerce_s
+     jump                L22
+
+L20:
+     getlocal            7
+     coerce_s
+L22:
+     initproperty        Multiname("_align", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+     getlocal0
+     getlocal1
+     getlocal2
+     getlocal3
+     constructsuper      3
+
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+  trait slot QName(ProtectedNamespace("com.bit101.components:Label"), "_autoSize") type QName(PackageNamespace(""), "Boolean") value True() end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Label"), "_text") type QName(PackageNamespace(""), "String") value Utf8("") end
+  trait slot QName(PackageNamespace(""), "_tf") type QName(PackageNamespace("flash.text"), "TextField") end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Label"), "_align") type QName(PackageNamespace(""), "String") end
+  trait slot QName(PrivateNamespace(null, "com.bit101.components:Label/instance"), "_html") type QName(PackageNamespace(""), "Boolean") value False() end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Label"), "_backgroundColor") type QName(PackageNamespace(""), "int") end
+  trait slot QName(ProtectedNamespace("com.bit101.components:Label"), "_fontColor") type QName(PackageNamespace(""), "int") end
+  trait method QName(PackageNamespace(""), "formatage")
+   method
+    refid "com.bit101.components:Label/instance/formatage"
+    param QName(PackageNamespace("flash.text"), "TextFormat")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal1
+      setproperty         Multiname("defaultTextFormat", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(ProtectedNamespace("com.bit101.components:Label"), "init") flag OVERRIDE
+   method
+    refid "com.bit101.components:Label/instance/com.bit101.components:Label:init"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      callsupervoid       Multiname("init", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 0
+      findproperty        Multiname("mouseEnabled", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushfalse
+      initproperty        Multiname("mouseEnabled", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findproperty        Multiname("mouseChildren", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushfalse
+      initproperty        Multiname("mouseChildren", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(ProtectedNamespace("com.bit101.components:Label"), "addChildren") flag OVERRIDE
+   method
+    refid "com.bit101.components:Label/instance/com.bit101.components:Label:addChildren"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 5
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      findproperty        Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            18
+      initproperty        Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      findpropstrict      Multiname("TextField", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      constructprop       Multiname("TextField", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+      setproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("height", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("embedFonts", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("embedFonts", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushfalse
+      setproperty         Multiname("selectable", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushfalse
+      setproperty         Multiname("mouseEnabled", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findpropstrict      Multiname("TextFormat", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("x_policeInterface", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("fontSize", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_fontColor", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            -1
+      equals
+      iffalse             L40
+
+      getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("COULEUR_TEXTE_DEFAUT", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      coerce              QName(PackageNamespace(""), "Object")
+      jump                L43
+
+L40:
+      getlocal0
+      getproperty         Multiname("_fontColor", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      coerce              QName(PackageNamespace(""), "Object")
+L43:
+      constructprop       Multiname("TextFormat", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 3
+      coerce_a
+      setlocal1
+
+      getlocal1
+      getlocal0
+      getproperty         Multiname("_align", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("align", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal1
+      setproperty         Multiname("defaultTextFormat", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_html", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iffalse             L63
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("htmlText", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      jump                L68
+
+L63:
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+L68:
+      findpropstrict      Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      getlocal0
+      callpropvoid        Multiname("draw", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(PackageNamespace(""), "draw") flag OVERRIDE
+   method
+    refid "com.bit101.components:Label/instance/draw"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 5
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      callsupervoid       Multiname("draw", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 0
+      getlocal0
+      getproperty         Multiname("_backgroundColor", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            -1
+      ifeq                L22
+
+      getlex              Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("clear", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      getlex              Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_backgroundColor", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("beginFill", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      getlex              Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            0
+      dup
+      getlex              Multiname("width", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("height", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("drawRect", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 4
+
+      getlex              Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("endFill", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+L22:
+      getlocal0
+      getproperty         Multiname("_html", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iffalse             L31
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("htmlText", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      jump                L36
+
+L31:
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+L36:
+      getlocal0
+      getproperty         Multiname("_autoSize", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iffalse             L56
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("TextFieldAutoSize", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("LEFT", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("autoSize", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findproperty        Multiname("_width", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("width", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      initproperty        Multiname("_width", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findpropstrict      Multiname("dispatchEvent", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      findpropstrict      Multiname("Event", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("Event", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("RESIZE", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      constructprop       Multiname("Event", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+      callpropvoid        Multiname("dispatchEvent", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      jump                L65
+
+L56:
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("TextFieldAutoSize", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("NONE", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("autoSize", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("_width", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("width", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+L65:
+      pushbyte            18
+      coerce_a
+      setlocal1
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            18
+      setproperty         Multiname("height", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findproperty        Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal1
+      initproperty        Multiname("_height", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "text")
+   method
+    refid "com.bit101.components:Label/instance/text/setter"
+    param QName(PackageNamespace(""), "String")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushnull
+      ifne                L12
+
+      getlocal0
+      pushstring          ""
+      setproperty         Multiname("_text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+L12:
+      findpropstrict      Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "text")
+   method
+    refid "com.bit101.components:Label/instance/text/getter"
+    returns QName(PackageNamespace(""), "String")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_text", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "html")
+   method
+    refid "com.bit101.components:Label/instance/html/getter"
+    returns QName(PackageNamespace(""), "Boolean")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_html", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "html")
+   method
+    refid "com.bit101.components:Label/instance/html/setter"
+    param QName(PackageNamespace(""), "Boolean")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_html", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_html", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iffalse             L18
+
+      findproperty        Multiname("mouseEnabled", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushtrue
+      initproperty        Multiname("mouseEnabled", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findproperty        Multiname("mouseChildren", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushtrue
+      initproperty        Multiname("mouseChildren", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushtrue
+      setproperty         Multiname("mouseEnabled", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+L18:
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "stylesheet")
+   method
+    refid "com.bit101.components:Label/instance/stylesheet/setter"
+    param QName(PackageNamespace("flash.text"), "StyleSheet")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_html", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      iffalse             L9
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal1
+      setproperty         Multiname("styleSheet", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+L9:
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "autoSize")
+   method
+    refid "com.bit101.components:Label/instance/autoSize/setter"
+    param QName(PackageNamespace(""), "Boolean")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_autoSize", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "autoSize")
+   method
+    refid "com.bit101.components:Label/instance/autoSize/getter"
+    returns QName(PackageNamespace(""), "Boolean")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_autoSize", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "textField")
+   method
+    refid "com.bit101.components:Label/instance/textField/getter"
+    returns QName(PackageNamespace("flash.text"), "TextField")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(PackageNamespace(""), "changementCouleur")
+   method
+    refid "com.bit101.components:Label/instance/changementCouleur"
+    param QName(PackageNamespace(""), "int")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_tf", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal1
+      setproperty         Multiname("textColor", [PrivateNamespace(null, "com.bit101.components:Label/instance"), PrivateNamespace(null, "com.bit101.components:Label"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.text"), PackageNamespace("flash.events"), ProtectedNamespace("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Label"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+ end ; instance
+ cinit
+  refid "com.bit101.components:Label/class/init"
+  body
+   maxstack 1
+   localcount 1
+   initscopedepth 9
+   maxscopedepth 10
+   code
+    getlocal0
+    pushscope
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+end ; class

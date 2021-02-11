@@ -1,0 +1,60 @@
+class
+ refid "com.bit101.components:VScrollBar"
+ instance QName(PackageNamespace("com.bit101.components"), "VScrollBar")
+  extends QName(PackageNamespace("com.bit101.components"), "ScrollBar")
+  flag SEALED
+  flag PROTECTEDNS
+  protectedns ProtectedNamespace("com.bit101.components:VScrollBar")
+  iinit
+   refid "com.bit101.components:VScrollBar/instance/init"
+   param QName(PackageNamespace("flash.display"), "DisplayObjectContainer")
+   param QName(PackageNamespace(""), "Number")
+   param QName(PackageNamespace(""), "Number")
+   param QName(PackageNamespace(""), "Function")
+   param QName(PackageNamespace(""), "Boolean")
+   flag HAS_OPTIONAL
+   optional Null()
+   optional Integer(0)
+   optional Integer(0)
+   optional Null()
+   optional True()
+   body
+    maxstack 7
+    localcount 6
+    initscopedepth 11
+    maxscopedepth 12
+    code
+     getlocal0
+     pushscope
+
+     getlocal0
+     getlex              Multiname("Slider", [PrivateNamespace(null, "com.bit101.components:VScrollBar/instance/init"), PrivateNamespace(null, "com.bit101.components:VScrollBar"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:VScrollBar"), StaticProtectedNs("com.bit101.components:VScrollBar"), StaticProtectedNs("com.bit101.components:ScrollBar"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+     getproperty         Multiname("VERTICAL", [PrivateNamespace(null, "com.bit101.components:VScrollBar/instance/init"), PrivateNamespace(null, "com.bit101.components:VScrollBar"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), ProtectedNamespace("com.bit101.components:VScrollBar"), StaticProtectedNs("com.bit101.components:VScrollBar"), StaticProtectedNs("com.bit101.components:ScrollBar"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+     getlocal1
+     getlocal2
+     getlocal3
+     getlocal            4
+     getlocal            5
+     constructsuper      6
+
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+ end ; instance
+ cinit
+  refid "com.bit101.components:VScrollBar/class/init"
+  body
+   maxstack 1
+   localcount 1
+   initscopedepth 10
+   maxscopedepth 11
+   code
+    getlocal0
+    pushscope
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+end ; class

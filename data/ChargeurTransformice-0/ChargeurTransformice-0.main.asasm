@@ -1,0 +1,36 @@
+#version 4
+program
+ minorversion 16
+ majorversion 46
+
+ #include "ChargeurTransformice_fla/KeyboardHandler.script.asasm"
+ #include "ChargeurTransformice_fla/Keys.script.asasm"
+ #include "ChargeurTransformice_fla/Statements.script.asasm"
+ #include "com/hurlant/util/Base64.script.asasm"
+ #include "com/adobe/serialization/json/JSON.script.asasm"
+ #include "com/adobe/serialization/json/JSONEncoder.script.asasm"
+ #include "com/adobe/serialization/json/JSONDecoder.script.asasm"
+ #include "com/bit101/components/Style.script.asasm"
+ #include "com/adobe/serialization/json/JSONToken.script.asasm"
+ #include "com/adobe/serialization/json/JSONTokenizer.script.asasm"
+ #include "com/adobe/serialization/json/JSONTokenType.script.asasm"
+ #include "com/adobe/serialization/json/JSONParseError.script.asasm"
+ #include "com/bit101/components/Component.script.asasm"
+ #include "ChargeurTransformice_fla/MainTimeline.script.asasm"
+ #include "ChargeurTransformice_fla/Timeline_5.script.asasm"
+ #include "ChargeurTransformice_fla/Interface.script.asasm"
+ #include "com/bit101/components/CheckBox.script.asasm"
+ #include "com/bit101/components/InputText.script.asasm"
+ #include "com/bit101/components/ComboBox.script.asasm"
+ #include "com/bit101/components/Label.script.asasm"
+ #include "com/bit101/components/Window.script.asasm"
+ #include "com/bit101/components/PushButton.script.asasm"
+ #include "com/bit101/components/List.script.asasm"
+ #include "com/bit101/components/Panel.script.asasm"
+ #include "com/bit101/components/ListItem.script.asasm"
+ #include "com/bit101/components/ScrollBar.script.asasm"
+ #include "com/bit101/components/Slider.script.asasm"
+ #include "com/bit101/components/VScrollBar.script.asasm"
+ #include "com/bit101/components/ScrollSlider.script.asasm"
+
+end ; program

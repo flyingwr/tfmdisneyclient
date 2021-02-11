@@ -1,0 +1,29 @@
+script
+ sinit
+  refid "ChargeurTransformice_fla:KeyboardHandler/init"
+  body
+   maxstack 2
+   localcount 1
+   initscopedepth 1
+   maxscopedepth 3
+   code
+    getlocal0
+    pushscope
+
+    findpropstrict      Multiname("KeyboardHandler", [PackageNamespace("ChargeurTransformice_fla")])
+    getlex              QName(PackageNamespace(""), "Object")
+    pushscope
+
+    getlex              Multiname("Object", [PrivateNamespace(null, "ChargeurTransformice_fla:KeyboardHandler"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.events"), PackageNamespace("flash.ui")])
+    newclass            "ChargeurTransformice_fla:KeyboardHandler"
+    popscope
+    initproperty        QName(PackageNamespace("ChargeurTransformice_fla"), "KeyboardHandler")
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+ trait class QName(PackageNamespace("ChargeurTransformice_fla"), "KeyboardHandler")
+  #include "KeyboardHandler.class.asasm"
+ end ; trait
+end ; script

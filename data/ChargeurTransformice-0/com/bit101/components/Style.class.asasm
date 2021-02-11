@@ -1,0 +1,1252 @@
+class
+ refid "com.bit101.components:Style"
+ instance QName(PackageNamespace("com.bit101.components"), "Style")
+  extends QName(PackageNamespace(""), "Object")
+  flag SEALED
+  flag PROTECTEDNS
+  protectedns ProtectedNamespace("com.bit101.components:Style")
+  iinit
+   refid "com.bit101.components:Style/instance/init"
+   body
+    maxstack 1
+    localcount 1
+    initscopedepth 4
+    maxscopedepth 5
+    code
+     getlocal0
+     pushscope
+
+     getlocal0
+     constructsuper      0
+
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+ end ; instance
+ cinit
+  refid "com.bit101.components:Style/class/init"
+  body
+   maxstack 12
+   localcount 1
+   initscopedepth 3
+   maxscopedepth 4
+   code
+    getlocal0
+    pushscope
+
+    findproperty        QName(PackageNamespace(""), "TEXT_BACKGROUND")
+    pushint             16777215
+    setproperty         QName(PackageNamespace(""), "TEXT_BACKGROUND")
+
+    findproperty        QName(PackageNamespace(""), "BACKGROUND")
+    pushint             13421772
+    setproperty         QName(PackageNamespace(""), "BACKGROUND")
+
+    findproperty        QName(PackageNamespace(""), "BUTTON_FACE")
+    pushint             3952740
+    setproperty         QName(PackageNamespace(""), "BUTTON_FACE")
+
+    findproperty        QName(PackageNamespace(""), "BUTTON_DOWN")
+    pushint             2438461
+    setproperty         QName(PackageNamespace(""), "BUTTON_DOWN")
+
+    findproperty        QName(PackageNamespace(""), "FILTRE_BOUTON")
+    findpropstrict      Multiname("Array", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    findpropstrict      Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    pushbyte            1
+    pushbyte            45
+    pushint             6126992
+    pushbyte            1
+    pushbyte            0
+    pushbyte            1
+    dup
+    dup
+    pushbyte            1
+    constructprop       Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 9
+    constructprop       Multiname("Array", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 1
+    setproperty         QName(PackageNamespace(""), "FILTRE_BOUTON")
+
+    findproperty        QName(PackageNamespace(""), "FILTRE_BOUTON_ENFONCE")
+    findpropstrict      Multiname("Array", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    findpropstrict      Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    pushbyte            1
+    pushbyte            45
+    pushbyte            0
+    pushbyte            1
+    pushint             6126992
+    pushbyte            1
+    dup
+    dup
+    pushbyte            1
+    constructprop       Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 9
+    constructprop       Multiname("Array", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 1
+    setproperty         QName(PackageNamespace(""), "FILTRE_BOUTON_ENFONCE")
+
+    findproperty        QName(PackageNamespace(""), "EFFET_BISEAU_FENETRE")
+    findpropstrict      Multiname("Array", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    findpropstrict      Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    pushbyte            1
+    pushbyte            45
+    pushint             6983586
+    pushbyte            1
+    pushbyte            0
+    pushbyte            1
+    dup
+    dup
+    pushbyte            1
+    constructprop       Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 9
+    constructprop       Multiname("Array", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 1
+    setproperty         QName(PackageNamespace(""), "EFFET_BISEAU_FENETRE")
+
+    findproperty        QName(PackageNamespace(""), "FOND_TITRE_FENETRE")
+    pushint             2570047
+    setproperty         QName(PackageNamespace(""), "FOND_TITRE_FENETRE")
+
+    findproperty        QName(PackageNamespace(""), "FOND_FENETRE")
+    pushint             3294800
+    setproperty         QName(PackageNamespace(""), "FOND_FENETRE")
+
+    findproperty        QName(PackageNamespace(""), "TEXTE_TITRE_FENETRE")
+    findpropstrict      Multiname("TextFormat", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    pushstring          "Tahoma"
+    pushbyte            16
+    pushint             40349
+    pushtrue
+    constructprop       Multiname("TextFormat", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 4
+    setproperty         QName(PackageNamespace(""), "TEXTE_TITRE_FENETRE")
+
+    findproperty        QName(PackageNamespace(""), "COULEUR_TEXTE_SAISIE")
+    pushint             4513245
+    setproperty         QName(PackageNamespace(""), "COULEUR_TEXTE_SAISIE")
+
+    findproperty        QName(PackageNamespace(""), "COULEUR_FOND_TEXTE_SAISIE")
+    pushint             3952740
+    setproperty         QName(PackageNamespace(""), "COULEUR_FOND_TEXTE_SAISIE")
+
+    findproperty        QName(PackageNamespace(""), "FILTRE_FOND_SAISIE")
+    findpropstrict      Multiname("Array", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    findpropstrict      Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    pushbyte            1
+    pushbyte            45
+    pushbyte            0
+    pushbyte            1
+    pushint             6126992
+    pushbyte            1
+    dup
+    dup
+    pushbyte            1
+    constructprop       Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 9
+    constructprop       Multiname("Array", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 1
+    setproperty         QName(PackageNamespace(""), "FILTRE_FOND_SAISIE")
+
+    findproperty        QName(PackageNamespace(""), "INPUT_TEXT")
+    pushint             3355443
+    setproperty         QName(PackageNamespace(""), "INPUT_TEXT")
+
+    findproperty        QName(PackageNamespace(""), "COULEUR_TEXTE_DEFAUT")
+    pushint             12763866
+    setproperty         QName(PackageNamespace(""), "COULEUR_TEXTE_DEFAUT")
+
+    findproperty        QName(PackageNamespace(""), "DROPSHADOW")
+    pushbyte            0
+    setproperty         QName(PackageNamespace(""), "DROPSHADOW")
+
+    findproperty        QName(PackageNamespace(""), "PANEL")
+    pushint             15987699
+    setproperty         QName(PackageNamespace(""), "PANEL")
+
+    findproperty        QName(PackageNamespace(""), "PROGRESS_BAR")
+    pushint             16777215
+    setproperty         QName(PackageNamespace(""), "PROGRESS_BAR")
+
+    findproperty        QName(PackageNamespace(""), "LIST_DEFAULT")
+    pushint             16777215
+    setproperty         QName(PackageNamespace(""), "LIST_DEFAULT")
+
+    findproperty        QName(PackageNamespace(""), "LIST_ALTERNATE")
+    pushint             15987699
+    setproperty         QName(PackageNamespace(""), "LIST_ALTERNATE")
+
+    findproperty        QName(PackageNamespace(""), "LIST_SELECTED")
+    pushint             13421772
+    setproperty         QName(PackageNamespace(""), "LIST_SELECTED")
+
+    findproperty        QName(PackageNamespace(""), "LIST_ROLLOVER")
+    pushint             14540253
+    setproperty         QName(PackageNamespace(""), "LIST_ROLLOVER")
+
+    findproperty        QName(PackageNamespace(""), "SCROLLBAR_MARGIN")
+    pushbyte            1
+    setproperty         QName(PackageNamespace(""), "SCROLLBAR_MARGIN")
+
+    findproperty        QName(PackageNamespace(""), "SCROLLBAR_SIZE")
+    pushbyte            10
+    setproperty         QName(PackageNamespace(""), "SCROLLBAR_SIZE")
+
+    findproperty        QName(PackageNamespace(""), "embedFonts")
+    pushfalse
+    setproperty         QName(PackageNamespace(""), "embedFonts")
+
+    findproperty        QName(PackageNamespace(""), "x_policeInterface")
+    pushstring          "Verdana"
+    setproperty         QName(PackageNamespace(""), "x_policeInterface")
+
+    findproperty        QName(PackageNamespace(""), "fontSize")
+    pushbyte            11
+    setproperty         QName(PackageNamespace(""), "fontSize")
+
+    findproperty        QName(PackageNamespace(""), "DARK")
+    pushstring          "dark"
+    initproperty        QName(PackageNamespace(""), "DARK")
+
+    findproperty        QName(PackageNamespace(""), "LIGHT")
+    pushstring          "light"
+    initproperty        QName(PackageNamespace(""), "LIGHT")
+
+    findproperty        QName(PackageNamespace(""), "TRANSFORMICE")
+    pushstring          "transformice"
+    initproperty        QName(PackageNamespace(""), "TRANSFORMICE")
+
+    findproperty        QName(PackageNamespace(""), "MODOPWET")
+    pushstring          "pwet"
+    initproperty        QName(PackageNamespace(""), "MODOPWET")
+
+    findproperty        QName(PackageNamespace(""), "GLOBAL_STYLESHEET")
+    findpropstrict      Multiname("StyleSheet", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    constructprop       Multiname("StyleSheet", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 0
+    setproperty         QName(PackageNamespace(""), "GLOBAL_STYLESHEET")
+
+    findproperty        QName(PrivateNamespace(null, "com.bit101.components:Style/class"), "couleurLumiere")
+    findpropstrict      Multiname("ColorTransform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    pushdouble          1.3
+    pushdouble          1.3
+    pushdouble          1.3
+    constructprop       Multiname("ColorTransform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 3
+    initproperty        QName(PrivateNamespace(null, "com.bit101.components:Style/class"), "couleurLumiere")
+
+    findproperty        QName(PrivateNamespace(null, "com.bit101.components:Style/class"), "couleurNormal")
+    findpropstrict      Multiname("ColorTransform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+    constructprop       Multiname("ColorTransform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 0
+    initproperty        QName(PrivateNamespace(null, "com.bit101.components:Style/class"), "couleurNormal")
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+ trait slot QName(PackageNamespace(""), "TEXT_BACKGROUND") slotid 1 type QName(PackageNamespace(""), "uint") value Integer(16777215) end
+ trait slot QName(PackageNamespace(""), "BACKGROUND") slotid 2 type QName(PackageNamespace(""), "uint") value Integer(13421772) end
+ trait slot QName(PackageNamespace(""), "BUTTON_FACE") slotid 3 type QName(PackageNamespace(""), "uint") value Integer(3952740) end
+ trait slot QName(PackageNamespace(""), "BUTTON_DOWN") slotid 4 type QName(PackageNamespace(""), "uint") value Integer(2438461) end
+ trait slot QName(PackageNamespace(""), "FILTRE_BOUTON") slotid 5 type QName(PackageNamespace(""), "Array") end
+ trait slot QName(PackageNamespace(""), "FILTRE_BOUTON_ENFONCE") slotid 6 type QName(PackageNamespace(""), "Array") end
+ trait slot QName(PackageNamespace(""), "EFFET_BISEAU_FENETRE") slotid 7 type QName(PackageNamespace(""), "Array") end
+ trait slot QName(PackageNamespace(""), "FOND_TITRE_FENETRE") slotid 8 type QName(PackageNamespace(""), "int") value Integer(2570047) end
+ trait slot QName(PackageNamespace(""), "FOND_FENETRE") slotid 9 type QName(PackageNamespace(""), "int") value Integer(3294800) end
+ trait slot QName(PackageNamespace(""), "TEXTE_TITRE_FENETRE") slotid 10 type QName(PackageNamespace("flash.text"), "TextFormat") end
+ trait slot QName(PackageNamespace(""), "COULEUR_TEXTE_SAISIE") slotid 11 type QName(PackageNamespace(""), "int") value Integer(4513245) end
+ trait slot QName(PackageNamespace(""), "COULEUR_FOND_TEXTE_SAISIE") slotid 12 type QName(PackageNamespace(""), "int") value Integer(3952740) end
+ trait slot QName(PackageNamespace(""), "FILTRE_FOND_SAISIE") slotid 13 type QName(PackageNamespace(""), "Array") end
+ trait slot QName(PackageNamespace(""), "INPUT_TEXT") slotid 14 type QName(PackageNamespace(""), "uint") value Integer(3355443) end
+ trait slot QName(PackageNamespace(""), "COULEUR_TEXTE_DEFAUT") slotid 15 type QName(PackageNamespace(""), "uint") value Integer(12763866) end
+ trait slot QName(PackageNamespace(""), "DROPSHADOW") slotid 16 type QName(PackageNamespace(""), "uint") value Integer(0) end
+ trait slot QName(PackageNamespace(""), "PANEL") slotid 17 type QName(PackageNamespace(""), "uint") value Integer(15987699) end
+ trait slot QName(PackageNamespace(""), "PROGRESS_BAR") slotid 18 type QName(PackageNamespace(""), "uint") value Integer(16777215) end
+ trait slot QName(PackageNamespace(""), "LIST_DEFAULT") slotid 19 type QName(PackageNamespace(""), "uint") value Integer(16777215) end
+ trait slot QName(PackageNamespace(""), "LIST_ALTERNATE") slotid 20 type QName(PackageNamespace(""), "uint") value Integer(15987699) end
+ trait slot QName(PackageNamespace(""), "LIST_SELECTED") slotid 21 type QName(PackageNamespace(""), "uint") value Integer(13421772) end
+ trait slot QName(PackageNamespace(""), "LIST_ROLLOVER") slotid 22 type QName(PackageNamespace(""), "uint") value Integer(14540253) end
+ trait slot QName(PackageNamespace(""), "SCROLLBAR_MARGIN") slotid 23 type QName(PackageNamespace(""), "int") value Integer(1) end
+ trait slot QName(PackageNamespace(""), "SCROLLBAR_SIZE") slotid 24 type QName(PackageNamespace(""), "int") value Integer(10) end
+ trait slot QName(PackageNamespace(""), "embedFonts") slotid 25 type QName(PackageNamespace(""), "Boolean") value False() end
+ trait slot QName(PackageNamespace(""), "x_policeInterface") slotid 26 type QName(PackageNamespace(""), "String") value Utf8("Verdana") end
+ trait slot QName(PackageNamespace(""), "fontSize") slotid 27 type QName(PackageNamespace(""), "Number") value Integer(11) end
+ trait const QName(PackageNamespace(""), "DARK") slotid 28 type QName(PackageNamespace(""), "String") value Utf8("dark") end
+ trait const QName(PackageNamespace(""), "LIGHT") slotid 29 type QName(PackageNamespace(""), "String") value Utf8("light") end
+ trait const QName(PackageNamespace(""), "TRANSFORMICE") slotid 30 type QName(PackageNamespace(""), "String") value Utf8("transformice") end
+ trait const QName(PackageNamespace(""), "MODOPWET") slotid 31 type QName(PackageNamespace(""), "String") value Utf8("pwet") end
+ trait slot QName(PackageNamespace(""), "GLOBAL_STYLESHEET") slotid 32 type QName(PackageNamespace("flash.text"), "StyleSheet") end
+ trait const QName(PrivateNamespace(null, "com.bit101.components:Style/class"), "couleurLumiere") slotid 33 type QName(PackageNamespace("flash.geom"), "ColorTransform") end
+ trait const QName(PrivateNamespace(null, "com.bit101.components:Style/class"), "couleurNormal") slotid 34 type QName(PackageNamespace("flash.geom"), "ColorTransform") end
+ trait method QName(PackageNamespace(""), "initialisationStyle") flag FINAL dispid 3
+  method
+   refid "com.bit101.components:Style/class/initialisationStyle"
+   returns QName(PackageNamespace(""), "void")
+   body
+    maxstack 4
+    localcount 1
+    initscopedepth 3
+    maxscopedepth 4
+    code
+     getlocal0
+     pushscope
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "a:hover"
+     pushstring          "color"
+     pushstring          "#2ECF73"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "a:active"
+     pushstring          "color"
+     pushstring          "#2ECF73"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "BL"
+     pushstring          "color"
+     pushstring          "#6C77C1"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "BV"
+     pushstring          "color"
+     pushstring          "#2F7FCC"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "CE"
+     pushstring          "color"
+     pushstring          "#E88F4F"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "CEP"
+     pushstring          "color"
+     pushstring          "#F0A78E"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "CH"
+     pushstring          "color"
+     pushstring          "#98E2EB"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "CS"
+     pushstring          "color"
+     pushstring          "#EFCE8F"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "G"
+     pushstring          "color"
+     pushstring          "#60608F"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "J"
+     pushstring          "color"
+     pushstring          "#BABD2F"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "N"
+     pushstring          "color"
+     pushstring          "#C2C2DA"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "N2"
+     pushstring          "color"
+     pushstring          "#9292AA"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "PT"
+     pushstring          "color"
+     pushstring          "#2EBA7E"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "PS"
+     pushstring          "color"
+     pushstring          "#F1C4F6"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "R"
+     pushstring          "color"
+     pushstring          "#CB546B"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "ROSE"
+     pushstring          "color"
+     pushstring          "#ED67EA"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "S"
+     pushstring          "color"
+     pushstring          "#CAA4CF"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "T"
+     pushstring          "color"
+     pushstring          "#A4CF9E"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "TD"
+     pushstring          "textAlign"
+     pushstring          "right"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "TG"
+     pushstring          "textAlign"
+     pushstring          "left"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "TI"
+     pushstring          "fontSize"
+     pushstring          "14"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "V"
+     pushstring          "color"
+     pushstring          "#009D9D"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "VP"
+     pushstring          "color"
+     pushstring          "#2ECF73"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("GLOBAL_STYLESHEET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushstring          "VI"
+     pushstring          "color"
+     pushstring          "#C53DFF"
+     newobject           1
+     callpropvoid        Multiname("setStyle", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+ end ; trait
+ trait method QName(PackageNamespace(""), "setStyle") flag FINAL dispid 4
+  method
+   refid "com.bit101.components:Style/class/setStyle"
+   param QName(PackageNamespace(""), "String")
+   returns QName(PackageNamespace(""), "void")
+   body
+    maxstack 3
+    localcount 5
+    initscopedepth 3
+    maxscopedepth 4
+    code
+     getlocal0
+     pushscope
+
+     pushundefined
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("undefined", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     coerce_a
+     setlocal2
+
+     jump                L346
+
+L9:
+     label
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushfalse
+     setproperty         Multiname("embedFonts", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushbyte            11
+     setproperty         Multiname("fontSize", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             12763866
+     setproperty         Multiname("COULEUR_TEXTE_DEFAUT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             3294800
+     setproperty         Multiname("BACKGROUND", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             3294800
+     setproperty         Multiname("TEXT_BACKGROUND", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             3294800
+     setproperty         Multiname("PANEL", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             3952740
+     setproperty         Multiname("BUTTON_FACE", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             2438461
+     setproperty         Multiname("BUTTON_DOWN", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushbyte            0
+     setproperty         Multiname("SCROLLBAR_MARGIN", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushbyte            4
+     setproperty         Multiname("SCROLLBAR_SIZE", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             3294800
+     setproperty         Multiname("LIST_DEFAULT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             2514011
+     setproperty         Multiname("LIST_SELECTED", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             2511196
+     setproperty         Multiname("LIST_ROLLOVER", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     jump                L378
+
+L50:
+     label
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushbyte            10
+     setproperty         Multiname("fontSize", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             40349
+     setproperty         Multiname("COULEUR_TEXTE_DEFAUT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushbyte            0
+     setproperty         Multiname("BUTTON_FACE", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushbyte            0
+     setproperty         Multiname("BUTTON_DOWN", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             1118481
+     setproperty         Multiname("LIST_DEFAULT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             2236962
+     setproperty         Multiname("LIST_SELECTED", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             4473924
+     setproperty         Multiname("LIST_ROLLOVER", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     jump                L378
+
+L73:
+     label
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             4473924
+     setproperty         Multiname("BACKGROUND", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             6710886
+     setproperty         Multiname("BUTTON_FACE", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             2236962
+     setproperty         Multiname("BUTTON_DOWN", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             12303291
+     setproperty         Multiname("INPUT_TEXT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             13421772
+     setproperty         Multiname("COULEUR_TEXTE_DEFAUT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             6710886
+     setproperty         Multiname("PANEL", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             6710886
+     setproperty         Multiname("PROGRESS_BAR", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             5592405
+     setproperty         Multiname("TEXT_BACKGROUND", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             4473924
+     setproperty         Multiname("LIST_DEFAULT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             3750201
+     setproperty         Multiname("LIST_ALTERNATE", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             6710886
+     setproperty         Multiname("LIST_SELECTED", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             7829367
+     setproperty         Multiname("LIST_ROLLOVER", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     jump                L378
+
+L111:
+     label
+L112:
+     label
+     pushint             13421772
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             13421772
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             13421772
+     dup
+     setlocal            4
+
+     setproperty         Multiname("BACKGROUND", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             16777215
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             16777215
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             16777215
+     dup
+     setlocal            4
+
+     setproperty         Multiname("BUTTON_FACE", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             15658734
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             15658734
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             15658734
+     dup
+     setlocal            4
+
+     setproperty         Multiname("BUTTON_DOWN", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             3355443
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             3355443
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             3355443
+     dup
+     setlocal            4
+
+     setproperty         Multiname("INPUT_TEXT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             6710886
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             6710886
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             6710886
+     dup
+     setlocal            4
+
+     setproperty         Multiname("COULEUR_TEXTE_DEFAUT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             15987699
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             15987699
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             15987699
+     dup
+     setlocal            4
+
+     setproperty         Multiname("PANEL", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             16777215
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             16777215
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             16777215
+     dup
+     setlocal            4
+
+     setproperty         Multiname("PROGRESS_BAR", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             16777215
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             16777215
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             16777215
+     dup
+     setlocal            4
+
+     setproperty         Multiname("TEXT_BACKGROUND", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             16777215
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             16777215
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             16777215
+     dup
+     setlocal            4
+
+     setproperty         Multiname("LIST_DEFAULT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             15987699
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             15987699
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             15987699
+     dup
+     setlocal            4
+
+     setproperty         Multiname("LIST_ALTERNATE", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             13421772
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             13421772
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             13421772
+     dup
+     setlocal            4
+
+     setproperty         Multiname("LIST_SELECTED", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             14540253
+     dup
+     setlocal            4
+
+     coerce_a
+     setlocal2
+
+     getlocal            4
+     kill                4
+     pop
+     pushint             14540253
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("Style", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     pushint             14540253
+     dup
+     setlocal            4
+
+     setproperty         Multiname("LIST_ROLLOVER", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            4
+     kill                4
+     pop
+     jump                L378
+
+     ; 0x10
+     ; 0x61
+     ; 0x00
+     ; 0x00
+L346:
+     getlocal1
+     setlocal            4
+
+     getlex              Multiname("TRANSFORMICE", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlocal            4
+     ifstrictne          L353
+
+     pushbyte            0
+     jump                L376
+
+L353:
+     getlex              Multiname("MODOPWET", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlocal            4
+     ifstrictne          L358
+
+     pushbyte            1
+     jump                L376
+
+L358:
+     getlex              Multiname("DARK", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlocal            4
+     ifstrictne          L363
+
+     pushbyte            2
+     jump                L376
+
+L363:
+     getlex              Multiname("LIGHT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlocal            4
+     ifstrictne          L368
+
+     pushbyte            3
+     jump                L376
+
+L368:
+     jump                L375
+
+     ; 0x24
+     ; 0x04
+     ; 0x10
+     ; 0x02
+     ; 0x00
+     ; 0x00
+L375:
+     pushbyte            4
+L376:
+     kill                4
+     lookupswitch        L112, [L9, L50, L73, L111, L112]
+
+L378:
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+ end ; trait
+ trait method QName(PackageNamespace(""), "effetLumiere") flag FINAL dispid 5
+  method
+   refid "com.bit101.components:Style/class/effetLumiere"
+   param QName(PackageNamespace("flash.display"), "Sprite")
+   param QName(PackageNamespace(""), "Boolean")
+   param QName(PackageNamespace(""), "Boolean")
+   returns QName(PackageNamespace(""), "void")
+   flag HAS_OPTIONAL
+   optional False()
+   body
+    maxstack 3
+    localcount 7
+    initscopedepth 3
+    maxscopedepth 4
+    code
+     getlocal0
+     pushscope
+
+     pushundefined
+     coerce_a
+     setlocal            5
+
+     getlex              Multiname("undefined", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     coerce_a
+     setlocal            4
+
+     getlocal2
+     iffalse             L61
+
+     getlocal1
+     getlex              Multiname("MouseEvent", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getproperty         Multiname("MOUSE_OVER", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlex              Multiname("lumiereSouris1", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     callpropvoid        Multiname("addEventListener", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlocal1
+     getlex              Multiname("MouseEvent", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getproperty         Multiname("MOUSE_OUT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlex              Multiname("lumiereSouris2", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     callpropvoid        Multiname("addEventListener", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlocal3
+     iffalse             L60
+
+     pushtrue
+     dup
+     setlocal            6
+
+     coerce_a
+     setlocal            4
+
+     getlocal            6
+     kill                6
+     pop
+     pushtrue
+     coerce_a
+     setlocal            5
+
+     getlocal1
+     pushtrue
+     dup
+     setlocal            6
+
+     setproperty         Multiname("useHandCursor", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            6
+     kill                6
+     pop
+     pushtrue
+     dup
+     setlocal            6
+
+     coerce_a
+     setlocal            4
+
+     getlocal            6
+     kill                6
+     pop
+     pushtrue
+     coerce_a
+     setlocal            5
+
+     getlocal1
+     pushtrue
+     dup
+     setlocal            6
+
+     setproperty         Multiname("buttonMode", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            6
+     kill                6
+     pop
+L60:
+     jump                L129
+
+L61:
+     getlocal1
+     getlex              Multiname("MouseEvent", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getproperty         Multiname("MOUSE_OVER", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlex              Multiname("lumiereSouris1", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     callpropvoid        Multiname("removeEventListener", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlocal1
+     getlex              Multiname("MouseEvent", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getproperty         Multiname("MOUSE_OUT", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlex              Multiname("lumiereSouris2", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     callpropvoid        Multiname("removeEventListener", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")]), 2
+
+     getlex              Multiname("couleurNormal", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     dup
+     setlocal            6
+
+     coerce_a
+     setlocal            4
+
+     getlocal            6
+     kill                6
+     pop
+     getlex              Multiname("couleurNormal", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     coerce_a
+     setlocal            5
+
+     getlocal1
+     getproperty         Multiname("transform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlex              Multiname("couleurNormal", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     dup
+     setlocal            6
+
+     setproperty         Multiname("colorTransform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            6
+     kill                6
+     pop
+     pushfalse
+     dup
+     setlocal            6
+
+     coerce_a
+     setlocal            4
+
+     getlocal            6
+     kill                6
+     pop
+     pushfalse
+     coerce_a
+     setlocal            5
+
+     getlocal1
+     pushfalse
+     dup
+     setlocal            6
+
+     setproperty         Multiname("useHandCursor", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            6
+     kill                6
+     pop
+     pushfalse
+     dup
+     setlocal            6
+
+     coerce_a
+     setlocal            4
+
+     getlocal            6
+     kill                6
+     pop
+     pushfalse
+     coerce_a
+     setlocal            5
+
+     getlocal1
+     pushfalse
+     dup
+     setlocal            6
+
+     setproperty         Multiname("buttonMode", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            6
+     kill                6
+     pop
+L129:
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+ end ; trait
+ trait method QName(PrivateNamespace(null, "com.bit101.components:Style/class"), "lumiereSouris1") flag FINAL dispid 6
+  method
+   refid "com.bit101.components:Style/class/com.bit101.components:Style/class/lumiereSouris1"
+   param QName(PackageNamespace("flash.events"), "MouseEvent")
+   returns QName(PackageNamespace(""), "void")
+   body
+    maxstack 3
+    localcount 6
+    initscopedepth 3
+    maxscopedepth 4
+    code
+     getlocal0
+     pushscope
+
+     getlocal1
+     getproperty         Multiname("currentTarget", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlex              Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     astypelate
+     coerce_a
+     setlocal2
+
+     getlex              Multiname("couleurLumiere", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("couleurLumiere", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     coerce_a
+     setlocal            4
+
+     getlocal2
+     getproperty         Multiname("transform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlex              Multiname("couleurLumiere", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     dup
+     setlocal            5
+
+     setproperty         Multiname("colorTransform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            5
+     kill                5
+     pop
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+ end ; trait
+ trait method QName(PrivateNamespace(null, "com.bit101.components:Style/class"), "lumiereSouris2") flag FINAL dispid 7
+  method
+   refid "com.bit101.components:Style/class/com.bit101.components:Style/class/lumiereSouris2"
+   param QName(PackageNamespace("flash.events"), "MouseEvent")
+   returns QName(PackageNamespace(""), "void")
+   body
+    maxstack 3
+    localcount 6
+    initscopedepth 3
+    maxscopedepth 4
+    code
+     getlocal0
+     pushscope
+
+     getlocal1
+     getproperty         Multiname("currentTarget", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlex              Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     astypelate
+     coerce_a
+     setlocal2
+
+     getlex              Multiname("couleurNormal", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     coerce_a
+     setlocal3
+
+     getlex              Multiname("couleurNormal", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     coerce_a
+     setlocal            4
+
+     getlocal2
+     getproperty         Multiname("transform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     getlex              Multiname("couleurNormal", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+     dup
+     setlocal            5
+
+     setproperty         Multiname("colorTransform", [PrivateNamespace(null, "com.bit101.components:Style/class"), PackageNamespace(""), PrivateNamespace(null, "com.bit101.components:Style"), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.geom"), PackageNamespace("flash.text"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:Style"), StaticProtectedNs("com.bit101.components:Style")])
+
+     getlocal            5
+     kill                5
+     pop
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+ end ; trait
+end ; class

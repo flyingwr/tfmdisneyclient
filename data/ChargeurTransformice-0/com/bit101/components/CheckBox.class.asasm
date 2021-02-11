@@ -1,0 +1,438 @@
+class
+ refid "com.bit101.components:CheckBox"
+ instance QName(PackageNamespace("com.bit101.components"), "CheckBox")
+  extends QName(PackageNamespace("com.bit101.components"), "Component")
+  flag SEALED
+  flag PROTECTEDNS
+  protectedns ProtectedNamespace("com.bit101.components:CheckBox")
+  iinit
+   refid "com.bit101.components:CheckBox/instance/init"
+   param QName(PackageNamespace("flash.display"), "DisplayObjectContainer")
+   param QName(PackageNamespace(""), "Number")
+   param QName(PackageNamespace(""), "Number")
+   param QName(PackageNamespace(""), "String")
+   param QName(PackageNamespace(""), "Function")
+   flag HAS_OPTIONAL
+   optional Null()
+   optional Integer(0)
+   optional Integer(0)
+   optional Utf8("")
+   optional Null()
+   body
+    maxstack 4
+    localcount 6
+    initscopedepth 10
+    maxscopedepth 11
+    code
+     getlocal0
+     pushscope
+
+     getlocal0
+     getlocal            4
+     initproperty        Multiname("_labelText", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+     getlocal0
+     getlocal1
+     getlocal2
+     getlocal3
+     constructsuper      3
+
+     getlocal            5
+     pushnull
+     ifeq                L18
+
+     findpropstrict      Multiname("addEventListener", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+     getlex              Multiname("MouseEvent", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+     getproperty         Multiname("CLICK", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+     getlocal            5
+     callpropvoid        Multiname("addEventListener", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
+
+L18:
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+  trait slot QName(ProtectedNamespace("com.bit101.components:CheckBox"), "_back") type QName(PackageNamespace("flash.display"), "Sprite") end
+  trait slot QName(ProtectedNamespace("com.bit101.components:CheckBox"), "_button") type QName(PackageNamespace("flash.display"), "Sprite") end
+  trait slot QName(ProtectedNamespace("com.bit101.components:CheckBox"), "_label") type QName(PackageNamespace("com.bit101.components"), "Label") end
+  trait slot QName(ProtectedNamespace("com.bit101.components:CheckBox"), "_labelText") type QName(PackageNamespace(""), "String") value Utf8("") end
+  trait slot QName(ProtectedNamespace("com.bit101.components:CheckBox"), "_selected") type QName(PackageNamespace(""), "Boolean") value False() end
+  trait method QName(ProtectedNamespace("com.bit101.components:CheckBox"), "init") flag OVERRIDE
+   method
+    refid "com.bit101.components:CheckBox/instance/com.bit101.components:CheckBox:init"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      callsupervoid       Multiname("init", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 0
+      findproperty        Multiname("buttonMode", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushtrue
+      initproperty        Multiname("buttonMode", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findproperty        Multiname("useHandCursor", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushtrue
+      initproperty        Multiname("useHandCursor", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findproperty        Multiname("mouseChildren", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushfalse
+      initproperty        Multiname("mouseChildren", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(ProtectedNamespace("com.bit101.components:CheckBox"), "addChildren") flag OVERRIDE
+   method
+    refid "com.bit101.components:CheckBox/instance/com.bit101.components:CheckBox:addChildren"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 6
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      findpropstrict      Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      constructprop       Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+      setproperty         Multiname("_back", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_back", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushint             2306616
+      callpropvoid        Multiname("beginFill", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      getlocal0
+      getproperty         Multiname("_back", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            6
+      dup
+      dup
+      callpropvoid        Multiname("drawCircle", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 3
+
+      getlocal0
+      getproperty         Multiname("_back", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("endFill", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      getlocal0
+      getproperty         Multiname("_back", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("filtreCheckBox", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("filters", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findpropstrict      Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_back", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      getlocal0
+      findpropstrict      Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      constructprop       Multiname("Sprite", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+      setproperty         Multiname("_button", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_button", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushint             11059144
+      callpropvoid        Multiname("beginFill", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      getlocal0
+      getproperty         Multiname("_button", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("graphics", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            6
+      dup
+      pushbyte            3
+      callpropvoid        Multiname("drawCircle", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 3
+
+      getlocal0
+      getproperty         Multiname("_button", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushfalse
+      setproperty         Multiname("visible", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findpropstrict      Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_button", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("addChild", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+
+      getlocal0
+      findpropstrict      Multiname("Label", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      pushbyte            0
+      pushbyte            1
+      getlocal0
+      getproperty         Multiname("_labelText", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      constructprop       Multiname("Label", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 4
+      setproperty         Multiname("_label", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      callpropvoid        Multiname("draw", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      findpropstrict      Multiname("addEventListener", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlex              Multiname("MouseEvent", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("CLICK", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("onClick", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("addEventListener", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(PackageNamespace(""), "draw") flag OVERRIDE
+   method
+    refid "com.bit101.components:CheckBox/instance/draw"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 3
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      callsupervoid       Multiname("draw", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")]), 0
+      getlocal0
+      getproperty         Multiname("_label", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_labelText", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("text", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_label", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("draw", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      getlocal0
+      getproperty         Multiname("_label", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            13
+      setproperty         Multiname("x", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_label", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            12
+      getlocal0
+      getproperty         Multiname("_label", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("height", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      subtract
+      pushbyte            2
+      divide
+      setproperty         Multiname("y", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findproperty        Multiname("_width", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_label", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getproperty         Multiname("width", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            12
+      add
+      initproperty        Multiname("_width", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findproperty        Multiname("_height", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushbyte            10
+      initproperty        Multiname("_height", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait method QName(ProtectedNamespace("com.bit101.components:CheckBox"), "onClick")
+   method
+    refid "com.bit101.components:CheckBox/instance/com.bit101.components:CheckBox:onClick"
+    param QName(PackageNamespace("flash.events"), "MouseEvent")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal0
+      getproperty         Multiname("_selected", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      not
+      setproperty         Multiname("_selected", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_button", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_selected", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("visible", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "label")
+   method
+    refid "com.bit101.components:CheckBox/instance/label/setter"
+    param QName(PackageNamespace(""), "String")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_labelText", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      findpropstrict      Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      callpropvoid        Multiname("invalidate", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 0
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "label")
+   method
+    refid "com.bit101.components:CheckBox/instance/label/getter"
+    returns QName(PackageNamespace(""), "String")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_labelText", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "selected")
+   method
+    refid "com.bit101.components:CheckBox/instance/selected/setter"
+    param QName(PackageNamespace(""), "Boolean")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setproperty         Multiname("_selected", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      getlocal0
+      getproperty         Multiname("_button", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      getlocal0
+      getproperty         Multiname("_selected", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      setproperty         Multiname("visible", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait getter QName(PackageNamespace(""), "selected")
+   method
+    refid "com.bit101.components:CheckBox/instance/selected/getter"
+    returns QName(PackageNamespace(""), "Boolean")
+    body
+     maxstack 1
+     localcount 1
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getproperty         Multiname("_selected", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      returnvalue
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+  trait setter QName(PackageNamespace(""), "enabled") flag OVERRIDE
+   method
+    refid "com.bit101.components:CheckBox/instance/enabled/setter"
+    param QName(PackageNamespace(""), "Boolean")
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 2
+     initscopedepth 10
+     maxscopedepth 11
+     code
+      getlocal0
+      pushscope
+
+      getlocal0
+      getlocal1
+      setsuper            Multiname("enabled", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher"), ProtectedNamespace("com.bit101.components:Component")])
+
+      findproperty        Multiname("mouseChildren", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+      pushfalse
+      initproperty        Multiname("mouseChildren", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
+ end ; instance
+ cinit
+  refid "com.bit101.components:CheckBox/class/init"
+  body
+   maxstack 13
+   localcount 1
+   initscopedepth 9
+   maxscopedepth 10
+   code
+    getlocal0
+    pushscope
+
+    findproperty        QName(PrivateNamespace(null, "com.bit101.components:CheckBox#0"), "filtreCheckBox")
+    findpropstrict      Multiname("Array", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+    findpropstrict      Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
+    pushbyte            1
+    pushbyte            45
+    pushbyte            0
+    pushbyte            1
+    pushint             6325657
+    pushbyte            1
+    dup
+    dup
+    pushbyte            1
+    pushbyte            3
+    constructprop       Multiname("BevelFilter", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 10
+    constructprop       Multiname("Array", [PrivateNamespace(null, "com.bit101.components:CheckBox#0"), PrivateNamespace(null, "com.bit101.components:CheckBox#1"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.filters"), ProtectedNamespace("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:CheckBox"), StaticProtectedNs("com.bit101.components:Component"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 1
+    setproperty         QName(PrivateNamespace(null, "com.bit101.components:CheckBox#0"), "filtreCheckBox")
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+ trait slot QName(PrivateNamespace(null, "com.bit101.components:CheckBox#0"), "filtreCheckBox") slotid 1 type QName(PackageNamespace(""), "Array") end
+end ; class

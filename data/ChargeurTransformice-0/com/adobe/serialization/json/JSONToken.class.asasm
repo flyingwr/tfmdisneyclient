@@ -1,0 +1,96 @@
+class
+ refid "com.adobe.serialization.json:JSONToken"
+ instance QName(PackageNamespace("com.adobe.serialization.json"), "JSONToken")
+  extends QName(PackageNamespace(""), "Object")
+  flag SEALED
+  flag FINAL
+  flag PROTECTEDNS
+  protectedns ProtectedNamespace("com.adobe.serialization.json:JSONToken")
+  iinit
+   refid "com.adobe.serialization.json:JSONToken/instance/init"
+   param QName(PackageNamespace(""), "int")
+   param QName(PackageNamespace(""), "Object")
+   flag HAS_OPTIONAL
+   optional Integer(-1)
+   optional Null()
+   body
+    maxstack 2
+    localcount 3
+    initscopedepth 4
+    maxscopedepth 5
+    code
+     getlocal0
+     pushscope
+
+     getlocal0
+     constructsuper      0
+
+     getlocal0
+     getlocal1
+     initproperty        Multiname("type", [PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#0"), PackageInternalNs("com.adobe.serialization.json"), PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#1"), PackageNamespace(""), PackageNamespace("com.adobe.serialization.json"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("com.adobe.serialization.json:JSONToken"), StaticProtectedNs("com.adobe.serialization.json:JSONToken")])
+
+     getlocal0
+     getlocal2
+     initproperty        Multiname("value", [PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#0"), PackageInternalNs("com.adobe.serialization.json"), PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#1"), PackageNamespace(""), PackageNamespace("com.adobe.serialization.json"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("com.adobe.serialization.json:JSONToken"), StaticProtectedNs("com.adobe.serialization.json:JSONToken")])
+
+     returnvoid
+    end ; code
+   end ; body
+  end ; method
+  trait slot QName(PackageNamespace(""), "type") type QName(PackageNamespace(""), "int") end
+  trait slot QName(PackageNamespace(""), "value") type QName(PackageNamespace(""), "Object") end
+ end ; instance
+ cinit
+  refid "com.adobe.serialization.json:JSONToken/class/init"
+  body
+   maxstack 2
+   localcount 1
+   initscopedepth 3
+   maxscopedepth 4
+   code
+    getlocal0
+    pushscope
+
+    findproperty        QName(PackageInternalNs("com.adobe.serialization.json"), "token")
+    getlocal0
+    construct           0
+    initproperty        QName(PackageInternalNs("com.adobe.serialization.json"), "token")
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+ trait const QName(PackageInternalNs("com.adobe.serialization.json"), "token") slotid 1 type QName(PackageNamespace("com.adobe.serialization.json"), "JSONToken") end
+ trait method QName(PackageInternalNs("com.adobe.serialization.json"), "create") flag FINAL dispid 3
+  method
+   refid "com.adobe.serialization.json:JSONToken/class/com.adobe.serialization.json:create"
+   param QName(PackageNamespace(""), "int")
+   param QName(PackageNamespace(""), "Object")
+   returns QName(PackageNamespace("com.adobe.serialization.json"), "JSONToken")
+   flag HAS_OPTIONAL
+   optional Integer(-1)
+   optional Null()
+   body
+    maxstack 2
+    localcount 3
+    initscopedepth 3
+    maxscopedepth 4
+    code
+     getlocal0
+     pushscope
+
+     getlex              Multiname("token", [PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#0"), PackageInternalNs("com.adobe.serialization.json"), PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#1"), PackageNamespace(""), PackageNamespace("com.adobe.serialization.json"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("com.adobe.serialization.json:JSONToken"), StaticProtectedNs("com.adobe.serialization.json:JSONToken")])
+     getlocal1
+     setproperty         Multiname("type", [PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#0"), PackageInternalNs("com.adobe.serialization.json"), PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#1"), PackageNamespace(""), PackageNamespace("com.adobe.serialization.json"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("com.adobe.serialization.json:JSONToken"), StaticProtectedNs("com.adobe.serialization.json:JSONToken")])
+
+     getlex              Multiname("token", [PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#0"), PackageInternalNs("com.adobe.serialization.json"), PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#1"), PackageNamespace(""), PackageNamespace("com.adobe.serialization.json"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("com.adobe.serialization.json:JSONToken"), StaticProtectedNs("com.adobe.serialization.json:JSONToken")])
+     getlocal2
+     setproperty         Multiname("value", [PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#0"), PackageInternalNs("com.adobe.serialization.json"), PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#1"), PackageNamespace(""), PackageNamespace("com.adobe.serialization.json"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("com.adobe.serialization.json:JSONToken"), StaticProtectedNs("com.adobe.serialization.json:JSONToken")])
+
+     getlex              Multiname("token", [PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#0"), PackageInternalNs("com.adobe.serialization.json"), PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#1"), PackageNamespace(""), PackageNamespace("com.adobe.serialization.json"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("com.adobe.serialization.json:JSONToken"), StaticProtectedNs("com.adobe.serialization.json:JSONToken")])
+     returnvalue
+    end ; code
+   end ; body
+  end ; method
+ end ; trait
+end ; class

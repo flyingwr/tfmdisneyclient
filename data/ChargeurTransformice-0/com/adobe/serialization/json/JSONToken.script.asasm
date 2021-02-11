@@ -1,0 +1,29 @@
+script
+ sinit
+  refid "com.adobe.serialization.json:JSONToken/init"
+  body
+   maxstack 2
+   localcount 1
+   initscopedepth 1
+   maxscopedepth 3
+   code
+    getlocal0
+    pushscope
+
+    findpropstrict      Multiname("JSONToken", [PackageNamespace("com.adobe.serialization.json")])
+    getlex              QName(PackageNamespace(""), "Object")
+    pushscope
+
+    getlex              Multiname("Object", [PackageInternalNs("com.adobe.serialization.json"), PrivateNamespace(null, "com.adobe.serialization.json:JSONToken#1"), PackageNamespace(""), PackageNamespace("com.adobe.serialization.json"), Namespace("http://adobe.com/AS3/2006/builtin")])
+    newclass            "com.adobe.serialization.json:JSONToken"
+    popscope
+    initproperty        QName(PackageNamespace("com.adobe.serialization.json"), "JSONToken")
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+ trait class QName(PackageNamespace("com.adobe.serialization.json"), "JSONToken")
+  #include "JSONToken.class.asasm"
+ end ; trait
+end ; script

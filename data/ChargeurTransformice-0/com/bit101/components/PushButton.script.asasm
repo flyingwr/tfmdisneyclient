@@ -1,0 +1,53 @@
+script
+ sinit
+  refid "com.bit101.components:PushButton/init"
+  body
+   maxstack 2
+   localcount 1
+   initscopedepth 1
+   maxscopedepth 9
+   code
+    getlocal0
+    pushscope
+
+    findpropstrict      Multiname("PushButton", [PackageNamespace("com.bit101.components")])
+    getlex              QName(PackageNamespace(""), "Object")
+    pushscope
+
+    getlex              QName(PackageNamespace("flash.events"), "EventDispatcher")
+    pushscope
+
+    getlex              QName(PackageNamespace("flash.display"), "DisplayObject")
+    pushscope
+
+    getlex              QName(PackageNamespace("flash.display"), "InteractiveObject")
+    pushscope
+
+    getlex              QName(PackageNamespace("flash.display"), "DisplayObjectContainer")
+    pushscope
+
+    getlex              QName(PackageNamespace("flash.display"), "Sprite")
+    pushscope
+
+    getlex              QName(PackageNamespace("com.bit101.components"), "Component")
+    pushscope
+
+    getlex              Multiname("Component", [PrivateNamespace(null, "com.bit101.components:PushButton"), PackageNamespace(""), PackageNamespace("com.bit101.components"), PackageInternalNs("com.bit101.components"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events")])
+    newclass            "com.bit101.components:PushButton"
+    popscope
+    popscope
+    popscope
+    popscope
+    popscope
+    popscope
+    popscope
+    initproperty        QName(PackageNamespace("com.bit101.components"), "PushButton")
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+ trait class QName(PackageNamespace("com.bit101.components"), "PushButton")
+  #include "PushButton.class.asasm"
+ end ; trait
+end ; script

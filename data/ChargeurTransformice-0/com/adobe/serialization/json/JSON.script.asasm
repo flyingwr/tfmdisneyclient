@@ -1,0 +1,29 @@
+script
+ sinit
+  refid "com.adobe.serialization.json:JSON/init"
+  body
+   maxstack 2
+   localcount 1
+   initscopedepth 1
+   maxscopedepth 3
+   code
+    getlocal0
+    pushscope
+
+    findpropstrict      Multiname("JSON", [PackageNamespace("com.adobe.serialization.json")])
+    getlex              QName(PackageNamespace(""), "Object")
+    pushscope
+
+    getlex              Multiname("Object", [PrivateNamespace(null, "com.adobe.serialization.json:JSON"), PackageNamespace(""), PackageNamespace("com.adobe.serialization.json"), PackageInternalNs("com.adobe.serialization.json"), Namespace("http://adobe.com/AS3/2006/builtin")])
+    newclass            "com.adobe.serialization.json:JSON"
+    popscope
+    initproperty        QName(PackageNamespace("com.adobe.serialization.json"), "JSON")
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+ trait class QName(PackageNamespace("com.adobe.serialization.json"), "JSON")
+  #include "JSON.class.asasm"
+ end ; trait
+end ; script

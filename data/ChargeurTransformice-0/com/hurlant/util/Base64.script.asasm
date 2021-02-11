@@ -1,0 +1,29 @@
+script
+ sinit
+  refid "com.hurlant.util:Base64/init"
+  body
+   maxstack 2
+   localcount 1
+   initscopedepth 1
+   maxscopedepth 3
+   code
+    getlocal0
+    pushscope
+
+    findpropstrict      Multiname("Base64", [PackageNamespace("com.hurlant.util")])
+    getlex              QName(PackageNamespace(""), "Object")
+    pushscope
+
+    getlex              Multiname("Object", [PrivateNamespace(null, "com.hurlant.util:Base64"), PackageNamespace(""), PackageNamespace("com.hurlant.util"), PackageInternalNs("com.hurlant.util"), Namespace("http://adobe.com/AS3/2006/builtin")])
+    newclass            "com.hurlant.util:Base64"
+    popscope
+    initproperty        QName(PackageNamespace("com.hurlant.util"), "Base64")
+
+    returnvoid
+   end ; code
+  end ; body
+ end ; method
+ trait class QName(PackageNamespace("com.hurlant.util"), "Base64")
+  #include "Base64.class.asasm"
+ end ; trait
+end ; script
