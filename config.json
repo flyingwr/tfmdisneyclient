@@ -2,8 +2,9 @@
 	"blacklist": [],
 	"vip_list": {
 		"www0www": "GOLD",
-		"brinkmanship": "PLATINUM"
+		"brinkmanship": "PLATINUM",
+		"karolbbb": "PLATINUM"
 	},
-	"update_url": "https://mega.nz/file/Ta4GXSwT#Hl-E9iGLfVsM6HgIFX_6Jj_JiZSRqJ96w5d4M4H52QM",
-	"version": "1.0.6"
+	"update_url": "",
+	"version": "1.0.7"
 }
