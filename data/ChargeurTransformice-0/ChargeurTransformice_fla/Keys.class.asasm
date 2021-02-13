@@ -88,6 +88,66 @@ class
     end ; body
    end ; method
   end ; trait
+  trait method QName(PackageNamespace(""), "update_maps_length")
+   method
+    refid "ChargeurTransformice_fla:Keys/instance/update_maps_length"
+    returns QName(PackageNamespace(""), "void")
+    body
+     maxstack 2
+     localcount 6
+     initscopedepth 4
+     maxscopedepth 5
+     code
+      getlocal0
+      pushscope
+
+      pushundefined
+      coerce_a
+      setlocal1
+
+      pushbyte            0
+      setlocal2
+
+      getlocal0
+      getproperty         Multiname("maps", [PrivateNamespace(null, "ChargeurTransformice_fla:Keys/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:Keys"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("ChargeurTransformice_fla:Keys"), StaticProtectedNs("ChargeurTransformice_fla:Keys")])
+      coerce_a
+      setlocal3
+
+      jump                L29
+
+L12:
+      label
+      getlocal3
+      getlocal2
+      nextname
+      coerce_a
+      setlocal1
+
+      getlocal0
+      dup
+      setlocal            4
+
+      getproperty         Multiname("maps_length", [PrivateNamespace(null, "ChargeurTransformice_fla:Keys/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:Keys"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("ChargeurTransformice_fla:Keys"), StaticProtectedNs("ChargeurTransformice_fla:Keys")])
+      increment
+      setlocal            5
+
+      getlocal            4
+      getlocal            5
+      setproperty         Multiname("maps_length", [PrivateNamespace(null, "ChargeurTransformice_fla:Keys/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:Keys"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), ProtectedNamespace("ChargeurTransformice_fla:Keys"), StaticProtectedNs("ChargeurTransformice_fla:Keys")])
+
+      kill                5
+      kill                4
+L29:
+      hasnext2            3, 2
+      iftrue              L12
+
+      kill                3
+      kill                2
+      returnvoid
+     end ; code
+    end ; body
+   end ; method
+  end ; trait
  end ; instance
  cinit
   refid "ChargeurTransformice_fla:Keys/class/init"
