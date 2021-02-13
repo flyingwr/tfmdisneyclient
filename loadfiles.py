@@ -18,6 +18,7 @@ def read_files(dirname):
 			return cryptjson.text_encode(f.read()).decode()
 
 	for root, dirs, files in os.walk(dirname):
+		print(root)
 		if root == dirname:
 			for _dir in dirs:
 				data[_dir] = {}
