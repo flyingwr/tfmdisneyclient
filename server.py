@@ -11,6 +11,7 @@ class Api:
 		self.tokens = []
 		
 		loadfiles.read_files("./data")
+		print(loadfiles.data)
 		self.main_data = cryptjson.json_zip(loadfiles.data).decode()
 
 		with open("config.json") as f, open("swfdata.json") as _f:
