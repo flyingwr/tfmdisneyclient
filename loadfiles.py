@@ -19,19 +19,15 @@ def read_files(dirname):
 
 	for root, dirs, files in os.walk(dirname):
 		if root == dirname:
-			print("===FIRST===", root, dirs, files)
-
 			for _dir in dirs:
 				data[_dir] = {}
 			for file in files:
-				data[file] = "" # parse_file(os.path.join(root, file))
+				data[file] = parse_file(os.path.join(root, file))
 		else:
-			print("===REST===", root, dirs, files)
-
-			family = root.split("\\")
+			family = root.split("/")
 			if len(family) >= 2:
 				parent = family[-1]
 				for _dir in dirs:
 					add_child(data, parent, _dir)
 				for file in files:
-					add_child(data, parent, file, "") # parse_file(os.path.join(root, file)))
+					add_child(data, parent, file, parse_file(os.path.join(root, file)))
