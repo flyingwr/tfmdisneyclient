@@ -1165,7 +1165,7 @@ L12:
     param QName(PackageNamespace("flash.events"), "Event")
     returns QName(PackageNamespace(""), "void")
     body
-     maxstack 7
+     maxstack 6
      localcount 14
      initscopedepth 10
      maxscopedepth 11
@@ -1404,7 +1404,7 @@ L182:
 L188:
       getlocal0
       getproperty         Multiname("no_delay", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
-      iffalse             L383
+      iffalse             L371
 
       getlocal0
       getproperty         Multiname("frame_loop_class", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
@@ -1420,7 +1420,7 @@ L188:
       getproperty         MultinameL([PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
       convert_b
 L203:
-      iffalse             L333
+      iffalse             L321
 
       getlocal0
       getproperty         Multiname("frame_loop_class", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
@@ -1433,7 +1433,7 @@ L203:
       getlocal0
       getproperty         Multiname("last_victory_time", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
       getlocal            5
-      ifeq                L333
+      ifeq                L321
 
       getlocal0
       dup
@@ -1456,25 +1456,9 @@ L203:
       subtract
       pushbyte            10
       divide
-      pushbyte            100
-      divide
       convert_i
-      dup
       setlocal            6
 
-      pushdouble          0.02
-      subtract
-      convert_i
-      dup
-      setlocal            6
-
-      pushbyte            0
-      ifnlt               L247
-
-      pushbyte            0
-      setlocal            6
-
-L247:
       getlocal0
       getproperty         Multiname("Statements", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
       pushbyte            0
@@ -1490,8 +1474,6 @@ L247:
       getlocal0
       getproperty         Multiname("last_victory_order", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
       getlocal            6
-      pushbyte            100
-      multiply
       callproperty        Multiname("new_victory_packet", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 5
       coerce              QName(PackageNamespace("flash.utils"), "ByteArray")
       setlocal            7
@@ -1511,7 +1493,7 @@ L247:
       kill                12
       getlocal0
       getproperty         Multiname("is_records_room", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
-      iffalse             L330
+      iffalse             L318
 
       pushstring          "<ROSE>You beat map CODE in TIME seconds!"
       setlocal            8
@@ -1523,7 +1505,7 @@ L247:
 
       getlocal0
       getproperty         Multiname("current_map_xml", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
-      iftrue              L297
+      iftrue              L283
 
       getlocal            9
       pushstring          "@"
@@ -1532,13 +1514,15 @@ L247:
       coerce_s
       setlocal            9
 
-L297:
+L283:
       getlocal            8
       pushstring          "CODE"
       getlocal            9
       callproperty        Multiname("replace", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
       pushstring          "TIME"
       getlocal            6
+      pushbyte            100
+      divide
       callproperty        Multiname("replace", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")]), 2
       coerce_s
       setlocal            8
@@ -1570,18 +1554,18 @@ L297:
       call                1
       pop
       kill                12
-L330:
+L318:
       getlocal0
       getlocal            5
       setproperty         Multiname("last_victory_time", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
 
-L333:
+L321:
       getlocal0
       getproperty         Multiname("tfm", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
       getlocal0
       getproperty         Multiname("player", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
       getproperty         MultinameL([PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
-      iffalse             L383
+      iffalse             L371
 
       getlocal0
       getproperty         Multiname("tfm", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
@@ -1597,14 +1581,14 @@ L333:
       getproperty         MultinameL([PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
       convert_b
       dup
-      iffalse             L357
+      iffalse             L345
 
       pop
       getlocal0
       getproperty         Multiname("player_has_cheese", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
       not
-L357:
-      iffalse             L383
+L345:
+      iffalse             L371
 
       getlocal0
       getproperty         Multiname("Statements", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
@@ -1634,7 +1618,7 @@ L357:
       pushtrue
       setproperty         Multiname("player_has_cheese", [PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline/instance"), PrivateNamespace(null, "ChargeurTransformice_fla:MainTimeline"), PackageNamespace(""), PackageNamespace("ChargeurTransformice_fla"), PackageInternalNs("ChargeurTransformice_fla"), Namespace("http://adobe.com/AS3/2006/builtin"), PackageNamespace("flash.display"), PackageNamespace("flash.events"), PackageNamespace("flash.text"), PackageNamespace("flash.system"), PackageNamespace("flash.net"), PackageNamespace("flash.ui"), PackageNamespace("flash.utils"), ProtectedNamespace("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("ChargeurTransformice_fla:MainTimeline"), StaticProtectedNs("flash.display:MovieClip"), StaticProtectedNs("flash.display:Sprite"), StaticProtectedNs("flash.display:DisplayObjectContainer"), StaticProtectedNs("flash.display:InteractiveObject"), StaticProtectedNs("flash.display:DisplayObject"), StaticProtectedNs("flash.events:EventDispatcher")])
 
-L383:
+L371:
       returnvoid
      end ; code
     end ; body

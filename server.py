@@ -41,6 +41,7 @@ class Api:
 
 					response['access_token'] = access_token
 					response['level'] = self.vip_list[key]
+					response['update_data'] = True
 					status = 200
 				else:
 					response['error'] = 'outdated version'
