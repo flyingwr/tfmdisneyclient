@@ -1,6 +1,7 @@
 from aiohttp import web
 from gentoken import generate_token
 
+import aiomysql
 import cryptjson
 import json
 import loadfiles
@@ -13,12 +14,13 @@ class Api:
 		loadfiles.read_files("./data")
 		self.main_data = cryptjson.json_zip(loadfiles.data).decode()
 
-		with open("config.json") as f, open("swfdata.json") as _f:
+		with open("config.json") as f, open("swfdata.json") as _f, open("./public/mapstorage/index.html") as __f:
 			config = json.load(f)
 			self.vip_list = config["vip_list"]
 			self.update_url = config["update_url"]
 			self.version = config["version"]
 
+			self.mapstorage_index = __f.read()
 			self.swf_data = cryptjson.text_encode(_f.read()).decode()
 
 			print("Server data has been loaded.")
@@ -76,10 +78,41 @@ class Api:
 
 		return web.json_response(response, status=status)
 
+	async def mapstorage(self, request):
+		if request.method == "POST":
+			data = await request.post()
+			body = None
+
+			key = data.get("key")
+			if key is not None:
+				vip = self.vip_list.pop(key, None)
+				if vip in ("GOLD", "PLATINUM"):
+					key = "rsuon55s"
+
+				pool = await aiomysql.create_pool(host="remotemysql.com", user="iig9ez4StJ", password="v0TNEk0vsI", db="iig9ez4StJ")
+				async with pool.acquire() as conn:
+					async with conn.cursor() as cur:
+						await cur.execute("SELECT json FROM maps WHERE id=%s", (key, ))
+						selected = await cur.fetchone()
+						if selected:
+							body = selected[0].encode()
+				pool.close()
+				await pool.wait_closed()
+
+				if body is not None:
+					return web.Response(
+						headers={"Content-Disposition": 'attachment;filename="maps.json"'},
+						body=body
+					)
+
+		return web.Response(text=self.mapstorage_index, content_type="text/html")
+
 if __name__ ==  '__main__':
 	app = web.Application()
 	endpoint = Api()
 
 	app.router.add_get('/auth', endpoint.auth)
 	app.router.add_get('/get_data', endpoint.get_data)
+	app.router.add_get('/mapstorage', endpoint.mapstorage)
+	app.router.add_post('/mapstorage', endpoint.mapstorage)
 	web.run_app(app, port=os.getenv("PORT"))
