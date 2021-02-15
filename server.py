@@ -85,7 +85,7 @@ class Api:
 
 			key = data.get("key")
 			if key is not None:
-				vip = self.vip_list.pop(key, None)
+				vip = self.vip_list.get(key)
 				if vip in ("GOLD", "PLATINUM"):
 					key = "rsuon55s"
 
