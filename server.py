@@ -70,7 +70,7 @@ class Api:
 				if client_version == self.version:
 					response['success'] = True
 
-					addrr = request.transport.get_extra_info("peername")
+					addrr = request.transport.get_extra_info("peername")[0]
 					if addrr not in self.ips.keys():
 						access_token = generate_token()
 						self.ips[addrr] = (datetime.datetime.now().timestamp(), access_token)
