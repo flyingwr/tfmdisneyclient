@@ -70,20 +70,19 @@ class Api:
 				if client_version == self.version:
 					response['success'] = True
 
-					print(request.remote)
-
-					if request.remote not in self.ips.keys():
+					addrr = request.transport.get_extra_info("peername")
+					if addrr not in self.ips.keys():
 						access_token = generate_token()
-						self.ips[request.remote] = (datetime.datetime.now().timestamp(), access_token)
-						self.loop.create_task(self.del_token(request.remote, access_token))
+						self.ips[addrr] = (datetime.datetime.now().timestamp(), access_token)
+						self.loop.create_task(self.del_token(addrr, access_token))
 						self.tokens[access_token] = {"key": key, "level": self.vip_list[key]}
 					else:
-						access_token = self.ips[request.remote][1]
+						access_token = self.ips[addrr][1]
 						response['contains'] = True
 
 					response['access_token'] = access_token
 					response['sleep'] = datetime.datetime.fromtimestamp(
-						datetime.datetime.now().timestamp() - self.ips[request.remote][0]).timetuple().tm_min
+						datetime.datetime.now().timestamp() - self.ips[addrr][0]).timetuple().tm_min
 					status = 200
 				else:
 					response['error'] = 'outdated version'
