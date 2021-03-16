@@ -116,6 +116,7 @@ class Api:
 			if status == 200:
 				soft = (await request.post()).get("soft")
 				if soft is not None:
+					print(soft)
 					self.tokens[access_token]["soft"] = soft
 
 		return web.Response(text=text, status=status)
