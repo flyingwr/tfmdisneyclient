@@ -73,7 +73,6 @@ class Api:
 					access_token = generate_token()
 
 					addrr = request.headers.get("X-Forwarded-For")
-					print(addrr)
 					if addrr is not None:
 						if addrr not in self.ips.keys():
 							access_token = generate_token()
@@ -119,6 +118,7 @@ class Api:
 			if status == 200:
 				soft = (await request.post()).get("soft")
 				if soft is not None:
+					print(soft)
 					self.tokens[access_token]["soft"] = soft
 
 		return web.Response(text=text, status=status)
