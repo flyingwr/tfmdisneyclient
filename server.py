@@ -153,7 +153,6 @@ class Api:
 					status = 200
 				else:
 					response['error'] = 'max connection limit exceeded'
-					del self.tokens[access_token]
 			else:
 				response['error'] = 'expired/invalid access_token'
 		else:
