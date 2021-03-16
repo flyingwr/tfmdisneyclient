@@ -132,7 +132,8 @@ class Api:
 			if access_token in self.tokens.keys():
 				if len(self.tokens[access_token]["ips"]) < 3:
 					addrr = request.headers.get("X-Forwarded-For")
-					self.tokens[access_token]["ips"].append(addrr)
+					if addrr not in self.tokens[access_token]["ips"]:
+						self.tokens[access_token]["ips"].append(addrr)
 
 					response['success'] = True
 
