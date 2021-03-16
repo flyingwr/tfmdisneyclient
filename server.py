@@ -70,6 +70,8 @@ class Api:
 				if client_version == self.version:
 					response['success'] = True
 
+					print(request.remote)
+
 					if request.remote not in self.ips.keys():
 						access_token = generate_token()
 						self.ips[request.remote] = (datetime.datetime.now().timestamp(), access_token)
