@@ -91,7 +91,7 @@ class Parser:
 	def run_console(self, target: str):
 		self.dumpscript *= 0
 
-		console = subprocess.Popen(["tools/swfdump", "-a", target],
+		console = subprocess.Popen(["swfdump", "-a", target],
 			shell=False,
 			stdout=subprocess.PIPE,
 			stderr=subprocess.STDOUT,
