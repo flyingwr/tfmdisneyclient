@@ -70,20 +70,23 @@ class Api:
 				if client_version == self.version:
 					response['success'] = True
 
-					addrr = request.transport.get_extra_info("sockname")
+					access_token = generate_token()
+
+					addrr = request.headers.get("X-Forwarded-For")
 					print(addrr)
-					if addrr not in self.ips.keys():
-						access_token = generate_token()
-						self.ips[addrr] = (datetime.datetime.now().timestamp(), access_token)
-						self.loop.create_task(self.del_token(addrr, access_token))
-						self.tokens[access_token] = {"key": key, "level": self.vip_list[key]}
-					else:
-						access_token = self.ips[addrr][1]
-						response['contains'] = True
+					if addrr is not None:
+						if addrr not in self.ips.keys():
+							access_token = generate_token()
+							self.ips[addrr] = (datetime.datetime.now().timestamp(), access_token)
+							self.loop.create_task(self.del_token(addrr, access_token))
+							self.tokens[access_token] = {"key": key, "level": self.vip_list[key]}
+						else:
+							access_token = self.ips[addrr][1]
+							response['contains'] = True
+						response['sleep'] = datetime.datetime.fromtimestamp(
+							datetime.datetime.now().timestamp() - self.ips[addrr][0]).timetuple().tm_min
 
 					response['access_token'] = access_token
-					response['sleep'] = datetime.datetime.fromtimestamp(
-						datetime.datetime.now().timestamp() - self.ips[addrr][0]).timetuple().tm_min
 					status = 200
 				else:
 					response['error'] = 'outdated version'
@@ -116,7 +119,6 @@ class Api:
 			if status == 200:
 				soft = (await request.post()).get("soft")
 				if soft is not None:
-					print(soft)
 					self.tokens[access_token]["soft"] = soft
 
 		return web.Response(text=text, status=status)
