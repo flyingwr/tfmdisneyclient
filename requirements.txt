@@ -1,3 +1,4 @@
+aiofiles
 aiohttp
 aiomysql
 asyncio

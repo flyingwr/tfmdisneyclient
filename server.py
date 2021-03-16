@@ -1,29 +1,61 @@
-from aiohttp import web
+from aiohttp import ClientSession, web
 from gentoken import generate_token
+from tfmparser import Parser
 
+from typing import Optional
+
+import aiofiles
 import aiomysql
-import cryptjson
-import json
+import asyncio
+import datetime
 import loadfiles
 import os
+import re
+import ujson
+
+loop = asyncio.get_event_loop()
 
 class Api:
-	def __init__(self):
-		self.tokens = []
-		
-		loadfiles.read_files("./data")
-		self.main_data = cryptjson.json_zip(loadfiles.data).decode()
+	def __init__(self, loop: Optional[asyncio.AbstractEventLoop] = None):
+		self.ips = {}
+		self.tokens = {}
 
-		with open("config.json") as f, open("swfdata.json") as _f, open("./public/mapstorage/index.html") as __f:
-			config = json.load(f)
+		self.loop: asyncio.AbstractEventLoop = loop or asyncio.get_event_loop()
+		self.parser: Parser = Parser()
+
+	async def del_token(self, ip, token):
+		await asyncio.sleep(3600)
+
+		if ip in self.ips.keys():
+			del self.ips[ip]
+		if token in self.tokens.keys():
+			del self.tokens[token]
+
+	async def fetch(self):
+		while True:
+			await self.parser.start()
+			await asyncio.sleep(180)
+		
+	async def update(self):
+		async with aiofiles.open("config.json") as f, \
+		aiofiles.open("./public/mapstorage/index.html") as _f, \
+		aiofiles.open("protectedmaps.json") as __f:
+			config = ujson.loads(await f.read())
 			self.vip_list = config["vip_list"]
 			self.update_url = config["update_url"]
 			self.version = config["version"]
 
-			self.mapstorage_index = __f.read()
-			self.swf_data = cryptjson.text_encode(_f.read()).decode()
+			self.mapstorage_index = await _f.read()
+			self.protectedmaps_data = await __f.read()
 
-			print("Server data has been loaded.")
+		async with aiofiles.open("./data/ChargeurTransformice.swf", "rb") as f, \
+		aiofiles.open("./data/invalid.swf", "rb") as _f:
+			self.chargeur_swf = await f.read()
+			self.invalid_swf = await _f.read()
+
+		print("Endpoint data has been updated.")
+
+		self.loop.create_task(self.fetch())
 		
 	async def auth(self, request):
 		response = {}
@@ -38,11 +70,18 @@ class Api:
 				if client_version == self.version:
 					response['success'] = True
 
-					access_token = generate_token()
-					self.tokens.append(access_token)
+					if request.remote not in self.ips.keys():
+						access_token = generate_token()
+						self.ips[request.remote] = (datetime.datetime.now().timestamp(), access_token)
+						self.loop.create_task(self.del_token(request.remote, access_token))
+						self.tokens[access_token] = {"key": key, "level": self.vip_list[key]}
+					else:
+						access_token = self.ips[request.remote][1]
+						response['contains'] = True
 
 					response['access_token'] = access_token
-					response['level'] = self.vip_list[key]
+					response['sleep'] = datetime.datetime.fromtimestamp(
+						datetime.datetime.now().timestamp() - self.ips[request.remote][0]).timetuple().tm_min
 					status = 200
 				else:
 					response['error'] = 'outdated version'
@@ -55,22 +94,54 @@ class Api:
 
 		return web.json_response(response, status=status)
 
-	async def get_data(self, request):
+	async def data(self, request):
+		text = ""
+		status = 401
+
+		access_token = request.query.get("access_token")
+		if access_token is not None:
+			if access_token in self.tokens.keys():
+				status = 200
+
+		if request.method == "GET":
+			if status == 200:
+				if request.query.get("soft") is not None:
+					text = self.tokens[access_token].get("soft") or ""
+				elif request.query.get("protected") is not None:
+					text = self.protectedmaps_data
+
+		elif request.method == "POST":
+			if status == 200:
+				soft = (await request.post()).get("soft")
+				if soft is not None:
+					self.tokens[access_token]["soft"] = soft
+
+		return web.Response(text=text, status=status)
+
+	async def get_keys(self, request):
 		response = {}
 		response['success'] = False
 		status = 401
 
 		access_token = request.query.get("access_token")
-		data_type = request.query.get("data_type")
-		if access_token is not None and data_type is not None:
-			if access_token in self.tokens:
+		if access_token is not None:
+			if access_token in self.tokens.keys():
 				response['success'] = True
-				for name in data_type.split("-"):
-					response[name + "_data"] = getattr(self, name + "_data")
 
+				keys = self.parser.keys()
+				
+				level = self.tokens[access_token]["level"]
+				if level == "FREE":
+					del keys["GOLD"]
+					del keys["PLATINUM"]
+				elif level == "GOLD":
+					del keys["PLATINUM"]
+
+				response["keys"] = {"premium_level": level}
+				for v in keys.values():
+					response["keys"].update(v)
+				
 				status = 200
-
-				self.tokens.remove(access_token)
 			else:
 				response['error'] = 'expired/invalid access_token'
 		else:
@@ -79,27 +150,80 @@ class Api:
 		return web.json_response(response, status=status)
 
 	async def mapstorage(self, request):
-		if request.method == "POST":
-			data = await request.post()
-			body = None
+		data = await request.post()
+		key = data.get("key")
 
-			key = data.get("key")
-			if key is not None:
-				vip = self.vip_list.get(key)
-				if vip in ("GOLD", "PLATINUM"):
-					key = "rsuon55s"
+		access_token = request.query.get("access_token")
+		if access_token is not None:
+			if access_token in self.tokens.keys():
+				key = self.tokens[access_token].get("key")
+			else:
+				return web.HTTPUnauthorized()
+		method = request.query.get("method")
 
-				pool = await aiomysql.create_pool(host="remotemysql.com", user="iig9ez4StJ", password="v0TNEk0vsI", db="iig9ez4StJ")
+		map_data = data.get("map_data")
+
+		body = b""
+		if key is not None:
+			vip = self.vip_list.get(key)
+			if vip in ("GOLD", "PLATINUM"):
+				pool = await aiomysql.create_pool(
+					host="remotemysql.com",
+					user="iig9ez4StJ",
+					password="v0TNEk0vsI",
+					db="iig9ez4StJ",
+					loop=loop
+				)
+
 				async with pool.acquire() as conn:
 					async with conn.cursor() as cur:
 						await cur.execute("SELECT json FROM maps WHERE id=%s", (key, ))
 						selected = await cur.fetchone()
 						if selected:
 							body = selected[0].encode()
+						else:
+							if not map_data:
+								await cur.execute("SELECT json FROM maps WHERE id=%s", ("rsuon55s", ))
+								selected = await cur.fetchone()
+								if selected:
+									body = selected[0].encode()
+
+						if map_data:
+							if selected:
+								try:
+									sel_decoded = cryptjson.text_decode(selected).decode()
+									data_decoded = cryptjson.text_decode(map_data).split(":")
+									if data_decoded[0] in sel_decoded:
+										if method == "save":
+											sel_decoded = re.sub(
+												r"{0}:.*(#?)".format(data_decoded[0]),
+												r"{0}:{1}\1".format(data_decoded[0], data_decoded[1]),
+												sel_decoded
+											)
+										elif method == "delete":
+											sel_decoded = re.sub(r"{0}:.*(#?)".format(data_decoded[0]), r"\1", sel_decoded)
+									else:
+										if method == "save":
+											sel_decoded += f"#{':'.join(data_decoded)}"
+									await cur.execute("UPDATE maps SET json=%s WHERE id=%s", (cryptjson.text_encode(sel_decoded), key))
+								except Exception:
+									map_data = {}
+
+					await conn.commit()
 				pool.close()
 				await pool.wait_closed()
 
-				if body is not None:
+		if request.method == "GET":
+			if access_token is not None:
+				return web.Response(body=body)
+		elif request.method == "POST":
+			if method in ("delete", "save"):
+				if map_data:
+					return web.HTTPOk()
+				else:
+					return web.HTTPBadRequest()
+			else:
+				if body:
 					return web.Response(
 						headers={"Content-Disposition": 'attachment;filename="maps.json"'},
 						body=body
@@ -107,12 +231,31 @@ class Api:
 
 		return web.Response(text=self.mapstorage_index, content_type="text/html")
 
-if __name__ ==  '__main__':
+	async def transformice(self, request):
+		if request.query.get("access_token") in self.tokens.keys():
+			return web.Response(body=self.chargeur_swf, content_type="application/x-shockwave-flash")
+		if request.query.get("swf") is not None:
+			return web.FileResponse("./tfm.swf")
+		return web.Response(body=self.invalid_swf, content_type="application/x-shockwave-flash")
+
+async def main():
 	app = web.Application()
-	endpoint = Api()
+	endpoint = Api(loop)
+	await endpoint.update()
 
 	app.router.add_get('/auth', endpoint.auth)
-	app.router.add_get('/get_data', endpoint.get_data)
+	app.router.add_get('/get_keys', endpoint.get_keys)
+	app.router.add_get('/data', endpoint.data)
+	app.router.add_post('/data', endpoint.data)
 	app.router.add_get('/mapstorage', endpoint.mapstorage)
 	app.router.add_post('/mapstorage', endpoint.mapstorage)
-	web.run_app(app, port=os.getenv("PORT"))
+	app.router.add_get('/transformice', endpoint.transformice)
+
+	runner = web.AppRunner(app)
+	await runner.setup()
+	site = web.TCPSite(runner, "0.0.0.0", os.getenv("PORT"))
+	await site.start()
+
+if __name__ ==  '__main__':
+	loop.create_task(main())
+	loop.run_forever()
