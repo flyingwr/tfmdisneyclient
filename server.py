@@ -78,7 +78,7 @@ class Api:
 							access_token = generate_token()
 							self.ips[addrr] = (datetime.datetime.now().timestamp(), access_token)
 							self.loop.create_task(self.del_token(addrr, access_token))
-							self.tokens[access_token] = {"key": key, "level": self.vip_list[key]}
+							self.tokens[access_token] = {"key": key, "level": self.vip_list[key], "ips": []}
 						else:
 							access_token = self.ips[addrr][1]
 							response['contains'] = True
@@ -131,22 +131,30 @@ class Api:
 		access_token = request.query.get("access_token")
 		if access_token is not None:
 			if access_token in self.tokens.keys():
-				response['success'] = True
+				if len(self.tokens["ips"]) < 3:
+					addrr = request.headers.get("X-Forwarded-For")
+					print(addrr)
+					self.tokens["ips"].insert(addrr)
 
-				keys = self.parser.keys()
-				
-				level = self.tokens[access_token]["level"]
-				if level == "FREE":
-					del keys["GOLD"]
-					del keys["PLATINUM"]
-				elif level == "GOLD":
-					del keys["PLATINUM"]
+					response['success'] = True
 
-				response["keys"] = {"premium_level": level}
-				for v in keys.values():
-					response["keys"].update(v)
-				
-				status = 200
+					keys = self.parser.keys()
+					
+					level = self.tokens[access_token]["level"]
+					if level == "FREE":
+						del keys["GOLD"]
+						del keys["PLATINUM"]
+					elif level == "GOLD":
+						del keys["PLATINUM"]
+
+					response["keys"] = {"premium_level": level}
+					for v in keys.values():
+						response["keys"].update(v)
+					
+					status = 200
+				else:
+					response['error'] = 'max connection limit exceeded'
+					del self.tokens[access_token]
 			else:
 				response['error'] = 'expired/invalid access_token'
 		else:
