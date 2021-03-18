@@ -7,6 +7,7 @@ from typing import Optional
 import aiofiles
 import aiomysql
 import asyncio
+import cryptjson
 import datetime
 import loadfiles
 import os
@@ -73,6 +74,7 @@ class Api:
 					access_token = generate_token()
 
 					addrr = request.headers.get("X-Forwarded-For")
+					addrr = "127.0.0.1"
 					if addrr is not None:
 						if addrr not in self.ips.keys():
 							access_token = generate_token()
@@ -113,12 +115,52 @@ class Api:
 					text = self.tokens[access_token].get("soft") or ""
 				elif request.query.get("protected") is not None:
 					text = self.protectedmaps_data
+				elif request.query.get("config") is not None:
+					pool = await aiomysql.create_pool(
+						host="remotemysql.com",
+						user="iig9ez4StJ",
+						password="v0TNEk0vsI",
+						db="iig9ez4StJ",
+						loop=loop
+					)
+
+					async with pool.acquire() as conn:
+						async with conn.cursor() as cur:
+							await cur.execute("SELECT text FROM config WHERE id=%s", (self.tokens[access_token]["key"], ))
+							selected = await cur.fetchone()
+							if selected:
+								text = selected[0]
 
 		elif request.method == "POST":
 			if status == 200:
-				soft = (await request.post()).get("soft")
+				post = await request.post()
+				soft = post.get("soft")
 				if soft is not None:
 					self.tokens[access_token]["soft"] = soft
+
+				config = post.get("config")
+				if config is not None:
+					pool = await aiomysql.create_pool(
+						host="remotemysql.com",
+						user="iig9ez4StJ",
+						password="v0TNEk0vsI",
+						db="iig9ez4StJ",
+						loop=loop
+					)
+
+					async with pool.acquire() as conn:
+						async with conn.cursor() as cur:
+							await cur.execute("SELECT text FROM config WHERE id=%s", (self.tokens[access_token]["key"], ))
+							selected = await cur.fetchone()
+							if selected:
+								await cur.execute("UPDATE config SET text=%s WHERE id=%s", (
+									config, self.tokens[access_token]["key"]))
+							else:
+								await cur.execute("INSERT INTO config (id, text) VALUES (%s, %s)", (
+									self.tokens[access_token]["key"], config))
+						await conn.commit()
+					pool.close()
+					await pool.wait_closed()
 
 		return web.Response(text=text, status=status)
 
