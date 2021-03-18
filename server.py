@@ -74,7 +74,6 @@ class Api:
 					access_token = generate_token()
 
 					addrr = request.headers.get("X-Forwarded-For")
-					addrr = "127.0.0.1"
 					if addrr is not None:
 						if addrr not in self.ips.keys():
 							access_token = generate_token()
