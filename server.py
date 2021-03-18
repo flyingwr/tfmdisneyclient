@@ -71,7 +71,7 @@ class Api:
 				if client_version == self.version:
 					response['success'] = True
 
-					access_token = generate_token()
+					access_token = ""
 
 					addrr = request.headers.get("X-Forwarded-For")
 					if addrr is not None:
@@ -105,6 +105,9 @@ class Api:
 
 		access_token = request.query.get("access_token")
 		if access_token is not None:
+			addrr = request.headers.get("X-Forwarded-For")
+			if addrr in self.ips.keys():
+				access_token = self.ips[addrr][1]
 			if access_token in self.tokens.keys():
 				status = 200
 
@@ -170,9 +173,11 @@ class Api:
 
 		access_token = request.query.get("access_token")
 		if access_token is not None:
+			addrr = request.headers.get("X-Forwarded-For")
+			if addrr in self.ips.keys():
+				access_token = self.ips[addrr][1]
 			if access_token in self.tokens.keys():
 				if len(self.tokens[access_token]["ips"]) < 3:
-					addrr = request.headers.get("X-Forwarded-For")
 					if addrr not in self.tokens[access_token]["ips"]:
 						self.tokens[access_token]["ips"].append(addrr)
 
@@ -208,6 +213,9 @@ class Api:
 
 		access_token = request.query.get("access_token")
 		if access_token is not None:
+			addrr = request.headers.get("X-Forwarded-For")
+			if addrr in self.ips.keys():
+				access_token = self.ips[addrr][1]
 			if access_token in self.tokens.keys():
 				key = self.tokens[access_token].get("key")
 			else:
