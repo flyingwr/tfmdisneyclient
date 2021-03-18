@@ -108,7 +108,6 @@ class Api:
 			addrr = request.headers.get("X-Forwarded-For")
 			if addrr in self.ips.keys():
 				access_token = self.ips[addrr][1]
-				print(access_token)
 			if access_token in self.tokens.keys():
 				status = 200
 
