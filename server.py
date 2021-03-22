@@ -177,7 +177,9 @@ class Api:
 			if addrr in self.ips.keys():
 				access_token = self.ips[addrr][1]
 			if access_token in self.tokens.keys():
-				if len(self.tokens[access_token]["ips"]) < 3:
+				level = self.tokens[access_token]["level"]
+				limit = 10 if level == "PLATINUM" else 3
+				if len(self.tokens[access_token]["ips"]) < limit:
 					if addrr not in self.tokens[access_token]["ips"]:
 						self.tokens[access_token]["ips"].append(addrr)
 
@@ -185,7 +187,6 @@ class Api:
 
 					keys = self.parser.keys()
 					
-					level = self.tokens[access_token]["level"]
 					if level == "FREE":
 						del keys["GOLD"]
 						del keys["PLATINUM"]
@@ -293,11 +294,17 @@ class Api:
 		return web.Response(text=self.mapstorage_index, content_type="text/html")
 
 	async def transformice(self, request):
-		if request.query.get("access_token") in self.tokens.keys():
-			return web.Response(body=self.chargeur_swf, content_type="application/x-shockwave-flash")
+		body = self.invalid_swf
+		content_type = "application/x-shockwave-flash"
+
+		access_token = request.query.get("access_token")
+		if access_token is not None:
+			if request.query.get("access_token") in self.tokens.keys():
+				body = self.chargeur_swf
+			return web.Response(body=body, content_type=content_type)
 		if request.query.get("swf") is not None:
 			return web.FileResponse("./tfm.swf")
-		return web.Response(body=self.invalid_swf, content_type="application/x-shockwave-flash")
+		return web.Response(body=body, content_type=content_type)
 
 async def main():
 	app = web.Application()

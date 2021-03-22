@@ -1,9 +1,11 @@
 from typing import Dict, Optional
 
+from .animclass import AnimClass
 from .bypasscode import BypassCode
 from .chat import Chat
 from .frameloop import FrameLoop
 from .mapclass import Map
+from .mass import Mass
 from .moveclass import MoveClass
 from .packethandler import PacketHandler
 from .packetout import PacketOut
@@ -15,6 +17,7 @@ from .playerlist import PlayerList
 from .playername import PlayerName
 from .playerphysics import PlayerPhysics
 from .playertitle import PlayerTitle
+from .setv import SetV
 from .shamanobj import ShamanObj
 from .socket import Socket
 from .timerclass import Timer
@@ -38,8 +41,8 @@ class Parser:
 					"chat_class_name2", "chat_message2", "chat_text_field", "chat_message",
 					"menu_title", "player_list", "player_name", "player", "player_clip",
 					"player_id", "is_dead", "event_chat_text", "chat_is_upper", "chat_shift", "player_cheese"),
-			"GOLD": ("crouch", "move_class_name", "move_free", "player_title",
-					"player_name_color", "timer_class_name", "timer_prop",
+			"GOLD": ("b2massdata", "set_v", "mass", "crouch", "move_class_name", "move_free", "player_title",
+					"player_name_color", "timer_class_name", "timer_prop", "center", "I", "set_mass",
 					"tfm_obj_container", "remove_shaman_obj", "shaman_obj_list", "shaman_obj_var",
 					"ui_scoreboard_class_name", "socket_class_name", "bulle_socket_instance",
 					"event_socket_data", "socket_name", "data_id", "data_offset", "data_len",
@@ -49,17 +52,20 @@ class Parser:
 					"victory_time", "jump", "player_moving_right", "player_moving_left", "player_physics",
 					"x_form", "b2vec2", "physics_state", "physics_state_vx", "physics_state_vy",
 					"crouch_packet_name", "static_side", "map_class_name", "map_instance", "obj_container",
-					"hole_list", "clip_fromage", "packet_out_name", "packet_out_bytes"),
+					"hole_list", "clip_fromage", "packet_out_name", "packet_out_bytes", "anim_class_name",
+					"update_coord"),
 			"PLATINUM": ("cipher", )
 		}
 
 		self.downloaded_swf: str = "Transformice.swf"
 		self.output_swf: str = "tfm.swf"
 
+		self.anim_class: AnimClass = AnimClass()
 		self.bypass_code: BypassCode = BypassCode()
 		self.chat: Chat = Chat()
 		self.frame_loop: FrameLoop = FrameLoop()
 		self.map_class: Map = Map()
+		self.mass: Mass = Mass()
 		self.move_class: MoveClass = MoveClass()
 		self.packet_handler: PacketHandler = PacketHandler()
 		self.packet_out: PacketOut = PacketOut()
@@ -71,6 +77,7 @@ class Parser:
 		self.player_name: PlayerName= PlayerName()
 		self.player_physics: PlayerPhysics = PlayerPhysics()
 		self.player_title: PlayerTitle = PlayerTitle()
+		self.set_v: SetV = SetV()
 		self.shaman_obj: ShamanObj = ShamanObj()
 		self.socket_class: Socket = Socket()
 		self.timer_class: Timer = Timer()
@@ -91,7 +98,7 @@ class Parser:
 	def run_console(self, target: str):
 		self.dumpscript *= 0
 
-		console = subprocess.Popen(["swfdump", "-a", target], shell=False,
+		console = subprocess.Popen(["tools/swfdump", "-a", target], shell=False,
 			stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 		for line in console.stdout:
 			self.dumpscript.append(line.decode().rstrip())
@@ -117,7 +124,8 @@ class Parser:
 		names = ("socket_class", "bypass_code", "chat", "frame_loop",
 				"map_class", "move_class", "packet_handler", "packet_out", "player_list",
 				"player_clip", "player_name", "player_id", "player_cheese", "player_title",
-				"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard")
+				"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
+				"anim_class")
 		for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
 			self.fetched.update(result)
 
