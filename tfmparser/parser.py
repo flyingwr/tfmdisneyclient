@@ -106,11 +106,14 @@ class Parser:
 	async def download_swf(self):
 		print("Downloading Transformice.swf")
 
-		async with aiohttp.ClientSession() as session:
-			async with session.get("https://www.transformice.com/Transformice.swf") as response:
-				if response.status == 200:
-					async with aiofiles.open(self.downloaded_swf, "wb") as f:
-						await f.write(await response.read())
+		try:
+			async with aiohttp.ClientSession() as session:
+				async with session.get("https://www.transformice.com/Transformice.swf") as response:
+					if response.status == 200:
+						async with aiofiles.open(self.downloaded_swf, "wb") as f:
+							await f.write(await response.read())
+		except Exception:
+			print("Failed to download Transformice SWF")
 
 	async def start(self):
 		await self.loop.create_task(self.download_swf())
