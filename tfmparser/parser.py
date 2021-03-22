@@ -3,6 +3,7 @@ from typing import Dict, Optional
 from .animclass import AnimClass
 from .bypasscode import BypassCode
 from .chat import Chat
+from .checker import Checker
 from .frameloop import FrameLoop
 from .mapclass import Map
 from .mass import Mass
@@ -41,8 +42,8 @@ class Parser:
 					"chat_class_name2", "chat_message2", "chat_text_field", "chat_message",
 					"menu_title", "player_list", "player_name", "player", "player_clip",
 					"player_id", "is_dead", "event_chat_text", "chat_is_upper", "chat_shift", "player_cheese"),
-			"GOLD": ("b2massdata", "set_v", "mass", "crouch", "move_class_name", "move_free", "player_title",
-					"player_name_color", "timer_class_name", "timer_prop", "center", "I", "set_mass",
+			"GOLD": ("crouch", "move_class_name", "move_free", "player_title",
+					"player_name_color", "timer_class_name", "timer_prop",
 					"tfm_obj_container", "remove_shaman_obj", "shaman_obj_list", "shaman_obj_var",
 					"ui_scoreboard_class_name", "socket_class_name", "bulle_socket_instance",
 					"event_socket_data", "socket_name", "data_id", "data_offset", "data_len",
@@ -53,7 +54,7 @@ class Parser:
 					"x_form", "b2vec2", "physics_state", "physics_state_vx", "physics_state_vy",
 					"crouch_packet_name", "static_side", "map_class_name", "map_instance", "obj_container",
 					"hole_list", "clip_fromage", "packet_out_name", "packet_out_bytes", "anim_class_name",
-					"update_coord"),
+					"update_coord", "checker_class_name", "check_pos"),
 			"PLATINUM": ("cipher", )
 		}
 
@@ -63,6 +64,7 @@ class Parser:
 		self.anim_class: AnimClass = AnimClass()
 		self.bypass_code: BypassCode = BypassCode()
 		self.chat: Chat = Chat()
+		self.checker: Checker = Checker()
 		self.frame_loop: FrameLoop = FrameLoop()
 		self.map_class: Map = Map()
 		self.mass: Mass = Mass()
@@ -124,7 +126,7 @@ class Parser:
 
 		self.run_console(self.output_swf)
 
-		names = ("socket_class", "bypass_code", "chat", "frame_loop",
+		names = ("socket_class", "bypass_code", "chat", "frame_loop", "checker",
 				"map_class", "move_class", "packet_handler", "packet_out", "player_list",
 				"player_clip", "player_name", "player_id", "player_cheese", "player_title",
 				"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
