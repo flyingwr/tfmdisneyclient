@@ -65,6 +65,7 @@ class Api:
 
 		key = request.query.get("key")
 		client_version = request.query.get("version")
+		addrr = request.headers.get("X-Forwarded-For")
 
 		if key is not None:
 			if key in self.vip_list.keys():
@@ -73,7 +74,6 @@ class Api:
 
 					access_token = ""
 
-					addrr = request.headers.get("X-Forwarded-For")
 					if addrr is not None:
 						if addrr not in self.ips.keys():
 							access_token = generate_token()
@@ -172,8 +172,8 @@ class Api:
 		status = 401
 
 		access_token = request.query.get("access_token")
+		addrr = request.headers.get("X-Forwarded-For")
 		if access_token is not None:
-			addrr = request.headers.get("X-Forwarded-For")
 			if addrr in self.ips.keys():
 				access_token = self.ips[addrr][1]
 			if access_token in self.tokens.keys():
@@ -308,7 +308,7 @@ class Api:
 
 async def main():
 	app = web.Application()
-	endpoint = Api(loop)
+	endpoint = Api(loop)	
 	await endpoint.update()
 
 	app.router.add_get('/auth', endpoint.auth)
