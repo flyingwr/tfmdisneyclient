@@ -66,7 +66,6 @@ class Api:
 		key = request.query.get("key")
 		client_version = request.query.get("version")
 		addrr = request.headers.get("X-Forwarded-For")
-		addrr = "127.0.0.1"
 
 		if key is not None:
 			if key in self.vip_list.keys():
