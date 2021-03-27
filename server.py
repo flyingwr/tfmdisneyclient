@@ -66,6 +66,7 @@ class Api:
 		key = request.query.get("key")
 		client_version = request.query.get("version")
 		addrr = request.headers.get("X-Forwarded-For")
+		addrr = "127.0.0.1"
 
 		if key is not None:
 			if key in self.vip_list.keys():
@@ -188,6 +189,10 @@ class Api:
 					keys = self.parser.keys()
 					
 					if level == "FREE":
+						del keys["SILVER"]
+						del keys["GOLD"]
+						del keys["PLATINUM"]
+					elif level == "SILVER":
 						del keys["GOLD"]
 						del keys["PLATINUM"]
 					elif level == "GOLD":
@@ -228,7 +233,7 @@ class Api:
 		body = b""
 		if key is not None:
 			vip = self.vip_list.get(key)
-			if vip in ("GOLD", "PLATINUM"):
+			if vip in ("SILVER", "GOLD", "PLATINUM"):
 				pool = await aiomysql.create_pool(
 					host="remotemysql.com",
 					user="iig9ez4StJ",

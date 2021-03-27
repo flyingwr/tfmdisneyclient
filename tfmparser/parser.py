@@ -42,18 +42,19 @@ class Parser:
 					"chat_class_name2", "chat_message2", "chat_text_field", "chat_message",
 					"menu_title", "player_list", "player_name", "player", "player_clip",
 					"player_id", "is_dead", "event_chat_text", "chat_is_upper", "chat_shift", "player_cheese"),
-			"GOLD": ("crouch", "move_class_name", "move_free", "player_title",
+			"SILVER": ("crouch", "move_class_name", "move_free", "player_title",
 					"player_name_color", "timer_class_name", "timer_prop",
 					"tfm_obj_container", "remove_shaman_obj", "shaman_obj_list", "shaman_obj_var",
 					"ui_scoreboard_class_name", "socket_class_name", "bulle_socket_instance",
 					"event_socket_data", "socket_name", "data_id", "data_offset", "data_len",
 					"socket_data", "main_socket_instance", "read_data", "data_sender",
 					"command_packet_name", "timer_instance", "timer_popup", "packet_handler_class_name",
-					"packet_handler", "animation_course", "is_down", "static_animation", "frame_loop_class_name",
-					"victory_time", "jump", "player_moving_right", "player_moving_left", "player_physics",
+					"packet_handler", "animation_course", "is_down", "static_animation", "jump",
+					"player_moving_right", "player_moving_left", "player_physics",
 					"x_form", "b2vec2", "physics_state", "physics_state_vx", "physics_state_vy",
-					"crouch_packet_name", "static_side", "map_class_name", "map_instance", "obj_container",
-					"hole_list", "clip_fromage", "packet_out_name", "packet_out_bytes", "anim_class_name",
+					"crouch_packet_name", "static_side", "map_class_name", "map_instance",
+					"obj_container", "hole_list", "clip_fromage", "packet_out_name", "packet_out_bytes"),
+			"GOLD": ("frame_loop_class_name", "victory_time", "anim_class_name",
 					"update_coord", "checker_class_name", "check_pos"),
 			"PLATINUM": ("cipher", )
 		}
@@ -100,7 +101,7 @@ class Parser:
 	def run_console(self, target: str):
 		self.dumpscript *= 0
 
-		console = subprocess.Popen(["swfdump", "-a", target], shell=False,
+		console = subprocess.Popen(["tools/swfdump", "-a", target], shell=False,
 			stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 		for line in console.stdout:
 			self.dumpscript.append(line.decode().rstrip())
