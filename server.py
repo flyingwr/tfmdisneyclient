@@ -133,7 +133,7 @@ class Api:
 					async with self.pool.acquire() as conn:
 						async with conn.cursor() as cur:
 							await cur.execute(
-								"SELECT `text` FROM `config` WHERE `id`=`{}`"
+								"SELECT `text` FROM `config` WHERE `id`='{}'"
 								.format(self.tokens[access_token]["key"])
 							)
 							selected = await cur.fetchone()
@@ -154,18 +154,18 @@ class Api:
 					async with self.pool.acquire() as conn:
 						async with conn.cursor() as cur:
 							await cur.execute(
-								"SELECT `text` FROM `config` WHERE `id`=`{}`"
+								"SELECT `text` FROM `config` WHERE `id`='{}'"
 								.format(self.tokens[access_token]["key"])
 							)
 							selected = await cur.fetchone()
 							if selected:
 								await cur.execute(
-									"UPDATE `config` SET `text`=`{}` WHERE `id`=`{}`"
+									"UPDATE `config` SET `text`='{}' WHERE `id`='{}'"
 									.format(config, self.tokens[access_token]["key"])
 								)
 							else:
 								await cur.execute(
-									"INSERT INTO `config` (`id`, `text`) VALUES (`{}`, `{}`)"
+									"INSERT INTO `config` (`id`, `text`) VALUES ('{}', '{}'')"
 									.format(self.tokens[access_token]["key"], config)
 								)
 
@@ -241,7 +241,7 @@ class Api:
 				async with self.pool.acquire() as conn:
 					async with conn.cursor() as cur:
 						await cur.execute(
-							"SELECT `json` FROM `maps` WHERE `id`={}"
+							"SELECT `json` FROM `maps` WHERE `id`='{}'"
 							.format(key)
 						)
 						selected = await cur.fetchone()
@@ -250,7 +250,7 @@ class Api:
 						else:
 							if not map_data:
 								await cur.execute(
-									"SELECT `json` FROM `maps` WHERE `id`=`{}`"
+									"SELECT `json` FROM `maps` WHERE `id`='{}'"
 									.format("rsuon55s")
 								)
 								selected = await cur.fetchone()
@@ -275,7 +275,7 @@ class Api:
 										if method == "save":
 											sel_decoded += f"#{':'.join(data_decoded)}"
 									await cur.execute(
-										"UPDATE `maps` SET `json`=`{}` WHERE `id`=`{}`"
+										"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
 										.format(cryptjson.text_encode(sel_decoded), key)
 									)
 								except Exception:
