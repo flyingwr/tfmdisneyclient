@@ -133,7 +133,7 @@ class Api:
 					async with self.pool.acquire() as conn:
 						async with conn.cursor() as cur:
 							await cur.execute(
-								"SELECT `text` FROM `config` WHERE `id`={}"
+								"SELECT `text` FROM `config` WHERE `id`='{}'"
 								.format(self.tokens[access_token]["key"])
 							)
 							selected = await cur.fetchone()
@@ -165,7 +165,7 @@ class Api:
 								)
 							else:
 								await cur.execute(
-									"INSERT INTO `config` (`id`, `text`) VALUES ('{}', '{}'')"
+									"INSERT INTO `config` (`id`, `text`) VALUES ('{}', '{}')"
 									.format(self.tokens[access_token]["key"], config)
 								)
 
