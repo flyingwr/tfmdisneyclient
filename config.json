@@ -1,7 +1,9 @@
 {
 	"blacklist": [],
 	"vip_list": {
+		"nvafk4sy": "SILVER",
 		"ztgb86g2": "SILVER",
+		"zb974qsk": "SILVER",
 		"hajq#18346+": "GOLD",
 		"wasdfgh888": "GOLD",
 		"9eib1q8l": "GOLD",
@@ -11,7 +13,8 @@
 		"abacaximelancia": "PLATINUM",
 		"bolsonaro2022": "PLATINUM",
 		"reigu890": "PLATINUM",
-		"sucodegoiaba": "PLATINUM"
+		"sucodegoiaba": "PLATINUM",
+		"sarscov2": "PLATINUM"
 	},
 	"update_url": "https://mega.nz/file/7LwSAJYJ#cYMoEuncowma7iTqeLfIhI3-mCMVHsIZxbHhU_KCUbU",
 	"version": "1.1.1"

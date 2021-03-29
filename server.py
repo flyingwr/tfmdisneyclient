@@ -2,7 +2,7 @@ from aiohttp import ClientSession, web
 from gentoken import generate_token
 from tfmparser import Parser
 
-from typing import Optional
+from typing import Dict, Optional
 
 import aiofiles
 import aiomysql
@@ -14,17 +14,21 @@ import os
 import re
 import ujson
 
-loop = asyncio.get_event_loop()
+loop: asyncio.AbstractEventLoop = asyncio.get_event_loop()
 
 class Api:
 	def __init__(self, loop: Optional[asyncio.AbstractEventLoop] = None):
-		self.ips = {}
-		self.tokens = {}
+		self.ips: Dict = {}
+		self.tokens: Dict = {}
+
+		self.is_local: bool = "Windows 7" in os.getcwd()
+
+		self.pool: aiomysql.Pool = None
 
 		self.loop: asyncio.AbstractEventLoop = loop or asyncio.get_event_loop()
-		self.parser: Parser = Parser()
+		self.parser: Parser = Parser(is_local=self.is_local)
 
-	async def del_token(self, ip, token):
+	async def del_token(self, ip: str, token: str):
 		await asyncio.sleep(3600)
 
 		if ip in self.ips.keys():
@@ -38,6 +42,12 @@ class Api:
 			await asyncio.sleep(180)
 		
 	async def update(self):
+		self.pool = await aiomysql.create_pool(host="remotemysql.com",
+			user="iig9ez4StJ", password="v0TNEk0vsI",
+			db="iig9ez4StJ", loop=self.loop,
+			autocommit=True
+		)
+
 		async with aiofiles.open("config.json") as f, \
 		aiofiles.open("./public/mapstorage/index.html") as _f, \
 		aiofiles.open("protectedmaps.json") as __f:
@@ -66,6 +76,8 @@ class Api:
 		key = request.query.get("key")
 		client_version = request.query.get("version")
 		addrr = request.headers.get("X-Forwarded-For")
+		if self.is_local:
+			addrr = "127.0.0.1"
 
 		if key is not None:
 			if key in self.vip_list.keys():
@@ -118,17 +130,12 @@ class Api:
 				elif request.query.get("protected") is not None:
 					text = self.protectedmaps_data
 				elif request.query.get("config") is not None:
-					pool = await aiomysql.create_pool(
-						host="remotemysql.com",
-						user="iig9ez4StJ",
-						password="v0TNEk0vsI",
-						db="iig9ez4StJ",
-						loop=loop
-					)
-
-					async with pool.acquire() as conn:
+					async with self.pool.acquire() as conn:
 						async with conn.cursor() as cur:
-							await cur.execute("SELECT text FROM config WHERE id=%s", (self.tokens[access_token]["key"], ))
+							await cur.execute(
+								"SELECT `text` FROM `config` WHERE id=`{}`"
+								.format(self.tokens[access_token]["key"])
+							)
 							selected = await cur.fetchone()
 							if selected:
 								text = selected[0]
@@ -138,31 +145,29 @@ class Api:
 				post = await request.post()
 				soft = post.get("soft")
 				if soft is not None:
-					self.tokens[access_token]["soft"] = soft
+					level = self.tokens[access_token]["level"]
+					if level in ("SILVER", "GOLD", "PLATINUM"):
+						self.tokens[access_token]["soft"] = soft
 
 				config = post.get("config")
 				if config is not None:
-					pool = await aiomysql.create_pool(
-						host="remotemysql.com",
-						user="iig9ez4StJ",
-						password="v0TNEk0vsI",
-						db="iig9ez4StJ",
-						loop=loop
-					)
-
-					async with pool.acquire() as conn:
+					async with self.pool.acquire() as conn:
 						async with conn.cursor() as cur:
-							await cur.execute("SELECT text FROM config WHERE id=%s", (self.tokens[access_token]["key"], ))
+							await cur.execute(
+								"SELECT `text` FROM `config` WHERE `id`=`{}`"
+								.format(self.tokens[access_token]["key"])
+							)
 							selected = await cur.fetchone()
 							if selected:
-								await cur.execute("UPDATE config SET text=%s WHERE id=%s", (
-									config, self.tokens[access_token]["key"]))
+								await cur.execute(
+									"UPDATE `config` SET `text`=`{}` WHERE `id`=`{}`"
+									.format(config, self.tokens[access_token]["key"])
+								)
 							else:
-								await cur.execute("INSERT INTO config (id, text) VALUES (%s, %s)", (
-									self.tokens[access_token]["key"], config))
-						await conn.commit()
-					pool.close()
-					await pool.wait_closed()
+								await cur.execute(
+									"INSERT INTO `config` (`id`, `text`) VALUES (`{}`, `{}`)"
+									.format(self.tokens[access_token]["key"], config)
+								)
 
 		return web.Response(text=text, status=status)
 
@@ -231,25 +236,23 @@ class Api:
 
 		body = b""
 		if key is not None:
-			vip = self.vip_list.get(key)
-			if vip in ("SILVER", "GOLD", "PLATINUM"):
-				pool = await aiomysql.create_pool(
-					host="remotemysql.com",
-					user="iig9ez4StJ",
-					password="v0TNEk0vsI",
-					db="iig9ez4StJ",
-					loop=loop
-				)
-
-				async with pool.acquire() as conn:
+			level = self.vip_list.get(key)
+			if level in ("SILVER", "GOLD", "PLATINUM"):
+				async with self.pool.acquire() as conn:
 					async with conn.cursor() as cur:
-						await cur.execute("SELECT json FROM maps WHERE id=%s", (key, ))
+						await cur.execute(
+							"SELECT `json` FROM `maps` WHERE `id`={}"
+							.format(key)
+						)
 						selected = await cur.fetchone()
 						if selected:
 							body = selected[0].encode()
 						else:
 							if not map_data:
-								await cur.execute("SELECT json FROM maps WHERE id=%s", ("rsuon55s", ))
+								await cur.execute(
+									"SELECT `json` FROM `maps` WHERE `id`=`{}`"
+									.format("rsuon55s")
+								)
 								selected = await cur.fetchone()
 								if selected:
 									body = selected[0].encode()
@@ -271,13 +274,12 @@ class Api:
 									else:
 										if method == "save":
 											sel_decoded += f"#{':'.join(data_decoded)}"
-									await cur.execute("UPDATE maps SET json=%s WHERE id=%s", (cryptjson.text_encode(sel_decoded), key))
+									await cur.execute(
+										"UPDATE `maps` SET `json`=`{}` WHERE `id`=`{}`"
+										.format(cryptjson.text_encode(sel_decoded), key)
+									)
 								except Exception:
 									map_data = {}
-
-					await conn.commit()
-				pool.close()
-				await pool.wait_closed()
 
 		if request.method == "GET":
 			if access_token is not None:
@@ -312,7 +314,7 @@ class Api:
 
 async def main():
 	app = web.Application()
-	endpoint = Api(loop)	
+	endpoint = Api(loop)
 	await endpoint.update()
 
 	app.router.add_get('/auth', endpoint.auth)

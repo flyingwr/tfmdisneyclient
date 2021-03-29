@@ -31,7 +31,7 @@ import asyncio
 import subprocess
 
 class Parser:
-	def __init__(self, loop: Optional[asyncio.AbstractEventLoop] = None):
+	def __init__(self, is_local: bool = False, loop: Optional[asyncio.AbstractEventLoop] = None):
 		self.loop: asyncio.AbstractEventLoop = loop or asyncio.get_event_loop()
 
 		self.dumpscript: List = []
@@ -58,6 +58,8 @@ class Parser:
 					"update_coord", "checker_class_name", "check_pos"),
 			"PLATINUM": ("cipher", )
 		}
+
+		self.is_local: bool = is_local
 
 		self.downloaded_swf: str = "Transformice.swf"
 		self.output_swf: str = "tfm.swf"
@@ -99,12 +101,9 @@ class Parser:
 		return result
 
 	def run_console(self, target: str):
-		self.dumpscript *= 0
-
-		console = subprocess.Popen(["swfdump", "-a", target], shell=False,
+		console = subprocess.Popen(["tools/swfdump" if self.is_local else "swfdump", "-a", target], shell=False,
 			stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-		for line in console.stdout:
-			self.dumpscript.append(line.decode().rstrip())
+		self.dumpscript = [line.decode().rstrip() for line in console.stdout]
 
 	async def download_swf(self):
 		print("Downloading Transformice.swf")
