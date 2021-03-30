@@ -23,6 +23,8 @@ class Api:
 
 		self.is_local: bool = "Windows 7" in os.getcwd()
 
+		self.last_swf_len: int = 0
+
 		self.pool: aiomysql.Pool = None
 
 		self.loop: asyncio.AbstractEventLoop = loop or asyncio.get_event_loop()
@@ -38,8 +40,18 @@ class Api:
 
 	async def fetch(self):
 		while True:
+			session = ClientSession()
+			response = await session.head("https://www.transformice.com/Transformice.swf")
+			await session.close()
+
+			swf_len = response.headers["Content-Length"]
+			if self.last_swf_len == swf_len:
+				await asyncio.sleep(8)
+				continue
+
 			await self.parser.start()
-			await asyncio.sleep(180)
+
+			self.last_swf_len = swf_len
 		
 	async def update(self):
 		self.pool = await aiomysql.create_pool(host="remotemysql.com",
