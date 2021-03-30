@@ -146,7 +146,7 @@ class Api:
 				soft = post.get("soft")
 				if soft is not None:
 					level = self.tokens[access_token]["level"]
-					if level in ("SILVER", "GOLD", "PLATINUM"):
+					if level == "PLATINUM":
 						self.tokens[access_token]["soft"] = soft
 
 				config = post.get("config")
@@ -237,7 +237,7 @@ class Api:
 		body = b""
 		if key is not None:
 			level = self.vip_list.get(key)
-			if level in ("SILVER", "GOLD", "PLATINUM"):
+			if level in ("SILVER", "GOLD", "GOLD2", "PLATINUM"):
 				async with self.pool.acquire() as conn:
 					async with conn.cursor() as cur:
 						await cur.execute(
