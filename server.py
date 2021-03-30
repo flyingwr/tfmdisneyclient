@@ -41,20 +41,17 @@ class Api:
 	async def fetch(self):
 		while True:
 			session = ClientSession()
-			sleep = 0
 
 			try:
 				swf_len = (await session.head("https://www.transformice.com/Transformice.swf")).headers["Content-Length"]
 				if self.last_swf_len != swf_len:
 					await self.parser.start()
 					self.last_swf_len = swf_len
-
-					sleep = 8
 			except Exception:
 				print("Failed to download Transformice SWF")
 
 			await session.close()
-			await asyncio.sleep(sleep)
+			await asyncio.sleep(8)
 		
 	async def update(self):
 		self.pool = await aiomysql.create_pool(host="remotemysql.com",
