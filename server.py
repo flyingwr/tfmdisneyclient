@@ -199,7 +199,7 @@ class Api:
 					elif level == "SILVER":
 						del keys["GOLD"]
 						del keys["PLATINUM"]
-					elif level == "GOLD":
+					elif level in ("GOLD", "GOLD2"):
 						del keys["PLATINUM"]
 
 					response["keys"] = {"premium_level": level}
