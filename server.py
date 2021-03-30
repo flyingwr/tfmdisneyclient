@@ -41,10 +41,9 @@ class Api:
 	async def fetch(self):
 		while True:
 			session = ClientSession()
-			response = await session.head("https://www.transformice.com/Transformice.swf")
+			swf_len = (await session.head("https://www.transformice.com/Transformice.swf")).headers["Content-Length"]
 			await session.close()
-
-			swf_len = response.headers["Content-Length"]
+			
 			if self.last_swf_len == swf_len:
 				await asyncio.sleep(8)
 				continue
