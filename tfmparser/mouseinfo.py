@@ -1,4 +1,4 @@
-from .regex import GET_LEX, GET_PROPERTY, SET_PROPERTY, find_one
+from .regex import GET_LEX, GET_PROPERTY, INIT_PROPERTY, SET_PROPERTY, find_one
 from typing import Dict, List
 
 class MouseInfo(dict):
@@ -30,4 +30,23 @@ class MouseInfo(dict):
 										else:
 											continue
 										break
+
+		mouse_info_class = self.get("mouse_info_class_name")
+		if mouse_info_class is not None:
+			for line, content in enumerate(dumpscript):
+				if "class <q>[public]::" + mouse_info_class in content:
+					for x in range(line, len(dumpscript)):
+						if "=(<q>[public]::int, <q>[public]::int)(2 params, 0 optional)" in dumpscript[x]:
+							if "pushbyte 0" in dumpscript[x + 5]:
+								if "setlocal_3" in dumpscript[x + 6]:
+									if "pushnull" in dumpscript[x + 7]:
+										if "coerce <q>[public]flash.display::MovieClip" in dumpscript[x + 8]:
+											if "setlocal r4" in dumpscript[x + 9]:
+												for y in range(x + 9, x + 20):
+													if "initproperty" in dumpscript[y]:
+														self["mouse_speed"] = (
+															await find_one(INIT_PROPERTY, dumpscript[y])
+														).group(1)
+														break
+												break
 		return self

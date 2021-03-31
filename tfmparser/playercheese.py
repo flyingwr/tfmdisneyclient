@@ -9,7 +9,7 @@ class PlayerCheese(dict):
 		for line, content in enumerate(dumpscript):
 			if "getlocal r5" in content:
 				if "dup" in dumpscript[line + 1]:
-					if "setlocal" in dumpscript[line + 2]:
+					if "setlocal r" in dumpscript[line + 2]:
 						setlocal = (await find_one(PLAYER_CHEESE_REQ, dumpscript[line + 2]))
 						if setlocal is not None:
 							if "getproperty" in dumpscript[line + 3]:

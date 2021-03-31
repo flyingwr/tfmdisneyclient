@@ -18,6 +18,7 @@ SET_PROPERTY = re.compile(r"setproperty <q>\[public\]::(.*?)$")
 SLOT = re.compile(r"slot \d: var <q>\[public\]::(.*?):<q>\[public\]")
 
 PLAYER_CHEESE_REQ = re.compile(r"setlocal r(135|136)")
+ANIM_CLASS_REQ = re.compile(r"setlocal r(5|7)")
 
 async def find_one(patt, s):
 	return patt.search(s)

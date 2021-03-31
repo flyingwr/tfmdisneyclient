@@ -47,14 +47,18 @@ class PlayerPhysics(dict):
 													if "getlocal" in dumpscript[y + 4]:
 														if "setproperty" in dumpscript[y + 5]:
 															self["physics_state"] = (await find_one(GET_PROPERTY, dumpscript[y + 3])).group(2)
-															self["physics_state_vx"] = (await find_one(SET_PROPERTY, dumpscript[y + 5])).group(1)
+
+															state = "vx" if "r8" in dumpscript[y + 4] else "vy"
+															self[f"physics_state_{state}"] = (await find_one(SET_PROPERTY, dumpscript[y + 5])).group(1)
 
 															for z in range(y + 5, (y + 5) + 5):
 																if "getproperty" in dumpscript[z] \
  																and self["physics_state"] in dumpscript[z]:
 																	if "getlocal" in dumpscript[z + 1]:
 																		if "setproperty" in dumpscript[z + 2]:
-																			self["physics_state_vy"] = (await find_one(SET_PROPERTY, dumpscript[z + 2])).group(1)
+																			self[f"physics_state_{'vy' if state == 'vx' else 'vx'}"] = (
+																				await find_one(SET_PROPERTY, dumpscript[z + 2])
+																			).group(1)
 
 																			for w in range(z + 2, z + 50):
 																				if "pushtrue" in dumpscript[w]:

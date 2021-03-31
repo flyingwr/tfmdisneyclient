@@ -9,6 +9,7 @@ from .mapclass import Map
 from .mass import Mass
 from .moveclass import MoveClass
 from .mouseinfo import MouseInfo
+from .physicmotor import PhysicMotor
 from .packethandler import PacketHandler
 from .packetout import PacketOut
 from .player import Player
@@ -56,8 +57,9 @@ class Parser:
 					"crouch_packet_name", "static_side", "map_class_name", "map_instance",
 					"obj_container", "hole_list", "clip_fromage", "packet_out_name", "packet_out_bytes"),
 			"GOLD": ("frame_loop_class_name", "victory_time", "anim_class_name",
-					"update_coord", "checker_class_name", "check_pos", "mouse_info_class_name",
-					"mouse_info_instance", "jump_height"),
+					"update_coord", "update_coord2", "checker_class_name", "check_pos",
+					"mouse_info_class_name", "mouse_info_instance", "jump_height", "change_player_physic",
+					"physic_motor_class_name", "mouse_speed"),
 			"PLATINUM": ("cipher", )
 		}
 
@@ -77,6 +79,7 @@ class Parser:
 		self.mouse_info: MouseInfo = MouseInfo()
 		self.packet_handler: PacketHandler = PacketHandler()
 		self.packet_out: PacketOut = PacketOut()
+		self.physic_motor: PhysicMotor = PhysicMotor()
 		self.player: Player = Player()
 		self.player_cheese: PlayerCheese = PlayerCheese()
 		self.player_clip: PlayerClip = PlayerClip()
@@ -133,7 +136,7 @@ class Parser:
 				"map_class", "move_class", "packet_handler", "packet_out", "player_list",
 				"player_clip", "player_name", "player_id", "player_cheese", "player_title",
 				"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
-				"anim_class", "mouse_info")
+				"anim_class", "mouse_info", "physic_motor")
 		for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
 			self.fetched.update(result)
 
