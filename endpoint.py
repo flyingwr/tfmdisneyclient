@@ -173,8 +173,7 @@ class Api:
 							.format(self.tokens[access_token]["key"], config)
 						)
 
-		await cur.close()
-		conn.close()
+		self.loop.create_task(self.pool.close(cur, conn))
 
 		return web.Response(text=text, status=status)
 
@@ -287,8 +286,7 @@ class Api:
 						except Exception:
 							map_data = {}
 
-				await cur.close()
-				conn.close()
+				self.loop.create_task(self.pool.close(cur, conn))
 
 		if request.method == "GET":
 			if access_token is not None:

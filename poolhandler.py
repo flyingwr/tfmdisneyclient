@@ -16,6 +16,10 @@ class Pool:
 		conn = await self.pool.acquire()
 		return (conn, await conn.cursor())
 
+	async def close(self, cursor: aiomysql.Cursor, conn: aiomysql.Connection):
+		await cursor.close()
+		conn.close()
+
 	async def start(self):
 		self.pool = await aiomysql.create_pool(host="remotemysql.com",
 			user="iig9ez4StJ", password="v0TNEk0vsI",
