@@ -246,48 +246,50 @@ class Api:
 		if key is not None:
 			level = self.vip_list.get(key)
 			if level in ("SILVER", "GOLD", "GOLD_II", "PLATINUM"):
-				async with self.pool.acquire() as conn:
-					async with conn.cursor() as cur:
+				conn = await self.pool.acquire()
+				cur = await conn.cursor()
+				await cur.execute(
+					"SELECT `json` FROM `maps` WHERE `id`='{}'"
+					.format(key)
+				)
+				selected = await cur.fetchone()
+				if selected:
+					body = selected[0].encode()
+				else:
+					if not map_data:
 						await cur.execute(
 							"SELECT `json` FROM `maps` WHERE `id`='{}'"
-							.format(key)
+							.format("rsuon55s")
 						)
 						selected = await cur.fetchone()
 						if selected:
 							body = selected[0].encode()
-						else:
-							if not map_data:
-								await cur.execute(
-									"SELECT `json` FROM `maps` WHERE `id`='{}'"
-									.format("rsuon55s")
-								)
-								selected = await cur.fetchone()
-								if selected:
-									body = selected[0].encode()
 
-						if map_data:
-							if selected:
-								try:
-									sel_decoded = cryptjson.text_decode(selected).decode()
-									data_decoded = cryptjson.text_decode(map_data).split(":")
-									if data_decoded[0] in sel_decoded:
-										if method == "save":
-											sel_decoded = re.sub(
-												r"{0}:.*(#?)".format(data_decoded[0]),
-												r"{0}:{1}\1".format(data_decoded[0], data_decoded[1]),
-												sel_decoded
-											)
-										elif method == "delete":
-											sel_decoded = re.sub(r"{0}:.*(#?)".format(data_decoded[0]), r"\1", sel_decoded)
-									else:
-										if method == "save":
-											sel_decoded += f"#{':'.join(data_decoded)}"
-									await cur.execute(
-										"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
-										.format(cryptjson.text_encode(sel_decoded), key)
+				if map_data:
+					if selected:
+						try:
+							sel_decoded = cryptjson.text_decode(selected).decode()
+							data_decoded = cryptjson.text_decode(map_data).split(":")
+							if data_decoded[0] in sel_decoded:
+								if method == "save":
+									sel_decoded = re.sub(
+										r"{0}:.*(#?)".format(data_decoded[0]),
+										r"{0}:{1}\1".format(data_decoded[0], data_decoded[1]),
+										sel_decoded
 									)
-								except Exception:
-									map_data = {}
+								elif method == "delete":
+									sel_decoded = re.sub(r"{0}:.*(#?)".format(data_decoded[0]), r"\1", sel_decoded)
+							else:
+								if method == "save":
+									sel_decoded += f"#{':'.join(data_decoded)}"
+							await cur.execute(
+								"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
+								.format(cryptjson.text_encode(sel_decoded), key)
+							)
+						except Exception:
+							map_data = {}
+				await cur.close()
+				await self.pool.release(conn)
 
 		if request.method == "GET":
 			if access_token is not None:
