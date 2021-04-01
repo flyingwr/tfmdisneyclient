@@ -1,4 +1,4 @@
-from typing import Optional, Tuple
+from typing import Optional
 
 import aiomysql
 import asyncio
@@ -12,13 +12,11 @@ class Pool:
 
 		loop.create_task(self.start())
 
-	async def acquire(self) -> Tuple[aiomysql.Connection, aiomysql.Cursor]:
-		conn = await self.pool.acquire()
-		return (conn, await conn.cursor())
+	async def acquire(self) -> aiomysql.Connection:
+		return await self.pool.acquire()
 
-	async def close(self, cursor: aiomysql.Cursor, conn: aiomysql.Connection):
-		await cursor.close()
-		conn.close()
+	async def release(self, conn: aiomysql.Connection):
+		await self.pool.release(conn)
 
 	async def start(self):
 		self.pool = await aiomysql.create_pool(host="remotemysql.com",
