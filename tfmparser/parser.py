@@ -5,6 +5,7 @@ from .bypasscode import BypassCode
 from .chat import Chat
 from .checker import Checker
 from .frameloop import FrameLoop
+from .jumpclass import JumpClass
 from .mapclass import Map
 from .mass import Mass
 from .moveclass import MoveClass
@@ -59,7 +60,8 @@ class Parser:
 			"GOLD": ("frame_loop_class_name", "victory_time", "anim_class_name",
 					"update_coord", "update_coord2", "checker_class_name", "check_pos",
 					"mouse_info_class_name", "mouse_info_instance", "jump_height", "change_player_physic",
-					"physic_motor_class_name", "mouse_speed"),
+					"change_player_physic2", "physic_motor_class_name", "mouse_speed", "b2circledef",
+					"density", "radius", "friction", "restitution", "jump_class_name", "num_to_add"),
 			"PLATINUM": ("cipher", )
 		}
 
@@ -73,6 +75,7 @@ class Parser:
 		self.chat: Chat = Chat()
 		self.checker: Checker = Checker()
 		self.frame_loop: FrameLoop = FrameLoop()
+		self.jump_class: JumpClass = JumpClass()
 		self.map_class: Map = Map()
 		self.mass: Mass = Mass()
 		self.move_class: MoveClass = MoveClass()
@@ -136,7 +139,7 @@ class Parser:
 				"map_class", "move_class", "packet_handler", "packet_out", "player_list",
 				"player_clip", "player_name", "player_id", "player_cheese", "player_title",
 				"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
-				"anim_class", "mouse_info", "physic_motor")
+				"anim_class", "mouse_info", "physic_motor", "jump_class")
 		for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
 			self.fetched.update(result)
 

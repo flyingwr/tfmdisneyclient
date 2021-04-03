@@ -33,11 +33,11 @@ class PlayerPhysics(dict):
 							if "setlocal r7" in dumpscript[x + 3]:
 								self["player_physics"] = (await find_one(GET_PROPERTY, dumpscript[x + 1])).group(2)
 
-								for y in range(x, len(dumpscript)):
-									if "getlex" in dumpscript[y]:
-										if "getlocal r7" in dumpscript[y + 1]:
-											if "getproperty" in dumpscript[y + 2]:
-												self["x_form"] = (await find_one(GET_PROPERTY, dumpscript[y + 2])).group(2)
+								for y in range(x + 3, len(dumpscript)):
+									if "getlocal r7" in dumpscript[y]:
+										if "getproperty" in dumpscript[y + 1]:
+											if "getglobalscope" in dumpscript[y + 2]:
+												self["x_form"] = (await find_one(GET_PROPERTY, dumpscript[y + 1])).group(2)
 									elif "findpropstrict" in dumpscript[y]:
 										self["b2vec2"] = (await find_one(FIND_PROPSTRICT, dumpscript[y])  ).group(1)
 									elif "convert_d" in dumpscript[y]:

@@ -1,4 +1,4 @@
-from .regex import GET_LEX, GET_PROPERTY, INIT_PROPERTY, SET_PROPERTY, find_one
+from .regex import CALL_PROPVOID, GET_LEX, GET_PROPERTY, INIT_PROPERTY, SET_PROPERTY, find_one
 from typing import Dict, List
 
 class MouseInfo(dict):
@@ -49,4 +49,19 @@ class MouseInfo(dict):
 														).group(1)
 														break
 												break
+		for line, content in enumerate(dumpscript):
+			if "callproperty <q>[public]::readByte, 0 params" in content:
+				if "convert_i" in dumpscript[line + 1]:
+					if "setlocal_3" in dumpscript[line + 2]:
+						if "getlocal_2" in dumpscript[line + 3]:
+							if "iffalse" in dumpscript[line + 4]:
+								if "getlex" in dumpscript[line + 5]:
+									if "getproperty" in dumpscript[line + 6]:
+										if "getlocal_2" in dumpscript[line + 7]:
+											if "getlocal_3" in dumpscript[line + 8]:
+												if "callpropvoid" in dumpscript[line + 9]:
+													self["change_player_physic2"] = (
+														await find_one(CALL_PROPVOID, dumpscript[line + 9])
+													).group(1)
+													break
 		return self
