@@ -78,6 +78,7 @@ class Api:
 
 		key = request.query.get("key")
 		client_version = request.query.get("version")
+		agent = request.headers.get("User-Agent")
 		addrr = request.headers.get("X-Forwarded-For")
 		if self.is_local:
 			addrr = "127.0.0.1"
@@ -112,7 +113,10 @@ class Api:
 		else:
 			response['error'] = 'invalid query'
 
-		return web.json_response(response, status=status)
+		if agent is not None:
+			if "aiohttp/3.7.3" in agent:
+				return web.json_response(response, status=status)
+		return web.FileResponse("./public/login/index.html")
 
 	async def data(self, request):
 		text = ""

@@ -17,6 +17,7 @@ from .player import Player
 from .playercheese import PlayerCheese
 from .playerclip import PlayerClip
 from .playerid import PlayerID
+from .playerinfo import PlayerInfo
 from .playerlist import PlayerList
 from .playername import PlayerName
 from .playerphysics import PlayerPhysics
@@ -56,7 +57,8 @@ class Parser:
 					"player_moving_right", "player_moving_left", "player_physics",
 					"x_form", "b2vec2", "physics_state", "physics_state_vx", "physics_state_vy",
 					"crouch_packet_name", "static_side", "map_class_name", "map_instance",
-					"obj_container", "hole_list", "clip_fromage", "packet_out_name", "packet_out_bytes"),
+					"obj_container", "hole_list", "clip_fromage", "packet_out_name", "packet_out_bytes",
+					"get_x_form", "get_linear_velocity", "pos_x", "pos_y", "current_frame", "is_jumping"),
 			"GOLD": ("frame_loop_class_name", "victory_time", "anim_class_name",
 					"update_coord", "update_coord2", "checker_class_name", "check_pos",
 					"mouse_info_class_name", "mouse_info_instance", "jump_height", "change_player_physic",
@@ -87,6 +89,7 @@ class Parser:
 		self.player_cheese: PlayerCheese = PlayerCheese()
 		self.player_clip: PlayerClip = PlayerClip()
 		self.player_id: PlayerID = PlayerID()
+		self.player_info: PlayerInfo = PlayerInfo()
 		self.player_list: PlayerList = PlayerList()
 		self.player_name: PlayerName= PlayerName()
 		self.player_physics: PlayerPhysics = PlayerPhysics()
@@ -139,7 +142,7 @@ class Parser:
 				"map_class", "move_class", "packet_handler", "packet_out", "player_list",
 				"player_clip", "player_name", "player_id", "player_cheese", "player_title",
 				"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
-				"anim_class", "mouse_info", "physic_motor", "jump_class")
+				"anim_class", "mouse_info", "physic_motor", "jump_class", "player_info")
 		for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
 			self.fetched.update(result)
 
