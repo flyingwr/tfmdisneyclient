@@ -69,6 +69,19 @@ class Socket(dict):
   																	and self["crouch_packet_name"] in dumpscript[x + 6]:
 																		self["crouch"] = (await find_one(CALL_PROPVOID, dumpscript[x + 3])).group(1)
 																		self["static_side"] = (await find_one(GET_PROPERTY, dumpscript[x + 2])).group(2)
+
+																		for y in range(0, len(dumpscript)):
+																			if "callpropvoid" in dumpscript[y] and self["crouch"] in dumpscript[y]:
+																				for z in range(y, 0, -1):
+																					if "getlocal_2" in dumpscript[z]:
+																						if "getproperty" in dumpscript[z + 1] and self["static_side"] in dumpscript[z + 1]:
+																							if "callpropvoid" in dumpscript[z + 2]:
+																								self["crouch2"] = (await find_one(CALL_PROPVOID, dumpscript[z + 2])).group(1)
+																								if self["crouch"] != self["crouch2"]:
+																									break
+																				else:
+																					continue
+																				break
 																		break
 										else:
 											continue

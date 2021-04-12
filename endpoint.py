@@ -10,6 +10,7 @@ import aiomysql
 import asyncio
 import cryptjson
 import datetime
+import discordbot
 import loadfiles
 import os
 import re
@@ -79,9 +80,9 @@ class Api:
 		key = request.query.get("key")
 		client_version = request.query.get("version")
 		agent = request.headers.get("User-Agent")
-		addrr = request.headers.get("X-Forwarded-For")
+		addr = request.headers.get("X-Forwarded-For")
 		if self.is_local:
-			addrr = "127.0.0.1"
+			addr = "127.0.0.1"
 
 		if key is not None:
 			if key in self.vip_list.keys():
@@ -90,17 +91,17 @@ class Api:
 
 					access_token = ""
 
-					if addrr is not None:
-						if addrr not in self.ips.keys():
+					if addr is not None:
+						if addr not in self.ips.keys():
 							access_token = generate_token()
-							self.ips[addrr] = (datetime.datetime.now().timestamp(), access_token)
-							self.loop.create_task(self.del_token(addrr, access_token))
+							self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
+							self.loop.create_task(self.del_token(addr, access_token))
 							self.tokens[access_token] = {"key": key, "level": self.vip_list[key], "ips": []}
 						else:
-							access_token = self.ips[addrr][1]
+							access_token = self.ips[addr][1]
 							response['contains'] = True
 						response['sleep'] = datetime.datetime.fromtimestamp(
-							datetime.datetime.now().timestamp() - self.ips[addrr][0]).timetuple().tm_min
+							datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
 
 					response['access_token'] = access_token
 					status = 200
@@ -113,10 +114,8 @@ class Api:
 		else:
 			response['error'] = 'invalid query'
 
-		if agent is not None:
-			if "aiohttp/3.7.3" in agent:
-				return web.json_response(response, status=status)
-		return web.FileResponse("./public/login/index.html")
+		self.loop.create_task(discordbot.log("Login", response, status, addr, key))
+		return web.json_response(response, status=status)
 
 	async def data(self, request):
 		text = ""
@@ -124,9 +123,9 @@ class Api:
 
 		access_token = request.query.get("access_token")
 		if access_token is not None:
-			addrr = request.headers.get("X-Forwarded-For")
-			if addrr in self.ips.keys():
-				access_token = self.ips[addrr][1]
+			addr = request.headers.get("X-Forwarded-For")
+			if addr in self.ips.keys():
+				access_token = self.ips[addr][1]
 			if access_token in self.tokens.keys():
 				status = 200
 
@@ -184,17 +183,21 @@ class Api:
 		response['success'] = False
 		status = 401
 
+		key = None
+
 		access_token = request.query.get("access_token")
-		addrr = request.headers.get("X-Forwarded-For")
+		addr = request.headers.get("X-Forwarded-For")
 		if access_token is not None:
-			if addrr in self.ips.keys():
-				access_token = self.ips[addrr][1]
+			if addr in self.ips.keys():
+				access_token = self.ips[addr][1]
 			if access_token in self.tokens.keys():
+				key = self.tokens[access_token]["key"]
+
 				level = self.tokens[access_token]["level"]
 				limit = 10 if level == "PLATINUM" else 3
 				if len(self.tokens[access_token]["ips"]) < limit:
-					if addrr not in self.tokens[access_token]["ips"]:
-						self.tokens[access_token]["ips"].append(addrr)
+					if addr not in self.tokens[access_token]["ips"]:
+						self.tokens[access_token]["ips"].append(addr)
 
 					response['success'] = True
 
@@ -223,6 +226,7 @@ class Api:
 		else:
 			response['error'] = 'invalid query'
 
+		self.loop.create_task(discordbot.log("TFM", response, status, addr, key, access_token))
 		return web.json_response(response, status=status)
 
 	async def mapstorage(self, request):
@@ -231,16 +235,16 @@ class Api:
 
 		access_token = request.query.get("access_token")
 		if access_token is not None:
-			addrr = request.headers.get("X-Forwarded-For")
-			if addrr in self.ips.keys():
-				access_token = self.ips[addrr][1]
+			addr = request.headers.get("X-Forwarded-For")
+			if addr in self.ips.keys():
+				access_token = self.ips[addr][1]
 			if access_token in self.tokens.keys():
 				key = self.tokens[access_token].get("key")
 			else:
 				return web.HTTPUnauthorized()
-		method = request.query.get("method")
 
-		map_data = data.get("map_data")
+		method = request.query.get("method")
+		map_data = data.get("mapdata")
 
 		body = b""
 		if key is not None:
@@ -255,8 +259,36 @@ class Api:
 				selected = await cur.fetchone()
 				if selected:
 					body = selected[0].encode()
+
+					if map_data:
+						try:
+							sel_decoded = cryptjson.text_decode(selected[0]).decode()
+							search = re.search(r"(.*?):(.*)", map_data)
+							if search is not None:
+								map_code = search.group(1)
+								info = search.group(2)
+								if map_code in sel_decoded:
+									if method == "save":
+										sel_decoded = re.sub(
+											r"{0}:.*(#?)".format(map_code),
+											r"{0}:{1}\1".format(map_code, info),
+											sel_decoded
+										)
+									elif method == "delete":
+										sel_decoded = re.sub(r"{0}:.*(#?)".format(map_code), r"\1", sel_decoded)
+								else:
+									if method == "save":
+										sel_decoded += f"#{map_code}:{info}"
+								await cur.execute(
+									"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
+									.format(cryptjson.text_encode(sel_decoded).decode(), key)
+								)
+						except Exception as e:
+							print(e)
+
+							map_data = None
 				else:
-					if not map_data:
+					if method is None:
 						await cur.execute(
 							"SELECT `json` FROM `maps` WHERE `id`='{}'"
 							.format("rsuon55s")
@@ -264,42 +296,23 @@ class Api:
 						selected = await cur.fetchone()
 						if selected:
 							body = selected[0].encode()
+					else:
+						map_data = None
 
-				if map_data:
-					if selected:
-						try:
-							sel_decoded = cryptjson.text_decode(selected).decode()
-							data_decoded = cryptjson.text_decode(map_data).split(":")
-							if data_decoded[0] in sel_decoded:
-								if method == "save":
-									sel_decoded = re.sub(
-										r"{0}:.*(#?)".format(data_decoded[0]),
-										r"{0}:{1}\1".format(data_decoded[0], data_decoded[1]),
-										sel_decoded
-									)
-								elif method == "delete":
-									sel_decoded = re.sub(r"{0}:.*(#?)".format(data_decoded[0]), r"\1", sel_decoded)
-							else:
-								if method == "save":
-									sel_decoded += f"#{':'.join(data_decoded)}"
-							await cur.execute(
-								"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
-								.format(cryptjson.text_encode(sel_decoded), key)
-							)
-						except Exception:
-							map_data = {}
 				await cur.close()
 				await self.pool.release(conn)
+		else:
+			map_data = None
 
 		if request.method == "GET":
 			if access_token is not None:
 				return web.Response(body=body)
 		elif request.method == "POST":
-			if method in ("delete", "save"):
-				if map_data:
-					return web.HTTPOk()
-				else:
-					return web.HTTPBadRequest()
+			if method is not None:
+				if method in ("delete", "save"):
+					if map_data:
+						return web.HTTPOk()
+				return web.HTTPBadRequest()
 			else:
 				if body:
 					return web.Response(

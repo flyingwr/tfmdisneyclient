@@ -2,6 +2,7 @@ from aiohttp import web
 from endpoint import Api
 
 import asyncio
+import discordbot
 import os
 
 loop: asyncio.AbstractEventLoop = asyncio.get_event_loop()
@@ -25,5 +26,6 @@ async def main():
 	await site.start()
 
 if __name__ ==  '__main__':
+	loop.create_task(discordbot.bot.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
 	loop.create_task(main())
 	loop.run_forever()
