@@ -144,7 +144,7 @@ class Parser:
 			print("Failed to parse Transformice SWF")
 		else:
 			swf = Swf(self.downloaded_swf, self.output_swf)
-			await swf.parse_content(self.dumpscript)
+			await self.loop.create_task(swf.parse_content(self.dumpscript))
 			await self.run_console(self.output_swf)
 
 			names = ("socket_class", "bypass_code", "chat", "frame_loop", "checker",
