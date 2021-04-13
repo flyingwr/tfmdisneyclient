@@ -125,8 +125,6 @@ class Parser:
 				break
 			self.dumpscript.append(line.decode().rstrip())
 
-		print(len(self.dumpscript))
-
 		await proc.wait()
 
 	async def download_swf(self):

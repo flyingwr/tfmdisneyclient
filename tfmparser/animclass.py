@@ -38,4 +38,5 @@ class AnimClass(dict):
 												found += 1
 				if found == 2:
 					break
+		print(self)
 		return self
