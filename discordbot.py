@@ -4,10 +4,6 @@ from discord.ext import commands
 
 from typing import Dict, Optional, Union
 
-import asyncio
-import discord
-
-loop = asyncio.get_event_loop()
 bot = commands.Bot(command_prefix=".")
 
 channel = None
