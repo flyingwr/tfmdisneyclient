@@ -26,6 +26,6 @@ async def main():
 	await site.start()
 
 if __name__ ==  '__main__':
-	loop.create_task(discordbot.bot.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
 	loop.create_task(main())
+	loop.create_task(discordbot.bot.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
 	loop.run_forever()
