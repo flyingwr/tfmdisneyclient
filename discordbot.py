@@ -1,4 +1,5 @@
 from datetime import datetime
+from discord import Embed
 from discord.ext import commands
 # from pasteee import new_paste
 
@@ -28,7 +29,7 @@ async def log(
 		sleep = f"(:timer: {response.get('sleep', 0)} min)"
 		success = status == 200
 
-		embed = discord.Embed(title=f"Log - {method}",
+		embed = Embed(title=f"Log - {method}",
 			description=f":computer: IP address: {addr}\n"
 			f":placard: Status: {status} {':white_check_mark:' if success else ':x:'}\n"
 			f":warning: Error: {response.get('error')}\n\n"
