@@ -32,7 +32,6 @@ from .swf import Swf
 import aiofiles
 import aiohttp
 import asyncio
-import subprocess
 
 class Parser:
 	def __init__(self, is_local: bool = False, loop: Optional[asyncio.AbstractEventLoop] = None):
