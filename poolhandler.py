@@ -10,10 +10,12 @@ class Pool:
 
 		self.loop: asyncio.AbstractEventLoop = loop or asyncio.get_event_loop()
 
-		loop.create_task(self.start())
-
 	async def acquire(self) -> aiomysql.Connection:
-		return await self.pool.acquire()
+		try:
+			conn = await self.pool.acquire()
+		except Exception:
+			conn = None
+		return conn
 
 	async def release(self, conn: aiomysql.Connection):
 		await self.pool.release(conn)

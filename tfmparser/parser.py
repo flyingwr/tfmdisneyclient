@@ -112,38 +112,47 @@ class Parser:
 					result[k][_v] = name
 		return result
 
-	def run_console(self, target: str):
-		console = subprocess.Popen(["tools/swfdump" if self.is_local else "swfdump", "-a", target], shell=False,
-			stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-		self.dumpscript = [line.decode().rstrip() for line in console.stdout]
+	async def run_console(self, target: str):
+		self.dumpscript *= 0
+
+		proc = await asyncio.create_subprocess_exec(
+			"tools/swfdump" if self.is_local else "swfdump", "-a", target,
+			stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.DEVNULL)
+
+		while True:
+			line = await proc.stdout.readline()
+			if not line:
+				break
+			self.dumpscript.append(line.decode().rstrip())
+
+		await proc.wait()
 
 	async def download_swf(self):
 		print("Downloading Transformice.swf")
 
-		try:
-			async with aiohttp.ClientSession() as session:
-				async with session.get("https://www.transformice.com/Transformice.swf") as response:
-					if response.status == 200:
-						async with aiofiles.open(self.downloaded_swf, "wb") as f:
-							await f.write(await response.read())
-		except Exception:
-			print("Failed to download Transformice SWF")
+		async with aiohttp.ClientSession() as session:
+			async with session.get("https://www.transformice.com/Transformice.swf") as response:
+				if response.status == 200:
+					async with aiofiles.open(self.downloaded_swf, "wb") as f:
+						await f.write(await response.read())
 
 	async def start(self):
-		await self.loop.create_task(self.download_swf())
-		self.run_console(self.downloaded_swf)
+		try:
+			await self.download_swf()
+			await self.run_console(self.downloaded_swf)
+		except Exception:
+			print("Failed to parse Transformice SWF")
+		else:
+			swf = Swf(self.downloaded_swf, self.output_swf)
+			await swf.parse_content(self.dumpscript)
+			await self.run_console(self.output_swf)
 
-		swf = Swf(self.downloaded_swf, self.output_swf)
-		await swf.parse_content(self.dumpscript)
+			names = ("socket_class", "bypass_code", "chat", "frame_loop", "checker",
+					"map_class", "move_class", "packet_handler", "packet_out", "player_list",
+					"player_clip", "player_name", "player_id", "player_cheese", "player_title",
+					"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
+					"anim_class", "mouse_info", "physic_motor", "jump_class", "player_info")
+			for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
+				self.fetched.update(result)
 
-		self.run_console(self.output_swf)
-
-		names = ("socket_class", "bypass_code", "chat", "frame_loop", "checker",
-				"map_class", "move_class", "packet_handler", "packet_out", "player_list",
-				"player_clip", "player_name", "player_id", "player_cheese", "player_title",
-				"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
-				"anim_class", "mouse_info", "physic_motor", "jump_class", "player_info")
-		for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
-			self.fetched.update(result)
-
-		print("Parser data has been updated.")
+			print("Parser data has been updated.")

@@ -23,9 +23,11 @@ class Api:
 
 		self.is_local: bool = "Windows 7" in os.getcwd()
 
-		self.last_swf_len: int = 0
-
 		self.loop: asyncio.AbstractEventLoop = loop or asyncio.get_event_loop()
+
+		self.discord = discordbot.bot
+		self.discord_channel = None
+
 		self.parser: Parser = Parser(is_local=self.is_local)
 		self.pool: Pool = Pool(self.loop)
 
@@ -39,18 +41,9 @@ class Api:
 
 	async def fetch(self):
 		while True:
-			session = ClientSession()
+			await self.loop.create_task(self.parser.start())
+			await asyncio.sleep(8)
 
-			try:
-				swf_len = (await session.head("https://www.transformice.com/Transformice.swf")).headers["Content-Length"]
-				if self.last_swf_len != swf_len:
-					await self.parser.start()
-					self.last_swf_len = swf_len
-			except Exception as e:
-				print(f"Failed to parse Transformice SWF: {e}")
-
-			await session.close()
-		
 	async def update(self):
 		async with aiofiles.open("config.json") as f, \
 		aiofiles.open("./public/mapstorage/index.html") as _f, \
@@ -70,6 +63,8 @@ class Api:
 
 		print("Endpoint data has been updated.")
 
+		self.loop.create_task(self.discord.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
+		self.loop.create_task(self.pool.start())
 		self.loop.create_task(self.fetch())
 		
 	async def auth(self, request):
@@ -114,7 +109,7 @@ class Api:
 		else:
 			response['error'] = 'invalid query'
 
-		self.loop.create_task(discordbot.log("Login", response, status, addr, key))
+		self.loop.create_task(self.discord.log("Login", response, status, addr, key, browser=agent))
 		return web.json_response(response, status=status)
 
 	async def data(self, request):
@@ -130,7 +125,8 @@ class Api:
 				status = 200
 
 		conn = await self.pool.acquire()
-		cur = await conn.cursor()
+		if conn:
+			cur = await conn.cursor()
 		if request.method == "GET":
 			if status == 200:
 				if request.query.get("soft") is not None:
@@ -138,13 +134,14 @@ class Api:
 				elif request.query.get("protected") is not None:
 					text = self.protectedmaps_data
 				elif request.query.get("config") is not None:
-					await cur.execute(
-						"SELECT `text` FROM `config` WHERE `id`='{}'"
-						.format(self.tokens[access_token]["key"])
-					)
-					selected = await cur.fetchone()
-					if selected:
-						text = selected[0]
+					if conn:
+						await cur.execute(
+							"SELECT `text` FROM `config` WHERE `id`='{}'"
+							.format(self.tokens[access_token]["key"])
+						)
+						selected = await cur.fetchone()
+						if selected:
+							text = selected[0]
 
 		elif request.method == "POST":
 			if status == 200:
@@ -157,24 +154,26 @@ class Api:
 
 				config = post.get("config")
 				if config is not None:
-					await cur.execute(
-						"SELECT `text` FROM `config` WHERE `id`='{}'"
-						.format(self.tokens[access_token]["key"])
-					)
-					selected = await cur.fetchone()
-					if selected:
+					if conn:
 						await cur.execute(
-							"UPDATE `config` SET `text`='{}' WHERE `id`='{}'"
-							.format(config, self.tokens[access_token]["key"])
+							"SELECT `text` FROM `config` WHERE `id`='{}'"
+							.format(self.tokens[access_token]["key"])
 						)
-					else:
-						await cur.execute(
-							"INSERT INTO `config` (`id`, `text`) VALUES ('{}', '{}')"
-							.format(self.tokens[access_token]["key"], config)
-						)
+						selected = await cur.fetchone()
+						if selected:
+							await cur.execute(
+								"UPDATE `config` SET `text`='{}' WHERE `id`='{}'"
+								.format(config, self.tokens[access_token]["key"])
+							)
+						else:
+							await cur.execute(
+								"INSERT INTO `config` (`id`, `text`) VALUES ('{}', '{}')"
+								.format(self.tokens[access_token]["key"], config)
+							)
 
-		await cur.close()
-		await self.pool.release(conn)
+		if conn:
+			await cur.close()
+			await self.pool.release(conn)
 
 		return web.Response(text=text, status=status)
 
@@ -186,6 +185,7 @@ class Api:
 		key = None
 
 		access_token = request.query.get("access_token")
+		agent = request.headers.get("User-Agent")
 		addr = request.headers.get("X-Forwarded-For")
 		if access_token is not None:
 			if addr in self.ips.keys():
@@ -226,7 +226,7 @@ class Api:
 		else:
 			response['error'] = 'invalid query'
 
-		self.loop.create_task(discordbot.log("TFM", response, status, addr, key, access_token))
+		self.loop.create_task(self.discord.log("TFM", response, status, addr, key, access_token, agent))
 		return web.json_response(response, status=status)
 
 	async def mapstorage(self, request):
@@ -251,56 +251,59 @@ class Api:
 			level = self.vip_list.get(key)
 			if level in ("SILVER", "GOLD", "GOLD_II", "PLATINUM"):
 				conn = await self.pool.acquire()
-				cur = await conn.cursor()
-				await cur.execute(
-					"SELECT `json` FROM `maps` WHERE `id`='{}'"
-					.format(key)
-				)
-				selected = await cur.fetchone()
-				if selected:
-					body = selected[0].encode()
+				if conn:
+					cur = await conn.cursor()
+					await cur.execute(
+						"SELECT `json` FROM `maps` WHERE `id`='{}'"
+						.format(key)
+					)
+					selected = await cur.fetchone()
+					if selected:
+						body = selected[0].encode()
 
-					if map_data:
-						try:
-							sel_decoded = cryptjson.text_decode(selected[0]).decode()
-							search = re.search(r"(.*?):(.*)", map_data)
-							if search is not None:
-								map_code = search.group(1)
-								info = search.group(2)
-								if map_code in sel_decoded:
-									if method == "save":
-										sel_decoded = re.sub(
-											r"{0}:.*(#?)".format(map_code),
-											r"{0}:{1}\1".format(map_code, info),
-											sel_decoded
-										)
-									elif method == "delete":
-										sel_decoded = re.sub(r"{0}:.*(#?)".format(map_code), r"\1", sel_decoded)
-								else:
-									if method == "save":
-										sel_decoded += f"#{map_code}:{info}"
-								await cur.execute(
-									"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
-									.format(cryptjson.text_encode(sel_decoded).decode(), key)
-								)
-						except Exception as e:
-							print(e)
+						if map_data:
+							try:
+								sel_decoded = cryptjson.text_decode(selected[0]).decode()
+								search = re.search(r"(.*?):(.*)", map_data)
+								if search is not None:
+									map_code = search.group(1)
+									info = search.group(2)
+									if map_code in sel_decoded:
+										if method == "save":
+											sel_decoded = re.sub(
+												r"{0}:.*(#?)".format(map_code),
+												r"{0}:{1}\1".format(map_code, info),
+												sel_decoded
+											)
+										elif method == "delete":
+											sel_decoded = re.sub(r"{0}:.*(#?)".format(map_code), r"\1", sel_decoded)
+									else:
+										if method == "save":
+											sel_decoded += f"#{map_code}:{info}"
+									await cur.execute(
+										"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
+										.format(cryptjson.text_encode(sel_decoded).decode(), key)
+									)
+							except Exception as e:
+								print(e)
 
-							map_data = None
-				else:
-					if method is None:
-						await cur.execute(
-							"SELECT `json` FROM `maps` WHERE `id`='{}'"
-							.format("rsuon55s")
-						)
-						selected = await cur.fetchone()
-						if selected:
-							body = selected[0].encode()
+								map_data = None
 					else:
-						map_data = None
+						if method is None:
+							await cur.execute(
+								"SELECT `json` FROM `maps` WHERE `id`='{}'"
+								.format("rsuon55s")
+							)
+							selected = await cur.fetchone()
+							if selected:
+								body = selected[0].encode()
+						else:
+							map_data = None
 
-				await cur.close()
-				await self.pool.release(conn)
+					await cur.close()
+					await self.pool.release(conn)
+				else:
+					map_data = None
 		else:
 			map_data = None
 
