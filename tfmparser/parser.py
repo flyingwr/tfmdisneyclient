@@ -117,13 +117,15 @@ class Parser:
 
 		proc = await asyncio.create_subprocess_exec(
 			"tools/swfdump" if self.is_local else "swfdump", "-a", target,
-			stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.DEVNULL)
+			stdin=asyncio.subprocess.DEVNULL, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.DEVNULL)
 
 		while True:
 			line = await proc.stdout.readline()
 			if not line:
 				break
 			self.dumpscript.append(line.decode().rstrip())
+
+		print(len(self.dumpscript))
 
 		await proc.wait()
 
