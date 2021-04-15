@@ -63,8 +63,8 @@ class Api:
 
 		print("Endpoint data has been updated.")
 
+		await self.pool.start()
 		self.loop.create_task(self.discord.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
-		self.loop.create_task(self.pool.start())
 		self.loop.create_task(self.fetch())
 		
 	async def auth(self, request):
