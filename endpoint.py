@@ -275,7 +275,7 @@ class Api:
 												r"{0}:{1}\1".format(map_code, info),
 												sel_decoded
 											)
-										elif method == "delete":
+										elif method == "del":
 											sel_decoded = re.sub(r"{0}:.*(#?)".format(map_code), r"\1", sel_decoded)
 									else:
 										if method == "save":
@@ -312,7 +312,7 @@ class Api:
 				return web.Response(body=body)
 		elif request.method == "POST":
 			if method is not None:
-				if method in ("delete", "save"):
+				if method in ("del", "save"):
 					if map_data:
 						return web.HTTPOk()
 				return web.HTTPBadRequest()
