@@ -271,17 +271,17 @@ class Api:
 									map_code = search.group(1)
 									info = search.group(2)
 									if map_code in sel_decoded:
-										if method == "save":
-											sel_decoded = re.sub(
-												r"{0}:.*(#?)".format(map_code),
-												r"{0}:{1}\1".format(map_code, info),
-												sel_decoded
-											)
-										elif method == "del":
-											sel_decoded = re.sub(r"{0}:.*(#?)".format(map_code), r"\1", sel_decoded)
+										search = re.search(r"{0}:([^#]*)".format(map_code), sel_decoded)
+										if search:
+											if method == "save":
+												sel_decoded = sel_decoded.replace(search.group(), f"{map_code}:{info}")
+											elif method == "del":
+												sel_decoded = sel_decoded.replace(search.group(), "")
 									else:
 										if method == "save":
 											sel_decoded += f"#{map_code}:{info}"
+									sel_decoded = sel_decoded.replace("##", "#")
+									sel_decoded = re.sub(r"#$", "", sel_decoded)
 									await cur.execute(
 										"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
 										.format(cryptjson.text_encode(sel_decoded).decode(), key)
