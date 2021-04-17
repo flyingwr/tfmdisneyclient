@@ -4,9 +4,11 @@ from discord.ext import commands
 
 from typing import Any, Dict, Optional, Union
 
+import poolhandler
+
 class Bot(commands.Bot):
 	def __init__(self):
-		super().__init__(command_prefix=".")
+		super().__init__(command_prefix="!")
 
 		self.log_channel = None
 
@@ -45,3 +47,61 @@ async def on_ready():
 	print("[Discord] Logged in.")
 
 	bot.log_channel = bot.get_channel(829368194812346448)
+
+@bot.command()
+async def addkeymaps(ctx, *args):
+	try:
+		conn = await poolhandler.pool.acquire()
+		cur = await conn.cursor()
+		await cur.execute(
+			"SELECT `json` FROM `maps` WHERE `id`='rsuon55s'")
+		selected = await cur.fetchone()
+		data = [(key, selected[0]) for key in args]
+		await cur.executemany(
+			"INSERT INTO `maps` (`id`, `json`) VALUES (%s, %s)", data)
+		await cur.close()
+		await poolhandler.pool.release(conn)
+		await ctx.reply("Database updated")
+	except Exception as e:
+		print(e)
+		await ctx.reply("Database unavailable")
+
+@bot.command()
+async def delkeymaps(ctx, *args):
+	try:
+		conn = await poolhandler.pool.acquire()
+		cur = await conn.cursor()
+		data = [(key, ) for key in args]
+		await cur.executemany(
+			"DELETE FROM `maps` WHERE `id`=%s", data)
+		await cur.close()
+		await poolhandler.pool.release(conn)
+		await ctx.reply("Database updated")
+	except Exception as e:
+		print(e)
+		await ctx.reply("Database unavailable")
+
+@bot.command()
+async def transferkeymaps(ctx, _from: str, to: str):
+	try:
+		conn = await poolhandler.pool.acquire()
+		cur = await conn.cursor()
+		await cur.execute(
+			"SELECT `json` FROM `maps` WHERE `id`='{}'"
+			.format(_from))
+		selected = await cur.fetchone()
+		if selected:
+			await cur.execute(
+				"INSERT INTO `maps` (`id`, `json`) VALUES ('{}', '{}')"
+				.format(to, selected[0]))
+		await cur.close()
+		await poolhandler.pool.release(conn)
+
+		if not selected:
+			await ctx.reply(f"Key `{_from}` not found in database")
+			raise Exception("Key not found")
+	except Exception as e:
+		print(e)
+		await ctx.reply("Database unavailable")
+	else:
+		await ctx.reply("Database updated")

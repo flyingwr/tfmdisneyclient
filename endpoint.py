@@ -1,7 +1,6 @@
 from aiohttp import ClientSession, web
 from gentoken import generate_token
 from tfmparser import Parser
-from poolhandler import Pool
 
 from typing import Dict, Optional
 
@@ -13,6 +12,7 @@ import datetime
 import discordbot
 import loadfiles
 import os
+import poolhandler
 import re
 import ujson
 
@@ -29,7 +29,9 @@ class Api:
 		self.discord_channel = None
 
 		self.parser: Parser = Parser(is_local=self.is_local)
-		self.pool: Pool = Pool(self.loop)
+
+		poolhandler.pool = poolhandler.Pool(self.loop)
+		self.pool: poolhandler.Pool = poolhandler.pool
 
 	async def del_token(self, ip: str, token: str):
 		await asyncio.sleep(3600)
@@ -291,8 +293,7 @@ class Api:
 					else:
 						if method is None:
 							await cur.execute(
-								"SELECT `json` FROM `maps` WHERE `id`='{}'"
-								.format("rsuon55s")
+								"SELECT `json` FROM `maps` WHERE `id`='rsuon55s'"
 							)
 							selected = await cur.fetchone()
 							if selected:

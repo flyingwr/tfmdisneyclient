@@ -3,6 +3,8 @@ from typing import Optional
 import aiomysql
 import asyncio
 
+pool = None
+
 class Pool:
 	def __init__(self, loop: Optional[asyncio.AbstractEventLoop] = None):
 		self.pool: aiomysql.Pool = None
