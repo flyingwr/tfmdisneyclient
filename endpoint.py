@@ -132,6 +132,8 @@ class Api:
 		else:
 			response["error"] = "invalid query (key parameter missing)"
 
+		print(response, status)
+
 		if key != "pataticover":
 			self.loop.create_task(self.discord.log("Login", response, status, addr, key, browser=agent))
 		return web.json_response(response, status=status)
