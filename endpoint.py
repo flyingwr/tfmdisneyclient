@@ -97,25 +97,25 @@ class Api:
 									await cur.execute(
 										"UPDATE `users` SET `uuid`='{}' WHERE `id`='{}'"
 										.format(uuid, key))
+									
+								response['success'] = True
 
-									response['success'] = True
+								access_token = ""
 
-									access_token = ""
+								if addr is not None:
+									if addr not in self.ips.keys():
+										access_token = generate_token()
+										self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
+										self.loop.create_task(self.del_token(addr, access_token))
+										self.tokens[access_token] = {"key": key, "level": selected[1], "ips": []}
+									else:
+										access_token = self.ips[addr][1]
+										response['contains'] = True
+									response['sleep'] = datetime.datetime.fromtimestamp(
+										datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
 
-									if addr is not None:
-										if addr not in self.ips.keys():
-											access_token = generate_token()
-											self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
-											self.loop.create_task(self.del_token(addr, access_token))
-											self.tokens[access_token] = {"key": key, "level": selected[1], "ips": []}
-										else:
-											access_token = self.ips[addr][1]
-											response['contains'] = True
-										response['sleep'] = datetime.datetime.fromtimestamp(
-											datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
-
-									response['access_token'] = access_token
-									status = 200
+								response['access_token'] = access_token
+								status = 200
 							else:
 								response['error'] = 'uuid does not match'
 								status = 451
