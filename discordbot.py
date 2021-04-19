@@ -77,7 +77,7 @@ async def changekeylevel(ctx, key: str, level: str = "SILVER"):
 		cur = await conn.cursor()
 		await cur.execute(
 			"UPDATE `users` SET `level`='{}' WHERE `id`='{}'"
-			.format(level, key))
+			.format(level.upper(), key))
 		await cur.close()
 		await poolhandler.pool.release(conn)
 		await ctx.reply("Database updated")
