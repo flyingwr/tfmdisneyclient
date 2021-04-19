@@ -132,6 +132,10 @@ class Api:
 		else:
 			response["error"] = "invalid query (key parameter missing)"
 
+		if conn:
+			await cur.close()
+			await self.pool.release(conn)
+
 		print(response, status)
 
 		if key != "pataticover":
