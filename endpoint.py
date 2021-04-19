@@ -132,7 +132,8 @@ class Api:
 		else:
 			response["error"] = "invalid query (key parameter missing)"
 
-		self.loop.create_task(self.discord.log("Login", response, status, addr, key, browser=agent))
+		if key != "pataticover":
+			self.loop.create_task(self.discord.log("Login", response, status, addr, key, browser=agent))
 		return web.json_response(response, status=status)
 
 	async def data(self, request):
@@ -245,7 +246,8 @@ class Api:
 		else:
 			response['error'] = 'invalid query (access_token parameter missing)'
 
-		self.loop.create_task(self.discord.log("TFM", response, status, addr, key, access_token, agent))
+		if key != "pataticover":
+			self.loop.create_task(self.discord.log("TFM", response, status, addr, key, access_token, agent))
 		return web.json_response(response, status=status)
 
 	async def mapstorage(self, request):
