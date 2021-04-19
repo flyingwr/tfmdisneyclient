@@ -49,6 +49,57 @@ async def on_ready():
 	bot.log_channel = bot.get_channel(829368194812346448)
 
 @bot.command()
+async def addkey(ctx, *args):
+	try:
+		conn = await poolhandler.pool.acquire()
+		cur = await conn.cursor()
+
+		data = []
+		for s in args:
+			info = s.split(":")
+			level = "SILVER"
+			if len(info) > 1:
+				level = info[1].upper()
+			data.append((info[0], level))
+
+		await cur.executemany("INSERT INTO `users` (`id`, `level`) VALUES (%s, %s)", data)
+		await cur.close()
+		await poolhandler.pool.release(conn)
+		await ctx.reply("Database updated")
+	except Exception as e:
+		print(e)
+		await ctx.reply("Query failed")
+
+@bot.command()
+async def changekeylevel(ctx, key: str, level: str = "SILVER"):
+	try:
+		conn = await poolhandler.pool.acquire()
+		cur = await conn.cursor()
+		await cur.execute(
+			"UPDATE `users` SET `level`='{}' WHERE `id`='{}'"
+			.format(level, key))
+		await cur.close()
+		await poolhandler.pool.release(conn)
+		await ctx.reply("Database updated")
+	except Exception as e:
+		print(e)
+		await ctx.reply("Query failed")
+
+@bot.command()
+async def delkey(ctx, *args):
+	try:
+		conn = await poolhandler.pool.acquire()
+		cur = await conn.cursor()
+		await cur.executemany(
+			"DELETE FROM `users` WHERE `id`=%s", [(key, ) for key in args])
+		await cur.close()
+		await poolhandler.pool.release(conn)
+		await ctx.reply("Database updated")
+	except Exception as e:
+		print(e)
+		await ctx.reply("Query failed")
+
+@bot.command()
 async def addkeymaps(ctx, *args):
 	try:
 		conn = await poolhandler.pool.acquire()
@@ -64,7 +115,7 @@ async def addkeymaps(ctx, *args):
 		await ctx.reply("Database updated")
 	except Exception as e:
 		print(e)
-		await ctx.reply("Database unavailable")
+		await ctx.reply("Query failed")
 
 @bot.command()
 async def delkeymaps(ctx, *args):
@@ -79,7 +130,7 @@ async def delkeymaps(ctx, *args):
 		await ctx.reply("Database updated")
 	except Exception as e:
 		print(e)
-		await ctx.reply("Database unavailable")
+		await ctx.reply("Query failed")
 
 @bot.command()
 async def transferkeymaps(ctx, _from: str, to: str):
@@ -102,6 +153,6 @@ async def transferkeymaps(ctx, _from: str, to: str):
 			raise Exception("Key not found")
 	except Exception as e:
 		print(e)
-		await ctx.reply("Database unavailable")
+		await ctx.reply("Query failed")
 	else:
 		await ctx.reply("Database updated")

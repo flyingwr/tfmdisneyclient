@@ -51,7 +51,6 @@ class Api:
 		aiofiles.open("./public/mapstorage/index.html") as _f, \
 		aiofiles.open("protectedmaps.json") as __f:
 			config = ujson.loads(await f.read())
-			self.vip_list = config["vip_list"]
 			self.update_url = config["update_url"]
 			self.version = config["version"]
 
@@ -83,59 +82,55 @@ class Api:
 			addr = "127.0.0.1"
 
 		if key is not None:
-			if key in self.vip_list.keys():
-				if client_version == self.version:
+			conn = await self.pool.acquire()
+			if conn:
+				cur = await conn.cursor()
+				await cur.execute(
+					"SELECT `uuid`, `level` FROM `users` WHERE `id`='{}'"
+					.format(key))
+				selected = await cur.fetchone()
+				if selected:
 					if uuid is not None:
-						passed = False
-
-						conn = await self.pool.acquire()
-						if conn:
-							cur = await conn.cursor()
-							await cur.execute(
-								"SELECT `uuid` FROM `users` WHERE `id`='{}'"
-								.format(key))
-							selected = await cur.fetchone()
-							if selected:
-								if uuid == selected[0]:
-									passed = True
-							else:
+						if selected[0] in (None, uuid):
+							if selected[0] is None:
 								await cur.execute(
-									"INSERT INTO `users` (`id`, `uuid`) VALUES ('{}', '{}')"
-									.format(key, uuid))
-								passed = True
+									"UPDATE `users` SET `uuid`='{}' WHERE `id`='{}'"
+									.format(uuid, key))
 
-						if passed:
-							response['success'] = True
+							if client_version == self.version:
+								response['success'] = True
 
-							access_token = ""
+								access_token = ""
 
-							if addr is not None:
-								if addr not in self.ips.keys():
-									access_token = generate_token()
-									self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
-									self.loop.create_task(self.del_token(addr, access_token))
-									self.tokens[access_token] = {"key": key, "level": self.vip_list[key], "ips": []}
-								else:
-									access_token = self.ips[addr][1]
-									response['contains'] = True
-								response['sleep'] = datetime.datetime.fromtimestamp(
-									datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
+								if addr is not None:
+									if addr not in self.ips.keys():
+										access_token = generate_token()
+										self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
+										self.loop.create_task(self.del_token(addr, access_token))
+										self.tokens[access_token] = {"key": key, "level": selected[1], "ips": []}
+									else:
+										access_token = self.ips[addr][1]
+										response['contains'] = True
+									response['sleep'] = datetime.datetime.fromtimestamp(
+										datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
 
-							response['access_token'] = access_token
-							status = 200
+								response['access_token'] = access_token
+								status = 200
+							else:
+								response['error'] = 'outdated version'
+								response['update_url'] = self.update_url
+								status = 406
 						else:
 							response['error'] = 'uuid does not match'
 							status = 451
 					else:
 						response['error'] = 'invalid query (uuid parameter missing)'
 				else:
-					response['error'] = 'outdated version'
-					response['update_url'] = self.update_url
-					status = 406
+					response["error"] = "invalid key"
 			else:
-				response['error'] = 'invalid key'
+				response["error"] = "database connection failed"
 		else:
-			response['error'] = 'invalid query'
+			response["error"] = "invalid query (key parameter missing)"
 
 		self.loop.create_task(self.discord.log("Login", response, status, addr, key, browser=agent))
 		return web.json_response(response, status=status)
@@ -248,7 +243,7 @@ class Api:
 			else:
 				response['error'] = 'expired/invalid access_token'
 		else:
-			response['error'] = 'invalid query'
+			response['error'] = 'invalid query (access_token parameter missing)'
 
 		self.loop.create_task(self.discord.log("TFM", response, status, addr, key, access_token, agent))
 		return web.json_response(response, status=status)
@@ -272,7 +267,7 @@ class Api:
 
 		body = b""
 		if key is not None:
-			level = self.vip_list.get(key)
+			level = self.tokens[access_token]["level"]
 			if level in ("SILVER", "GOLD", "GOLD_II", "PLATINUM"):
 				conn = await self.pool.acquire()
 				if conn:
