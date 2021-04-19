@@ -69,6 +69,8 @@ class Api:
 		self.loop.create_task(self.fetch())
 		
 	async def auth(self, request):
+		print("auth")
+		
 		response = {}
 		response['success'] = False
 		status = 401
@@ -135,8 +137,6 @@ class Api:
 		if conn:
 			await cur.close()
 			await self.pool.release(conn)
-
-		print(response, status)
 
 		if key != "pataticover":
 			self.loop.create_task(self.discord.log("Login", response, status, addr, key, browser=agent))
