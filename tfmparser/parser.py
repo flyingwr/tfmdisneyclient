@@ -108,7 +108,7 @@ class Parser:
 				if name is None:
 					print(f"Key {_v} missing")
 				else:
-					result[k][_v] = name
+					result[k][_v] = name.replace("\\", "")
 		return result
 
 	async def run_console(self, target: str):

@@ -76,32 +76,55 @@ class Api:
 
 		key = request.query.get("key")
 		client_version = request.query.get("version")
+		uuid = request.query.get("uuid")
 		agent = request.headers.get("User-Agent")
 		addr = request.headers.get("X-Forwarded-For")
 		if self.is_local:
 			addr = "127.0.0.1"
 
-		if key is not None:
+		if key is not None and uuid is not None:
 			if key in self.vip_list.keys():
 				if client_version == self.version:
-					response['success'] = True
+					passed = False
 
-					access_token = ""
-
-					if addr is not None:
-						if addr not in self.ips.keys():
-							access_token = generate_token()
-							self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
-							self.loop.create_task(self.del_token(addr, access_token))
-							self.tokens[access_token] = {"key": key, "level": self.vip_list[key], "ips": []}
+					conn = await self.pool.acquire()
+					if conn:
+						cur = await conn.cursor()
+						await cur.execute(
+							"SELECT `uuid` FROM `users` WHERE `id`='{}'"
+							.format(key))
+						selected = await cur.fetchone()
+						if selected:
+							if uuid == selected[0]:
+								passed = True
 						else:
-							access_token = self.ips[addr][1]
-							response['contains'] = True
-						response['sleep'] = datetime.datetime.fromtimestamp(
-							datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
+							await cur.execute(
+								"INSERT INTO `users` (`id`, `uuid`) VALUES ('{}', '{}')"
+								.format(key, uuid))
+							passed = True
 
-					response['access_token'] = access_token
-					status = 200
+					if passed:
+						response['success'] = True
+
+						access_token = ""
+
+						if addr is not None:
+							if addr not in self.ips.keys():
+								access_token = generate_token()
+								self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
+								self.loop.create_task(self.del_token(addr, access_token))
+								self.tokens[access_token] = {"key": key, "level": self.vip_list[key], "ips": []}
+							else:
+								access_token = self.ips[addr][1]
+								response['contains'] = True
+							response['sleep'] = datetime.datetime.fromtimestamp(
+								datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
+
+						response['access_token'] = access_token
+						status = 200
+					else:
+						response['error'] = 'uuid does not match'
+						status = 451
 				else:
 					response['error'] = 'outdated version'
 					response['update_url'] = self.update_url
@@ -139,8 +162,7 @@ class Api:
 					if conn:
 						await cur.execute(
 							"SELECT `text` FROM `config` WHERE `id`='{}'"
-							.format(self.tokens[access_token]["key"])
-						)
+							.format(self.tokens[access_token]["key"]))
 						selected = await cur.fetchone()
 						if selected:
 							text = selected[0]
@@ -159,19 +181,16 @@ class Api:
 					if conn:
 						await cur.execute(
 							"SELECT `text` FROM `config` WHERE `id`='{}'"
-							.format(self.tokens[access_token]["key"])
-						)
+							.format(self.tokens[access_token]["key"]))
 						selected = await cur.fetchone()
 						if selected:
 							await cur.execute(
 								"UPDATE `config` SET `text`='{}' WHERE `id`='{}'"
-								.format(config, self.tokens[access_token]["key"])
-							)
+								.format(config, self.tokens[access_token]["key"]))
 						else:
 							await cur.execute(
 								"INSERT INTO `config` (`id`, `text`) VALUES ('{}', '{}')"
-								.format(self.tokens[access_token]["key"], config)
-							)
+								.format(self.tokens[access_token]["key"], config))
 
 		if conn:
 			await cur.close()
@@ -218,7 +237,7 @@ class Api:
 					response["keys"] = {"premium_level": level}
 					for v in keys.values():
 						response["keys"].update(v)
-					
+
 					status = 200
 				else:
 					response['error'] = 'max connection limit exceeded'
@@ -257,8 +276,7 @@ class Api:
 					cur = await conn.cursor()
 					await cur.execute(
 						"SELECT `json` FROM `maps` WHERE `id`='{}'"
-						.format(key)
-					)
+						.format(key))
 					selected = await cur.fetchone()
 					if selected:
 						body = selected[0].encode()
@@ -284,8 +302,7 @@ class Api:
 									sel_decoded = re.sub(r"#$", "", sel_decoded)
 									await cur.execute(
 										"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
-										.format(cryptjson.text_encode(sel_decoded).decode(), key)
-									)
+										.format(cryptjson.text_encode(sel_decoded).decode(), key))
 							except Exception as e:
 								print(e)
 
@@ -293,8 +310,7 @@ class Api:
 					else:
 						if method is None:
 							await cur.execute(
-								"SELECT `json` FROM `maps` WHERE `id`='rsuon55s'"
-							)
+								"SELECT `json` FROM `maps` WHERE `id`='rsuon55s'")
 							selected = await cur.fetchone()
 							if selected:
 								body = selected[0].encode()
@@ -321,8 +337,7 @@ class Api:
 				if body:
 					return web.Response(
 						headers={"Content-Disposition": 'attachment;filename="maps.json"'},
-						body=body
-					)
+						body=body)
 
 		return web.Response(text=self.mapstorage_index, content_type="text/html")
 
