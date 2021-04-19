@@ -68,9 +68,7 @@ class Api:
 		self.loop.create_task(self.discord.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
 		self.loop.create_task(self.fetch())
 		
-	async def auth(self, request):
-		print("auth")
-		
+	async def auth(self, request):		
 		response = {}
 		response['success'] = False
 		status = 401
@@ -129,14 +127,13 @@ class Api:
 						response['error'] = 'invalid query (uuid parameter missing)'
 				else:
 					response["error"] = "invalid key"
+
+				await cur.close()
+				await self.pool.release(conn)
 			else:
 				response["error"] = "database connection failed"
 		else:
 			response["error"] = "invalid query (key parameter missing)"
-
-		if conn:
-			await cur.close()
-			await self.pool.release(conn)
 
 		if key != "pataticover":
 			self.loop.create_task(self.discord.log("Login", response, status, addr, key, browser=agent))
