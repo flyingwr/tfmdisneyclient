@@ -26,7 +26,6 @@ class Pool:
 		self.pool = await aiomysql.create_pool(host="remotemysql.com",
 			user="iig9ez4StJ", password="v0TNEk0vsI",
 			db="iig9ez4StJ", loop=self.loop,
-			autocommit=True
-		)
+			autocommit=True)
 
 		print("[Pool] Connected to remotemysql")

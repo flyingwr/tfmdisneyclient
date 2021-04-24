@@ -5,6 +5,7 @@ from .bypasscode import BypassCode
 from .chat import Chat
 from .checker import Checker
 from .frameloop import FrameLoop
+from .gameui import UiElement
 from .jumpclass import JumpClass
 from .mapclass import Map
 from .mass import Mass
@@ -62,7 +63,9 @@ class Parser:
 					"update_coord", "update_coord2", "checker_class_name", "check_pos",
 					"mouse_info_class_name", "mouse_info_instance", "jump_height", "change_player_physic",
 					"change_player_physic2", "physic_motor_class_name", "mouse_speed", "b2circledef",
-					"density", "radius", "friction", "restitution", "jump_class_name", "num_to_add"),
+					"density", "radius", "friction", "restitution", "jump_class_name", "num_to_add",
+					"ui_element_class_name", "set_box", "set_draggable","set_prep_ui", "prep_ui_class_name",
+					"prep_ui_instance", "get_definition", "domain_manager_class_name", "load_img"),
 			"PLATINUM": ("cipher", )
 		}
 
@@ -97,6 +100,7 @@ class Parser:
 		self.shaman_obj: ShamanObj = ShamanObj()
 		self.socket_class: Socket = Socket()
 		self.timer_class: Timer = Timer()
+		self.ui_element: UiElement = UiElement()
 		self.ui_scoreboard: UIScoreBoard = UIScoreBoard()
 
 	def keys(self) -> Dict:
@@ -150,7 +154,8 @@ class Parser:
 					"map_class", "move_class", "packet_handler", "packet_out", "player_list",
 					"player_clip", "player_name", "player_id", "player_cheese", "player_title",
 					"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
-					"anim_class", "mouse_info", "physic_motor", "jump_class", "player_info")
+					"anim_class", "mouse_info", "physic_motor", "jump_class", "player_info",
+					"ui_element")
 			for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
 				self.fetched.update(result)
 
