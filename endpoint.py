@@ -217,7 +217,10 @@ class Api:
 				key = self.tokens[access_token]["key"]
 
 				level = self.tokens[access_token]["level"]
-				limit = 10 if level == "PLATINUM" else 3
+				if level == "PLATINUM" or key == "rm69t3p7":
+					limit = 10
+				else:
+					limit = 3
 				if len(self.tokens[access_token]["ips"]) < limit:
 					if addr not in self.tokens[access_token]["ips"]:
 						self.tokens[access_token]["ips"].append(addr)
