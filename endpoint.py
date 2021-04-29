@@ -47,9 +47,9 @@ class Api:
 			await asyncio.sleep(8)
 
 	async def update(self):
-		async with aiofiles.open("config.json") as f, \
+		async with aiofiles.open("./config.json") as f, \
 		aiofiles.open("./public/mapstorage/index.html") as _f, \
-		aiofiles.open("protectedmaps.json") as __f:
+		aiofiles.open("./data/protectedmaps.json") as __f:
 			config = ujson.loads(await f.read())
 			self.update_url = config["update_url"]
 			self.version = config["version"]
@@ -217,14 +217,10 @@ class Api:
 				key = self.tokens[access_token]["key"]
 
 				level = self.tokens[access_token]["level"]
-				if level == "PLATINUM" or key == "rm69t3p7":
+				limit = 1
+				if level == "PLATINUM":
 					limit = 10
-				else:
-					limit = 3
-				if len(self.tokens[access_token]["ips"]) < limit:
-					if addr not in self.tokens[access_token]["ips"]:
-						self.tokens[access_token]["ips"].append(addr)
-
+				if addr in self.tokens[access_token]["ips"]:
 					response['success'] = True
 
 					keys = self.parser.keys()
@@ -239,14 +235,16 @@ class Api:
 					elif level in ("GOLD", "GOLD2"):
 						del keys["PLATINUM"]
 
-					response["keys"] = {"premium_level": level}
+					response["keys"] = {"premium_level": level, "discord": self.discord.discord_name}
 					for v in keys.values():
 						response["keys"].update(v)
 
 					status = 200
 				else:
-					response['error'] = 'max connection limit exceeded'
-					del self.tokens[access_token]
+					if len(self.tokens[access_token]["ips"]) < limit:
+						self.tokens[access_token]["ips"].append(addr)
+					else:
+						response['error'] = 'max connection limit exceeded'
 			else:
 				response['error'] = 'expired/invalid access_token'
 		else:

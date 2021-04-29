@@ -43,7 +43,7 @@ class Socket(dict):
 											if "callpropvoid" in dumpscript[line + 8]:
 												if "returnvoid" in dumpscript[line + 9]:
 													self["data_sender"] = (await find_one(CALL_PROPVOID, dumpscript[line + 8])).group(1)
-													self["command_packet_name"] = (await find_one(FIND_PROPSTRICT, dumpscript[line + 5])).group(1)
+													self["command_packet_class_name"] = (await find_one(FIND_PROPSTRICT, dumpscript[line + 5])).group(1)
 													break
 
 		for line, content in enumerate(dumpscript):
@@ -55,7 +55,7 @@ class Socket(dict):
   							and self["bulle_socket_instance"] in dumpscript[line + 4]:
 								if "findpropstrict" in dumpscript[line + 5]:
 									if "getlex" in dumpscript[line + 6]:
-										self["crouch_packet_name"] = (await find_one(FIND_PROPSTRICT, dumpscript[line + 5])).group(1)
+										self["crouch_packet_class_name"] = (await find_one(FIND_PROPSTRICT, dumpscript[line + 5])).group(1)
 
 										for x in range(0, len(dumpscript)):
 											if "getproperty" in dumpscript[x]:

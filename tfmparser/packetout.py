@@ -12,7 +12,7 @@ class PacketOut(dict):
 					if "constructsuper" in dumpscript[line + 6]:
 						if "findpropstrict <q>[public]flash.utils::ByteArray" in dumpscript[line + 8]:
 							if "initproperty" in dumpscript[line + 10]:
-								self["packet_out_name"] = (await find_one(CONSTRUCTOR, content)).group(1)
+								self["packet_out_class_name"] = (await find_one(CONSTRUCTOR, content)).group(1)
 								self["packet_out_bytes"] = (await find_one(INIT_PROPERTY, dumpscript[line + 10])).group(1)
 
 								for x in range(line, line + 50):

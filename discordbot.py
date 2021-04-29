@@ -11,6 +11,7 @@ class Bot(commands.Bot):
 		super().__init__(command_prefix="!")
 
 		self.log_channel = None
+		self.discord_name = None
 
 	async def log(
 		self,
@@ -47,6 +48,7 @@ async def on_ready():
 	print("[Discord] Logged in.")
 
 	bot.log_channel = bot.get_channel(829368194812346448)
+	bot.discord_name = str(bot.get_user(429991854348566538))
 
 @bot.command()
 async def addkey(ctx, *args):

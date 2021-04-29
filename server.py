@@ -18,6 +18,7 @@ async def main():
 	app.router.add_get('/mapstorage', endpoint.mapstorage)
 	app.router.add_post('/mapstorage', endpoint.mapstorage)
 	app.router.add_get('/transformice', endpoint.transformice)
+	app.router.add_static('/images', './images')
 
 	runner = web.AppRunner(app)
 	await runner.setup()
