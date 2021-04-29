@@ -220,7 +220,17 @@ class Api:
 				limit = 1
 				if level == "PLATINUM":
 					limit = 10
-				if addr in self.tokens[access_token]["ips"]:
+
+				passed = False
+				if addr not in self.tokens[access_token]["ips"]:
+					if len(self.tokens[access_token]["ips"]) < limit:
+						self.tokens[access_token]["ips"].append(addr)
+						passed = True
+					else:
+						response['error'] = 'max connection limit exceeded'
+				else:
+					passed = True
+				if passed
 					response['success'] = True
 
 					keys = self.parser.keys()
@@ -240,11 +250,6 @@ class Api:
 						response["keys"].update(v)
 
 					status = 200
-				else:
-					if len(self.tokens[access_token]["ips"]) < limit:
-						self.tokens[access_token]["ips"].append(addr)
-					else:
-						response['error'] = 'max connection limit exceeded'
 			else:
 				response['error'] = 'expired/invalid access_token'
 		else:
