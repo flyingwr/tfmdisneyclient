@@ -221,15 +221,13 @@ class Api:
 				if level == "PLATINUM":
 					limit = 10
 
-				passed = False
+				passed = True
 				if addr not in self.tokens[access_token]["ips"]:
 					if len(self.tokens[access_token]["ips"]) < limit:
 						self.tokens[access_token]["ips"].append(addr)
-						passed = True
 					else:
 						response['error'] = 'max connection limit exceeded'
-				else:
-					passed = True
+						passed = False
 				if passed:
 					response['success'] = True
 
