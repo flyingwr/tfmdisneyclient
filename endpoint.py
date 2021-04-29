@@ -230,7 +230,7 @@ class Api:
 						response['error'] = 'max connection limit exceeded'
 				else:
 					passed = True
-				if passed
+				if passed:
 					response['success'] = True
 
 					keys = self.parser.keys()
