@@ -1,7 +1,7 @@
 import re
 
 CALL_PROPVOID = re.compile(r"callpropvoid <q>\[public\]::(.*?), (\d+) params$")
-CALL_PROPERTY = re.compile(r"callproperty <q>\[(private|public)\](NULL|)::(.*?), 0 params")
+CALL_PROPERTY = re.compile(r"callproperty <q>\[(private|public)\](NULL|)::(.*?), \d+ params")
 CLASS = re.compile(r"class <q>\[public\]::(.*?) extends .*?::(.*?)\{")
 CONSTRUCTOR = re.compile(r"constructor \* <q>\[public\]::(.*?)=\(")
 CONSTRUCT_PROP = re.compile(r"constructprop <q>\[public\]::(.*?), (\d+) params")
@@ -11,6 +11,7 @@ GET_LEX = re.compile(r"getlex <q>\[public\]::(.*?)$")
 GET_PROPERTY = re.compile(r"getproperty (.*?)::(.*?)$")
 INIT_PROPERTY = re.compile(r"initproperty <q>\[public\]::(.*?)$")
 KEYS = re.compile(r'initproperty        Multiname\("main_instance", .*?\)\n\n(.*?)\n\n     returnvoid', flags=re.DOTALL)
+NEW_FUNCTION = re.compile(r'newfunction \[method (.*?) ]')
 OBJECT = re.compile(r"<q>\[public\]::Object <q>\[private\]NULL::(.*?)=\(\)\(0 params, 0 optional\)")
 PUBLIC_METHOD = re.compile(r"method <q>\[public\].*?<q>\[public\]::(.*?)=\(")
 PUSH_NUM = re.compile(r"push(byte|short|int) (-?\d+)$")

@@ -1,5 +1,5 @@
-from .regex import CALL_PROPVOID, CLASS, CONSTRUCTOR, CONSTRUCT_PROP, FIND_PROPSTRICT, \
-	GET_LEX, GET_PROPERTY, PUBLIC_METHOD, SET_PROPERTY, SLOT, find_one
+from .regex import CALL_PROPERTY, CALL_PROPVOID, CLASS, CONSTRUCTOR, CONSTRUCT_PROP, FIND_PROPSTRICT, \
+	GET_LEX, GET_PROPERTY, INIT_PROPERTY, PUBLIC_METHOD, SET_PROPERTY, SLOT, find_one
 from typing import Dict, List
 
 class UiElement(dict):
@@ -8,21 +8,30 @@ class UiElement(dict):
 
 	async def fetch(self, dumpscript: List) -> Dict[str, str]:
 		for line, content in enumerate(dumpscript):
-			if "=(<q>[public]::int = 0, <q>[public]::int = 0)(2 params, 2 optional)" in content:
+			if "constructor" in content and "=(<q>[public]::int = 0, <q>[public]::int = 0)(2 params, 2 optional)" in content:
 				for x in range(line, len(dumpscript)):
 					if "return" in dumpscript[x]:
 						if "addChild, 1 params" in dumpscript[x - 1]:
 							self["ui_element_class_name"] = (await find_one(CONSTRUCTOR, content)).group(1)
 
+							found_reset_ui, found_set_draggable = False, False
+
 							found = 0
 							for y in range(x, len(dumpscript)):
-								if "=(<q>[public]::String, <q>[public]::Function = null, <q>[public]::int = 10" in dumpscript[y]:
+								if "<q>[public]__AS3__.vec::Vector" in dumpscript[y] \
+								and "=(<q>[public]::Boolean = false)(1 params, 1 optional)" in dumpscript[y]:
+									if not found_reset_ui:
+										self["reset_ui"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+										found_reset_ui = True
+										found += 1
+								elif "=(<q>[public]::String, <q>[public]::Function = null, <q>[public]::int = 10" in dumpscript[y]:
 									self["set_box"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
 									found += 1
 								elif "override" in dumpscript[y] and "=(<q>[public]::Boolean = true)" in dumpscript[y]:
-									if "need_rest" in dumpscript[y + 1]:
-										if not self.get("set_draggable"):
+									if not found_set_draggable:
+										if "need_rest" in dumpscript[y + 1]:
 											self["set_draggable"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+											found_set_draggable = True
 											found += 1
 								elif f"{self['ui_element_class_name']})(4 params, 0 optional)" in dumpscript[y]:
 									for z in range(y, y + 65):
@@ -53,12 +62,26 @@ class UiElement(dict):
 									for z in range(y, y + 50):
 										if "findpropstrict" in dumpscript[z] and "Sprite" not in dumpscript[z]:
 											self["ui_button_class_name"] = (await find_one(FIND_PROPSTRICT, dumpscript[z])).group(1)
+											for i in range(len(dumpscript)):
+												if f"method <q>[public]::{self['ui_button_class_name']}" in dumpscript[i] \
+												and "=(<q>[public]::Boolean)(1 params, 0 optional)" in dumpscript[i]:
+													for j in range(i, i + 25):
+														if "initproperty" in dumpscript[j]:
+															self["button_state"] = (
+																await find_one(INIT_PROPERTY, dumpscript[j])).group(1)
+														elif "mouseEnabled" in dumpscript[j]:
+															self["set_button_state"] = (
+																await find_one(PUBLIC_METHOD, dumpscript[i])).group(1)
+															break
+													else:
+														continue
+													break
 											found += 1
 											break
 								elif "(<q>[public]::Boolean, <q>[public]::int = 60, <q>[public]::Boolean = false)" in dumpscript[y]:
 									self["set_scrollable"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
 									found += 1
-								if found >= 6:
+								if found >= 7:
 									break
 							break
 				else:
@@ -108,7 +131,6 @@ class UiElement(dict):
 								break
 						break
 				break
-
 		for line, content in enumerate(dumpscript):
 			if "<q>[public]::int = 1, <q>[public]::Boolean = false)(3 params, 2 optional)" in content:
 				self["add_ui"] = (await find_one(PUBLIC_METHOD, dumpscript[line])).group(1)
@@ -117,8 +139,6 @@ class UiElement(dict):
 						self["main_ui_class_name"] = (await find_one(CLASS, dumpscript[x])).group(1)
 						break
 				break
-
-		found = 0
 		for line, content in enumerate(dumpscript):
 			if 'pushstring "$interface.tribu.bouton.membresConnectes' in content:
 				setproperty = (await find_one(SET_PROPERTY, dumpscript[line + 1])).group(1)
@@ -132,8 +152,8 @@ class UiElement(dict):
 								self["check_box_callback"] = (await find_one(CALL_PROPVOID, dumpscript[y])).group(1)
 								break
 						break
-				found += 1
-			elif 'pushstring "$Loupe' in content:
+		for line, content in enumerate(dumpscript):
+			if 'pushstring "$Loupe' in content:
 				setproperty = (await find_one(SET_PROPERTY, dumpscript[line + 1])).group(1)
 				for x in range(len(dumpscript)):
 					if f"getproperty <q>[public]::{setproperty}" in dumpscript[x]:
@@ -154,8 +174,8 @@ class UiElement(dict):
 								break
 						if _found:
 							break
-				found += 1
-			elif "constructor" in content and "(<q>[public]::Function = null, <q>[public]::Object = null)" in content:
+		for line, content in enumerate(dumpscript):
+			if "constructor" in content and "(<q>[public]::Function = null, <q>[public]::Object = null)" in content:
 				self["ui_check_button_class_name"] = (await find_one(CONSTRUCTOR, content)).group(1)
 				for x in range(line, len(dumpscript)):
 					if "slot 0: var" in dumpscript[x]:
@@ -163,11 +183,40 @@ class UiElement(dict):
 							self["text_field2"] = (await find_one(SLOT, dumpscript[x])).group(2)
 						elif "Boolean = false" in dumpscript[x]:
 							self["is_selected"] = (await find_one(SLOT, dumpscript[x])).group(2)
-					elif "=(<q>[public]::Boolean)(1 params, 0 optional)" in dumpscript[x]:
-						self["set_state"] = (await find_one(PUBLIC_METHOD, dumpscript[x])).group(1)
+					elif "=(<q>[public]flash.events::Event)(1 params, 0 optional)" in dumpscript[x]:
+						self["check_button_exec"] = (await find_one(PUBLIC_METHOD, dumpscript[x])).group(1)
 						break
-				found += 1
 				break
-			if found >= 3:
-				break
+		for line, content in enumerate(dumpscript):
+			if 'pushstring "$ModeDeJeu' in content:
+				setproperty = (await find_one(SET_PROPERTY, dumpscript[line + 1])).group(1)
+				for x in range(len(dumpscript)):
+					if f"getproperty <q>[public]::{setproperty}" in dumpscript[x]:
+						for y in range(x, x + 12):
+							if "initproperty" in dumpscript[y] and "callproperty" in dumpscript[y - 1]:
+								callproperty = (await find_one(CALL_PROPERTY, dumpscript[y - 1])).group(3)
+
+								_found = 0
+								for z in range(len(dumpscript)):
+									if f"{callproperty}=(" in dumpscript[z]:
+										for i in range(z, z + 50):
+											if "returnvalue" in dumpscript[i] or _found > 1:
+												for j in range(len(dumpscript)):
+													if f"method <q>[public]::{self['ui_items_list_class_name']}" in dumpscript[j] \
+													and "(<q>[public]::int)(1 params, 0 optional)" in dumpscript[j]:
+														self["select_item"] = (
+															await find_one(PUBLIC_METHOD, dumpscript[j])).group(1)
+														break
+												break
+											if "findpropstrict" in dumpscript[i]:
+												self[f"{'ui_text_field_class_name' if _found < 1 else 'ui_items_list_class_name'}"] = (
+													await find_one(FIND_PROPSTRICT, dumpscript[i])).group(1)
+												_found += 1
+										break
+							elif 'pushstring "Transformice"' in dumpscript[y] and "newfunction" in dumpscript[y + 1]:
+								if "callpropvoid" in dumpscript[y + 4]:
+									self["add_to_list"] = (await find_one(CALL_PROPVOID, dumpscript[y + 4])).group(1)
+									break
+						break		
+				break		
 		return self

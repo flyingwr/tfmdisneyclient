@@ -1,5 +1,5 @@
 from datetime import datetime
-from discord import Embed
+from discord import Embed, NotFound
 from discord.ext import commands
 
 from typing import Any, Dict, Optional, Union
@@ -48,8 +48,11 @@ async def on_ready():
 	print("[Discord] Logged in.")
 
 	bot.log_channel = bot.get_channel(829368194812346448)
-	bot.discord_name = str(bot.get_user(429991854348566538))
-
+	try:
+		bot.discord_name = str(await bot.fetch_user(429991854348566538))
+	except NotFound:
+		bot.discord_name = "rennan#3148"
+		
 @bot.command()
 async def addkey(ctx, *args):
 	try:
