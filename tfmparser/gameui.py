@@ -61,7 +61,10 @@ class UiElement(dict):
 								elif "(<q>[public]::Boolean, <q>[public]::int)" in dumpscript[y]:
 									for z in range(y, y + 50):
 										if "findpropstrict" in dumpscript[z] and "Sprite" not in dumpscript[z]:
-											self["ui_button_class_name"] = (await find_one(FIND_PROPSTRICT, dumpscript[z])).group(1)
+											findpropstrict = await find_one(FIND_PROPSTRICT, dumpscript[z])
+											if findpropstrict is None:
+												continue
+											self["ui_button_class_name"] = findpropstrict.group(1)
 											for i in range(len(dumpscript)):
 												if f"method <q>[public]::{self['ui_button_class_name']}" in dumpscript[i] \
 												and "=(<q>[public]::Boolean)(1 params, 0 optional)" in dumpscript[i]:
