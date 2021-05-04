@@ -54,7 +54,7 @@ class Parser:
 					"set_scrollable", "ui_input_class_name", "text_field", "set_display_text", "ui_check_button_class_name",
 					"text_field2", "is_selected", "check_button_exec", "reset_ui", "ui_text_field_class_name", 
 					"ui_items_list_class_name", "add_to_list", "set_button_state", "button_state", "select_item",
-					"player_bitmap", "has_image"),
+					"player_bitmap", "check_timer", "check_timestamp", "check_id"),
 			"SILVER": ("crouch", "crouch2", "move_class_name", "move_free", "player_title",
 					"player_name_color", "timer_class_name", "timer_prop",
 					"tfm_obj_container", "remove_shaman_obj", "shaman_obj_list", "shaman_obj_var",
@@ -71,8 +71,9 @@ class Parser:
 			"GOLD": ("frame_loop_class_name", "victory_time", "anim_class_name",
 					"update_coord", "update_coord2", "checker_class_name", "check_pos",
 					"mouse_info_class_name", "mouse_info_instance", "jump_height", "change_player_physic",
-					"change_player_physic2", "physic_motor_class_name", "mouse_speed", "b2circledef",
-					"density", "radius", "friction", "restitution", "jump_class_name", "num_to_add"),
+					"change_player_physic2", "physic_motor_class_name", "mouse_speed", "b2circledef_class_name",
+					"density", "radius", "friction", "restitution", "jump_class_name", "num_to_add",
+					"change_player_speed1", "change_player_speed2", "player_is_shaman", "shaman_handler_class_name"),
 			"PLATINUM": ("cipher", )
 		}
 

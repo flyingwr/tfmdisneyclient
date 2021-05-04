@@ -18,7 +18,7 @@ class PhysicMotor(dict):
 						if "getlocal r9" in dumpscript[x + 1]:
 							if "setproperty" in dumpscript[x + 4]:
 								if "findpropstrict" in dumpscript[x + 5]:
-									self["b2circledef"] = (await find_one(FIND_PROPSTRICT, dumpscript[x + 5])).group(1)
+									self["b2circledef_class_name"] = (await find_one(FIND_PROPSTRICT, dumpscript[x + 5])).group(1)
 									if "setlocal r11" in dumpscript[x + 8]:
 										if "getlocal r11" in dumpscript[x + 9]:
 											last_line = 0
@@ -38,14 +38,15 @@ class PhysicMotor(dict):
 													if "getproperty" in dumpscript[last_line + 1]:
 														if "iffalse" in dumpscript[last_line + 2]:
 															if "getlocal r11" in dumpscript[last_line + 3]:
+																found_friction = False
 																for y in range(last_line + 3, last_line + 25):
 																	if "setproperty" in dumpscript[y]:
-																		friction = self.get("friction")
-																		if friction is None:
+																		if not found_friction:
 																			self["friction"] = (
 																				await find_one(SET_PROPERTY, dumpscript[y])
 																			).group(1)
-																		elif friction in dumpscript[y]:
+																			found_friction = True
+																		elif self["friction"] in dumpscript[y]:
 																			continue
 																		else:
 																			self["restitution"] = (

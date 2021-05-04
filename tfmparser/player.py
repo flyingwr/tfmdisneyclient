@@ -31,20 +31,6 @@ class Player(dict):
 								for z in range(y, 0, -1):
 									if "getlocal_0" in dumpscript[z] and "getproperty" in dumpscript[z + 1]:
 										self["player_bitmap"] = (await find_one(GET_PROPERTY, dumpscript[z + 1])).group(2)
-										for i in range(len(dumpscript)):
-											if f"getproperty <q>[public]::{self['player_bitmap']}" in dumpscript[i]:
-												if "visible" in dumpscript[i + 3]:
-													for j in range(i + 3, i + 18):
-														if "getslot" in dumpscript[j] and "addChild" in dumpscript[j + 1]:
-															for k in range(j, 0, -1):
-																if "setproperty" in dumpscript[k]:
-																	self["has_image"] = (
-																		await find_one(SET_PROPERTY, dumpscript[k])).group(1)
-																	break
-															break
-													else:
-														continue
-													break
 										break
 								break
 						break

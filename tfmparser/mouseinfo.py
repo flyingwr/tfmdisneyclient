@@ -1,4 +1,4 @@
-from .regex import CALL_PROPVOID, GET_LEX, GET_PROPERTY, INIT_PROPERTY, SET_PROPERTY, find_one
+from .regex import CALL_PROPVOID, CLASS, GET_LEX, GET_PROPERTY, INIT_PROPERTY, PUBLIC_METHOD, SET_PROPERTY, find_one
 from typing import Dict, List
 
 class MouseInfo(dict):
@@ -34,7 +34,7 @@ class MouseInfo(dict):
 		mouse_info_class = self.get("mouse_info_class_name")
 		if mouse_info_class is not None:
 			for line, content in enumerate(dumpscript):
-				if "class <q>[public]::" + mouse_info_class in content:
+				if f"class <q>[public]::{mouse_info_class}" in content:
 					for x in range(line, len(dumpscript)):
 						if "=(<q>[public]::int, <q>[public]::int)(2 params, 0 optional)" in dumpscript[x]:
 							if "pushbyte 0" in dumpscript[x + 5]:
@@ -45,8 +45,30 @@ class MouseInfo(dict):
 												for y in range(x + 9, x + 20):
 													if "initproperty" in dumpscript[y]:
 														self["mouse_speed"] = (
-															await find_one(INIT_PROPERTY, dumpscript[y])
-														).group(1)
+															await find_one(INIT_PROPERTY, dumpscript[y])).group(1)
+
+														found, found_is_shaman = 0, False
+														for z in range(len(dumpscript)):
+															if "getproperty" in dumpscript[z] \
+															and self["mouse_speed"] in dumpscript[z]:
+																for i in range(z, 0, -1):
+																	if "getlocal_1" in dumpscript[i] \
+																	and "getproperty" in dumpscript[i + 1] and not found_is_shaman:
+																		self["player_is_shaman"] = (
+																			await find_one(GET_PROPERTY, dumpscript[i + 1])).group(2)
+																		found_is_shaman = True
+																	elif "final  method <q>[public]::void" in dumpscript[i]:
+																		found += 1
+																		self[f"change_player_speed{found}"] = (
+																			await find_one(PUBLIC_METHOD, dumpscript[i])).group(1)
+																		break
+																if found > 1:
+																	for i in range(z, 0, -1):
+																		if "class" in dumpscript[i]:
+																			self["shaman_handler_class_name"] = (
+																				await find_one(CLASS, dumpscript[i])).group(1)
+																			break
+																	break
 														break
 												break
 		for line, content in enumerate(dumpscript):
