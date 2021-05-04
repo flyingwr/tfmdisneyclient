@@ -12,9 +12,12 @@ import datetime
 import discordbot
 import loadfiles
 import os
+import pasteee
 import poolhandler
 import re
 import ujson
+
+ls_regex = re.compile(r"(@\d+):")
 
 class Api:
 	def __init__(self, loop: Optional[asyncio.AbstractEventLoop] = None):
@@ -40,6 +43,12 @@ class Api:
 			del self.ips[ip]
 		if token in self.tokens.keys():
 			del self.tokens[token]
+
+	async def del_lsmap(self, token: str):
+		await asyncio.sleep(240)
+
+		if token in self.tokens.keys():
+			self.tokens["lsmap"] = ""
 
 	async def fetch(self):
 		while True:
@@ -288,7 +297,15 @@ class Api:
 					if selected:
 						body = selected[0].encode()
 
-						if map_data:
+						if method == "ls":
+							result = self.tokens[access_token].get("lsmap")
+							if not result:
+								sel_decoded = cryptjson.text_decode(selected[0]).decode()
+								result = await pasteee.new_paste(", ".join(re.findall(ls_regex, sel_decoded)))
+								self.tokens[access_token]["lsmap"] = result
+								self.loop.create_task(self.del_lsmap(access_token))
+							body = result.encode()
+						elif map_data:
 							try:
 								sel_decoded = cryptjson.text_decode(selected[0]).decode()
 								search = re.search(r"(.*?):(.*)", map_data)
