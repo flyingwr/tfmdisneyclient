@@ -24,8 +24,10 @@ class Checker(dict):
 														found = 0
 														for z in range(y, len(dumpscript)):
 															if "slot" in dumpscript[z] and "Timer" in dumpscript[z]:
-																self["check_timer"] = (await find_one(SLOT, dumpscript[z])).group(2)
-																found += 1
+																slot = await find_one(SLOT, dumpscript[z])
+																if slot is not None:
+																	self["check_timer"] = slot.group(2)
+																	found += 1
 															elif "constructprop <q>[public]::Date" in dumpscript[z]:
 																for i in range(z, z + 15):
 																	if "returnvoid" in dumpscript[i] \

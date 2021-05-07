@@ -48,12 +48,12 @@ class Api:
 		await asyncio.sleep(240)
 
 		if token in self.tokens.keys():
-			self.tokens["lsmap"] = ""
+			self.tokens[token]["lsmap"] = ""
 
 	async def fetch(self):
 		while True:
 			await self.loop.create_task(self.parser.start())
-			await asyncio.sleep(8)
+			await asyncio.sleep(3)
 
 	async def update(self):
 		async with aiofiles.open("./config.json") as f, \

@@ -9,7 +9,6 @@ class PlayerInfo(dict):
 		for line, content in enumerate(dumpscript):
 			if "<q>[public]::int = 0)(3 params, 3 optional)" in content:
 				found = 0
-
 				for x in range(line, len(dumpscript)):
 					if "setlocal r5" in dumpscript[x]:
 						if "callproperty" in dumpscript[x - 2]:

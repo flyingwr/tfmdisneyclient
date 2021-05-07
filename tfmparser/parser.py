@@ -68,12 +68,10 @@ class Parser:
 					"crouch_packet_class_name", "static_side", "map_class_name", "map_instance",
 					"obj_container", "hole_list", "clip_fromage", "packet_out_class_name", "packet_out_bytes",
 					"get_x_form", "get_linear_velocity", "pos_x", "pos_y", "current_frame", "is_jumping"),
-			"GOLD": ("frame_loop_class_name", "victory_time", "anim_class_name",
-					"update_coord", "update_coord2", "checker_class_name", "check_pos",
-					"mouse_info_class_name", "mouse_info_instance", "jump_height", "change_player_physic",
-					"change_player_physic2", "physic_motor_class_name", "mouse_speed", "b2circledef_class_name",
-					"density", "radius", "friction", "restitution", "jump_class_name", "num_to_add",
-					"change_player_speed1", "change_player_speed2", "player_is_shaman", "shaman_handler_class_name"),
+			"GOLD": ("frame_loop_class_name", "victory_time", "anim_class_name", "update_coord", "update_coord2",
+					"checker_class_name", "check_pos", "mouse_info_class_name", "mouse_info_instance", "jump_height",
+					"mouse_speed", "change_player_speed1", "change_player_speed2", "player_is_shaman",
+					"shaman_handler_class_name", "jump_timestamp"),
 			"PLATINUM": ("cipher", )
 		}
 
@@ -81,6 +79,8 @@ class Parser:
 
 		self.downloaded_swf: str = "Transformice.swf"
 		self.output_swf: str = "tfm.swf"
+
+		self.last_swf_length: int = 0
 
 		self.anim_class: AnimClass = AnimClass()
 		self.bypass_code: BypassCode = BypassCode()
@@ -139,32 +139,41 @@ class Parser:
 		await proc.wait()
 
 	async def download_swf(self):
-		print("Downloading Transformice.swf")
+		update = False
 
 		async with aiohttp.ClientSession() as session:
-			async with session.get("https://www.transformice.com/Transformice.swf") as response:
-				if response.status == 200:
-					async with aiofiles.open(self.downloaded_swf, "wb") as f:
-						await f.write(await response.read())
+			async with session.head("https://www.transformice.com/Transformice.swf") as response:
+				length = int(response.headers.get("Content-Length", 0))
+				if length != self.last_swf_length:
+					print("Downloading Transformice.swf")
+
+					async with session.get("https://www.transformice.com/Transformice.swf") as response:
+						if response.status == 200:
+							async with aiofiles.open(self.downloaded_swf, "wb") as f:
+								await f.write(await response.read())
+							self.last_swf_length = length
+							update = True
+						else:
+							self.last_swf_length = 0
+		return update
 
 	async def start(self):
-		try:
-			await self.download_swf()
-			await self.run_console(self.downloaded_swf)
-		except Exception:
-			print("Failed to parse Transformice SWF")
-		else:
-			swf = Swf(self.downloaded_swf, self.output_swf)
-			await self.loop.create_task(swf.parse_content(self.dumpscript))
-			await self.run_console(self.output_swf)
+		update = await self.download_swf()
+		if update:
+			try:
+				await self.run_console(self.downloaded_swf)
+				swf = Swf(self.downloaded_swf, self.output_swf)
+				await self.loop.create_task(swf.parse_content(self.dumpscript))
+				await self.run_console(self.output_swf)
+			except Exception:
+				print("Failed to parse Transformice SWF")
+			else:
+				names = ("socket_class", "bypass_code", "chat", "frame_loop", "checker",
+						"map_class", "move_class", "packet_handler", "packet_out", "player_list",
+						"player_clip", "player_name", "player_id", "player_cheese", "player_title",
+						"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
+						"anim_class", "mouse_info", "jump_class", "player_info", "ui_element")
+				for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
+					self.fetched.update(result)
 
-			names = ("socket_class", "bypass_code", "chat", "frame_loop", "checker",
-					"map_class", "move_class", "packet_handler", "packet_out", "player_list",
-					"player_clip", "player_name", "player_id", "player_cheese", "player_title",
-					"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
-					"anim_class", "mouse_info", "physic_motor", "jump_class", "player_info",
-					"ui_element")
-			for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
-				self.fetched.update(result)
-
-			print("Parser data has been updated.")
+				print("Parser data has been updated.")

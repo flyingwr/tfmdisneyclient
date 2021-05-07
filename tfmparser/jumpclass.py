@@ -1,4 +1,4 @@
-from .regex import GET_LEX, GET_PROPERTY, find_one
+from .regex import SET_PROPERTY, find_one
 from typing import Dict, List
 
 class JumpClass(dict):
@@ -7,15 +7,10 @@ class JumpClass(dict):
 
 	async def fetch(self, dumpscript: List) -> Dict[str, str]:
 		for line, content in enumerate(dumpscript):
-			if "convert_i" in content:
-				if "setlocal_2" in dumpscript[line + 1]:
-					if "getlocal_2" in dumpscript[line + 2]:
-						if "getlocal_1" in dumpscript[line + 3]:
-							if "getproperty" in dumpscript[line + 4]:
-								if "subtract" in dumpscript[line + 5]:
-									if "getlex" in dumpscript[line + 6]:
-										if "getproperty" in dumpscript[line + 7]:
-											self["jump_class_name"] = (await find_one(GET_LEX, dumpscript[line + 6])).group(1)
-											self["num_to_add"] = (await find_one(GET_PROPERTY, dumpscript[line + 7])).group(2)
-											break
+			if "getlocal_1" in content:
+				if "findpropstrict" in dumpscript[line + 1] and "getTimer" in dumpscript[line + 1]:
+					if "callproperty" in dumpscript[line + 2] and "getTimer" in dumpscript[line + 2]:
+						if "setproperty" in dumpscript[line + 3] and "returnvoid" in dumpscript[line + 4]:
+							self["jump_timestamp"] = (await find_one(SET_PROPERTY, dumpscript[line + 3])).group(1)
+							break
 		return self
