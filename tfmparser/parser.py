@@ -42,7 +42,7 @@ class Parser:
 
 		self.fetched: Dict = {"menu_title": "DisneyClient - Menu"}
 		self.target_names: Dict = {
-			"FREE": ("bypass_code", "chat_class_name", "chat_container", "chat_instance",
+			"FREE": ("bypass_code", "loader_url", "chat_class_name", "chat_container", "chat_instance",
 					"chat_class_name2", "chat_message2", "chat_text_field", "chat_message",
 					"menu_title", "player_list", "player_name", "player", "player_clip",
 					"player_id", "is_dead", "event_chat_text", "chat_is_upper", "chat_shift", "player_cheese",

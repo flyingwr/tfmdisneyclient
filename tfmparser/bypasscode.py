@@ -6,11 +6,16 @@ class BypassCode(dict):
 		return ""
 
 	async def fetch(self, dumpscript: List) -> Dict[str, str]:
+		found = 0
 		for line, content in enumerate(dumpscript):
-			if "stage" in content:
-				if "loaderInfo" in dumpscript[line + 1]:
-					if "bytes" in dumpscript[line + 2]:
-						if "length" in dumpscript[line + 3]:
-							self["bypass_code"] = (await find_one(INIT_PROPERTY, dumpscript[line + 4])).group(1)
-							break
+			if "loaderInfo" in content:
+				if "bytes" in dumpscript[line + 1] and "stage" in dumpscript[line - 1]:
+					if "length" in dumpscript[line + 2]:
+						self["bypass_code"] = (await find_one(INIT_PROPERTY, dumpscript[line + 3])).group(1)
+						found += 1
+				elif "loaderURL" in dumpscript[line + 1] and "initproperty" in dumpscript[line + 2]:
+					self["loader_url"] = (await find_one(INIT_PROPERTY, dumpscript[line + 2])).group(1)
+					found += 1
+			if found >= 2:
+				break
 		return self
