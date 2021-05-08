@@ -14,85 +14,75 @@ class UiElement(dict):
 						if "addChild, 1 params" in dumpscript[x - 1]:
 							self["ui_element_class_name"] = (await find_one(CONSTRUCTOR, content)).group(1)
 
-							found_button, found_set_box, found_reset_ui = False, False, False
-							found_set_draggable, found_scrollable, found_shape = False, False, False
-
 							found = 0
 							for y in range(x, len(dumpscript)):
 								if "<q>[public]__AS3__.vec::Vector" in dumpscript[y] \
 								and "=(<q>[public]::Boolean = false)(1 params, 1 optional)" in dumpscript[y]:
-									if not found_reset_ui:
-										self["reset_ui"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
-										found_reset_ui = True
-										found += 1
+									self["reset_ui"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+									found += 1
 								elif "=(<q>[public]::String, <q>[public]::Function = null, <q>[public]::int = 10" in dumpscript[y]:
-									if not found_set_box:
-										self["set_box"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
-										found_set_box = True
-										found += 1
+									self["set_box"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+									found += 1
 								elif "override" in dumpscript[y] and "=(<q>[public]::Boolean = true)" in dumpscript[y]:
-									if not found_set_draggable:
-										if "need_rest" in dumpscript[y + 1]:
-											self["set_draggable"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
-											found_set_draggable = True
-											found += 1
-								elif f"{self['ui_element_class_name']})(4 params, 0 optional)" in dumpscript[y]:
-									for z in range(y, y + 65):
-										if "constructprop" in dumpscript[z]:
-											self["ui_sprite2_class_name"] = (await find_one(CONSTRUCT_PROP, dumpscript[z])).group(1)
-											for i in range(len(dumpscript)):
-												if "class" in dumpscript[i] and self["ui_sprite2_class_name"] in dumpscript[i]:
-													self["ui_sprite_class_name"] = (await find_one(CLASS, dumpscript[i])).group(2)
-													break
-										elif "setlocal r7" in dumpscript[z] and "getlocal r7" in dumpscript[z + 1]:
-											if "getlocal_3" in dumpscript[z + 2] and "callpropvoid" in dumpscript[z + 3]:
-												self["on_mouse_click"] = (await find_one(CALL_PROPVOID, dumpscript[z + 3])).group(1)
-										elif "getlex" in dumpscript[z] and "getlocal r7" in dumpscript[z + 1]:
-											self["ui_manager_class_name"] = (await find_one(GET_LEX, dumpscript[z])).group(1)
-											for i in range(z, z + 10):
-												if "callpropvoid" in dumpscript[i]:
-													self["on_mouse_box"] = (await find_one(CALL_PROPVOID, dumpscript[i])).group(1)
-													break
-										elif "iffalse" in dumpscript[z]:
-											if "getlocal r7" in dumpscript[z + 2] and "callpropvoid" in dumpscript[z + 3]:
-												self["add_ui_element"] = (await find_one(CALL_PROPVOID, dumpscript[z + 3])).group(1)
-												found += 1
-												break
+									if "need_rest" in dumpscript[y + 1]:
+										self["set_draggable"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+										found += 1
 								elif "method <q>[public]flash.display::Shape" in dumpscript[y]:
-									if not found_shape:
-										self["set_shape"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
-										found_shape = True
-										found += 1
-								elif "(<q>[public]::Boolean, <q>[public]::int)" in dumpscript[y]:
-									if not found_button:
-										for z in range(y, y + 50):
-											if "findpropstrict" in dumpscript[z] and "Sprite" not in dumpscript[z]:
-												findpropstrict = await find_one(FIND_PROPSTRICT, dumpscript[z])
-												if findpropstrict is not None:
-													self["ui_button_class_name"] = findpropstrict.group(1)
-													for i in range(len(dumpscript)):
-														if f"method <q>[public]::{self['ui_button_class_name']}" in dumpscript[i] \
-														and "=(<q>[public]::Boolean)(1 params, 0 optional)" in dumpscript[i]:
-															for j in range(i, i + 25):
-																if "initproperty" in dumpscript[j]:
-																	self["button_state"] = (
-																		await find_one(INIT_PROPERTY, dumpscript[j])).group(1)
-																elif "mouseEnabled" in dumpscript[j]:
-																	self["set_button_state"] = (
-																		await find_one(PUBLIC_METHOD, dumpscript[i])).group(1)
-																	break
-															else:
-																continue
-															break
-													found_button = True
-													found += 1
-													break
+									self["set_shape"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+									found += 1
 								elif "(<q>[public]::Boolean, <q>[public]::int = 60, <q>[public]::Boolean = false)" in dumpscript[y]:
-									if not found_scrollable:
-										self["set_scrollable"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
-										found_scrollable = True
-										found += 1
-								if found >= 7:
+									self["set_scrollable"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+									found += 1
+								if found >= 5:
+									break
+
+							for x in range(len(dumpscript)):
+								if f"{self['ui_element_class_name']})(4 params, 0 optional)" in dumpscript[x]:
+									for y in range(x, x + 65):
+										if "constructprop" in dumpscript[y]:
+											self["ui_sprite2_class_name"] = (await find_one(CONSTRUCT_PROP, dumpscript[y])).group(1)
+											for z in range(len(dumpscript)):
+												if "class" in dumpscript[z] and self["ui_sprite2_class_name"] in dumpscript[z]:
+													self["ui_sprite_class_name"] = (await find_one(CLASS, dumpscript[z])).group(2)
+													break
+										elif "setlocal r7" in dumpscript[y] and "getlocal r7" in dumpscript[y + 1]:
+											if "getlocal_3" in dumpscript[y + 2] and "callpropvoid" in dumpscript[y + 3]:
+												self["on_mouse_click"] = (await find_one(CALL_PROPVOID, dumpscript[y + 3])).group(1)
+										elif "getlex" in dumpscript[y] and "getlocal r7" in dumpscript[y + 1]:
+											self["ui_manager_class_name"] = (await find_one(GET_LEX, dumpscript[y])).group(1)
+											for z in range(y, y + 10):
+												if "callpropvoid" in dumpscript[z]:
+													self["on_mouse_box"] = (await find_one(CALL_PROPVOID, dumpscript[z])).group(1)
+													break
+										elif "iffalse" in dumpscript[y]:
+											if "getlocal r7" in dumpscript[y + 2] and "callpropvoid" in dumpscript[y + 3]:
+												self["add_ui_element"] = (await find_one(CALL_PROPVOID, dumpscript[y + 3])).group(1)
+												break
+									for y in range(x, 0, -1):
+										if "class" in dumpscript[y]:
+											for z in range(y, len(dumpscript)):
+												if "(<q>[public]::Boolean, <q>[public]::int)" in dumpscript[z]:
+													for i in range(z, z + 50):
+														if "findpropstrict" in dumpscript[i] and "Sprite" not in dumpscript[i]:
+															findpropstrict = await find_one(FIND_PROPSTRICT, dumpscript[i])
+															self["ui_button_class_name"] = findpropstrict.group(1)
+															for j in range(len(dumpscript)):
+																if f"method <q>[public]::{self['ui_button_class_name']}" in dumpscript[j] \
+																and "=(<q>[public]::Boolean)(1 params, 0 optional)" in dumpscript[j]:
+																	for k in range(j, j + 25):
+																		if "initproperty" in dumpscript[k]:
+																			self["button_state"] = (
+																				await find_one(INIT_PROPERTY, dumpscript[k])).group(1)
+																		elif "mouseEnabled" in dumpscript[k]:
+																			self["set_button_state"] = (
+																				await find_one(PUBLIC_METHOD, dumpscript[j])).group(1)
+																			break
+																	else:
+																		continue
+																	break
+															break
+													break
+											break
 									break
 							break
 				else:
