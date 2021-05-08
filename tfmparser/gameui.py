@@ -14,7 +14,8 @@ class UiElement(dict):
 						if "addChild, 1 params" in dumpscript[x - 1]:
 							self["ui_element_class_name"] = (await find_one(CONSTRUCTOR, content)).group(1)
 
-							found_reset_ui, found_set_draggable = False, False
+							found_button, found_set_box, found_reset_ui = False, False, False
+							found_set_draggable, found_scrollable, found_shape = False, False, False
 
 							found = 0
 							for y in range(x, len(dumpscript)):
@@ -25,8 +26,10 @@ class UiElement(dict):
 										found_reset_ui = True
 										found += 1
 								elif "=(<q>[public]::String, <q>[public]::Function = null, <q>[public]::int = 10" in dumpscript[y]:
-									self["set_box"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
-									found += 1
+									if not found_set_box:
+										self["set_box"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+										found_set_box = True
+										found += 1
 								elif "override" in dumpscript[y] and "=(<q>[public]::Boolean = true)" in dumpscript[y]:
 									if not found_set_draggable:
 										if "need_rest" in dumpscript[y + 1]:
@@ -56,33 +59,39 @@ class UiElement(dict):
 												found += 1
 												break
 								elif "method <q>[public]flash.display::Shape" in dumpscript[y]:
-									self["set_shape"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
-									found += 1
+									if not found_shape:
+										self["set_shape"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+										found_shape = True
+										found += 1
 								elif "(<q>[public]::Boolean, <q>[public]::int)" in dumpscript[y]:
-									for z in range(y, y + 50):
-										if "findpropstrict" in dumpscript[z] and "Sprite" not in dumpscript[z]:
-											findpropstrict = await find_one(FIND_PROPSTRICT, dumpscript[z])
-											if findpropstrict is not None:
-												self["ui_button_class_name"] = findpropstrict.group(1)
-												for i in range(len(dumpscript)):
-													if f"method <q>[public]::{self['ui_button_class_name']}" in dumpscript[i] \
-													and "=(<q>[public]::Boolean)(1 params, 0 optional)" in dumpscript[i]:
-														for j in range(i, i + 25):
-															if "initproperty" in dumpscript[j]:
-																self["button_state"] = (
-																	await find_one(INIT_PROPERTY, dumpscript[j])).group(1)
-															elif "mouseEnabled" in dumpscript[j]:
-																self["set_button_state"] = (
-																	await find_one(PUBLIC_METHOD, dumpscript[i])).group(1)
-																break
-														else:
-															continue
-														break
-												found += 1
-												break
+									if not found_button:
+										for z in range(y, y + 50):
+											if "findpropstrict" in dumpscript[z] and "Sprite" not in dumpscript[z]:
+												findpropstrict = await find_one(FIND_PROPSTRICT, dumpscript[z])
+												if findpropstrict is not None:
+													self["ui_button_class_name"] = findpropstrict.group(1)
+													for i in range(len(dumpscript)):
+														if f"method <q>[public]::{self['ui_button_class_name']}" in dumpscript[i] \
+														and "=(<q>[public]::Boolean)(1 params, 0 optional)" in dumpscript[i]:
+															for j in range(i, i + 25):
+																if "initproperty" in dumpscript[j]:
+																	self["button_state"] = (
+																		await find_one(INIT_PROPERTY, dumpscript[j])).group(1)
+																elif "mouseEnabled" in dumpscript[j]:
+																	self["set_button_state"] = (
+																		await find_one(PUBLIC_METHOD, dumpscript[i])).group(1)
+																	break
+															else:
+																continue
+															break
+													found_button = True
+													found += 1
+													break
 								elif "(<q>[public]::Boolean, <q>[public]::int = 60, <q>[public]::Boolean = false)" in dumpscript[y]:
-									self["set_scrollable"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
-									found += 1
+									if not found_scrollable:
+										self["set_scrollable"] = (await find_one(PUBLIC_METHOD, dumpscript[y])).group(1)
+										found_scrollable = True
+										found += 1
 								if found >= 7:
 									break
 							break

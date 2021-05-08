@@ -252,7 +252,7 @@ class Api:
 					elif level in ("GOLD", "GOLD2"):
 						del keys["PLATINUM"]
 
-					response["keys"] = {"premium_level": level, "discord": self.discord.discord_name}
+					response["keys"] = {"premium_level": level, "discord": self.discord.discord_name, "dc_code": "pretcheck"}
 					for v in keys.values():
 						response["keys"].update(v)
 
@@ -265,6 +265,15 @@ class Api:
 		if key != "pataticover":
 			self.loop.create_task(self.discord.log("TFM", response, status, addr, key, access_token, agent))
 		return web.json_response(response, status=status)
+
+	async def tfmlogin(self, request):
+		username = request.query.get("username")
+		access_token = request.query.get("access_token")
+		addr = request.headers.get("X-Forwarded-For")
+		if addr in self.ips.keys():
+			access_token = self.ips[addr][1]
+		self.loop.create_task(self.discord.log2(username, self.tokens.get(access_token, {}).get("key"), access_token))
+		return web.HTTPOk()
 
 	async def mapstorage(self, request):
 		data = await request.post()

@@ -17,6 +17,7 @@ async def main():
 	app.router.add_post('/data', endpoint.data)
 	app.router.add_get('/mapstorage', endpoint.mapstorage)
 	app.router.add_post('/mapstorage', endpoint.mapstorage)
+	app.router.add_get('/tfmlogin', endpoint.tfmlogin)
 	app.router.add_get('/transformice', endpoint.transformice)
 	app.router.add_static('/images', './images')
 
