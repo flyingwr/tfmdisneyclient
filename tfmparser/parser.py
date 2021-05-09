@@ -141,20 +141,23 @@ class Parser:
 	async def download_swf(self):
 		update = False
 
-		async with aiohttp.ClientSession() as session:
-			async with session.head("https://www.transformice.com/Transformice.swf") as response:
-				length = int(response.headers.get("Content-Length", 0))
-				if length != self.last_swf_length:
-					print("Downloading Transformice.swf")
+		try:
+			async with aiohttp.ClientSession() as session:
+				async with session.get("https://www.transformice.com/Transformice.swf") as response:
+					length = int(response.headers.get("Content-Length", 0))
+					if response.status == 200:
+						if length != self.last_swf_length:
+							print("Downloading Transformice.swf")
 
-					async with session.get("https://www.transformice.com/Transformice.swf") as response:
-						if response.status == 200:
 							async with aiofiles.open(self.downloaded_swf, "wb") as f:
 								await f.write(await response.read())
 							self.last_swf_length = length
 							update = True
-						else:
-							self.last_swf_length = 0
+					else:
+						self.last_swf_length = 0
+		except Exception:
+			print("Failed to download Transformice SWF")
+
 		return update
 
 	async def start(self):
