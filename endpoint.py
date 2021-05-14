@@ -66,10 +66,8 @@ class Api:
 			self.mapstorage_index = await _f.read()
 			self.protectedmaps_data = await __f.read()
 
-		async with aiofiles.open("./data/ChargeurTransformice.swf", "rb") as f, \
-		aiofiles.open("./data/invalid.swf", "rb") as _f:
+		async with aiofiles.open("./data/ChargeurTransformice.swf", "rb") as f:
 			self.chargeur_swf = await f.read()
-			self.invalid_swf = await _f.read()
 
 		print("Endpoint data has been updated.")
 
@@ -116,7 +114,7 @@ class Api:
 										access_token = generate_token()
 										self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
 										self.loop.create_task(self.del_token(addr, access_token))
-										self.tokens[access_token] = {"key": key, "level": selected[1], "ips": []}
+										self.tokens[access_token] = {"key": key, "level": selected[1], "ips": [addr]}
 									else:
 										access_token = self.ips[addr][1]
 										response['contains'] = True
@@ -219,6 +217,9 @@ class Api:
 		access_token = request.query.get("access_token")
 		agent = request.headers.get("User-Agent")
 		addr = request.headers.get("X-Forwarded-For")
+		if self.is_local:
+			addr = "127.0.0.1"
+
 		if access_token is not None:
 			if addr in self.ips.keys():
 				access_token = self.ips[addr][1]
@@ -237,6 +238,7 @@ class Api:
 					else:
 						response['error'] = 'max connection limit exceeded'
 						passed = False
+
 				if passed:
 					response['success'] = True
 
@@ -258,13 +260,13 @@ class Api:
 
 					status = 200
 			else:
-				response['error'] = 'expired/invalid access_token'
+				response['error'] = 'expired/invalid token'
 		else:
 			response['error'] = 'invalid query (access_token parameter missing)'
 
 		if key != "pataticover":
 			self.loop.create_task(self.discord.log("TFM", response, status, addr, key, access_token, agent))
-		return web.json_response(response, status=status)
+		return web.json_response(response, status=200)
 
 	async def tfmlogin(self, request):
 		username = request.query.get("username")
@@ -375,15 +377,11 @@ class Api:
 		return web.Response(text=self.mapstorage_index, content_type="text/html")
 
 	async def transformice(self, request):
-		body = self.invalid_swf
-
 		if request.query.get("swf") is not None:
 			return web.FileResponse("./tfm.swf")
 
 		access_token = request.query.get("access_token")
 		if access_token is not None:
 			if request.query.get("access_token") in self.tokens.keys():
-				body = self.chargeur_swf
-			return web.Response(body=body, content_type="application/x-shockwave-flash")
-
-		return web.Response(body=body, content_type="application/x-shockwave-flash")
+				return web.Response(body=self.chargeur_swf, content_type="application/x-shockwave-flash")
+		return web.FileResponse("./data/invalid.swf")
