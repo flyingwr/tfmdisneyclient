@@ -88,7 +88,7 @@ class Socket(dict):
 										break
 
 		for line, content in enumerate(dumpscript):
-			if "callpropvoid <q>[public]::addEventListener, 2 params" in content:
+			if "addEventListener, 2 params" in content:
 				if "getlocal_0" in dumpscript[line + 1]:
 					if "getproperty" in dumpscript[line + 2]:
 						if "getlex <q>[public]flash.events::ProgressEvent" in dumpscript[line + 3]:
@@ -97,6 +97,18 @@ class Socket(dict):
 									if "getproperty" in dumpscript[line + 6]:
 										self["socket_name"] = (await find_one(GET_PROPERTY, dumpscript[line + 2])).group(2)
 										self["event_socket_data"] = await find_one(GET_PROPERTY, dumpscript[line + 6])
+
+										found = 0
+										for x in range(line, 0, -1):
+											if "getproperty <q>[public]::CLOSE" in dumpscript[x]:
+												for y in range(x, x + 6):
+													if "addEventListener, 2 params" in dumpscript[y]:
+														self[f"event_{'main' if found == 0 else 'bulle'}_socket_close"] = (
+															await find_one(GET_PROPERTY, dumpscript[y - 1])).group(2)
+														found += 1
+														break
+												if found >= 2:
+													break
 										break
 
 		if self["event_socket_data"] is not None:
