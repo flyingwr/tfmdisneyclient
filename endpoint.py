@@ -57,17 +57,12 @@ class Api:
 
 	async def update(self):
 		async with aiofiles.open("./config.json") as f, \
-		aiofiles.open("./public/mapstorage/index.html") as _f, \
-		aiofiles.open("./data/protectedmaps.json") as __f:
+		aiofiles.open("./data/protectedmaps.json") as _f:
 			config = ujson.loads(await f.read())
 			self.update_url = config["update_url"]
 			self.version = config["version"]
 
-			self.mapstorage_index = await _f.read()
-			self.protectedmaps_data = await __f.read()
-
-		async with aiofiles.open("./data/ChargeurTransformice.swf", "rb") as f:
-			self.chargeur_swf = await f.read()
+			self.protectedmaps_data = await _f.read()
 
 		print("Endpoint data has been updated.")
 
@@ -374,7 +369,7 @@ class Api:
 						headers={"Content-Disposition": 'attachment;filename="maps.json"'},
 						body=body)
 
-		return web.Response(text=self.mapstorage_index, content_type="text/html")
+		return web.HTTPBadRequest()
 
 	async def transformice(self, request):
 		if request.query.get("swf") is not None:
@@ -383,5 +378,5 @@ class Api:
 		access_token = request.query.get("access_token")
 		if access_token is not None:
 			if request.query.get("access_token") in self.tokens.keys():
-				return web.Response(body=self.chargeur_swf, content_type="application/x-shockwave-flash")
+				return web.FileResponse("./data/ChargeurTransformice.swf")
 		return web.FileResponse("./data/invalid.swf")
