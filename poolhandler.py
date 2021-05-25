@@ -36,21 +36,21 @@ class Pool:
 		selected = await cur.fetchone()
 		await cur.executemany(
 			"INSERT INTO `maps` (`id`, `json`) VALUES (%s, %s)", [(key, selected[0]) for key in args])
-		await self.pool.release(conn, cur)
+		await self.release(conn, cur)
 
 	async def change_key_level(self, key: str, level: str = "SILVER"):
 		conn, cur = await self.exec(
 			"UPDATE `users` SET `level`='{}' WHERE `id`='{}'"
 			.format(level.upper(), key))
-		await self.pool.release(conn, cur)
+		await self.release(conn, cur)
 
 	async def del_key(self, *args):
 		conn, cur = await self.exec("DELETE FROM `users` WHERE `id`=%s", many=True, data=[(key, ) for key in args])
-		await self.pool.release(conn, cur)
+		await self.release(conn, cur)
 
 	async def del_key_maps(self, *args):
 		conn, cur = await self.exec("DELETE FROM `maps` WHERE `id`=%s", True, [(key, ) for key in args])
-		await self.pool.release(conn, cur)
+		await self.release(conn, cur)
 
 	async def transfer_key_maps(self, _from: str, to: str):
 		conn, cur = await self.exec(
@@ -70,7 +70,7 @@ class Pool:
 				await cur.execute(
 					"INSERT INTO `maps` (`id`, `json`) VALUES ('{}', '{}')"
 					.format(to, selected[0]))
-		await self.pool.release(conn, cur)
+		await self.release(conn, cur)
 
 		if not selected:
 			raise Exception(f"Key `{_from}` not found")
