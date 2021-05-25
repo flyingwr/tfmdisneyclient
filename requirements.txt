@@ -3,5 +3,6 @@ aiohttp
 aiomysql
 asyncio
 discord.py
+gspread
 numpy
 ujson
