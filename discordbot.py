@@ -72,7 +72,7 @@ async def addkey(ctx, *args):
 				level = info[1].upper()
 			data.append((info[0], level))
 
-		conn, cur = await poolhandler.exec("INSERT INTO `users` (`id`, `level`) VALUES (%s, %s)", True, data)
+		conn, cur = await poolhandler.pool.exec("INSERT INTO `users` (`id`, `level`) VALUES (%s, %s)", True, data)
 		await poolhandler.pool.release(conn, cur)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
@@ -82,7 +82,7 @@ async def addkey(ctx, *args):
 @bot.command()
 async def addkeymaps(ctx, *args):
 	try:
-		await self.poolhandler.add_key_maps(*args)
+		await poolhandler.pool.add_key_maps(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
@@ -91,7 +91,7 @@ async def addkeymaps(ctx, *args):
 @bot.command()
 async def changekeylevel(ctx):
 	try:
-		await self.poolhandler.change_key_level(*args)
+		await poolhandler.pool.change_key_level(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
@@ -100,7 +100,7 @@ async def changekeylevel(ctx):
 @bot.command()
 async def delkey(ctx, *args):
 	try:
-		await self.poolhandler.del_key(*args)
+		await poolhandler.pool.del_key(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
@@ -109,7 +109,7 @@ async def delkey(ctx, *args):
 @bot.command()
 async def delkeymaps(ctx, *args):
 	try:
-		await self.poolhandler.del_key_maps(*args)
+		await poolhandler.pool.del_key_maps(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
@@ -118,7 +118,7 @@ async def delkeymaps(ctx, *args):
 @bot.command()
 async def transferkeymaps(ctx, *args):
 	try:
-		await self.poolhandler.transfer_key_maps(*args)
+		await poolhandler.pool.transfer_key_maps(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
