@@ -15,6 +15,7 @@ import os
 import pasteee
 import poolhandler
 import re
+import records
 import ujson
 
 ls_regex = re.compile(r"(@\d+):")
@@ -30,6 +31,7 @@ class Api:
 
 		self.discord = discordbot.bot
 		self.discord_channel = None
+		self.records_data = None
 
 		self.parser: Parser = Parser(is_local=self.is_local)
 
@@ -67,6 +69,9 @@ class Api:
 		print("Endpoint data has been updated.")
 
 		await self.pool.start()
+		await self.loop.create_task(records.update_wr_list())
+		self.records_data = cryptjson.json_zip(records.wr_list)
+
 		self.loop.create_task(self.discord.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
 		self.loop.create_task(self.fetch())
 		
@@ -170,6 +175,8 @@ class Api:
 						selected = await cur.fetchone()
 						if selected:
 							text = selected[0]
+				elif request.query.get("record_list") is not None:
+					text = self.records_data.decode()
 
 		elif request.method == "POST":
 			if status == 200:

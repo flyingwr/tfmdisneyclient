@@ -1,10 +1,8 @@
 from aiohttp import web
 from endpoint import Api
 
-import asyncio
-import os
-
-loop: asyncio.AbstractEventLoop = asyncio.get_event_loop()
+import asyncio, os
+loop = asyncio.get_event_loop()
 
 async def main():
 	app = web.Application()

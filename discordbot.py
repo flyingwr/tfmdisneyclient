@@ -59,14 +59,11 @@ async def on_ready():
 	try:
 		bot.discord_name = str(await bot.fetch_user(429991854348566538))
 	except NotFound:
-		bot.discord_name = "rennan#3148"
+		bot.discord_name = "patati#0017"
 		
 @bot.command()
 async def addkey(ctx, *args):
 	try:
-		conn = await poolhandler.pool.acquire()
-		cur = await conn.cursor()
-
 		data = []
 		for s in args:
 			info = s.split(":")
@@ -75,97 +72,54 @@ async def addkey(ctx, *args):
 				level = info[1].upper()
 			data.append((info[0], level))
 
-		await cur.executemany("INSERT INTO `users` (`id`, `level`) VALUES (%s, %s)", data)
-		await cur.close()
-		await poolhandler.pool.release(conn)
-		await ctx.reply("Database updated")
+		conn, cur = await poolhandler.exec("INSERT INTO `users` (`id`, `level`) VALUES (%s, %s)", True, data)
+		await poolhandler.pool.release(conn, cur)
 	except Exception as e:
-		print(e)
-		await ctx.reply("Query failed")
-
-@bot.command()
-async def changekeylevel(ctx, key: str, level: str = "SILVER"):
-	try:
-		conn = await poolhandler.pool.acquire()
-		cur = await conn.cursor()
-		await cur.execute(
-			"UPDATE `users` SET `level`='{}' WHERE `id`='{}'"
-			.format(level.upper(), key))
-		await cur.close()
-		await poolhandler.pool.release(conn)
+		await ctx.reply(f"Query failed ({e})")
+	else:
 		await ctx.reply("Database updated")
-	except Exception as e:
-		print(e)
-		await ctx.reply("Query failed")
-
-@bot.command()
-async def delkey(ctx, *args):
-	try:
-		conn = await poolhandler.pool.acquire()
-		cur = await conn.cursor()
-		await cur.executemany(
-			"DELETE FROM `users` WHERE `id`=%s", [(key, ) for key in args])
-		await cur.close()
-		await poolhandler.pool.release(conn)
-		await ctx.reply("Database updated")
-	except Exception as e:
-		print(e)
-		await ctx.reply("Query failed")
 
 @bot.command()
 async def addkeymaps(ctx, *args):
 	try:
-		conn = await poolhandler.pool.acquire()
-		cur = await conn.cursor()
-		await cur.execute(
-			"SELECT `json` FROM `maps` WHERE `id`='rsuon55s'")
-		selected = await cur.fetchone()
-		data = [(key, selected[0]) for key in args]
-		await cur.executemany(
-			"INSERT INTO `maps` (`id`, `json`) VALUES (%s, %s)", data)
-		await cur.close()
-		await poolhandler.pool.release(conn)
-		await ctx.reply("Database updated")
+		await self.poolhandler.add_key_maps(*args)
 	except Exception as e:
-		print(e)
-		await ctx.reply("Query failed")
+		await ctx.reply(f"Query failed ({e})")
+	else:
+		await ctx.reply("Database updated")
+
+@bot.command()
+async def changekeylevel(ctx):
+	try:
+		await self.poolhandler.change_key_level(*args)
+	except Exception as e:
+		await ctx.reply(f"Query failed ({e})")
+	else:
+		await ctx.reply("Database updated")
+
+@bot.command()
+async def delkey(ctx, *args):
+	try:
+		await self.poolhandler.del_key(*args)
+	except Exception as e:
+		await ctx.reply(f"Query failed ({e})")
+	else:
+		await ctx.reply("Database updated")
 
 @bot.command()
 async def delkeymaps(ctx, *args):
 	try:
-		conn = await poolhandler.pool.acquire()
-		cur = await conn.cursor()
-		data = [(key, ) for key in args]
-		await cur.executemany(
-			"DELETE FROM `maps` WHERE `id`=%s", data)
-		await cur.close()
-		await poolhandler.pool.release(conn)
-		await ctx.reply("Database updated")
+		await self.poolhandler.del_key_maps(*args)
 	except Exception as e:
-		print(e)
-		await ctx.reply("Query failed")
+		await ctx.reply(f"Query failed ({e})")
+	else:
+		await ctx.reply("Database updated")
 
 @bot.command()
-async def transferkeymaps(ctx, _from: str, to: str):
+async def transferkeymaps(ctx, *args):
 	try:
-		conn = await poolhandler.pool.acquire()
-		cur = await conn.cursor()
-		await cur.execute(
-			"SELECT `json` FROM `maps` WHERE `id`='{}'"
-			.format(_from))
-		selected = await cur.fetchone()
-		if selected:
-			await cur.execute(
-				"INSERT INTO `maps` (`id`, `json`) VALUES ('{}', '{}')"
-				.format(to, selected[0]))
-		await cur.close()
-		await poolhandler.pool.release(conn)
-
-		if not selected:
-			await ctx.reply(f"Key `{_from}` not found in database")
-			raise Exception("Key not found")
+		await self.poolhandler.transfer_key_maps(*args)
 	except Exception as e:
-		print(e)
-		await ctx.reply("Query failed")
+		await ctx.reply(f"Query failed ({e})")
 	else:
 		await ctx.reply("Database updated")

@@ -1,9 +1,6 @@
-from typing import Optional
+from typing import List, Optional
 
-import aiomysql
-import asyncio
-
-pool = None
+import aiomysql, asyncio
 
 class Pool:
 	def __init__(self, loop: Optional[asyncio.AbstractEventLoop] = None):
@@ -19,8 +16,64 @@ class Pool:
 			conn = None
 		return conn
 
-	async def release(self, conn: aiomysql.Connection):
+	async def exec(self, query: str, many: Optional[bool] = False, data: Optional[List] = None) -> aiomysql.Cursor:
+		conn = await self.pool.acquire()
+		cur = await conn.cursor()
+		if many:
+			if data:
+				await cur.executemany(query, data)
+		else:
+			await cur.execute(query)
+		return conn, cur
+
+	async def release(self, conn: aiomysql.Connection, cursor: Optional[aiomysql.Cursor] = None):
+		if cursor is not None:
+			await cursor.close()
 		await self.pool.release(conn)
+
+	async def add_key_maps(self, *args):
+		conn, cur = await self.exec("SELECT `json` FROM `maps` WHERE `id`='rsuon55s'")
+		selected = await cur.fetchone()
+		await cur.executemany(
+			"INSERT INTO `maps` (`id`, `json`) VALUES (%s, %s)", [(key, selected[0]) for key in args])
+		await self.pool.release(conn, cur)
+
+	async def change_key_level(self, key: str, level: str = "SILVER"):
+		conn, cur = await self.exec(
+			"UPDATE `users` SET `level`='{}' WHERE `id`='{}'"
+			.format(level.upper(), key))
+		await self.pool.release(conn, cur)
+
+	async def del_key(self, *args):
+		conn, cur = await self.exec("DELETE FROM `users` WHERE `id`=%s", many=True, data=[(key, ) for key in args])
+		await self.pool.release(conn, cur)
+
+	async def del_key_maps(self, *args):
+		conn, cur = await self.exec("DELETE FROM `maps` WHERE `id`=%s", True, [(key, ) for key in args])
+		await self.pool.release(conn, cur)
+
+	async def transfer_key_maps(self, _from: str, to: str):
+		conn, cur = await self.exec(
+			"SELECT `json` FROM `maps` WHERE `id`='{}'"
+			.format(_from))
+		selected = await cur.fetchone()
+		if selected:
+			await cur.execute(
+				"SELECT `id` FROM `maps` WHERE `id`='{}'"
+				.format(to))
+			_selected = await cur.fetchone()
+			if _selected:
+				await cur.execute(
+					"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
+					.format(selected[0], to))
+			else:
+				await cur.execute(
+					"INSERT INTO `maps` (`id`, `json`) VALUES ('{}', '{}')"
+					.format(to, selected[0]))
+		await self.pool.release(conn, cur)
+
+		if not selected:
+			raise Exception(f"Key `{_from}` not found")
 
 	async def start(self):
 		self.pool = await aiomysql.create_pool(host="remotemysql.com",

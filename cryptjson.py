@@ -1,8 +1,5 @@
-import base64
-import zlib
-import ujson
-
 from typing import AnyStr, Dict, List, Union
+import base64, ujson, zlib
 
 def json_zip(j: Union[Dict, List]) -> AnyStr:
 	return base64.b64encode(
