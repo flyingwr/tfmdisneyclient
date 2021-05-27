@@ -9,7 +9,9 @@ async def main():
 	endpoint = Api(loop)
 	await endpoint.update()
 
+	app.router.add_get('/', endpoint.index)
 	app.router.add_get('/auth', endpoint.auth)
+	app.router.add_post('/auth', endpoint.auth)
 	app.router.add_get('/get_keys', endpoint.get_keys)
 	app.router.add_get('/data', endpoint.data)
 	app.router.add_post('/data', endpoint.data)

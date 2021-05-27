@@ -38,6 +38,32 @@ class Api:
 		poolhandler.pool = poolhandler.Pool(self.loop)
 		self.pool: poolhandler.Pool = poolhandler.pool
 
+	def storage_access(self, key: str, level: str, addr: Optional[str] = None) -> Dict:
+		result = {}
+
+		if addr:
+			if addr not in self.ips.keys():
+				access_token = generate_token()
+				self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
+				self.loop.create_task(self.del_token(addr, access_token))
+				self.tokens[access_token] = {"key": key, "level": level, "ips": [addr]}
+			else:
+				access_token = self.ips[addr][1]
+				result["contains"] = True
+			result["access_token"] = access_token
+			result["sleep"] = datetime.datetime.fromtimestamp(
+				datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
+
+		return result
+
+	async def check_key(self, key: str):
+		conn = await self.pool.acquire()
+		cur = await conn.cursor()
+		await cur.execute(
+			"SELECT `uuid`, `level` FROM `users` WHERE `id`='{}'"
+			.format(key))
+		return conn, cur, await cur.fetchone()
+
 	async def del_token(self, ip: str, token: str):
 		await asyncio.sleep(3600)
 
@@ -69,15 +95,17 @@ class Api:
 		print("Endpoint data has been updated.")
 
 		await self.pool.start()
-		await self.loop.create_task(records.update_wr_list())
-		self.records_data = cryptjson.json_zip(records.wr_list)
+		# await self.loop.create_task(records.update_wr_list())
+		# self.records_data = cryptjson.json_zip(records.wr_list)
 
 		self.loop.create_task(self.discord.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
 		self.loop.create_task(self.fetch())
+
+	async def index(self, request):
+		return web.FileResponse("./public/auth/index.html")		
 		
 	async def auth(self, request):		
-		response = {}
-		response['success'] = False
+		response = dict(success=False)
 		status = 401
 
 		key = request.query.get("key")
@@ -88,14 +116,24 @@ class Api:
 		if self.is_local:
 			addr = "127.0.0.1"
 
-		if key is not None:
-			conn = await self.pool.acquire()
-			if conn:
-				cur = await conn.cursor()
-				await cur.execute(
-					"SELECT `uuid`, `level` FROM `users` WHERE `id`='{}'"
-					.format(key))
-				selected = await cur.fetchone()
+		text = None
+		if request.method == "POST":
+			if "aiohttp" not in agent:
+				data = await request.post()
+				key = data.get("key")
+				if key is not None:
+					conn, cur, selected = await self.check_key(key)
+					if selected:
+						result = self.storage_access(key, selected[1], addr)
+						text = f"Seu link de acesso foi gerado: {request.headers.get('Referer')}transformice?access_token={result.get('access_token')}"
+						status = 200
+					else:
+						text = "Key inválida"
+					await self.pool.release(conn, cur)
+
+		elif request.method == "GET":
+			if key is not None:
+				conn, cur, selected = await self.check_key(key)
 				if selected:
 					if client_version == self.version:
 						if uuid is not None:
@@ -106,22 +144,7 @@ class Api:
 										.format(uuid, key))
 									
 								response['success'] = True
-
-								access_token = ""
-
-								if addr is not None:
-									if addr not in self.ips.keys():
-										access_token = generate_token()
-										self.ips[addr] = (datetime.datetime.now().timestamp(), access_token)
-										self.loop.create_task(self.del_token(addr, access_token))
-										self.tokens[access_token] = {"key": key, "level": selected[1], "ips": [addr]}
-									else:
-										access_token = self.ips[addr][1]
-										response['contains'] = True
-									response['sleep'] = datetime.datetime.fromtimestamp(
-										datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
-
-								response['access_token'] = access_token
+								response.update(self.storage_access(key, selected[1], addr))
 								status = 200
 							else:
 								response['error'] = 'uuid does not match'
@@ -134,17 +157,17 @@ class Api:
 						status = 406
 				else:
 					response["error"] = "invalid key"
-
-				await cur.close()
-				await self.pool.release(conn)
+					await self.pool.release(conn, cur)
 			else:
-				response["error"] = "database connection failed"
-		else:
-			response["error"] = "invalid query (key parameter missing)"
+				response["error"] = "invalid query (key parameter missing)"
 
 		if key != "pataticover":
 			self.loop.create_task(self.discord.log("Login", response, status, addr, key, browser=agent))
-		return web.json_response(response, status=status)
+
+		if text is None:
+			return web.json_response(response, status=status)
+		else:
+			return web.Response(text=text)
 
 	async def data(self, request):
 		text = ""
@@ -203,10 +226,8 @@ class Api:
 								"INSERT INTO `config` (`id`, `text`) VALUES ('{}', '{}')"
 								.format(self.tokens[access_token]["key"], config))
 
-		if conn:
-			await cur.close()
-			await self.pool.release(conn)
-
+		await self.pool.release(conn, cur)
+		
 		return web.Response(text=text, status=status)
 
 	async def get_keys(self, request):
@@ -354,8 +375,7 @@ class Api:
 						else:
 							map_data = None
 
-					await cur.close()
-					await self.pool.release(conn)
+					await self.pool.release(conn, cur)
 				else:
 					map_data = None
 		else:
