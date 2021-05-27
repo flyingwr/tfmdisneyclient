@@ -125,7 +125,8 @@ class Api:
 					conn, cur, selected = await self.check_key(key)
 					if selected:
 						result = self.storage_access(key, selected[1], addr)
-						text = f"Seu link de acesso foi gerado: {request.headers.get('Referer')}transformice?access_token={result.get('access_token')}"
+						link = f"{request.headers.get('Referer')}transformice?access_token={result.get('access_token')}"
+						text = f"Seu link de acesso foi gerado: <a href='{link}'>{link}</a>"
 						status = 200
 					else:
 						text = "Key inválida"
@@ -157,7 +158,7 @@ class Api:
 						status = 406
 				else:
 					response["error"] = "invalid key"
-					await self.pool.release(conn, cur)
+				await self.pool.release(conn, cur)
 			else:
 				response["error"] = "invalid query (key parameter missing)"
 
@@ -227,7 +228,7 @@ class Api:
 								.format(self.tokens[access_token]["key"], config))
 
 		await self.pool.release(conn, cur)
-		
+
 		return web.Response(text=text, status=status)
 
 	async def get_keys(self, request):
