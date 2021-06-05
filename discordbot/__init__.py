@@ -1,8 +1,8 @@
+import sql_pool
+
 from discord import NotFound
-from sql_pool import pool
 
 from .bot import Bot
-
 _bot = Bot()
 
 @_bot.event
@@ -27,8 +27,8 @@ async def addkey(ctx, *args):
 				level = info[1].upper()
 			data.append((info[0], level))
 
-		conn, cur = await pool.exec("INSERT INTO `users` (`id`, `level`) VALUES (%s, %s)", True, data)
-		await pool.release(conn, cur)
+		conn, cur = await sql_pool.pool.exec("INSERT INTO `users` (`id`, `level`) VALUES (%s, %s)", True, data)
+		await sql_pool.pool.release(conn, cur)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
@@ -37,7 +37,7 @@ async def addkey(ctx, *args):
 @_bot.command()
 async def addkeymaps(ctx, *args):
 	try:
-		await pool.add_key_maps(*args)
+		await sql_pool.pool.add_key_maps(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
@@ -46,7 +46,7 @@ async def addkeymaps(ctx, *args):
 @_bot.command()
 async def changekeylevel(ctx):
 	try:
-		await pool.change_key_level(*args)
+		await sql_pool.pool.change_key_level(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
@@ -55,7 +55,7 @@ async def changekeylevel(ctx):
 @_bot.command()
 async def delkey(ctx, *args):
 	try:
-		await pool.del_key(*args)
+		await sql_pool.pool.del_key(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
@@ -64,7 +64,7 @@ async def delkey(ctx, *args):
 @_bot.command()
 async def delkeymaps(ctx, *args):
 	try:
-		await pool.del_key_maps(*args)
+		await sql_pool.pool.del_key_maps(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
@@ -73,7 +73,7 @@ async def delkeymaps(ctx, *args):
 @_bot.command()
 async def transferkeymaps(ctx, *args):
 	try:
-		await pool.transfer_key_maps(*args)
+		await sql_pool.pool.transfer_key_maps(*args)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:
