@@ -8,14 +8,13 @@ import aiofiles
 import aiomysql
 import asyncio
 import cryptjson
-import datetime
 import discordbot
-import loadfiles
+import datetime
 import os
 import pasteee
-import poolhandler
 import re
 import records
+import sql_pool
 import ujson
 
 ls_regex = re.compile(r"(@\d+):")
@@ -29,14 +28,10 @@ class Api:
 
 		self.loop: asyncio.AbstractEventLoop = loop or asyncio.get_event_loop()
 
-		self.discord = discordbot.bot
-		self.discord_channel = None
+		self.discord = discordbot._bot
 		self.records_data = None
 
 		self.parser: Parser = Parser(is_local=self.is_local)
-
-		poolhandler.pool = poolhandler.Pool(self.loop)
-		self.pool: poolhandler.Pool = poolhandler.pool
 
 	def storage_access(self, key: str, level: str, addr: Optional[str] = None) -> Dict:
 		result = {}
@@ -50,14 +45,14 @@ class Api:
 			else:
 				access_token = self.ips[addr][1]
 				result["contains"] = True
-			result["access_token"] = access_token
-			result["sleep"] = datetime.datetime.fromtimestamp(
-				datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min
+			result.update(dict(access_token=access_token, level=level,
+				sleep=datetime.datetime.fromtimestamp(
+					datetime.datetime.now().timestamp() - self.ips[addr][0]).timetuple().tm_min))
 
 		return result
 
 	async def check_key(self, key: str):
-		conn = await self.pool.acquire()
+		conn = await sql_pool.pool.acquire()
 		cur = await conn.cursor()
 		await cur.execute(
 			"SELECT `uuid`, `level` FROM `users` WHERE `id`='{}'"
@@ -94,15 +89,22 @@ class Api:
 
 		print("Endpoint data has been updated.")
 
-		await self.pool.start()
-		await self.loop.create_task(records.update_wr_list())
-		self.records_data = cryptjson.json_zip(records.wr_list)
+		sql_pool.pool = sql_pool.Pool()
+		await sql_pool.pool.start()
+		# await self.loop.create_task(records.update_wr_list())
+		# self.records_data = cryptjson.json_zip(records.wr_list)
 
 		self.loop.create_task(self.discord.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
 		self.loop.create_task(self.fetch())
 
 	async def index(self, request):
-		return web.FileResponse("./public/auth/index.html")		
+		return web.FileResponse("./public/index/index.html")
+
+	async def api_handler(self, request):
+		path = request.path
+		if path == "/api/discord":
+			return web.Response(text=self.discord.discord_name or "patati#0017")
+		return web.HTTPNotFound()
 		
 	async def auth(self, request):		
 		response = dict(success=False)
@@ -116,63 +118,49 @@ class Api:
 		if self.is_local:
 			addr = "127.0.0.1"
 
-		text = None
-		if request.method == "POST":
-			if "aiohttp" not in agent:
-				data = await request.post()
-				key = data.get("key")
-				if key is not None:
-					conn, cur, selected = await self.check_key(key)
-					if selected:
-						result = self.storage_access(key, selected[1], addr)
-						link = f"{request.headers.get('Referer')}transformice?access_token={result.get('access_token')}"
-						text = f"Seu link de acesso foi gerado: <a href='{link}'>{link}</a>"
-						status = 200
-					else:
-						text = "Key inválida"
-					await self.pool.release(conn, cur)
-
-		elif request.method == "GET":
+		outdated = False
+		if agent.startswith("DisneyClient"):
+			if "/" in agent:
+				client_version = agent.replace("DisneyClient/", "")
+				outdated = client_version and client_version != self.version
+		else:
+			outdated = client_version and client_version != self.version
+		if outdated:
+			response.update(dict(error="outdated version", update_url=self.update_url))
+			status = 406
+		else:
 			if key is not None:
 				conn, cur, selected = await self.check_key(key)
 				if selected:
-					if client_version == self.version:
-						if uuid is not None:
-							if selected[0] in (None, uuid):
-								if selected[0] is None:
-									await cur.execute(
-										"UPDATE `users` SET `uuid`='{}' WHERE `id`='{}'"
-										.format(uuid, key))
-									
-								response['success'] = True
-								response.update(self.storage_access(key, selected[1], addr))
-								status = 200
-							else:
-								response['error'] = 'uuid does not match'
-								status = 451
+					if uuid is not None:
+						if selected[0] in (None, uuid):
+							if selected[0] is None:
+								await cur.execute(
+									"UPDATE `users` SET `uuid`='{}' WHERE `id`='{}'"
+									.format(uuid, key))
 						else:
-							response['error'] = 'invalid query (uuid parameter missing)'
-					else:
-						response['error'] = 'outdated version'
-						response['update_url'] = self.update_url
-						status = 406
+							response["error"] = "uuid does not match"
+							status = 451
+					if status != 451:
+						response["success"] = True
+						response.update(self.storage_access(key, selected[1], addr))
+						status = 200
 				else:
 					response["error"] = "invalid key"
-				await self.pool.release(conn, cur)
+				await sql_pool.pool.release(conn, cur)
 			else:
 				response["error"] = "invalid query (key parameter missing)"
 
 		if key != "pataticover":
 			self.loop.create_task(self.discord.log("Login", response, status, addr, key, browser=agent))
 
-		if text is None:
-			return web.json_response(response, status=status)
-		else:
-			return web.Response(text=text)
+		return web.json_response(response, status=status)
 
 	async def data(self, request):
 		text = ""
 		status = 401
+
+		conn = None
 
 		access_token = request.query.get("access_token")
 		if access_token is not None:
@@ -182,11 +170,12 @@ class Api:
 			if access_token in self.tokens.keys():
 				status = 200
 
-		conn = await self.pool.acquire()
-		if conn:
-			cur = await conn.cursor()
 		if request.method == "GET":
 			if status == 200:
+				conn = await sql_pool.pool.acquire()
+				if conn:
+					cur = await conn.cursor()
+
 				if request.query.get("soft") is not None:
 					text = self.tokens[access_token].get("soft") or ""
 				elif request.query.get("protected") is not None:
@@ -204,11 +193,14 @@ class Api:
 
 		elif request.method == "POST":
 			if status == 200:
+				conn = await sql_pool.pool.acquire()
+				if conn:
+					cur = await conn.cursor()
+
 				post = await request.post()
 				soft = post.get("soft")
 				if soft is not None:
-					level = self.tokens[access_token]["level"]
-					if level == "PLATINUM":
+					if self.tokens[access_token]["level"] == "PLATINUM":
 						self.tokens[access_token]["soft"] = soft
 
 				config = post.get("config")
@@ -227,7 +219,17 @@ class Api:
 								"INSERT INTO `config` (`id`, `text`) VALUES ('{}', '{}')"
 								.format(self.tokens[access_token]["key"], config))
 
-		await self.pool.release(conn, cur)
+		elif request.method == "PUT":
+			if status == 200:
+				post = await request.post()
+				soft = post.get("soft")
+				if soft is not None:
+					if self.tokens[access_token]["level"] == "PLATINUM":
+						print(soft)
+						self.tokens[access_token]["soft"] = soft
+
+		if conn:
+			await sql_pool.pool.release(conn, cur)
 
 		return web.Response(text=text, status=status)
 
@@ -268,17 +270,20 @@ class Api:
 
 					keys = self.parser.keys()
 					
-					if level == "FREE":
+					if level in ("FREE", "BRONZE"):
 						del keys["SILVER"]
 						del keys["GOLD"]
 						del keys["PLATINUM"]
+
+						if level == "FREE":
+							del keys["BRONZE"]
 					elif level == "SILVER":
 						del keys["GOLD"]
 						del keys["PLATINUM"]
 					elif level in ("GOLD", "GOLD2"):
 						del keys["PLATINUM"]
 
-					response["keys"] = {"premium_level": level, "discord": self.discord.discord_name, "dc_code": "pretcheck"}
+					response["keys"] = {"premium_level": level, "discord": self.discord.discord_name}
 					for v in keys.values():
 						response["keys"].update(v)
 
@@ -322,7 +327,7 @@ class Api:
 		if key is not None:
 			level = self.tokens[access_token]["level"]
 			if level in ("SILVER", "GOLD", "GOLD_II", "PLATINUM"):
-				conn = await self.pool.acquire()
+				conn = await sql_pool.pool.acquire()
 				if conn:
 					cur = await conn.cursor()
 					await cur.execute(
@@ -376,7 +381,7 @@ class Api:
 						else:
 							map_data = None
 
-					await self.pool.release(conn, cur)
+					await sql_pool.pool.release(conn, cur)
 				else:
 					map_data = None
 		else:
@@ -405,6 +410,10 @@ class Api:
 
 		access_token = request.query.get("access_token")
 		if access_token is not None:
-			if request.query.get("access_token") in self.tokens.keys():
-				return web.FileResponse("./data/ChargeurTransformice.swf")
+			if access_token in self.tokens.keys():
+				level = self.tokens[access_token]["level"]
+				if level != "BRONZE":
+					return web.FileResponse("./data/ChargeurTransformice.swf")
+				else:
+					return web.FileResponse("./data/ChargeurTransformiceBronze.swf")
 		return web.FileResponse("./data/invalid.swf")

@@ -1,0 +1,111 @@
+@font-face {
+	font-family: "Whitney-Semibold Regular";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Whitney-Semibold Regular"), url("whitneysemibold.woff") format("woff");
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background: linear-gradient(#3d3b38 50%, #2e2c29 50%);
+	height: 100%;
+	overflow: hidden;
+}
+
+.discord-container {
+	color: white;
+	font-family: "Whitney-Semibold Regular";
+	font-weight: normal;
+	font-size: 16px;
+	user-select: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+.discord-container small {
+	position: relative;
+	top: -7px;
+	user-select: text;
+}
+
+.key-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: white;
+	min-height: 90vh;
+	user-select: none;
+}
+.key-container img {
+	max-width: 80px;
+}
+
+.key-btn {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color:#ffffff;
+	border-radius:1px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#2e2c29;
+	font-family:"Whitney-Semibold Regular";
+	font-size:18px;
+	font-weight:normal;
+	padding:34px 40px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+	margin-top: 4px;
+}
+.key-btn:hover {
+	background-color:#e0e0e0;
+}
+.key-btn:active {
+	position:relative;
+	top:1px;
+}
+
+.key-text {
+	color: white;
+	font-family: "Whitney-Semibold Regular";
+	font-weight: normal;
+	font-size: 18px;
+	white-space: pre-line;
+}
+
+.fetch-text {
+	margin-top: 5px;
+	font-size: 10px;
+}
+
+.key-input {
+	padding: 2px;
+	font-size: 14px;
+	border: 1px solid #000000;
+	border-radius: 1px;
+	background-color: #ffffff;
+	color: #2e2c29;
+	box-shadow: 0px 0px 10px rgba(66,66,66,.75);
+	margin-top: 4px;
+	width: 120px;
+}
+.key-input:hover {
+	background-color:#e0e0e0;
+}
+.key-input:focus {
+	outline: none;
+}
+
+.no-display {
+	display: none;
+}
+
+.invisible {
+	visibility: hidden;
+}

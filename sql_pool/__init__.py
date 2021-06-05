@@ -2,6 +2,8 @@ from typing import List, Optional
 
 import aiomysql, asyncio
 
+pool = None
+
 class Pool:
 	def __init__(self, loop: Optional[asyncio.AbstractEventLoop] = None):
 		self.pool: aiomysql.Pool = None
@@ -76,9 +78,11 @@ class Pool:
 			raise Exception(f"Key `{_from}` not found")
 
 	async def start(self):
-		self.pool = await aiomysql.create_pool(host="remotemysql.com",
-			user="iig9ez4StJ", password="v0TNEk0vsI",
-			db="iig9ez4StJ", loop=self.loop,
-			autocommit=True)
-
-		print("[Pool] Connected to remotemysql")
+		try:
+			self.pool = await aiomysql.create_pool(host="remotemysql.com",
+				user="iig9ez4StJ", password="v0TNEk0vsI",
+				db="iig9ez4StJ", loop=self.loop,
+				autocommit=True)
+			print("[Pool] Connected to remotemysql")
+		except aiomysql.OperationalError:
+			print("[Pool] Error: can't connect to remotemysql")
