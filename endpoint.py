@@ -91,8 +91,8 @@ class Api:
 
 		sql_pool.pool = sql_pool.Pool()
 		await sql_pool.pool.start()
-		# await self.loop.create_task(records.update_wr_list())
-		# self.records_data = cryptjson.json_zip(records.wr_list)
+		await self.loop.create_task(records.update_wr_list())
+		self.records_data = cryptjson.json_zip(records.wr_list)
 
 		self.loop.create_task(self.discord.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
 		self.loop.create_task(self.fetch())
