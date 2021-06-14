@@ -1,6 +1,7 @@
 import sql_pool
 
 from discord import NotFound
+from discord.ext import commands
 
 from .bot import Bot
 _bot = Bot()
@@ -17,6 +18,7 @@ async def on_ready():
 		_bot.discord_name = "patati#0017"
 		
 @_bot.command()
+@commands.is_owner()
 async def addkey(ctx, *args):
 	try:
 		data = []
@@ -35,6 +37,7 @@ async def addkey(ctx, *args):
 		await ctx.reply("Database updated")
 
 @_bot.command()
+@commands.is_owner()
 async def addkeymaps(ctx, *args):
 	try:
 		await sql_pool.pool.add_key_maps(*args)
@@ -44,6 +47,7 @@ async def addkeymaps(ctx, *args):
 		await ctx.reply("Database updated")
 
 @_bot.command()
+@commands.is_owner()
 async def changekeylevel(ctx):
 	try:
 		await sql_pool.pool.change_key_level(*args)
@@ -53,6 +57,7 @@ async def changekeylevel(ctx):
 		await ctx.reply("Database updated")
 
 @_bot.command()
+@commands.is_owner()
 async def delkey(ctx, *args):
 	try:
 		await sql_pool.pool.del_key(*args)
@@ -62,6 +67,7 @@ async def delkey(ctx, *args):
 		await ctx.reply("Database updated")
 
 @_bot.command()
+@commands.is_owner()
 async def delkeymaps(ctx, *args):
 	try:
 		await sql_pool.pool.del_key_maps(*args)
@@ -71,6 +77,7 @@ async def delkeymaps(ctx, *args):
 		await ctx.reply("Database updated")
 
 @_bot.command()
+@commands.is_owner()
 async def transferkeymaps(ctx, *args):
 	try:
 		await sql_pool.pool.transfer_key_maps(*args)

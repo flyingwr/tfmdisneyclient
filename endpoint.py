@@ -55,8 +55,8 @@ class Api:
 		conn = await sql_pool.pool.acquire()
 		cur = await conn.cursor()
 		await cur.execute(
-			"SELECT `uuid`, `level` FROM `users` WHERE `id`='{}'"
-			.format(key))
+			"SELECT `uuid`, `level` FROM `users` WHERE `id`=%s",
+			(key, ))
 		return conn, cur, await cur.fetchone()
 
 	async def del_token(self, ip: str, token: str):
@@ -136,8 +136,8 @@ class Api:
 						if selected[0] in (None, uuid):
 							if selected[0] is None:
 								await cur.execute(
-									"UPDATE `users` SET `uuid`='{}' WHERE `id`='{}'"
-									.format(uuid, key))
+									"UPDATE `users` SET `uuid`=%s WHERE `id`=%s",
+									(uuid, key))
 						else:
 							response["error"] = "uuid does not match"
 							status = 451
@@ -183,8 +183,8 @@ class Api:
 				elif request.query.get("config") is not None:
 					if conn:
 						await cur.execute(
-							"SELECT `text` FROM `config` WHERE `id`='{}'"
-							.format(self.tokens[access_token]["key"]))
+							"SELECT `text` FROM `config` WHERE `id`=%s"
+							(self.tokens[access_token]["key"], ))
 						selected = await cur.fetchone()
 						if selected:
 							text = selected[0]
@@ -207,17 +207,17 @@ class Api:
 				if config is not None:
 					if conn:
 						await cur.execute(
-							"SELECT `text` FROM `config` WHERE `id`='{}'"
-							.format(self.tokens[access_token]["key"]))
+							"SELECT `text` FROM `config` WHERE `id`=%s"
+							(self.tokens[access_token]["key"], ))
 						selected = await cur.fetchone()
 						if selected:
 							await cur.execute(
-								"UPDATE `config` SET `text`='{}' WHERE `id`='{}'"
-								.format(config, self.tokens[access_token]["key"]))
+								"UPDATE `config` SET `text`=%s WHERE `id`=%s"
+								(config, self.tokens[access_token]["key"]))
 						else:
 							await cur.execute(
-								"INSERT INTO `config` (`id`, `text`) VALUES ('{}', '{}')"
-								.format(self.tokens[access_token]["key"], config))
+								"INSERT INTO `config` (`id`, `text`) VALUES (%s, %s)"
+								(self.tokens[access_token]["key"], config))
 
 		elif request.method == "PUT":
 			if status == 200:
@@ -331,8 +331,8 @@ class Api:
 				if conn:
 					cur = await conn.cursor()
 					await cur.execute(
-						"SELECT `json` FROM `maps` WHERE `id`='{}'"
-						.format(key))
+						"SELECT `json` FROM `maps` WHERE `id`=%s"
+						(key, ))
 					selected = await cur.fetchone()
 					if selected:
 						body = selected[0].encode()
@@ -365,8 +365,8 @@ class Api:
 									sel_decoded = sel_decoded.replace("##", "#")
 									sel_decoded = re.sub(r"#$", "", sel_decoded)
 									await cur.execute(
-										"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
-										.format(cryptjson.text_encode(sel_decoded).decode(), key))
+										"UPDATE `maps` SET `json`=%s WHERE `id`=%s"
+										(cryptjson.text_encode(sel_decoded).decode(), key))
 							except Exception as e:
 								print(e)
 
