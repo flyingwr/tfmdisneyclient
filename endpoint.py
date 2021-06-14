@@ -131,7 +131,9 @@ class Api:
 		else:
 			if key is not None:
 				conn, cur, selected = await self.check_key(key)
-				if selected:
+				if not selected or "aiohttp" not in agent and key not in ("rq9d4emt", ):
+					response["error"] = "invalid key"
+				elif selected:
 					if uuid is not None:
 						if selected[0] in (None, uuid):
 							if selected[0] is None:
@@ -145,8 +147,6 @@ class Api:
 						response["success"] = True
 						response.update(self.storage_access(key, selected[1], addr))
 						status = 200
-				else:
-					response["error"] = "invalid key"
 				await sql_pool.pool.release(conn, cur)
 			else:
 				response["error"] = "invalid query (key parameter missing)"

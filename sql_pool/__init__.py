@@ -42,8 +42,8 @@ class Pool:
 
 	async def change_key_level(self, key: str, level: str = "SILVER"):
 		conn, cur = await self.exec(
-			"UPDATE `users` SET `level`='{}' WHERE `id`='{}'"
-			.format(level.upper(), key))
+			"UPDATE `users` SET `level`=%s WHERE `id`=%s",
+			(level.upper(), key))
 		await self.release(conn, cur)
 
 	async def del_key(self, *args):
@@ -56,22 +56,22 @@ class Pool:
 
 	async def transfer_key_maps(self, _from: str, to: str):
 		conn, cur = await self.exec(
-			"SELECT `json` FROM `maps` WHERE `id`='{}'"
-			.format(_from))
+			"SELECT `json` FROM `maps` WHERE `id`=%s",
+			(_from, ))
 		selected = await cur.fetchone()
 		if selected:
 			await cur.execute(
-				"SELECT `id` FROM `maps` WHERE `id`='{}'"
-				.format(to))
+				"SELECT `id` FROM `maps` WHERE `id`=%s",
+				(to, ))
 			_selected = await cur.fetchone()
 			if _selected:
 				await cur.execute(
-					"UPDATE `maps` SET `json`='{}' WHERE `id`='{}'"
-					.format(selected[0], to))
+					"UPDATE `maps` SET `json`=%s WHERE `id`=%s",
+					(selected[0], to))
 			else:
 				await cur.execute(
-					"INSERT INTO `maps` (`id`, `json`) VALUES ('{}', '{}')"
-					.format(to, selected[0]))
+					"INSERT INTO `maps` (`id`, `json`) VALUES (%s, %s)",
+					(to, selected[0]))
 		await self.release(conn, cur)
 
 		if not selected:
