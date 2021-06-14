@@ -183,7 +183,7 @@ class Api:
 				elif request.query.get("config") is not None:
 					if conn:
 						await cur.execute(
-							"SELECT `text` FROM `config` WHERE `id`=%s"
+							"SELECT `text` FROM `config` WHERE `id`=%s",
 							(self.tokens[access_token]["key"], ))
 						selected = await cur.fetchone()
 						if selected:
@@ -207,16 +207,16 @@ class Api:
 				if config is not None:
 					if conn:
 						await cur.execute(
-							"SELECT `text` FROM `config` WHERE `id`=%s"
+							"SELECT `text` FROM `config` WHERE `id`=%s",
 							(self.tokens[access_token]["key"], ))
 						selected = await cur.fetchone()
 						if selected:
 							await cur.execute(
-								"UPDATE `config` SET `text`=%s WHERE `id`=%s"
+								"UPDATE `config` SET `text`=%s WHERE `id`=%s",
 								(config, self.tokens[access_token]["key"]))
 						else:
 							await cur.execute(
-								"INSERT INTO `config` (`id`, `text`) VALUES (%s, %s)"
+								"INSERT INTO `config` (`id`, `text`) VALUES (%s, %s)",
 								(self.tokens[access_token]["key"], config))
 
 		elif request.method == "PUT":
@@ -331,7 +331,7 @@ class Api:
 				if conn:
 					cur = await conn.cursor()
 					await cur.execute(
-						"SELECT `json` FROM `maps` WHERE `id`=%s"
+						"SELECT `json` FROM `maps` WHERE `id`=%s",
 						(key, ))
 					selected = await cur.fetchone()
 					if selected:
@@ -365,7 +365,7 @@ class Api:
 									sel_decoded = sel_decoded.replace("##", "#")
 									sel_decoded = re.sub(r"#$", "", sel_decoded)
 									await cur.execute(
-										"UPDATE `maps` SET `json`=%s WHERE `id`=%s"
+										"UPDATE `maps` SET `json`=%s WHERE `id`=%s",
 										(cryptjson.text_encode(sel_decoded).decode(), key))
 							except Exception as e:
 								print(e)
