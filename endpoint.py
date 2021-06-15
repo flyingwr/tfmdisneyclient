@@ -257,7 +257,7 @@ class Api:
 
 				level = self.tokens[access_token]["level"]
 				limit = 1
-				if level == "PLATINUM":
+				if key in ("bolsonaro2022", "pataticover"):
 					limit = 10
 
 				passed = True
