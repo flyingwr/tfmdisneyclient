@@ -2,6 +2,7 @@ import sql_pool
 
 from discord import NotFound
 from discord.ext import commands
+from typing import Optional
 
 from .bot import Bot
 _bot = Bot()
@@ -81,6 +82,16 @@ async def delkeymaps(ctx, *args):
 async def transferkeymaps(ctx, *args):
 	try:
 		await sql_pool.pool.transfer_key_maps(*args)
+	except Exception as e:
+		await ctx.reply(f"Query failed ({e})")
+	else:
+		await ctx.reply("Database updated")
+
+@_bot.command()
+@commands.is_owner()
+async def browser_auth(ctx, key: str, perm: Optional[bool] = False):
+	try:
+		await sql_pool.pool.browser_auth_perm(key, perm)
 	except Exception as e:
 		await ctx.reply(f"Query failed ({e})")
 	else:

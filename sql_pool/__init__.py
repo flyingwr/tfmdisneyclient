@@ -40,6 +40,12 @@ class Pool:
 			"INSERT INTO `maps` (`id`, `json`) VALUES (%s, %s)", [(key, selected[0]) for key in args])
 		await self.release(conn, cur)
 
+	async def browser_auth_perm(self, key: str, perm: bool):
+		conn, cur = await self.exec(
+			"UPDATE `users` SET `browser_access`=%s WHERE `id`=%s",
+			(int(perm), key))
+		await self.release(conn, cur)
+
 	async def change_key_level(self, key: str, level: str = "SILVER"):
 		conn, cur = await self.exec(
 			"UPDATE `users` SET `level`=%s WHERE `id`=%s",
@@ -80,7 +86,7 @@ class Pool:
 	async def start(self):
 		try:
 			self.pool = await aiomysql.create_pool(host="remotemysql.com",
-				user="iig9ez4StJ", password="v0TNEk0vsI",
+				user="iig9ez4StJ", password="M93f3gN3ZP",
 				db="iig9ez4StJ", loop=self.loop,
 				autocommit=True)
 			print("[Pool] Connected to remotemysql")
