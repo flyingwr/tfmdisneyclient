@@ -96,7 +96,7 @@ class Api:
 			await self.loop.create_task(records.update_wr_list())
 			self.records_data = cryptjson.json_zip(records.wr_list)
 
-		self.loop.create_task(self.discord.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
+		self.loop.create_task(self.discord.start("ODU4ODM4MDA1Nzk1Mzg5NDYw.YNj9OQ.Q8NFmDIT2KnA-2FZM5rRPFOkP5Y"))
 		self.loop.create_task(self.fetch())
 
 	async def index(self, request):

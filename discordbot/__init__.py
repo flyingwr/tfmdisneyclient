@@ -11,8 +11,8 @@ _bot = Bot()
 async def on_ready():
 	print("[Discord] Logged in.")
 
-	_bot.log_channel = _bot.get_channel(829368194812346448)
-	_bot.log_channel2 = _bot.get_channel(840653124561534996)
+	_bot.log_channel = _bot.get_channel(857625605456789504)
+	_bot.log_channel2 = _bot.get_channel(857625624755830794)
 	try:
 		_bot.discord_name = str(await _bot.fetch_user(754181017253707797))
 	except NotFound:
