@@ -14,9 +14,9 @@ async def on_ready():
 	_bot.log_channel = _bot.get_channel(829368194812346448)
 	_bot.log_channel2 = _bot.get_channel(840653124561534996)
 	try:
-		_bot.discord_name = str(await _bot.fetch_user(429991854348566538))
+		_bot.discord_name = str(await _bot.fetch_user(754181017253707797))
 	except NotFound:
-		_bot.discord_name = "patati#0017"
+		_bot.discord_name = "patati#9627"
 		
 @_bot.command()
 @commands.is_owner()

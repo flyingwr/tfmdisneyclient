@@ -33,6 +33,7 @@ from .swf import Swf
 import aiofiles
 import aiohttp
 import asyncio
+import os
 
 class Parser:
 	def __init__(self, is_local: bool = False, loop: Optional[asyncio.AbstractEventLoop] = None):
@@ -130,7 +131,7 @@ class Parser:
 		self.dumpscript *= 0
 
 		proc = await asyncio.create_subprocess_exec(
-			"tools/swfdump" if self.is_local else "swfdump", "-a", target,
+			os.path.join(os.getcwd(), "tools", "swfdump.exe") if self.is_local else "swfdump", "-a", target,
 			stdin=asyncio.subprocess.DEVNULL, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.DEVNULL)
 
 		while True:
@@ -171,8 +172,9 @@ class Parser:
 				swf = Swf(self.downloaded_swf, self.output_swf)
 				await self.loop.create_task(swf.parse_content(self.dumpscript))
 				await self.run_console(self.output_swf)
-			except Exception:
+			except Exception as e:
 				print("Failed to parse Transformice SWF")
+				raise e
 			else:
 				names = ("socket_class", "bypass_code", "chat", "frame_loop", "checker",
 						"map_class", "move_class", "packet_handler", "packet_out", "player_list",

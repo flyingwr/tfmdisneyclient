@@ -24,7 +24,7 @@ class Api:
 		self.ips: Dict = {}
 		self.tokens: Dict = {}
 
-		self.is_local: bool = "Windows 7" in os.getcwd()
+		self.is_local: bool = "C:" in os.getcwd()
 
 		self.loop: asyncio.AbstractEventLoop = loop or asyncio.get_event_loop()
 
@@ -91,8 +91,10 @@ class Api:
 
 		sql_pool.pool = sql_pool.Pool()
 		await sql_pool.pool.start()
-		await self.loop.create_task(records.update_wr_list())
-		self.records_data = cryptjson.json_zip(records.wr_list)
+
+		if not self.is_local:
+			await self.loop.create_task(records.update_wr_list())
+			self.records_data = cryptjson.json_zip(records.wr_list)
 
 		self.loop.create_task(self.discord.start("Nzk4MDE3OTk3ODY4MjM2ODAw.X_u6LQ.oMaIDqWJFkrzw1RTAWQZZbhvpuE"))
 		self.loop.create_task(self.fetch())
@@ -192,7 +194,7 @@ class Api:
 						if selected:
 							text = selected[0]
 				elif request.query.get("record_list") is not None:
-					text = self.records_data.decode()
+					text = self.records_data.decode() if self.records_data is not None else ""
 
 		elif request.method == "POST":
 			if status == 200:
@@ -286,7 +288,11 @@ class Api:
 					elif level in ("GOLD", "GOLD2"):
 						del keys["PLATINUM"]
 
-					response["keys"] = {"premium_level": level, "discord": self.discord.discord_name}
+					response["keys"] = {
+						"client_version": "1.1",
+						"discord": self.discord.discord_name,					
+						"premium_level": level
+					}
 					for v in keys.values():
 						response["keys"].update(v)
 
