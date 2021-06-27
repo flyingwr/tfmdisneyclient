@@ -418,11 +418,12 @@ class Api:
 			return web.FileResponse("./tfm.swf")
 
 		access_token = request.query.get("access_token")
+		addr = request.headers.get("X-Forwarded-For")
+		if addr in self.ips.keys():
+			access_token = self.ips[addr][1]
 		if access_token is not None:
 			if access_token in self.tokens.keys():
 				level = self.tokens[access_token]["level"]
 				if level != "BRONZE":
 					return web.FileResponse("./data/ChargeurTransformice.swf")
-				else:
-					return web.FileResponse("./data/ChargeurTransformiceBronze.swf")
 		return web.FileResponse("./data/invalid.swf")
