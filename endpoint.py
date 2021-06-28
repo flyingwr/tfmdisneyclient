@@ -53,11 +53,13 @@ class Api:
 
 	async def check_key(self, key: str):
 		conn = await sql_pool.pool.acquire()
-		cur = await conn.cursor()
-		await cur.execute(
-			"SELECT `uuid`, `level`, `browser_access` FROM `users` WHERE `id`=%s",
-			(key, ))
-		return conn, cur, await cur.fetchone()
+		if conn:
+			cur = await conn.cursor()
+			await cur.execute(
+				"SELECT `uuid`, `level`, `browser_access` FROM `users` WHERE `id`=%s",
+				(key, ))
+			return conn, cur, await cur.fetchone()
+		return None
 
 	async def del_token(self, ip: str, token: str):
 		await asyncio.sleep(3600)
@@ -132,27 +134,29 @@ class Api:
 			status = 406
 		else:
 			if key is not None:
-				conn, cur, selected = await self.check_key(key)
-				if not selected:
-					response["error"] = "invalid key"
-				elif selected:
-					if "aiohttp" not in agent and not selected[2]:
+				result = await self.check_key(key)
+				if result:
+					conn, cur, selected = result
+					if not selected:
 						response["error"] = "invalid key"
-					else:
-						if uuid is not None:
-							if selected[0] in (None, uuid):
-								if selected[0] is None:
-									await cur.execute(
-										"UPDATE `users` SET `uuid`=%s WHERE `id`=%s",
-										(uuid, key))
-							else:
-								response["error"] = "uuid does not match"
-								status = 451
-						if status != 451:
-							response["success"] = True
-							response.update(self.storage_access(key, selected[1], addr))
-							status = 200
-				await sql_pool.pool.release(conn, cur)
+					elif selected:
+						if "aiohttp" not in agent and not selected[2]:
+							response["error"] = "invalid key"
+						else:
+							if uuid is not None:
+								if selected[0] in (None, uuid):
+									if selected[0] is None:
+										await cur.execute(
+											"UPDATE `users` SET `uuid`=%s WHERE `id`=%s",
+											(uuid, key))
+								else:
+									response["error"] = "uuid does not match"
+									status = 451
+							if status != 451:
+								response["success"] = True
+								response.update(self.storage_access(key, selected[1], addr))
+								status = 200
+					await sql_pool.pool.release(conn, cur)
 			else:
 				response["error"] = "invalid query (key parameter missing)"
 
@@ -289,7 +293,7 @@ class Api:
 						del keys["PLATINUM"]
 
 					response["keys"] = {
-						"client_version": "1.1",
+						"client_version": "1.11",
 						"discord": self.discord.discord_name,					
 						"premium_level": level
 					}
