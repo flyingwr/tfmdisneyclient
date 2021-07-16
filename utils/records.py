@@ -3,7 +3,7 @@ gc = gspread.service_account(filename="service_account_credentials.json")
 
 wr_list = {"new": {}, "old": {}}
 
-async def update_wr_list():
+def update_wr_list():
 	ver_key = "old"
 	sheet_key = "1l3D-tmUAgwqNPjR3qa1rKqNkNYImPLC3dhgHUD3gLjo"
 

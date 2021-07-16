@@ -1,5 +1,3 @@
-from typing import Dict, Optional
-
 from .animclass import AnimClass
 from .bypasscode import BypassCode
 from .chat import Chat
@@ -29,6 +27,8 @@ from .socket import Socket
 from .timerclass import Timer
 from .uiscoreboard import UIScoreBoard
 from .swf import Swf
+
+from typing import Dict, List, Optional
 
 import aiofiles
 import aiohttp
@@ -173,15 +173,16 @@ class Parser:
 				await self.loop.create_task(swf.parse_content(self.dumpscript))
 				await self.run_console(self.output_swf)
 			except Exception as e:
-				print("Failed to parse Transformice SWF")
-				raise e
+				print(f"Failed to parse Transformice SWF: {e}")
 			else:
 				names = ("socket_class", "bypass_code", "chat", "frame_loop", "checker",
 						"map_class", "move_class", "packet_handler", "packet_out", "player_list",
 						"player_clip", "player_name", "player_id", "player_cheese", "player_title",
 						"player_physics", "player", "shaman_obj", "timer_class", "ui_scoreboard",
 						"anim_class", "mouse_info", "jump_class", "player_info", "ui_element")
-				for result in await asyncio.gather(*[(getattr(self, name)).fetch(self.dumpscript) for name in names]):
+				for result in await asyncio.gather(*[(
+					getattr(self, name)).fetch(self.dumpscript) for name in names
+				]):
 					self.fetched.update(result)
 
 				print("Parser data has been updated.")

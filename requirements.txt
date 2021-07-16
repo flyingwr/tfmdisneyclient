@@ -1,8 +1,8 @@
 aiofiles
 aiohttp
-aiomysql
 asyncio
 discord.py
 gspread
+mongoengine
 numpy
 ujson

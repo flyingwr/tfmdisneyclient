@@ -1,98 +1,73 @@
-import sql_pool
-
-from discord import NotFound
+from discord import Embed
+from discord.errors import NotFound
 from discord.ext import commands
-from typing import Optional
+from typing import  Dict, Optional
 
-from .bot import Bot
-_bot = Bot()
+import os
 
-@_bot.event
-async def on_ready():
-	print("[Discord] Logged in.")
+class Bot(commands.Bot):
+	def __init__(self, command_prefix="!"):
+		super().__init__(command_prefix)
 
-	_bot.log_channel = _bot.get_channel(857625605456789504)
-	_bot.log_channel2 = _bot.get_channel(857625624755830794)
-	try:
-		_bot.discord_name = str(await _bot.fetch_user(754181017253707797))
-	except NotFound:
-		_bot.discord_name = "patati#9627"
-		
-@_bot.command()
-@commands.is_owner()
-async def addkey(ctx, *args):
-	try:
-		data = []
-		for s in args:
-			info = s.split(":")
-			level = "SILVER"
-			if len(info) > 1:
-				level = info[1].upper()
-			data.append((info[0], level))
+		self.log_channel = None
+		self.log_channel2 = None
+		self.discord_name = None
 
-		conn, cur = await sql_pool.pool.exec("INSERT INTO `users` (`id`, `level`) VALUES (%s, %s)", True, data)
-		await sql_pool.pool.release(conn, cur)
-	except Exception as e:
-		await ctx.reply(f"Query failed ({e})")
-	else:
-		await ctx.reply("Database updated")
+		self.add_listener(self.ready, "on_ready")
+		self.remove_command("help")
 
-@_bot.command()
-@commands.is_owner()
-async def addkeymaps(ctx, *args):
-	try:
-		await sql_pool.pool.add_key_maps(*args)
-	except Exception as e:
-		await ctx.reply(f"Query failed ({e})")
-	else:
-		await ctx.reply("Database updated")
+		print("[Discord] Loading extensions...")
 
-@_bot.command()
-@commands.is_owner()
-async def changekeylevel(ctx):
-	try:
-		await sql_pool.pool.change_key_level(*args)
-	except Exception as e:
-		await ctx.reply(f"Query failed ({e})")
-	else:
-		await ctx.reply("Database updated")
+		cogs_path = os.path.join(os.path.dirname(__file__), "cogs")
+		if not os.path.isdir(cogs_path):
+			raise Exception("`cogs` dir from package `discordbot` not found")
+		for file in os.listdir(cogs_path):
+			if not file.startswith("_") and file.endswith(".py"):
+				self.load_extension(f"discordbot.cogs.{file[:-3]}")
 
-@_bot.command()
-@commands.is_owner()
-async def delkey(ctx, *args):
-	try:
-		await sql_pool.pool.del_key(*args)
-	except Exception as e:
-		await ctx.reply(f"Query failed ({e})")
-	else:
-		await ctx.reply("Database updated")
+	async def ready(self):
+		print("[Discord] Logged in")
 
-@_bot.command()
-@commands.is_owner()
-async def delkeymaps(ctx, *args):
-	try:
-		await sql_pool.pool.del_key_maps(*args)
-	except Exception as e:
-		await ctx.reply(f"Query failed ({e})")
-	else:
-		await ctx.reply("Database updated")
+		self.log_channel = self.get_channel(857625605456789504)
+		self.log_channel2 = self.get_channel(857625624755830794)
 
-@_bot.command()
-@commands.is_owner()
-async def transferkeymaps(ctx, *args):
-	try:
-		await sql_pool.pool.transfer_key_maps(*args)
-	except Exception as e:
-		await ctx.reply(f"Query failed ({e})")
-	else:
-		await ctx.reply("Database updated")
+		try:
+			self.discord_name = str(await self.fetch_user(754181017253707797))
+		except NotFound:
+			self.discord_name = "patati#9627"
 
-@_bot.command()
-@commands.is_owner()
-async def browser_auth(ctx, key: str, perm: Optional[bool] = False):
-	try:
-		await sql_pool.pool.browser_auth_perm(key, perm)
-	except Exception as e:
-		await ctx.reply(f"Query failed ({e})")
-	else:
-		await ctx.reply("Database updated")
+	async def log(
+		self,
+		method: str,
+		response: Dict,
+		status: int,
+		addr: Optional[str] = None,
+		key: Optional[str] = None,
+		token: Optional[str] = None,
+		browser: Optional[str] = None
+	):
+		if self.log_channel:
+			access_token = response.get("access_token") or token
+			sleep = f"(:timer: {response.get('sleep', 0)} min)"
+			success = status == 200
+
+			embed = Embed(title=f"Log - {method}",
+				description=f":computer: IP address: {addr}\n"
+				f":mag: Browser: {browser}\n"
+				f":placard: Status: {status} {':white_check_mark:' if success else ':x:'}\n"
+				f":warning: Error: {response.get('error')}\n\n"
+				f":credit_card: Key: {key}\n"
+				f":credit_card: Token: {access_token} {sleep if response.get('sleep') is not None else ''}",
+				colour=0x00FF00 if success else 0xFF0000
+			)
+			await self.log_channel.send(embed=embed)
+		else:
+			print("[Discord] Invalid channel")
+
+	async def log2(self, username: str, key: str, token: str):
+		if self.log_channel2:
+			await self.log_channel2.send(f"Account `{username}` connected using token `{token}` from key `{key}`")
+		else:
+			print("[Discord] Invalid channel (2)")
+
+instance = None

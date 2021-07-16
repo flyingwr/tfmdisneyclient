@@ -1,4 +1,23 @@
 {
+	"discord_log_channel": 857625605456789504,
+	"discord_log_channel2": 857625624755830794,
+	"discord_owner_id": 754181017253707797,
+
+	"default_conn_limit": 1,
+	"platinum_conn_limit": 10,
+
+	"client_version": "1.12",
 	"update_url": "https://mega.nz/file/iXAQ1B4b#FlDqz1bHd5o31agwaZ2R5rZdt2YT8gzjYvlzVNA4uQU",
-	"version": "1.1.3"
+	"version": "1.1.3",
+
+	"high_perm": [
+		"bolsonaro2022",
+		"pataticover"
+	],
+	"storage_allowed_levels": [
+		"SILVER",
+		"GOLD",
+		"GOLD_II",
+		"PLATINUM"
+	]
 }
