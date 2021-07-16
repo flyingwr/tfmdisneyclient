@@ -75,7 +75,7 @@ const auth_request = function() {
 		change_elem_display(fetch_text, true);
 		change_button_state(key_button);
 
-		const params = {key: key_text.value};
+		const params = {key: key_text.value};		
 		if (uuid_text.value) params.uuid = uuid_text.value;
 		if (version_text.value) params.version = version_text.value;
 

@@ -29,8 +29,11 @@ class Auth(web.View):
 			if key is not None:
 				user = find_user_by_key(key)
 				if user:
-					if "aiohttp" not in agent and not user.browser_access:
-						response["error"] = "invalid key"
+					if "aiohttp" not in agent:
+						if not user.browser_access:
+							response["error"] = "invalid key"
+						else:
+							status = 200
 					else:
 						if uuid is not None:
 							if user.uuid is None:
@@ -43,9 +46,9 @@ class Auth(web.View):
 								response["error"] = "uuid does not match"
 								status = 451
 
-						if status == 200:
-							response["success"] = True
-							response.update(server.store_access(key, user.premium_level, addr))
+					if status == 200:
+						response["success"] = True
+						response.update(server.store_access(key, user.premium_level, addr))
 				else:
 					response["error"] = "invalid key"
 			else:
