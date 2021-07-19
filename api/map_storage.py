@@ -68,16 +68,17 @@ class MapStorage(web.View):
 			_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
 			if _map:
 				found_map_data = _map.data
+
 				if method == "ls":
 					result = infrastructure.tokens[access_token].get("lsmap")
 					if not result:
 						result = await pasteee.new_paste(", "
 							.join(
 								ls_pattern.findall(cryptjson.text_decode(found_map_data))
-							)
+							).replace("@", "")
 						)
-						infrastructure.tokens[access_token]["lsmap"] = result
 
+						infrastructure.tokens[access_token]["lsmap"] = result
 						infrastructure.loop.create_task(infrastructure.del_lsmap(access_token))
 
 					return web.Response(body=result.encode())
@@ -89,7 +90,7 @@ class MapStorage(web.View):
 					if search is not None:
 						map_code, info = search.group(1), search.group(2)
 						if map_code in data_decoded:
-							_search = re.search(b"%s:([^#]*)" % (map_code), data_decoded)
+							_search = re.search(b"%s:([^#]*)" % map_code, data_decoded)
 							if _search:
 								if method == "save":
 									data_decoded = data_decoded.replace(
@@ -102,9 +103,9 @@ class MapStorage(web.View):
 							if method == "save":
 								data_decoded += b"#%s:%s" % (map_code, info)
 
-						_map.update(data=map_pattern2.sub(
+						_map.update(data=cryptjson.text_encode(map_pattern2.sub(
 							"", data_decoded.replace(b"##", b"#")
-						))
+						)))
 
 						raise web.HTTPNoContent()
 

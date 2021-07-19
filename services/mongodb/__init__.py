@@ -3,15 +3,16 @@ from data.map import Map
 from data.user import User
 
 
-from typing import ByteString, Dict, Optional
+from typing import ByteString, Dict, Optional, Union
 
 
 def find_config_by_key(key: str) -> Config:
     return Config.objects(key=key).first()
 
 
-def find_map_by_key(key: str) -> Map:
-    return Map.objects(key=key).first()
+def find_map_by_key(key: str, return_count: Optional[bool] = False) -> Union[int, Map]:
+    query = Map.objects(key=key)
+    return query.count() if return_count else query.first()
 
 
 def find_user_by_key(key: str) -> User:

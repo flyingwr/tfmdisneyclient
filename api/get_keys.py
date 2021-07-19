@@ -57,7 +57,7 @@ class GetKeys(web.View):
 					del keys["PLATINUM"]
 
 				response["keys"] = {
-					"maps_allowed": bool(find_map_by_key(key)),
+					"maps_allowed": bool(find_map_by_key(key, True)),
 					"client_version": infrastructure.config["client_version"],
 					"discord": infrastructure.discord.discord_name,
 					"premium_level": level

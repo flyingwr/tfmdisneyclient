@@ -11,8 +11,7 @@ const [
 	version_text,
 	result_container,
 	result_text,
-	open_game_btn,
-	soft_mode_btn] = [
+	open_game_btn] = [
 		... ["fetch-text",
 			"key-btn",
 			"key-text",
@@ -25,8 +24,7 @@ const [
 			"version-text",
 			"fetch-result-container",
 			"fetch-result-text",
-			"open-btn",
-			"soft-mode-btn"
+			"open-btn"
 		].map((id) => {
 			return document.getElementById(id)
 		})
@@ -100,11 +98,6 @@ const auth_request = function() {
 					if (navigator.userAgent.includes("Electron")) {
 						open_game_btn.style.padding = "5px 5px";
 						change_elem_display(open_game_btn, true);
-
-						if (false && json.level === "PLATINUM") {
-							soft_mode_btn.style.padding = "5px 5px";
-							change_elem_display(soft_mode_btn, true);
-						}
 					}
 				} else if (response.status === 401) {
 					set_fetch_error_message(json.error);
