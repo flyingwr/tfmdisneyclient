@@ -4,7 +4,7 @@ asyncio
 discord.py
 dnspython
 gspread
+mongoengine
 numpy
-pymongo
 python-dotenv
 ujson
