@@ -74,8 +74,12 @@ const auth_request = function() {
 		change_elem_display(fetch_text, true);
 		change_button_state(key_button);
 
-		const params = {key: key_text.value};		
-		if (uuid_text.value) params.uuid = uuid_text.value;
+		const is_disney = navigator.userAgent.includes("disneyclient");
+
+		const params = { key: key_text.value };
+		if (is_disney && uuid_text.value !== "") {
+			params.uuid = uuid_text.value;
+		}
 
 		fetch(`${auth_url}?${new URLSearchParams(params)}`)
 		.then((response) => {
@@ -121,7 +125,7 @@ const auth_request = function() {
 
 					result_text.appendChild(img);
 
-					if (navigator.userAgent.includes("Electron")) {
+					if (is_disney) {
 						open_game_btn.style.padding = "5px 5px";
 						change_elem_display(open_game_btn, true);
 					}

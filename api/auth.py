@@ -25,7 +25,7 @@ class Auth(web.View):
 			if key is not None:
 				user = find_user_by_key(key)
 				if user:
-					if "Electron" not in agent:
+					if "disneyclient" not in agent:
 						if not user.browser_access:
 							response["error"] = "invalid key"
 						else:
