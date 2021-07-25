@@ -9,7 +9,6 @@ const [
 	init_text,
 	small_text,
 	uuid_text,
-	version_text,
 	result_container,
 	result_text,
 	open_game_btn] = [
@@ -23,7 +22,6 @@ const [
 			"init-text",
 			"small-text",
 			"uuid-text",
-			"version-text",
 			"fetch-result-container",
 			"fetch-result-text",
 			"open-btn"
@@ -78,11 +76,9 @@ const auth_request = function() {
 
 		const params = {key: key_text.value};		
 		if (uuid_text.value) params.uuid = uuid_text.value;
-		if (version_text.value) params.version = version_text.value;
 
-		fetch(`${auth_url}?${new URLSearchParams(params)}`, {
-			"User-Agent": `DisneyClient${version_text ? "/" + version_text : ""}`
-		}).then((response) => {
+		fetch(`${auth_url}?${new URLSearchParams(params)}`)
+		.then((response) => {
 			fetching = false;
 
 			response.json().then((json) => {

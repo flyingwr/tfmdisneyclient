@@ -18,10 +18,6 @@ class Auth(web.View):
 		agent = self.request.headers.get("User-Agent")
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 
-		if agent.startswith("DisneyClient"):
-			if "/" in agent:
-				client_version = agent.replace("DisneyClient/", "")
-
 		if client_version and client_version != infrastructure.config["version"]:
 			response.update(dict(error="outdated version", update_url=infrastructure.config["update_url"]))
 			status = 406
@@ -29,7 +25,7 @@ class Auth(web.View):
 			if key is not None:
 				user = find_user_by_key(key)
 				if user:
-					if "aiohttp" not in agent:
+					if "Electron" not in agent:
 						if not user.browser_access:
 							response["error"] = "invalid key"
 						else:
