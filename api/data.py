@@ -70,6 +70,7 @@ class Data(web.View):
 			if soft is not None:
 				if infrastructure.tokens[access_token]["level"] == "PLATINUM":
 					infrastructure.tokens[access_token]["soft"] = soft.encode()
-			raise web.HTTPNoContent()
-					
-		raise web.HTTPUnauthorized()
+		else:
+			raise web.HTTPUnauthorized()
+
+		raise web.HTTPNoContent()

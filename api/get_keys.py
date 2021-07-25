@@ -12,9 +12,10 @@ class GetKeys(web.View):
 
 		key = None
 
-		agent = self.request.headers.get("User-Agent")
-		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
+		status = 401
 
+		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
+		agent = self.request.headers.get("User-Agent")
 		access_token = self.request.query.get("access_token")
 
 		access_token = server.check_conn(access_token, addr)
@@ -68,8 +69,6 @@ class GetKeys(web.View):
 				status = 200
 		else:
 			response["error"] = "expired/invalid token"
-
-			status = 401
 
 		if key != "pataticover":
 			infrastructure.loop.create_task(infrastructure.discord.log("TFM", response, status, addr, key, access_token, agent))

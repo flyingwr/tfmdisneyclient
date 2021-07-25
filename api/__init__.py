@@ -5,3 +5,4 @@ from .get_keys import GetKeys
 from .map_storage import MapStorage
 from .tfm_login import TfmLogin
 from .transformice import Transformice
+from .update import Update

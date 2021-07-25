@@ -83,6 +83,7 @@ async def main():
 							
 	app.router.add_get("/api/discord", api.discord_handler)
 	app.router.add_get("/api/auth", api.Auth)
+	app.router.add_get("/api/update", api.Update)
 	
 	app.router.add_static("/images", "./images")
 	app.router.add_static("/public", "./public")

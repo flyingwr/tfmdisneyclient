@@ -4,17 +4,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>DisneyClient</title>
+
     <link rel="stylesheet" href="./public/index/styles.css">
+    <link rel="icon" href="./images/icon.ico">
   </head>
   <body>
     <script defer src="./public/index/index.js"></script>
+    <script defer src="./public/index/locales.js"></script>
+
     <div class="key-container" id="init-container">
       <img src="./images/icon.ico">
-      <h1 class="key-text" id="init-text">starting...</h1>
+      <h1 class="key-text" id="init-text"></h1>
     </div>
     <div class="key-container no-display" id="auth-container">
-      <span class="key-text">Enter your key</span>
+      <span class="key-text" id="key-title">Enter your key</span>
       <input type="text" class="key-input" maxlength="17" id="key-text">
       <input type="text" class="no-display" maxlength="17" id="version-text">
       <input type="text" class="no-display" maxlength="64" id="uuid-text">
@@ -24,11 +29,10 @@
     <div class="key-container no-display" id="fetch-result-container">
       <span class="key-text" id="fetch-result-text"></span>
       <a class="key-btn no-display" id="open-btn">Open game</a>
-      <a class="key-btn no-display" id="soft-mode-btn">Choose maps folder</a>
     </div>
     <span class="discord-container invisible" id="discord-container">
       <img src="./images/discord.png">
-      <small id="small-text">patati#0017</small>
+      <small id="small-text"></small>
     </span>
   </body>
 </html>

@@ -2,6 +2,7 @@ const [
 	fetch_text,
 	key_button,
 	key_text,
+	key_title,
 	auth_container,
 	discord_container,
 	init_container,
@@ -15,6 +16,7 @@ const [
 		... ["fetch-text",
 			"key-btn",
 			"key-text",
+			"key-title",
 			"auth-container",
 			"discord-container",
 			"init-container",
@@ -32,7 +34,8 @@ const [
 
 let api_url, auth_url, discord_url;
 let fetching = false;
-let init_color = "#2e2c29";
+
+const init_color = "#2e2c29";
 
 const change_button_state = function(elem, enabled) {
 	elem.style["pointer-events"] = enabled ? "auto" : "none";
@@ -57,12 +60,12 @@ const change_elem_display = function(elem, visible, type) {
 
 const set_fetch_message = function(message) {
 	fetch_text.style.color = "inherit";
-	fetch_text.textContent = message || "connecting...";
+	fetch_text.textContent = message || translate("connecting");
 }
 
 const set_fetch_error_message = function(message) {
 	fetch_text.style.color = "red";
-	fetch_text.textContent = message || "Error: server unavailable";
+	fetch_text.textContent = message || "error";
 }
 
 const auth_request = function() {
@@ -93,15 +96,40 @@ const auth_request = function() {
 
 					change_elem_display(result_container, true, "flex");
 					result_text.style["user-select"] = "text";
-					result_text.textContent = `Your token has been generated and will be expired in ${rm_time} minutes:\n${window.location.origin}/transformice?access_token=${json.access_token}`;
+					result_text.textContent = `${translate("token")} ${rm_time} ${translate("minutes")}:\n`;
+
+					const token_url = `${window.location.origin}/transformice?access_token=${json.access_token}`;
+					const span = document.createElement("span");
+					span.textContent = token_url;
+					result_text.appendChild(span);
+
+					const img = document.createElement("img");
+					img.src = "./images/copy.png";
+					img.style.position = "static";
+					img.style["max-height"] = "10px";
+					img.style["max-width"] = "10px";
+					img.style["padding-left"] = "5px";
+					img.style.cursor = "pointer";
+					img.title = "Copy to clipboard";
+
+					img.onclick = () => {
+						window.getSelection().removeAllRanges();
+
+						const range = document.createRange();
+						range.setStart(span, 0);
+						range.setEnd(span, span.childNodes.length);
+						window.getSelection().addRange(range);
+
+						document.execCommand("copy");
+					}
+
+					result_text.appendChild(img);
 
 					if (navigator.userAgent.includes("Electron")) {
 						open_game_btn.style.padding = "5px 5px";
 						change_elem_display(open_game_btn, true);
 					}
-				} else if (response.status === 401) {
-					set_fetch_error_message(json.error);
-				} else if (response.status === 406) {
+				} else {
 					set_fetch_error_message(json.error);
 				}
 			})
@@ -113,11 +141,13 @@ const auth_request = function() {
 	}
 }
 
-key_button.onclick = () => {
-	auth_request();
-};
+key_button.onclick = auth_request;
 
 window.onload = () => {
+	init_text.textContent = translate("start");
+	key_title.textContent = translate("enter_key");
+	open_game_btn.textContent = translate("open_game");
+
 	key_text.addEventListener("keydown", ({key}) => {
 		if (key === "Enter") auth_request();
 	})
