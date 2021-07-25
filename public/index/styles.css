@@ -10,6 +10,9 @@ html {
 }
 
 body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background: linear-gradient(#3d3b38 50%, #2e2c29 50%);
 	height: 100%;
 	overflow: hidden;
@@ -40,12 +43,17 @@ body {
 	align-items: center;
 	text-align: center;
 	color: white;
-	min-width: 300px;
 	min-height: 90vh;
 	user-select: none;
 }
 .key-container img {
 	max-width: 80px;
+}
+
+@media screen and (max-width: 600px) {
+	.key-container {
+		max-width: 300px;
+	}
 }
 
 .key-btn {
