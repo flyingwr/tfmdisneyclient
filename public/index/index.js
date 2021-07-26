@@ -101,7 +101,6 @@ const auth_request = function() {
 
 					const token_url = `${window.location.origin}/transformice?access_token=${json.access_token}`;
 					const span = document.createElement("span");
-					span.classList.add("key-text");
 					span.textContent = token_url;
 					result_text.appendChild(span);
 
@@ -126,6 +125,18 @@ const auth_request = function() {
 					}
 
 					result_text.appendChild(img);
+
+					const query = function(q) {
+						if (q.matches) {
+							result_container.style.maxWidth = "300px";
+						} else {
+							result_container.style.maxWidth = "100vw";
+						}
+					}
+
+					const media = window.matchMedia("(max-width: 600px");
+					query(media);
+					media.onchange = query;
 
 					if (is_disney) {
 						open_game_btn.style.padding = "5px 5px";
