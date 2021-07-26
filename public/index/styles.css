@@ -77,6 +77,10 @@ body {
 		max-width: 290px;
 		overflow-wrap: break-word;
 	}
+
+	.key-container #fetch-result-text span {
+		font-size: small;
+	}
 }
 
 .key-btn {
