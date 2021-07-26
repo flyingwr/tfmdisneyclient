@@ -186,7 +186,7 @@ window.onload = () => {
 				});
 			}
 		}
-	}).catch((error) => {
+	}).catch(() => {
 		set_fetch_error_message();
 	});
 };

@@ -73,7 +73,7 @@ body {
 }
 
 @media (max-width: 600px) {
-	.key-container {
+	.key-container span {
 		max-width: 300px;
 		overflow-wrap: break-word;
 	}
