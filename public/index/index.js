@@ -136,7 +136,7 @@ const auth_request = function() {
 			})
 
 			change_button_state(key_button, true);
-		}).catch((error) => {
+		}).catch(() => {
 			set_fetch_error_message();
 		});
 	}
