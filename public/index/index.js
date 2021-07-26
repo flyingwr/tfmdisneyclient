@@ -100,10 +100,9 @@ const auth_request = function() {
 					result_text.textContent = `${translate("token")} ${rm_time} ${translate("minutes")}:\n`;
 
 					const token_url = `${window.location.origin}/transformice?access_token=${json.access_token}`;
-
 					const span = document.createElement("span");
+					span.classList.add("key-text");
 					span.textContent = token_url;
-
 					result_text.appendChild(span);
 
 					const img = document.createElement("img");
