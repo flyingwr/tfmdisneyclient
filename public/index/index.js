@@ -128,9 +128,9 @@ const auth_request = function() {
 
 					const query = function(q) {
 						if (q.matches) {
-							result_container.style.maxWidth = "300px";
+							result_text.style.maxWidth = "300px";
 						} else {
-							result_container.style.maxWidth = "100vw";
+							result_text.style.maxWidth = "100vw";
 						}
 					}
 
