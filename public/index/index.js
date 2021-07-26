@@ -30,7 +30,7 @@ const [
 		})
 	];
 
-let api_url, auth_url, discord_url;
+let api_url, auth_url;
 let fetching = false;
 
 const init_color = "#2e2c29";
@@ -129,8 +129,10 @@ const auth_request = function() {
 					const query = function(q) {
 						if (q.matches) {
 							result_text.style.maxWidth = "300px";
+							span.style.maxWidth = "300px";
 						} else {
 							result_text.style.maxWidth = "100vw";
+							span.style.maxWidth = "100vw";
 						}
 					}
 
@@ -157,6 +159,9 @@ const auth_request = function() {
 key_button.onclick = auth_request;
 
 window.onload = () => {
+	const download_btn = document.getElementById("download-btn");
+	download_btn.style.display = "none";
+
 	init_text.textContent = translate("start");
 	key_title.textContent = translate("enter_key");
 	open_game_btn.textContent = translate("open_game");
@@ -167,7 +172,8 @@ window.onload = () => {
 
 	api_url = new URL("api", window.location.origin);
 	auth_url = new URL(`${api_url}/auth`, api_url);
-	discord_url = new URL(`${api_url}/discord`, api_url);
+	const discord_url = new URL(`${api_url}/discord`, api_url);
+	const update_url = new URL(`${api_url}/update`, api_url)
 
 	fetch(discord_url).then((response) => {
 		if (response.ok) {
@@ -178,6 +184,21 @@ window.onload = () => {
 			response.text().then((text) => {
 				small_text.textContent = text;
 			});
+
+			if (!navigator.userAgent.includes("disneyclient")) {
+				fetch(update_url).then((response) => {
+					if (response.ok) {
+						response.json().then((data) => {
+							if (data.update_url) {
+								download_btn.style.display = "flex";
+								download_btn.onclick = () => {
+									window.open(data.update_url, "_blank");
+								}
+							}
+						});
+					}
+				});
+			}
 		}
 	}).catch((error) => {
 		set_fetch_error_message();
