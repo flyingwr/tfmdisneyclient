@@ -51,7 +51,7 @@ body {
 }
 
 @media (max-width: 600px) {
-	.key-container {
+	.key-container #fetch-result-text {
 		max-width: 300px;
 	}
 }
