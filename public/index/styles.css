@@ -44,11 +44,16 @@ body {
 	text-align: center;
 	color: white;
 	min-height: 90vh;
-	max-width: 300px;
 	user-select: none;
 }
 .key-container img {
 	max-width: 80px;
+}
+
+@media (max-width: 600px) {
+	.key-container {
+		max-width: 300px;
+	}
 }
 
 .key-btn {
