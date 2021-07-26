@@ -72,6 +72,13 @@ body {
 	max-width: 80px;
 }
 
+@media (max-width: 600px) {
+	.key-container {
+		max-width: 300px;
+		overflow-wrap: break-word;
+	}
+}
+
 .key-btn {
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background-color:#ffffff;

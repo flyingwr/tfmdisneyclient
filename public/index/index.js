@@ -126,20 +126,6 @@ const auth_request = function() {
 
 					result_text.appendChild(img);
 
-					const query = function(q) {
-						if (q.matches) {
-							result_text.style.maxWidth = "300px";
-							span.style.maxWidth = "300px";
-						} else {
-							result_text.style.maxWidth = "100vw";
-							span.style.maxWidth = "100vw";
-						}
-					}
-
-					const media = window.matchMedia("(max-width: 600px");
-					query(media);
-					media.onchange = query;
-
 					if (is_disney) {
 						open_game_btn.style.padding = "5px 5px";
 						change_elem_display(open_game_btn, true);
