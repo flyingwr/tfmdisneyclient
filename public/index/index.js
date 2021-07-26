@@ -95,12 +95,16 @@ const auth_request = function() {
 					if (sleep) rm_time = sleep >= 59 ? 1 : 60 - sleep;
 
 					change_elem_display(result_container, true, "flex");
+
 					result_text.style["user-select"] = "text";
 					result_text.textContent = `${translate("token")} ${rm_time} ${translate("minutes")}:\n`;
 
 					const token_url = `${window.location.origin}/transformice?access_token=${json.access_token}`;
+
 					const span = document.createElement("span");
+					span.style = result_text.style;
 					span.textContent = token_url;
+					
 					result_text.appendChild(span);
 
 					const img = document.createElement("img");
