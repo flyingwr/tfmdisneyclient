@@ -102,9 +102,8 @@ const auth_request = function() {
 					const token_url = `${window.location.origin}/transformice?access_token=${json.access_token}`;
 
 					const span = document.createElement("span");
-					span.style = result_text.style;
 					span.textContent = token_url;
-					
+
 					result_text.appendChild(span);
 
 					const img = document.createElement("img");
