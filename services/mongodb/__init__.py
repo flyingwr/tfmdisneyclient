@@ -1,5 +1,6 @@
 from data.config import Config
 from data.map import Map
+from data.soft import Soft
 from data.user import User
 
 
@@ -13,6 +14,10 @@ def find_config_by_key(key: str) -> Config:
 def find_map_by_key(key: str, return_count: Optional[bool] = False) -> Union[int, Map]:
     query = Map.objects(key=key)
     return query.count() if return_count else query.first()
+
+
+def find_soft_by_key(key: str) -> Soft:
+    return Soft.objects(key=key).first()
 
 
 def find_user_by_key(key: str) -> User:
@@ -36,6 +41,15 @@ def set_map(key: str, data: ByteString) -> Map:
         _map = Map(key=key, data=data).save()
     return _map
 
+
+def set_soft(key: str, maps: Dict) -> Soft:
+    soft = find_soft_by_key(key)
+    if soft:
+        for code, info in maps.items():
+            soft.maps[code] = info
+    else:
+        soft = Soft(key=key, maps=maps)
+    return soft.save()
 
 def set_user(
     key: str,

@@ -78,8 +78,7 @@ async def main():
 	app.router.add_routes([web.get("/data", api.Data),
 							web.get("/mapstorage", api.MapStorage),
 							web.post("/data", api.Data),
-							web.post("/mapstorage", api.MapStorage),
-							web.put("/data", api.Data)])
+							web.post("/mapstorage", api.MapStorage)])
 							
 	app.router.add_get("/api/discord", api.discord_handler)
 	app.router.add_get("/api/auth", api.Auth)

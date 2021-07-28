@@ -142,9 +142,9 @@ const auth_request = function() {
 	}
 }
 
-key_button.onclick = auth_request;
-
 window.onload = () => {
+	key_button.onclick = auth_request;
+	
 	const download_btn = document.getElementById("download-btn");
 	download_btn.style.display = "none";
 

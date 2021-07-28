@@ -5,19 +5,6 @@
 	src: local("Whitney-Semibold Regular"), url("whitneysemibold.woff") format("woff");
 }
 
-html {
-	height: 100%;
-}
-
-body {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(#3d3b38 50%, #2e2c29 50%);
-	height: 100%;
-	overflow: hidden;
-}
-
 .discord-container {
 	color: white;
 	font-family: "Whitney-Semibold Regular";
