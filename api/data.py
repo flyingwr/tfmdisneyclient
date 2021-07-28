@@ -39,7 +39,7 @@ class Data(web.View):
 
 	async def post(self):
 		access_token = self.request.query.get("access_token")
-		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
+		addr = self.request.headers.get("X-Forwarded-For")
 		
 		access_token = server.check_conn(access_token, addr)
 		if access_token is None:
@@ -62,5 +62,14 @@ class Data(web.View):
 
 class Soft(web.View):
 	async def get(self):
-		return web.FileResponse("./public/soft/index.html")
+		access_token = self.request.query.get("access_token")
+		addr = self.request.headers.get("X-Forwarded-For")
+
+		access_token = server.check_conn(access_token, addr)
+		if access_token is None:
+			raise web.HTTPBadRequest()
+		elif access_token:
+			return web.FileResponse("./public/soft/index.html")
+		
+		raise web.HTTPUnauthorized()
 
