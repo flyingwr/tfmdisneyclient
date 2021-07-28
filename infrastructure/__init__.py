@@ -10,6 +10,7 @@ import os
 is_local: bool = "C:" in os.getcwd()
 
 parser_url: str = "https://tfmdisneyparser.herokuapp.com"
+tfm_parser_token: str = os.getenv("TFM_PARSER_API_TOKEN")
 
 config: Dict = None
 discord: Bot = None

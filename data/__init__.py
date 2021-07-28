@@ -1,7 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv()
-
-
 import infrastructure
 import mongoengine
 import os

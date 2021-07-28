@@ -1,6 +1,11 @@
+from dotenv import load_dotenv
+load_dotenv()
+
+
 from aiohttp import web
 from typing import Dict, Optional
 from utils import cryptjson, gentoken, records
+
 
 import aiofiles
 import api
@@ -12,7 +17,9 @@ import os
 import resources
 import ujson
 
+
 loop = infrastructure.loop
+
 
 def check_conn(access_token: str, addr: str):
 	if access_token is not None:
