@@ -76,6 +76,7 @@ async def main():
 	app.router.add_get("/transformice", api.Transformice)
 
 	app.router.add_routes([web.get("/data", api.Data),
+							web.get("/data/soft", api.Soft),
 							web.get("/mapstorage", api.MapStorage),
 							web.post("/data", api.Data),
 							web.post("/mapstorage", api.MapStorage)])

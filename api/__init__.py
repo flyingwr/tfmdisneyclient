@@ -1,5 +1,5 @@
 from .auth import Auth
-from .data import Data
+from .data import Data, Soft
 from .discord import discord_handler
 from .get_keys import GetKeys
 from .map_storage import MapStorage

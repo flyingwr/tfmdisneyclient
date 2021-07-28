@@ -32,8 +32,6 @@ class Data(web.View):
 					body = ujson.dumps(config.tfm_menu).encode()
 			elif self.request.query.get("record_list") is not None:
 				body = infrastructure.records_data or b""
-			else:
-				return web.FileResponse("./public/soft/index.html")
 			
 			return web.Response(body=body)
 				
@@ -60,3 +58,9 @@ class Data(web.View):
 			raise web.HTTPUnauthorized()
 		
 		raise web.HTTPNoContent()
+
+
+class Soft(web.View):
+	async def get(self):
+		return web.FileResponse("./public/soft/index.html")
+
