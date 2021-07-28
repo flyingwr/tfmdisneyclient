@@ -41,30 +41,18 @@ class GetKeys(web.View):
 
 			if passed:
 				response["success"] = True
-
-				keys = infrastructure.parser.keys()
-				
-				if level in ("FREE", "BRONZE"):
-					del keys["SILVER"]
-					del keys["GOLD"]
-					del keys["PLATINUM"]
-
-					if level == "FREE":
-						del keys["BRONZE"]
-				elif level == "SILVER":
-					del keys["GOLD"]
-					del keys["PLATINUM"]
-				elif level in ("GOLD", "GOLD2"):
-					del keys["PLATINUM"]
-
 				response["keys"] = {
 					"maps_allowed": bool(find_map_by_key(key, True)),
 					"client_version": infrastructure.config["client_version"],
 					"discord": infrastructure.discord.discord_name,
 					"premium_level": level
 				}
-				for v in keys.values():
-					response["keys"].update(v)
+
+				async with infrastructure.session.get(
+					f"{infrastructure.parser_url}/tfm_keys?token={infrastructure.tfm_parser_token}&level={level}"
+				) as _response:
+					if _response.status == 200:
+						response.update(await _response.json())
 
 				status = 200
 		else:

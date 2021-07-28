@@ -2,6 +2,7 @@ from aiohttp import web
 from typing import Dict, Optional
 from utils import cryptjson, gentoken, records
 
+import aiofiles
 import api
 import asyncio
 import datetime
@@ -9,6 +10,7 @@ import discordbot
 import infrastructure
 import os
 import resources
+import ujson
 
 loop = infrastructure.loop
 
@@ -58,12 +60,10 @@ async def del_lsmap(token: str):
 	if token in infrastructure.tokens:
 		infrastructure.tokens[token]["lsmap"] = ""
 
-async def fetch():
-	while True:
-		await loop.create_task(infrastructure.parser.start())
-		await asyncio.sleep(3)
-
 async def main():
+	async with aiofiles.open("./config.json") as f:
+		infrastructure.config = ujson.loads(await f.read())
+
 	if not infrastructure.is_local:
 		records.update_wr_list()
 		infrastructure.records_data = cryptjson.json_zip(records.wr_list)
@@ -96,7 +96,6 @@ async def main():
 
 	infrastructure.discord = discordbot.Bot()
 	loop.create_task(infrastructure.discord.start(os.getenv("DISCORD_API_TOKEN")))
-	loop.create_task(fetch())
 
 if __name__ ==  "__main__":
 	loop.create_task(main())
