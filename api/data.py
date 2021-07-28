@@ -50,6 +50,7 @@ class Data(web.View):
 			config = post.get("config")
 
 			if soft is not None:
+				print(soft)
 				if infrastructure.tokens[access_token]["level"] == "PLATINUM":
 					set_soft(infrastructure.tokens[access_token]["key"], ujson.loads(soft))
 			elif config is not None:
