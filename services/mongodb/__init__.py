@@ -46,7 +46,11 @@ def set_soft(key: str, maps: Dict) -> Soft:
     soft = find_soft_by_key(key)
     if soft:
         for code, info in maps.items():
-            soft.maps[code] = info
+            if bool(info):
+                soft.maps[code] = info
+            else:
+                if code in soft.maps:
+                    del soft.maps[code]
     else:
         soft = Soft(key=key, maps=maps)
     return soft.save()
