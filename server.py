@@ -21,6 +21,15 @@ import ujson
 loop = infrastructure.loop
 
 
+async def swf_downloader():
+	while True:
+		async with infrastructure.session.get("https://tfmdisneyparser.herokuapp.com/transformice?swf") as response:
+			async with aiofiles.open("./tfm.swf", "wb") as f:
+				await f.write(await response.read())
+
+		await asyncio.sleep(8.0)
+
+
 def check_conn(access_token: str, addr: str):
 	if access_token is not None:
 		if addr in infrastructure.ips:
@@ -102,6 +111,8 @@ async def main():
 	await site.start()
 
 	infrastructure.discord = discordbot.Bot()
+	
+	loop.create_task(swf_downloader())
 	loop.create_task(infrastructure.discord.start(os.getenv("DISCORD_API_TOKEN")))
 
 if __name__ ==  "__main__":
