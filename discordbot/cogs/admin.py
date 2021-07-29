@@ -75,8 +75,8 @@ class Admin(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def resetbrowsertoken(self, ctx, key: str, all: Optional[bool] = False):
-        if all:
+    async def resetbrowsertoken(self, ctx, key: str):
+        if key == "all":
             for user in User.objects:
                 user.update(browser_access=True, browser_access_token=None)
         else:

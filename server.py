@@ -23,14 +23,17 @@ loop = infrastructure.loop
 
 async def swf_downloader():
 	while True:
-		async with infrastructure.session.get(
-			f"https://tfmdisneyparser.herokuapp.com/transformice?swf&d={datetime.datetime.now().timestamp()}"
-		) as response:
-			if response.status == 200:
-				async with aiofiles.open("./tfm.swf", "wb") as f:
-					await f.write(await response.read())
+		try:
+			async with infrastructure.session.get(
+				f"https://tfmdisneyparser.herokuapp.com/transformice?swf&d={datetime.datetime.now().timestamp()}"
+			) as response:
+				if response.status == 200:
+					async with aiofiles.open("./tfm.swf", "wb") as f:
+						await f.write(await response.read())
 
-		await asyncio.sleep(8.0)
+			await asyncio.sleep(8.0)
+		except Exception:
+			print("Failed to download Transformice SWF")
 
 
 def check_conn(access_token: str, addr: str):

@@ -1,3 +1,5 @@
+const is_disney = navigator.userAgent.includes("disneyclient");
+
 const [
 	fetch_text,
 	key_button,
@@ -74,8 +76,6 @@ const auth_request = function() {
 		change_elem_display(fetch_text, true);
 		change_button_state(key_button);
 
-		const is_disney = navigator.userAgent.includes("disneyclient");
-
 		const params = { key: key_text.value };
 		if (is_disney && uuid_text.value !== "") {
 			params.uuid = uuid_text.value;
@@ -89,9 +89,9 @@ const auth_request = function() {
 				if (response.ok) {
 					auth_container.remove();
 
-					const sleep = json.sleep;
+					let rm_time = 60;
 
-					let rm_time = 60
+					const sleep = json.sleep;
 					if (sleep) rm_time = sleep >= 59 ? 1 : 60 - sleep;
 
 					change_elem_display(result_container, true, "flex");
@@ -129,6 +129,8 @@ const auth_request = function() {
 					if (is_disney) {
 						open_game_btn.style.padding = "5px 5px";
 						change_elem_display(open_game_btn, true);
+					} else {
+						localStorage.setItem("_key", key_text.value);
 					}
 				} else {
 					set_fetch_error_message(json.error);
@@ -152,6 +154,11 @@ window.onload = () => {
 	key_title.textContent = translate("enter_key");
 	open_game_btn.textContent = translate("open_game");
 
+	if (!is_disney) {
+		const key = localStorage.getItem("_key");
+		if (key) key_text.value = key;
+	}
+
 	key_text.addEventListener("keydown", ({key}) => {
 		if (key === "Enter") auth_request();
 	})
@@ -171,7 +178,7 @@ window.onload = () => {
 				small_text.textContent = text;
 			});
 
-			if (!navigator.userAgent.includes("disneyclient")) {
+			if (!is_disney) {
 				fetch(update_url).then((response) => {
 					if (response.ok) {
 						response.json().then((data) => {
