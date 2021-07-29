@@ -1,13 +1,14 @@
 from aiohttp import web
 
 
+import infrastructure
 import server
 
 
 class Transformice(web.View):
 	async def get(self):
 		if self.request.query.get("swf") is not None:
-			return web.FileResponse("./tfm.swf")
+			raise web.HTTPFound(f"{infrastructure.parser_url}/transformice?swf")
 
 		access_token = self.request.query.get("access_token")
 		addr = self.request.headers.get("X-Forwarded-For")
