@@ -1,10 +1,14 @@
-import aiofiles
 from discord.ext import commands
-from services.mongodb import find_map_by_key, set_config, set_map, set_user
+from services.mongodb import find_map_by_key, find_soft_by_key, set_config, set_map, set_soft, set_user, set_user_browser_token
+from typing import Optional
 
 
 from data.map import Map
+from data.soft import Soft
 from data.user import User
+
+
+import aiofiles
 
 
 class Admin(commands.Cog):
@@ -66,6 +70,24 @@ class Admin(commands.Cog):
     @commands.is_owner()
     async def resetconfig(self, ctx, key: str):
         set_config(key, None)
+
+        await ctx.reply("Database updated")
+
+    @commands.command()
+    @commands.is_owner()
+    async def resetbrowsertoken(self, ctx, key: str, all: Optional[bool] = False):
+        if all:
+            for user in User.objects:
+                user.update(browser_access=True, browser_access_token=None)
+        else:
+            set_user_browser_token(key)
+
+        await ctx.reply("Database updated")
+
+    @commands.command()
+    @commands.is_owner()
+    async def resetsoftmaps(self, ctx, key: str):
+        set_soft(key)
 
         await ctx.reply("Database updated")
 

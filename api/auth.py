@@ -26,12 +26,31 @@ class Auth(web.View):
 				user = find_user_by_key(key)
 				if user:
 					if "disneyclient" not in agent:
-						if not user.browser_access:
-							response["error"] = "invalid key"
+						if user.browser_access:
+							cookies = self.request.cookies
+							browser_access_token = cookies.get("browser_access_token")
+							if browser_access_token:
+								if user.browser_access_token is None:
+									user.update(browser_access_token=browser_access_token)
+
+									status = 200
+								elif user.browser_access_token == browser_access_token:
+									status = 200
+								else:
+									response["error"] = (
+										"this key was used in another device\n"
+										"if this key is yours, this error might have happened "
+										"because your browser data was emptied\n"
+										"you can show up on discord to claim for a key reset"
+									)
+							else:
+								response["error"] = "info mismatch. try refreshing the page"
 						else:
-							status = 200
+							response["error"] = "key not allowed on browsers. try downloading the client"
 					else:
-						if uuid is not None:
+						if uuid is None:
+							response["error"] = "invalid query: `uuid` parameter missing"
+						else:
 							if user.uuid is None:
 								user.update(uuid=uuid)
 

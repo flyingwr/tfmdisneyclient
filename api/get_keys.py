@@ -49,7 +49,7 @@ class GetKeys(web.View):
 				}
 
 				async with infrastructure.session.get(
-					f"{infrastructure.parser_url}/tfm_keys?token={infrastructure.tfm_parser_token}&level={level}"
+					f"{infrastructure.parser_url}/api/tfm_keys?token={infrastructure.tfm_parser_token}&level={level}"
 				) as _response:
 					if _response.status == 200:
 						response["keys"].update(await _response.json())

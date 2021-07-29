@@ -30,6 +30,7 @@ def set_config(key: str, tfm_menu: Dict) -> Config:
         config.update(tfm_menu=tfm_menu)
     else:
         config = Config(key=key, tfm_menu=tfm_menu).save()
+
     return config
 
 
@@ -39,32 +40,51 @@ def set_map(key: str, data: ByteString) -> Map:
         _map.update(data=data)
     else:
         _map = Map(key=key, data=data).save()
+
     return _map
 
 
-def set_soft(key: str, maps: Dict) -> Soft:
+def set_soft(key: str, maps: Optional[Dict] = {}) -> Soft:
     soft = find_soft_by_key(key)
     if soft:
-        for code, info in maps.items():
-            if bool(info):
-                soft.maps[code] = info
-            else:
-                if code in soft.maps:
-                    del soft.maps[code]
+        if not maps:
+            soft.maps = maps
+        else:
+            for code, info in maps.items():
+                if bool(info):
+                    soft.maps[code] = info
+                else:
+                    if code in soft.maps:
+                        del soft.maps[code]
     else:
         soft = Soft(key=key, maps=maps)
+
     return soft.save()
+
 
 def set_user(
     key: str,
     premium_level: Optional[str] = "SILVER",
-    browser_access: Optional[bool] = False
+    browser_access: Optional[bool] = True,
+    skip_check: Optional[bool] = False
 ) -> User:
-    user = find_user_by_key(key)
+    user = None if skip_check else find_user_by_key(key)
     if user:
         user.update(premium_level=premium_level, browser_access=browser_access)
     else:
         user = User(
             key=key, premium_level=premium_level, browser_access=browser_access
         ).save()
-    return
+
+    return User
+
+
+def set_user_browser_token(
+    key: str,
+    token: Optional[str] = None
+) -> User:
+    user = find_user_by_key(key)
+    if user:
+        user.update(browser_access=True, browser_access_token=token)
+    else:
+        set_user(key, skip_check=True)
