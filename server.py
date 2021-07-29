@@ -24,7 +24,8 @@ loop = infrastructure.loop
 async def swf_downloader():
 	while True:
 		async with infrastructure.session.get(
-			f"https://tfmdisneyparser.herokuapp.com/transformice?swf?d={datetime.datetime.now().timestamp()}") as response:
+			f"https://tfmdisneyparser.herokuapp.com/transformice?swf&d={datetime.datetime.now().timestamp()}"
+		) as response:
 			async with aiofiles.open("./tfm.swf", "wb") as f:
 				await f.write(await response.read())
 
