@@ -26,8 +26,9 @@ async def swf_downloader():
 		async with infrastructure.session.get(
 			f"https://tfmdisneyparser.herokuapp.com/transformice?swf&d={datetime.datetime.now().timestamp()}"
 		) as response:
-			async with aiofiles.open("./tfm.swf", "wb") as f:
-				await f.write(await response.read())
+			if response.status == 200:
+				async with aiofiles.open("./tfm.swf", "wb") as f:
+					await f.write(await response.read())
 
 		await asyncio.sleep(8.0)
 
