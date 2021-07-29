@@ -23,7 +23,8 @@ loop = infrastructure.loop
 
 async def swf_downloader():
 	while True:
-		async with infrastructure.session.get("https://tfmdisneyparser.herokuapp.com/transformice?swf") as response:
+		async with infrastructure.session.get(
+			f"https://tfmdisneyparser.herokuapp.com/transformice?swf?d={datetime.datetime.now().timestamp()}") as response:
 			async with aiofiles.open("./tfm.swf", "wb") as f:
 				await f.write(await response.read())
 
@@ -111,7 +112,7 @@ async def main():
 	await site.start()
 
 	infrastructure.discord = discordbot.Bot()
-	
+
 	loop.create_task(swf_downloader())
 	loop.create_task(infrastructure.discord.start(os.getenv("DISCORD_API_TOKEN")))
 
