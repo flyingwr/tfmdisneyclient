@@ -37,12 +37,7 @@ class Auth(web.View):
 								elif user.browser_access_token == browser_access_token:
 									status = 200
 								else:
-									response["error"] = (
-										"this key was used in another device\n"
-										"if this key is yours, this error might have happened "
-										"because your browser data was emptied\n"
-										"you can show up on discord to claim for a key reset"
-									)
+									response["error"] = "this key is used by another device"
 							else:
 								response["error"] = "info mismatch. try refreshing the page"
 						else:
