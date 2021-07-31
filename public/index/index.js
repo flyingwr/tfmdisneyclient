@@ -99,7 +99,7 @@ const auth_request = function() {
 					result_text.style["user-select"] = "text";
 					result_text.textContent = `${translate("token")} ${rm_time} ${translate("minutes")}:\n`;
 
-					const token_url = `${window.location.origin}/transformice?access_token=${json.access_token}`;
+					const token_url = `${window.location.origin.replace("https", "http")}/transformice?access_token=${json.access_token}`;
 					const span = document.createElement("span");
 					span.textContent = token_url;
 					result_text.appendChild(span);
