@@ -41,19 +41,18 @@ class GetKeys(web.View):
 
 			if passed:
 				response["success"] = True
+				response["keys"] = {
+					"maps_allowed": bool(find_map_by_key(key, True)),
+					"client_version": infrastructure.config["client_version"],
+					"discord": infrastructure.discord.discord_name,
+					"premium_level": level
+				}
 
 				async with infrastructure.session.get(
 					f"{infrastructure.parser_url}/api/tfm_keys?token={infrastructure.tfm_parser_token}&level={level}"
 				) as _response:
 					if _response.status == 200:
 						response["keys"].update(await _response.json())
-
-				response["keys"].update({
-					"maps_allowed": bool(find_map_by_key(key, True)),
-					"client_version": infrastructure.config["client_version"],
-					"discord": infrastructure.discord.discord_name,
-					"premium_level": level
-				})
 
 				status = 200
 		else:
