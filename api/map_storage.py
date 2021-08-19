@@ -104,8 +104,7 @@ class MapStorage(web.View):
 								data_decoded += b"#%s:%s" % (map_code, info)
 
 						_map.update(data=cryptjson.text_encode(map_pattern2.sub(
-							"", data_decoded.replace(b"##", b"#")
-						)))
+							b"", data_decoded.replace(b"##", b"#"))))
 
 						raise web.HTTPNoContent()
 

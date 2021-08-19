@@ -47,6 +47,7 @@ def check_conn(access_token: str, addr: str):
 		access_token is not None and access_token in infrastructure.tokens
 	) else False
 
+
 def store_access(key: str, level: str, addr: Optional[str] = None) -> Dict:
 	result = {}
 
@@ -67,6 +68,7 @@ def store_access(key: str, level: str, addr: Optional[str] = None) -> Dict:
 
 	return result
 
+
 async def del_token(ip: str, token: str):
 	await asyncio.sleep(3600)
 
@@ -76,11 +78,13 @@ async def del_token(ip: str, token: str):
 	if token in infrastructure.tokens:
 		del infrastructure.tokens[token]
 
+
 async def del_lsmap(token: str):
 	await asyncio.sleep(240)
 
 	if token in infrastructure.tokens:
 		infrastructure.tokens[token]["lsmap"] = ""
+
 
 async def main():
 	async with aiofiles.open("./config.json") as f:
@@ -120,6 +124,7 @@ async def main():
 
 	loop.create_task(swf_downloader())
 	loop.create_task(infrastructure.discord.start(os.getenv("DISCORD_API_TOKEN")))
+
 
 if __name__ ==  "__main__":
 	loop.create_task(main())
