@@ -76,15 +76,14 @@ def set_user(
             key=key, premium_level=premium_level, browser_access=browser_access
         ).save()
 
-    return User
+    return user
 
 
-def set_user_browser_token(
-    key: str,
-    token: Optional[str] = None
-) -> User:
+def set_user_browser_token(key: str, token: Optional[str] = None) -> User:
     user = find_user_by_key(key)
     if user:
         user.update(browser_access=True, browser_access_token=token)
     else:
         set_user(key, skip_check=True)
+
+    return user

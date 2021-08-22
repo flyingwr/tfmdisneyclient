@@ -1,6 +1,7 @@
 from discord.ext import commands
-from services.mongodb import find_map_by_key, find_soft_by_key, set_config, set_map, set_soft, set_user, set_user_browser_token
-from typing import Optional
+from services.mongodb import find_map_by_key, find_soft_by_key, find_user_by_key, \
+    set_config, set_map, set_soft, set_user, set_user_browser_token
+from typing import Optional, Union
 
 
 from data.map import Map
@@ -9,6 +10,7 @@ from data.user import User
 
 
 import aiofiles
+import json
 
 
 class Admin(commands.Cog):
@@ -90,6 +92,30 @@ class Admin(commands.Cog):
         set_soft(key)
 
         await ctx.reply("Database updated")
+
+    @commands.command()
+    @commands.is_owner()
+    async def spec(self, ctx, key: str):
+        user = find_user_by_key(key)
+        if user:
+            await ctx.reply(f"```json\n{json.dumps(user.specs)}```")
+        else:
+            await ctx.reply("User not found")
+
+    @commands.command()
+    @commands.is_owner()
+    async def setspec(self, ctx, key: str, attr: str, val: Union[int, bool, str]):
+        user = find_user_by_key(key)
+        if user:
+            if attr != "perms":
+                if user.specs.get("perms") != "custom":
+                    await ctx.reply("Failed to change users permissions. Field `perms` set to `custom` is required")
+                    return
+
+            user.specs[attr] = val
+            user.save()
+        else:
+            await ctx.reply("User not found")
 
 def setup(bot):
     bot.add_cog(Admin(bot))
