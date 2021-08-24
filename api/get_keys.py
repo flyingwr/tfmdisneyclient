@@ -24,16 +24,15 @@ class GetKeys(web.View):
 
 			status = 400
 		elif access_token:
-			level = infrastructure.tokens[access_token]["level"]
+			info = infrastructure.tokens[access_token]
+			level = info["level"]
 
-			key = infrastructure.tokens[access_token]["key"]
-			limit = infrastructure.config["platinum_conn_limit"] if key in infrastructure.config["high_perm"] \
-				else infrastructure.config["default_conn_limit"]
+			key = info["key"]
 
 			passed = True
-			if addr not in infrastructure.tokens[access_token]["ips"]:
-				if len(infrastructure.tokens[access_token]["ips"]) < limit:
-					infrastructure.tokens[access_token]["ips"].append(addr)
+			if addr not in info["ips"]:
+				if len(info["ips"]) < info["conn_limit"]:
+					info["ips"].append(addr)
 				else:
 					response["error"] = "connection limit exceeded"
 

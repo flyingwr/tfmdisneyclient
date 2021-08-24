@@ -48,14 +48,14 @@ def check_conn(access_token: str, addr: str):
 	) else False
 
 
-def store_access(key: str, level: str, addr: Optional[str] = None) -> Dict:
+def store_access(key: str, level: str, addr: Optional[str] = None, conn_limit: Optional[int] = 1) -> Dict:
 	result = {}
 
 	if addr:
 		if addr not in infrastructure.ips:
 			access_token = gentoken.generate_token()
 			infrastructure.ips[addr] = (datetime.datetime.now().timestamp(), access_token)			
-			infrastructure.tokens[access_token] = {"key": key, "level": level, "ips": [addr]}
+			infrastructure.tokens[access_token] = {"key": key, "level": level, "ips": [addr], "conn_limit": conn_limit}
 			loop.create_task(del_token(addr, access_token))
 		else:
 			access_token = infrastructure.ips[addr][1]

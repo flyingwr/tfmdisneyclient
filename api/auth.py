@@ -58,7 +58,7 @@ class Auth(web.View):
 
 					if status == 200:
 						response["success"] = True
-						response.update(server.store_access(key, user.premium_level, addr))
+						response.update(server.store_access(key, user.premium_level, addr, user.connection_limit))
 				else:
 					response["error"] = "invalid key"
 			else:
