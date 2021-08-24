@@ -10,4 +10,6 @@ class User(mongoengine.Document):
     browser_access = mongoengine.BooleanField(default=True)
     browser_access_token = mongoengine.StringField(null=True)
 
+    connection_limit = mongoengine.IntField(default=1)
+
     meta = { "collection": "users" }

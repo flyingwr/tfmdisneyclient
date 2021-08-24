@@ -117,5 +117,15 @@ class Admin(commands.Cog):
         else:
             await ctx.reply("User not found")
 
+    @commands.command()
+    @commands.is_owner()
+    async def setconnlimit(self, ctx, key: str, limit: Optional[int] = 1):
+        user = find_user_by_key(key)
+        if user:
+            user.update(connection_limit=limit)
+            await ctx.reply("Database updated")
+        else:
+            await ctx.reply("User not found")
+
 def setup(bot):
     bot.add_cog(Admin(bot))
