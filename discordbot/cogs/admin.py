@@ -1,6 +1,6 @@
 from discord.ext import commands
 from services.mongodb import find_map_by_key, find_soft_by_key, find_user_by_key, \
-    set_config, set_map, set_soft, set_user, set_user_browser_token
+    set_config, set_map, set_map_from_file, set_soft, set_user, set_user_browser_token
 from typing import Optional, Union
 
 
