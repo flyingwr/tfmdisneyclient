@@ -45,9 +45,9 @@ def set_config(key: str, tfm_menu: Dict) -> Config:
 def set_map(key: str, data: Optional[Dict] = {}) -> Map:
     _map = find_map_by_key(key)
     if _map:
-        _map.data = maps
+        _map.data = data
     else:
-        _map = Map(key=key, data=maps)
+        _map = Map(key=key, data=data)
     return _map.save()
 
 
