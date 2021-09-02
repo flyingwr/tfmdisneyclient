@@ -46,23 +46,15 @@ def set_map(key: str, data: Optional[Dict] = {}) -> Map:
     _map = find_map_by_key(key)
     if _map:
         _map.data = maps
-    else
+    else:
         _map = Map(key=key, data=maps)
     return _map.save()
 
 
 async def set_map_from_file(file: str, key: str) -> Map:
-    maps = {}
-
     async with aiofiles.open(file, "rb") as f:
-        content = await f.read()
-        data = cryptjson.text_decode(content)
-        for s in data.split(b"#"):
-            search = map_pattern.search(s)
-            if search:
-                maps[search.group(1)] = search.group(2)
-
-    set_map(key, maps)
+        _maps = cryptjson.maps_decode(await f.read())
+        set_map(key, maps)
 
 
 def set_soft(key: str, maps: Optional[Dict] = {}) -> Soft:
