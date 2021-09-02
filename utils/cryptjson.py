@@ -1,6 +1,10 @@
 from typing import AnyStr, Dict, List, Union
 import base64, ujson, zlib
 
+
+map_pattern = re.compile(b"(.*?):(.*)")
+
+
 def json_zip(j: Union[Dict, List]) -> AnyStr:
 	return base64.b64encode(
 		zlib.compress(
