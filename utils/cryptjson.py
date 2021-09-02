@@ -1,5 +1,9 @@
 from typing import AnyStr, Dict, List, Union
-import base64, ujson, zlib
+
+import base64
+import re
+import ujson
+import zlib
 
 
 map_pattern = re.compile(b"(.*?):(.*)")
