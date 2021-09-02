@@ -13,9 +13,6 @@ from utils import cryptjson
 import aiofiles
 
 
-map_pattern = re.compile(b"(.*?):(.*)")
-
-
 class Admin(commands.Cog):
     """
         Admin commands
