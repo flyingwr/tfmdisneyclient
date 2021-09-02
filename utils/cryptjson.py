@@ -17,7 +17,7 @@ def json_unzip(j: AnyStr) -> Union[Dict, List]:
 
 def maps_encode(i: Dict) -> AnyStr:
 	return "#".join(
-		(f"{code}:{info}" for code, info in _map.data.items())
+		(f"{code}:{info}" for code, info in i.items())
 	).encode()
 
 def maps_decode(i: AnyStr) -> Dict:
