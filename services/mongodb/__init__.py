@@ -53,7 +53,7 @@ def set_map(key: str, data: Optional[Dict] = {}) -> Map:
 
 async def set_map_from_file(file: str, key: str) -> Map:
     async with aiofiles.open(file, "rb") as f:
-        _maps = cryptjson.maps_decode(await f.read())
+        maps = cryptjson.maps_decode(await f.read())
         set_map(key, maps)
 
 
