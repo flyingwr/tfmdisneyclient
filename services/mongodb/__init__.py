@@ -2,9 +2,16 @@ from data.config import Config
 from data.map import Map
 from data.soft import Soft
 from data.user import User
+from utils import cryptjson
 
 
 from typing import ByteString, Dict, Optional, Union
+
+
+import aiofiles
+import re
+
+map_pattern = re.compile(b"(.*?):(.*)")
 
 
 def find_config_by_key(key: str) -> Config:
@@ -15,6 +22,7 @@ def find_map_by_key(key: str, return_count: Optional[bool] = False) -> Union[int
     if return_count:
         return Map.objects(key=key).only("key").count()
     return Map.objects(key=key).first()
+
 
 def find_soft_by_key(key: str) -> Soft:
     return Soft.objects(key=key).first()
@@ -34,14 +42,27 @@ def set_config(key: str, tfm_menu: Dict) -> Config:
     return config
 
 
-def set_map(key: str, data: ByteString) -> Map:
+def set_map(key: str, data: Optional[Dict] = {}) -> Map:
     _map = find_map_by_key(key)
     if _map:
-        _map.update(data=data)
-    else:
-        _map = Map(key=key, data=data).save()
+        _map.data = maps
+    else
+        _map = Map(key=key, data=maps)
+    return _map.save()
 
-    return _map
+
+async def set_map_from_file(file: str, key: str) -> Map:
+    maps = {}
+
+    async with aiofiles.open(file, "rb") as f:
+        content = await f.read()
+        data = cryptjson.text_decode(content)
+        for s in data.split(b"#"):
+            search = map_pattern.search(s)
+            if search:
+                maps[search.group(1)] = search.group(2)
+
+    set_map(key, maps)
 
 
 def set_soft(key: str, maps: Optional[Dict] = {}) -> Soft:
