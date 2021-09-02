@@ -12,9 +12,9 @@ def find_config_by_key(key: str) -> Config:
 
 
 def find_map_by_key(key: str, return_count: Optional[bool] = False) -> Union[int, Map]:
-    query = Map.objects(key=key)
-    return query.count() if return_count else query.first()
-
+    if return_count:
+        return Map.objects(key=key).only("key").count()
+    return Map.objects(key=key).first()
 
 def find_soft_by_key(key: str) -> Soft:
     return Soft.objects(key=key).first()
