@@ -126,7 +126,7 @@ class Admin(commands.Cog):
         print("[MongoDB] Formatting maps...")
         for _map in Map.objects().only("key"):
             if not find_user_by_key(_map.key):
-                print(f"[MongoDB] Deleted maps from key `{key}` because it was not found in users document")
+                print(f"[MongoDB] Deleted maps from key `{_map.key}` because it was not found in users document")
                 _map.delete()
                 
         await ctx.reply("Database updated")
