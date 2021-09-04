@@ -41,7 +41,7 @@ class GetKeys(web.View):
 			if passed:
 				response["success"] = True
 				response["keys"] = {
-					"maps_allowed": bool(find_map_by_key(key, True)),
+					# "maps_allowed": bool(find_map_by_key(key, True)),
 					"client_version": infrastructure.config["client_version"],
 					"discord": infrastructure.discord.discord_name,
 					"premium_level": level
