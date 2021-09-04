@@ -28,10 +28,10 @@ def maps_encode(i: Dict) -> AnyStr:
 		(f"{code}:{info}" for code, info in i.items())
 	).encode()
 
-def maps_decode(i: AnyStr) -> Dict:
+def maps_decode(i: str) -> Dict:
 	maps = {}
 
-	sep = text_decode(i).decode().split("#")
+	sep = text_decode(i).split("#")
 	for s in sep:
 		search = map_pattern.search(s)
 		if search:
