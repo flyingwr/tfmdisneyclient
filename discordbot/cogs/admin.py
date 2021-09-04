@@ -38,7 +38,7 @@ class Admin(commands.Cog):
     async def setkeymaps(self, ctx, key: str):
         async with aiofiles.open("./public/maps.json", "rb") as f:
             set_map(key, await f.read())
-
+            
         await ctx.reply("Database updated")
 
 
@@ -100,6 +100,21 @@ class Admin(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
+    async def setspec(self, ctx, key: str, attr: str, val: Union[int, bool, str]):
+        user = find_user_by_key(key)
+        if user:
+            if attr != "perms":
+                if user.specs.get("perms") != "custom":
+                    await ctx.reply("Failed to change users permissions. Field `perms` set to `custom` is required")
+                    return
+
+            user.specs[attr] = val
+            user.save()
+        else:
+            await ctx.reply("User not found")
+
+    @commands.command()
+    @commands.is_owner()
     async def setconnlimit(self, ctx, key: str, limit: Optional[int] = 1):
         user = find_user_by_key(key)
         if user:
@@ -117,9 +132,7 @@ class Admin(commands.Cog):
             if not find_user_by_key(_map.key):
                 print(f"[MongoDB] Deleted maps from key `{_map.key}` because it was not found in users document")
                 _map.delete()
-                
-        await ctx.reply("Database updated")
-        
+
 
 def setup(bot):
     bot.add_cog(Admin(bot))
