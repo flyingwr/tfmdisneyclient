@@ -43,11 +43,7 @@ class MapStorage(web.View):
 
 		_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
 		if _map:
-			if isinstance(_map.data, bytes):
-				return web.Response(body=_map.data)
-			else:
-				return web.Response(body=cryptjson.text_encode(
-					cryptjson.maps_encode(_map.data)))
+			return web.Response(body=_map.data)
 
 		async with aiofiles.open("./public/maps.json", "rb") as f:
 			return web.Response(body=await f.read())
@@ -63,7 +59,7 @@ class MapStorage(web.View):
 			raise web.HTTPUnauthorized()
 
 		data = await self.request.post()
-		code, info = data.get("code"), data.get("info")
+		map_data = data.get("mapdata")
 		
 		method = self.request.query.get("method")
 
@@ -71,23 +67,46 @@ class MapStorage(web.View):
 		if level in infrastructure.config["storage_allowed_levels"]:
 			_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
 			if _map:
+				found_map_data = _map.data
+
 				if method == "ls":
 					result = infrastructure.tokens[access_token].get("lsmap")
 					if not result:
-						result = await pasteee.new_paste(", ".join(_map.data.keys()))
+						result = await pasteee.new_paste(", "
+							.join(
+								ls_pattern.findall(cryptjson.text_decode(found_map_data))
+							).replace("@", "")
+						)
+
 						infrastructure.tokens[access_token]["lsmap"] = result
 						infrastructure.loop.create_task(infrastructure.del_lsmap(access_token))
 
 					return web.Response(body=result.encode())
-				elif method in ("del", "save"):
-					if method == "del":
-						if code in _map.data:
-							del _map.data[code]
-					else:
-						_map.data[code] = info
-					_map.save()
 
-					raise web.HTTPNoContent()
+				if map_data:
+					data_decoded = cryptjson.text_decode(found_map_data)
+
+					search = map_pattern.search(cryptjson.text_decode(map_data))
+					if search is not None:
+						map_code, info = search.group(1), search.group(2)
+						if map_code in data_decoded:
+							_search = re.search(b"%s:([^#]*)" % map_code, data_decoded)
+							if _search:
+								if method == "save":
+									data_decoded = data_decoded.replace(
+										_search.group(),
+										b"%s:%s" % (map_code, info)
+									)
+								elif method == "del":
+									data_decoded = data_decoded.replace(_search.group(), b"")
+						else:
+							if method == "save":
+								data_decoded += b"#%s:%s" % (map_code, info)
+
+						_map.update(data=cryptjson.text_encode(map_pattern2.sub(
+							b"", data_decoded.replace(b"##", b"#"))))
+
+						raise web.HTTPNoContent()
 
 				raise web.HTTPBadRequest()
 

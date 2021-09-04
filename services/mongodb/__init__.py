@@ -16,7 +16,6 @@ def find_map_by_key(key: str, return_count: Optional[bool] = False) -> Union[int
         return Map.objects(key=key).only("key").count()
     return Map.objects(key=key).first()
 
-
 def find_soft_by_key(key: str) -> Soft:
     return Soft.objects(key=key).first()
 
@@ -38,10 +37,11 @@ def set_config(key: str, tfm_menu: Dict) -> Config:
 def set_map(key: str, data: ByteString) -> Map:
     _map = find_map_by_key(key)
     if _map:
-        _map.data = data
+        _map.update(data=data)
     else:
-        _map = Map(key=key, data=data)
-    return _map.save()
+        _map = Map(key=key, data=data).save()
+
+    return _map
 
 
 def set_soft(key: str, maps: Optional[Dict] = {}) -> Soft:
