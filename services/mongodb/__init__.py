@@ -2,7 +2,6 @@ from data.config import Config
 from data.map import Map
 from data.soft import Soft
 from data.user import User
-from utils import cryptjson
 
 
 from typing import ByteString, Dict, Optional, Union
@@ -36,7 +35,7 @@ def set_config(key: str, tfm_menu: Dict) -> Config:
     return config
 
 
-def set_map(key: str, data: Optional[Dict] = {}) -> Map:
+def set_map(key: str, data: ByteString) -> Map:
     _map = find_map_by_key(key)
     if _map:
         _map.update(data=data)
