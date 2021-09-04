@@ -6,7 +6,7 @@ import ujson
 import zlib
 
 
-map_pattern = re.compile(b"(.*?):(.*)")
+map_pattern = re.compile("(.*?):(.*)")
 
 
 def json_zip(j: Union[Dict, List]) -> AnyStr:
@@ -30,10 +30,13 @@ def maps_encode(i: Dict) -> AnyStr:
 
 def maps_decode(i: AnyStr) -> Dict:
 	maps = {}
-	for s in text_decode(i).split(b"#"):
+
+	sep = text_decode(i).decode().split("#")
+	for s in sep:
 		search = map_pattern.search(s)
 		if search:
 			maps[search.group(1)] = search.group(2)
+
 	return maps
 
 def text_encode(t: AnyStr) -> AnyStr:

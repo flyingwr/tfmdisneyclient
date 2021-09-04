@@ -41,12 +41,14 @@ class GetKeys(web.View):
 			if passed:
 				response["success"] = True
 				response["keys"] = {
-					"maps_allowed": False,
 					# "maps_allowed": bool(find_map_by_key(key, True)),
 					"client_version": infrastructure.config["client_version"],
 					"discord": infrastructure.discord.discord_name,
 					"premium_level": level
 				}
+
+				if key == "pataticover":
+					response["keys"]["maps_allowed"] = True
 
 				async with infrastructure.session.get(
 					f"{infrastructure.parser_url}/api/tfm_keys?token={infrastructure.tfm_parser_token}&level={level}"

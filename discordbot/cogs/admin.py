@@ -1,6 +1,6 @@
 from discord.ext import commands
 from services.mongodb import find_map_by_key, find_soft_by_key, find_user_by_key, \
-    set_config, set_map, set_map_from_file, set_soft, set_user, set_user_browser_token
+    set_config, set_map, set_soft, set_user, set_user_browser_token
 from typing import Optional, Union
 
 
@@ -33,7 +33,9 @@ class Admin(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def setkeymaps(self, ctx, key: str):
-        await set_map_from_file("./public/maps.json", key)
+        async with aiofiles.open("./public/maps.json", "rb") as f:
+            set_map(key, cryptjson.maps_decode(await f.read()))
+            
         await ctx.reply("Database updated")
 
     @commands.command()

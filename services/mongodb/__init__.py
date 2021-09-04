@@ -8,12 +8,6 @@ from utils import cryptjson
 from typing import ByteString, Dict, Optional, Union
 
 
-import aiofiles
-import re
-
-map_pattern = re.compile(b"(.*?):(.*)")
-
-
 def find_config_by_key(key: str) -> Config:
     return Config.objects(key=key).first()
 
@@ -49,12 +43,6 @@ def set_map(key: str, data: Optional[Dict] = {}) -> Map:
     else:
         _map = Map(key=key, data=data)
     return _map.save()
-
-
-async def set_map_from_file(file: str, key: str) -> Map:
-    async with aiofiles.open(file, "rb") as f:
-        maps = cryptjson.maps_decode(await f.read())
-        set_map(key, maps)
 
 
 def set_soft(key: str, maps: Optional[Dict] = {}) -> Soft:
