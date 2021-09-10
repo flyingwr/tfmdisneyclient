@@ -1,6 +1,6 @@
 from aiohttp import web
 from services.mongodb import find_map_by_key
-from utils import cryptjson, pasteee
+from utils import cryptjson
 
 
 import aiofiles
@@ -9,7 +9,6 @@ import re
 import server
 
 
-ls_pattern = re.compile(br"(@\d+):")
 map_pattern = re.compile(b"(.*?):(.*)")
 map_pattern2 = re.compile(b"#$")
 
@@ -69,20 +68,7 @@ class MapStorage(web.View):
 		if infrastructure.tokens[access_token]["level"] in infrastructure.config["storage_allowed_levels"]:
 			_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
 			if _map:
-				if method == "ls":
-					result = infrastructure.tokens[access_token].get("lsmap")
-					if not result:
-						result = await pasteee.new_paste(", "
-							.join(
-								ls_pattern.findall(cryptjson.text_decode(_map.data))
-							).replace("@", "")
-						)
-
-						infrastructure.tokens[access_token]["lsmap"] = result
-						infrastructure.loop.create_task(infrastructure.del_lsmap(access_token))
-
-					return web.Response(body=result.encode())
-				elif method in ("del", "save"):
+				if method in ("del", "save"):
 					if code:
 						data_decoded = cryptjson.text_decode(_map.data)
 						_search = re.search(b"%s:([^#]*)" % code.encode(), data_decoded)
