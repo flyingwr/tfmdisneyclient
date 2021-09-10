@@ -91,8 +91,10 @@ async def main():
 		infrastructure.config = ujson.loads(await f.read())
 
 	if not infrastructure.is_local:
-		records.update_wr_list()
-		infrastructure.records_data = cryptjson.json_zip(records.wr_list)
+		infrastructure.records_data = cryptjson.json_zip({
+			"new": records.read_spreadsheet("1xoPZXT5apgKm1Z5J-YEv-sXTQ6BjB0vnPgrWLxhRpaU"),
+			"old": records.read_spreadsheet("1l3D-tmUAgwqNPjR3qa1rKqNkNYImPLC3dhgHUD3gLjo")
+		})
 
 	app = web.Application()
 	app.router.add_get("/", resources.index)

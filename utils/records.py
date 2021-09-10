@@ -1,56 +1,65 @@
+"""Read records spreadsheets of Transformice"""
+
+from typing import Dict
+
 import gspread
 gc = gspread.service_account(filename="service_account_credentials.json")
 
-wr_list = {"new": {}, "old": {}}
+# Supported categories of records
+cats = ("P3", "P5", "P6", "P7", "P9", "P13", "P17", "P18", "P19", "V", "WJ")
 
-def update_wr_list():
-	ver_key = "old"
-	sheet_key = "1l3D-tmUAgwqNPjR3qa1rKqNkNYImPLC3dhgHUD3gLjo"
+def read_spreadsheet(key: str) -> Dict:
+	"""Read a spreadsheet by key, which can be found in their URL: https://docs.google.com/spreadsheets/d/<KEY>
 
-	for n in range(2):
-		tfmrs = gc.open_by_key(sheet_key)
+	:param str key: Key of a spreadsheet
+	:returns: A dictionary with all records read
+		>>> {
+			"@123": {
+				"left": ("Dummy", "20.21s"),
+				"right": ("Dummy", "20.21s")
+			}, ...
+		}
+	:rtype: dict
+	"""
 
-		for cat in ["P3", "P5", "P6", "P7", "P9", "P13", "P17", "P18", "P19", "V", "WJ"]:
-			left_side = tfmrs.values_batch_get([f"{cat}!B:B", f"{cat}!C:C", f"{cat}!D:D"])
-			maps = left_side["valueRanges"][0]["values"]
-			players = left_side["valueRanges"][1]["values"]
-			times = left_side["valueRanges"][2]["values"]
+	_range = range(3)
 
-			right_side = None
+	result = {}
 
-			# Reverse maps
-			if cat not in ["V"]:
-				right_side = tfmrs.values_batch_get([f"{cat}!J:J", f"{cat}!K:K", f"{cat}!L:L"])
-				rmaps = right_side["valueRanges"][2]["values"]
-				rplayers = right_side["valueRanges"][1]["values"]
-				rtimes = right_side["valueRanges"][0]["values"]
+	spreadsheet = gc.open_by_key(key)
 
-			last_map_key, last_player_key = 1, 2
-			while last_map_key < len(maps):
-				if last_player_key > len(players):
-					break
+	for cat in cats:
+		left_side = spreadsheet.values_batch_get([f"{cat}!B:B", f"{cat}!C:C", f"{cat}!D:D"])
+		maps, players, times = (left_side["valueRanges"][i]["values"] for i in _range)
 
-				if maps[last_map_key] and "@" in maps[last_map_key][0]:
-					wr_list[ver_key][maps[last_map_key][0]] = {}
+		_reversed = None
 
-					if players[last_player_key] and times[last_player_key]:
-						wr_list[ver_key][maps[last_map_key][0]]["left"] = (
-							players[last_player_key][0],
-							times[last_player_key][0]
-						)
+		"""Fetching reversed records
+		`V` category is not included as it has no reversed records
+		"""
+		if cat != "V":
+			_reversed = spreadsheet.values_batch_get([f"{cat}!J:J", f"{cat}!K:K", f"{cat}!L:L"])
+			rmaps, rplayers, rtimes = (_reversed["valueRanges"][i]["values"] for i in _range[::-1]) # Reversed range
 
-					if right_side is not None:
-						if last_map_key <= len(rmaps) and last_player_key <= len(rplayers):
-							if rplayers[last_player_key] and rtimes[last_player_key]:
-								wr_list[ver_key][maps[last_map_key][0]]["right"] = (
-									rplayers[last_player_key][0],
-									rtimes[last_player_key][0]
-								)
+		last_player_key = 2
+		for last_map_key in range(1, len(maps), 8):
+			_map = maps[last_map_key]
+			if _map and "@" in _map[0]: # Check if value is truthy
+				result[_map[0]] = temp = {}
 
-				last_map_key += 8
-				last_player_key += 8
+				player, _time = players[last_player_key], times[last_player_key]
+				if player and _time: # Check if value is truthy
+					temp["left"] = (player[0], _time[0])
 
-		ver_key = "new"
-		sheet_key = "1xoPZXT5apgKm1Z5J-YEv-sXTQ6BjB0vnPgrWLxhRpaU"
+				"""Dealing with reversed records"""
+				if _reversed is not None:
+					if last_map_key < len(rmaps) and last_player_key < len(rplayers):
+						rplayer, rtime = rplayers[last_player_key], rtimes[last_player_key]
+						if rplayer and rtime: # Check if value is truthy
+							temp["right"] = (rplayer[0], rtime[0])
 
-	print("[Records] Data has been updated.")
+			last_player_key += 8
+			if last_player_key > len(players):
+				break
+
+	return result
