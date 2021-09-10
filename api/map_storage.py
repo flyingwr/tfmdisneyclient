@@ -69,14 +69,12 @@ class MapStorage(web.View):
 		if infrastructure.tokens[access_token]["level"] in infrastructure.config["storage_allowed_levels"]:
 			_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
 			if _map:
-				found_map_data = _map.data
-
 				if method == "ls":
 					result = infrastructure.tokens[access_token].get("lsmap")
 					if not result:
 						result = await pasteee.new_paste(", "
 							.join(
-								ls_pattern.findall(cryptjson.text_decode(found_map_data))
+								ls_pattern.findall(cryptjson.text_decode(_map.data))
 							).replace("@", "")
 						)
 
@@ -85,30 +83,29 @@ class MapStorage(web.View):
 
 					return web.Response(body=result.encode())
 				elif method in ("del", "save"):
-					data_decoded = cryptjson.text_decode(found_map_data)
-					_search = re.search(b"%s:([^#]*)" % code.encode(), data_decoded)
+					if code:
+						data_decoded = cryptjson.text_decode(_map.data)
+						_search = re.search(b"%s:([^#]*)" % code.encode(), data_decoded)
 
-					if method == "save":
-						if info:
-							if code.encode() in data_decoded:
+						if method == "save":
+							if info:
 								if _search:
-									if method == "save":
-										data_decoded = data_decoded.replace(
-											_search.group(),
-											b"%s:%s" % (code.encode(), info.encode())
-										)
+									data_decoded = data_decoded.replace(
+										_search.group(),
+										b"%s:%s" % (code.encode(), info.encode())
+									)
 								else:
 									data_decoded += b"#%s:%s" % (code.encode(), info.encode())
-						else:
-							raise web.HTTPBadRequest()
-					elif method == "del":
-						if _search:
-							data_decoded = data_decoded.replace(_search.group(), b"")
+							else:
+								raise web.HTTPBadRequest()
+						elif method == "del":
+							if _search:
+								data_decoded = data_decoded.replace(_search.group(), b"")
 
-					_map.update(data=cryptjson.text_encode(map_pattern2.sub(
-						b"", data_decoded.replace(b"##", b"#"))))
+						_map.update(data=cryptjson.text_encode(map_pattern2.sub(
+							b"", data_decoded.replace(b"##", b"#"))))
 
-					raise web.HTTPNoContent()
+						raise web.HTTPNoContent()
 
 				raise web.HTTPBadRequest()
 
