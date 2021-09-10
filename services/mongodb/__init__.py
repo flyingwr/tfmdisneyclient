@@ -16,6 +16,7 @@ def find_map_by_key(key: str, return_count: Optional[bool] = False) -> Union[int
         return Map.objects(key=key).only("key").count()
     return Map.objects(key=key).first()
 
+
 def find_soft_by_key(key: str) -> Soft:
     return Soft.objects(key=key).first()
 

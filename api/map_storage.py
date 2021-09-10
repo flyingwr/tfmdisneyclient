@@ -41,12 +41,15 @@ class MapStorage(web.View):
 		elif access_token == False:
 			raise web.HTTPUnauthorized()
 
-		# _map = find_map_by_key(infrastructure.tokens[access_token]["key"])
-		# if _map:
-		# 	return web.Response(body=_map.data)
+		_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
+		if _map:
+			return web.Response(body=_map.data)
 
-		async with aiofiles.open("./public/maps.json", "rb") as f:
-			return web.Response(body=await f.read())
+		if infrastructure.tokens[access_token]["level"] in infrastructure.config["storage_allowed_levels"]:
+			async with aiofiles.open("./public/maps.json", "rb") as f:
+				return web.Response(body=await f.read())
+
+		raise web.HTTPForbidden()
 				
 	async def post(self):
 		access_token = self.request.query.get("access_token")
@@ -63,8 +66,7 @@ class MapStorage(web.View):
 		
 		method = self.request.query.get("method")
 
-		level = infrastructure.tokens[access_token]["level"]
-		if level in infrastructure.config["storage_allowed_levels"]:
+		if infrastructure.tokens[access_token]["level"] in infrastructure.config["storage_allowed_levels"]:
 			_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
 			if _map:
 				found_map_data = _map.data
