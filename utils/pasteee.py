@@ -10,10 +10,10 @@ async def new_paste(code: str) -> str:
 			"key": "public",
 			"description": "",
 			"paste": code,
-			"expire": 5,
+			"expire": 300,
 			"format": "simple"
 		}) as response:
 			if response.status == 200:
-				result = (await response.json())["paste"]["raw"]
+				result = await response.text()
 
 	return result
