@@ -78,10 +78,10 @@ class MapStorage(web.View):
 								if _search:
 									data_decoded = data_decoded.replace(
 										_search.group(),
-										b"%s:%s" % (code.encode(), cryptjson.json_unzip(info))
+										b"%s:%s" % (code.encode(), cryptjson.text_decode(info))
 									)
 								else:
-									data_decoded += b"#%s:%s" % (code.encode(), cryptjson.json_unzip(info))
+									data_decoded += b"#%s:%s" % (code.encode(), cryptjson.text_decode(info))
 							else:
 								raise web.HTTPBadRequest()
 						elif method == "del":
