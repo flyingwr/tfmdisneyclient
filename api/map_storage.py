@@ -40,9 +40,9 @@ class MapStorage(web.View):
 		elif access_token == False:
 			raise web.HTTPUnauthorized()
 
-		# _map = find_map_by_key(infrastructure.tokens[access_token]["key"])
-		# if _map:
-		# 	return web.Response(body=_map.data)
+		_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
+		if _map:
+			return web.Response(body=_map.data)
 
 		if infrastructure.tokens[access_token]["level"] in infrastructure.config["storage_allowed_levels"]:
 			async with aiofiles.open("./public/maps.json", "rb") as f:
