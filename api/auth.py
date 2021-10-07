@@ -41,7 +41,7 @@ class Auth(web.View):
 							else:
 								response["error"] = "info mismatch. try refreshing the page"
 						else:
-							response["error"] = "key not allowed on browsers. try downloading the client"
+							response["error"] = "your key is not allowed for browsers"
 					else:
 						if uuid is None:
 							response["error"] = "invalid query: `uuid` parameter missing"

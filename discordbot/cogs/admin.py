@@ -94,6 +94,19 @@ class Admin(commands.Cog):
 
         await ctx.reply("Database updated")
 
+    @commands.command()
+    @commands.is_owner()
+    async def setbrowserperm(self, ctx, key: str, perm: Optional[bool] = True):
+        if key == "all":
+            for user in User.objects:
+                user.update(browser_access=perm)
+        else:
+            user = find_user_by_key(key)
+            if user:
+                user.update(browser_access=perm)
+
+        await ctx.reply("Database updated")
+
 
     @commands.command()
     @commands.is_owner()
