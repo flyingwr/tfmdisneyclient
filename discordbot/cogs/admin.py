@@ -25,10 +25,8 @@ class Admin(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def setkey(self, ctx, *args):
-        for arg in args:
-            info = arg.split(":")
-            set_user(info[0], "SILVER" if len(info) < 2 else info[1])
+    async def setkey(self, ctx, key: str, premium_level: Optional[str] = "GOLD_II"):
+        set_user(key, premium_level)
 
         await ctx.reply("Database updated")
 

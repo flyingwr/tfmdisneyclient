@@ -65,7 +65,7 @@ def set_soft(key: str, maps: Optional[Dict] = {}) -> Soft:
 
 def set_user(
     key: str,
-    premium_level: Optional[str] = "SILVER",
+    premium_level: Optional[str] = "GOLD_II",
     browser_access: Optional[bool] = True,
     skip_check: Optional[bool] = False
 ) -> User:
