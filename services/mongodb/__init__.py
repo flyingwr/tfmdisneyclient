@@ -1,3 +1,4 @@
+from data.blacklist import Blacklist
 from data.config import Config
 from data.map import Map
 from data.soft import Soft
@@ -5,6 +6,9 @@ from data.user import User
 
 
 from typing import ByteString, Dict, Optional, Union
+
+
+import infrastructure
 
 
 def find_config_by_key(key: str) -> Config:
@@ -24,6 +28,24 @@ def find_soft_by_key(key: str) -> Soft:
 def find_user_by_key(key: str) -> User:
     return User.objects(key=key).first()
 
+
+def del_blacklist(addr: str):
+    blacklist = Blacklist.objects(addr=addr).first()
+    if blacklist:
+        blacklist.delete()
+
+        infrastructure.blacklisted_ips.remove(addr)
+
+
+def set_blacklist(addr: str) -> Blacklist:
+    blacklist = Blacklist.objects(addr=addr).first()
+    if not blacklist:
+        blacklist = Blacklist(addr=addr).save()
+
+        infrastructure.blacklisted_ips.append(addr)
+        
+    return blacklist
+    
 
 def set_config(key: str, tfm_menu: Dict) -> Config:
     config = find_config_by_key(key)

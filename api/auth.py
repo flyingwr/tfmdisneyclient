@@ -18,51 +18,63 @@ class Auth(web.View):
 		agent = self.request.headers.get("User-Agent")
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 
-		if client_version and client_version != infrastructure.config["version"]:
-			response.update(dict(error="outdated version", update_url=infrastructure.config["update_url"]))
-			status = 406
-		else:
-			if key is not None:
-				user = find_user_by_key(key)
-				if user:
-					if "disneyclient" not in agent:
-						if user.browser_access:
-							cookies = self.request.cookies
-							browser_access_token = cookies.get("browser_access_token")
-							if browser_access_token:
-								if user.browser_access_token is None:
-									user.update(browser_access_token=browser_access_token)
+		if addr not in infrastructure.blacklisted_ips:
+			if client_version and client_version != infrastructure.config["version"]:
+				response.update(dict(error="outdated version", update_url=infrastructure.config["update_url"]))
+				status = 406
+			else:
+				if key is not None:
+					user = find_user_by_key(key)
+					if user:
+						if "disneyclient" not in agent:
+							if user.browser_access:
+								cookies = self.request.cookies
+								browser_access_token = cookies.get("browser_access_token")
+								if browser_access_token:
+									if user.browser_access_token is None:
+										user.update(browser_access_token=browser_access_token)
+
+										status = 200
+									elif user.browser_access_token == browser_access_token:
+										status = 200
+									else:
+										response["error"] = "this key is used by another device"
+								else:
+									response["error"] = "info mismatch. try refreshing the page"
+							else:
+								response["error"] = "your key is not allowed for browsers"
+						else:
+							if uuid is None:
+								response["error"] = "invalid query: `uuid` parameter missing"
+							else:
+								if user.uuid is None:
+									user.update(uuid=uuid)
 
 									status = 200
-								elif user.browser_access_token == browser_access_token:
+								elif str(user.uuid).upper() == uuid:
 									status = 200
 								else:
-									response["error"] = "this key is used by another device"
-							else:
-								response["error"] = "info mismatch. try refreshing the page"
-						else:
-							response["error"] = "your key is not allowed for browsers"
+									response["error"] = "uuid does not match"
+									status = 451
+
+						if status == 200:
+							response["success"] = True
+							response.update(server.store_access(key, user.premium_level, addr, user.connection_limit))
 					else:
-						if uuid is None:
-							response["error"] = "invalid query: `uuid` parameter missing"
-						else:
-							if user.uuid is None:
-								user.update(uuid=uuid)
+						response["error"] = "invalid key"
 
-								status = 200
-							elif str(user.uuid).upper() == uuid:
-								status = 200
-							else:
-								response["error"] = "uuid does not match"
-								status = 451
+						infrastructure.auth_attempts[addr] += 1
+						n = infrastructure.auth_attempts[addr]
+						if n >= 8:
+							if n == 8:
+								infrastructure.loop.create_task(server.unblock_addr(addr))
 
-					if status == 200:
-						response["success"] = True
-						response.update(server.store_access(key, user.premium_level, addr, user.connection_limit))
+							response["error"] = "temporarily blocked due to many login attemps"
+
 				else:
-					response["error"] = "invalid key"
-			else:
-				response["error"] = "invalid query: `key` parameter missing"
+					response["error"] = "invalid query: `key` parameter missing"
+		else:
+			response["error"] = "ip address blacklisted :P"
 
 		if key != "pataticover":
 			infrastructure.loop.create_task(infrastructure.discord.log(

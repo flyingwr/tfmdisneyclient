@@ -8,3 +8,7 @@ if infrastructure.is_local:
     mongoengine.connect(host=os.getenv("MONGODB_URL"), ssl_cert_reqs=CERT_NONE)
 else:
     mongoengine.connect(host=os.getenv("MONGODB_URL"))
+
+
+from .blacklist import Blacklist
+infrastructure.blacklisted_ips = [obj.addr for obj in Blacklist.objects().only("addr")]

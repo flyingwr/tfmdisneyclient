@@ -1,9 +1,11 @@
 from discord.ext import commands
 from services.mongodb import find_map_by_key, find_soft_by_key, find_user_by_key, \
-    set_config, set_map, set_soft, set_user, set_user_browser_token
+    set_config, set_map, set_soft, set_user, set_user_browser_token, set_blacklist, \
+    del_blacklist
 from typing import Optional, Union
 
 
+from data.blacklist import Blacklist
 from data.map import Map
 from data.soft import Soft
 from data.user import User
@@ -124,6 +126,7 @@ class Admin(commands.Cog):
         else:
             await ctx.reply("User not found")
 
+
     @commands.command()
     @commands.is_owner()
     async def delunusedmaps(self, ctx):
@@ -133,6 +136,22 @@ class Admin(commands.Cog):
                 print(f"[MongoDB] Deleted maps from key `{_map.key}` because it was not found in users document")
                 _map.delete()
                 
+        await ctx.reply("Database updated")
+
+
+    @commands.command()
+    @commands.is_owner()
+    async def blacklist(self, ctx, addr: str):
+        set_blacklist(addr)
+
+        await ctx.reply("Database updated")
+
+
+    @commands.command()
+    @commands.is_owner()
+    async def delblacklist(self, ctx, addr: str):
+        del_blacklist(addr)
+
         await ctx.reply("Database updated")
 
 

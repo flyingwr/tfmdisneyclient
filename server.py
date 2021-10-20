@@ -70,7 +70,7 @@ def store_access(key: str, level: str, addr: Optional[str] = None, conn_limit: O
 
 
 async def del_token(ip: str, token: str):
-	await asyncio.sleep(3600)
+	await asyncio.sleep(3600.0)
 
 	if ip in infrastructure.ips:
 		del infrastructure.ips[ip]
@@ -80,10 +80,17 @@ async def del_token(ip: str, token: str):
 
 
 async def del_lsmap(token: str):
-	await asyncio.sleep(240)
+	await asyncio.sleep(240.0)
 
 	if token in infrastructure.tokens:
 		infrastructure.tokens[token]["lsmap"] = ""
+
+
+async def unblock_addr(addr: str):
+	await asyncio.sleep(240.0)
+
+	if addr in infrastructure.auth_attempts:
+		del infrastructure[auth_attempts]
 
 
 async def main():

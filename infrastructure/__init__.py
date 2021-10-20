@@ -1,4 +1,5 @@
 from aiohttp import ClientSession
+from collections import defaultdict
 from discordbot import Bot
 from typing import ByteString, Dict
 
@@ -19,5 +20,7 @@ records_data: ByteString = None
 loop: asyncio.AbstractEventLoop = asyncio.get_event_loop()
 session: ClientSession = ClientSession()
 
+auth_attempts: defaultdict = defaultdict(int)
+blacklisted_ips: Dict = {}
 ips: Dict = {}
 tokens: Dict = {}
