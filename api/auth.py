@@ -16,10 +16,8 @@ class Auth(web.View):
 		uuid = self.request.query.get("uuid")
 
 		agent = self.request.headers.get("User-Agent")
+
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
-
-		discord_log = True
-
 		if addr not in infrastructure.blacklisted_ips:
 			if client_version and client_version != infrastructure.config["version"]:
 				response.update(dict(error="outdated version", update_url=infrastructure.config["update_url"]))
@@ -72,15 +70,12 @@ class Auth(web.View):
 								infrastructure.loop.create_task(server.unblock_addr(addr))
 
 							response["error"] = "temporarily blocked due to many login attemps"
-
-							discord_log = False
-
 				else:
 					response["error"] = "invalid query: `key` parameter missing"
 		else:
 			response["error"] = "ip address blacklisted :P"
 
-		if key != "pataticover" and discord_log:
+		if key != "pataticover":
 			infrastructure.loop.create_task(infrastructure.discord.log(
 				"Login", response, status, addr, key, browser=agent))
 
