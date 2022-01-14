@@ -134,6 +134,8 @@ const auth_request = function() {
 						localStorage.setItem("_key", key_text.value);
 					}
 				} else {
+					set_fetch_error_message(json.error);
+					
 					fails += 1;
 					if (fails >= 8) {
 						change_button_state(key_button);
@@ -144,8 +146,6 @@ const auth_request = function() {
 
 							change_button_state(key_button, true);
 						}, 240000);
-					} else {
-						set_fetch_error_message(json.error);
 					}
 				}
 			})
