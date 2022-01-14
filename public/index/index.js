@@ -33,6 +33,7 @@ const [
 	];
 
 let api_url, auth_url;
+let fails = 0;
 let fetching = false;
 
 const init_color = "#2e2c29";
@@ -133,7 +134,19 @@ const auth_request = function() {
 						localStorage.setItem("_key", key_text.value);
 					}
 				} else {
-					set_fetch_error_message(json.error);
+					fails += 1;
+					if (fails >= 8) {
+						change_button_state(key_button);
+						set_fetch_error_message(translate("temp_block"));
+
+						setTimeout(() => {
+							fails = 0;
+
+							change_button_state(key_button, true);
+						}, 240000);
+					} else {
+						set_fetch_error_message(json.error);
+					}
 				}
 			})
 

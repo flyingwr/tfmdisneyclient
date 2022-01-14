@@ -9,6 +9,7 @@ const locales = {
 		"soft_ok": "saved",
 		"soft_not_ok": "failed to send",
 		"start": "Starting...",
+		"temp_block": "temporarily blocked due to many login attemps",
 		"token": "Your token has been generated and will be expired in"
 	},
 	"es": {
@@ -21,6 +22,7 @@ const locales = {
 		"soft_ok": "guardado",
 		"soft_not_ok": "error al enviar",
 		"start": "Inicializando...",
+		"temp_block": "bloqueado temporalmente debido a muchos intentos de login",
 		"token": "Tú token ha sido generado y será expirado en"
 	},
 	"pt": {
@@ -33,6 +35,7 @@ const locales = {
 		"soft_ok": "salvo",
 		"soft_not_ok": "erro ao enviar",
 		"start": "Iniciando...",
+		"temp_block": "bloqueado temporariamente devido a muitas tentativas de login",
 		"token": "Seu token foi gerado e irá expirar em"
 	}
 }

@@ -90,7 +90,7 @@ async def unblock_addr(addr: str):
 	await asyncio.sleep(240.0)
 
 	if addr in infrastructure.auth_attempts:
-		del infrastructure[auth_attempts]
+		del infrastructure.auth_attempts[addr]
 
 
 async def main():
