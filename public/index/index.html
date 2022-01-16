@@ -15,10 +15,15 @@
     <script defer src="/public/index/index.js"></script>
     <script src="/public/locales.js"></script>
 
-    <button id="download-btn">
-      <img src="/images/download.png">
-      <span>Download</span>
-    </button>
+    <div class="nav-bar">
+      <button id="download-btn">
+        <img src="/images/download.png">
+        <small>Download</span>
+      </button>
+      <!-- <button>
+        <small>Tutorial</small>
+      </button> -->
+    </div>
 
     <div class="key-container" id="init-container">
       <img src="/images/icon.ico">
@@ -35,9 +40,6 @@
       <span class="key-text" id="fetch-result-text"></span>
       <a class="key-btn no-display" id="open-btn">Open game</a>
     </div>
-    <span class="discord-container invisible" id="discord-container">
-      <img src="/images/discord.png">
-      <small id="small-text"></small>
-    </span>
+    <span class="discord-container invisible" id="discord-container"></span>
   </body>
 </html>

@@ -5,4 +5,4 @@ import infrastructure
 
 
 async def discord_handler(request):
-	return web.Response(text=infrastructure.discord.discord_name or "patati#9627")
+	return web.json_response({"names": infrastructure.discord.discord_names or ["renan#9093", "pekfto#0689"]})

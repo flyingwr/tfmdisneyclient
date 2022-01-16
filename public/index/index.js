@@ -9,7 +9,6 @@ const [
 	discord_container,
 	init_container,
 	init_text,
-	small_text,
 	uuid_text,
 	result_container,
 	result_text,
@@ -22,7 +21,6 @@ const [
 			"discord-container",
 			"init-container",
 			"init-text",
-			"small-text",
 			"uuid-text",
 			"fetch-result-container",
 			"fetch-result-text",
@@ -187,8 +185,19 @@ window.onload = () => {
 			change_elem_display(auth_container, true, "flex");
 			change_elem_display(discord_container);
 
-			response.text().then((text) => {
-				small_text.textContent = text;
+			response.json().then((json) => {
+				if (json.names) {
+					for (const name of json.names) {
+						const img = document.createElement("img");
+						img.src = "./images/discord.png";
+						img.style["padding"] = "0 5px";
+						discord_container.appendChild(img);
+
+						const small = document.createElement("small");
+						small.textContent = name;
+						discord_container.appendChild(small);
+					}
+				}
 			});
 
 			if (!is_disney) {

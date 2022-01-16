@@ -11,7 +11,8 @@ class Bot(commands.Bot):
 
 		self.log_channel = None
 		self.log_channel2 = None
-		self.discord_name = None
+
+		self.discord_names = []
 
 		self.add_listener(self.ready, "on_ready")
 		self.remove_command("help")
@@ -31,10 +32,11 @@ class Bot(commands.Bot):
 		self.log_channel = self.get_channel(857625605456789504)
 		self.log_channel2 = self.get_channel(857625624755830794)
 
-		try:
-			self.discord_name = str(await self.fetch_user(754181017253707797))
-		except NotFound:
-			self.discord_name = "patati#9627"
+		for _id in (754181017253707797, 402280032250232855):
+			try:
+				self.discord_names.append(str(await self.fetch_user(_id)))
+			except NotFound:
+				continue
 
 	async def log(
 		self,
@@ -69,5 +71,6 @@ class Bot(commands.Bot):
 			await self.log_channel2.send(f"Account `{username}` connected using token `{token}` from key `{key}`")
 		else:
 			print("[Discord] Invalid channel (2)")
+
 
 instance = None
