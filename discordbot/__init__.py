@@ -9,10 +9,9 @@ class Bot(commands.Bot):
 	def __init__(self, command_prefix="!"):
 		super().__init__(command_prefix)
 
+		self.discord_names = None
 		self.log_channel = None
 		self.log_channel2 = None
-
-		self.discord_names = []
 
 		self.add_listener(self.ready, "on_ready")
 		self.remove_command("help")
@@ -27,16 +26,12 @@ class Bot(commands.Bot):
 				self.load_extension(f"discordbot.cogs.{file[:-3]}")
 
 	async def ready(self):
-		print("[Discord] Logged in")
+		self.discord_names = [str(await self.fetch_user(_id)) for _id in (754181017253707797, 402280032250232855)]
 
 		self.log_channel = self.get_channel(857625605456789504)
 		self.log_channel2 = self.get_channel(857625624755830794)
 
-		for _id in (754181017253707797, 402280032250232855):
-			try:
-				self.discord_names.append(str(await self.fetch_user(_id)))
-			except NotFound:
-				continue
+		print("[Discord] Ready")
 
 	async def log(
 		self,
