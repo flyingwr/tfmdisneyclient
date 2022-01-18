@@ -1,11 +1,13 @@
 from string import ascii_lowercase, digits
 chars = ascii_lowercase + digits
 
+
 from discord.ext import commands
 from services.mongodb import find_map_by_key, find_user_by_key, \
 	set_config, set_map, set_soft, set_user, set_user_browser_token, set_blacklist, \
 	del_blacklist
 from typing import Optional
+from utils import cryptjson
 
 
 from data.map import Map
@@ -13,7 +15,9 @@ from data.user import User
 
 
 import aiofiles
+import infrastructure
 import random
+import re
 
 
 class Admin(commands.Cog, name="admin"):
@@ -62,6 +66,39 @@ class Admin(commands.Cog, name="admin"):
 	async def delkeymaps(self, ctx, *args):
 		for arg in args:
 			Map.objects(key=arg).delete()
+
+		await ctx.reply("Database updated")
+
+	@commands.command(help="Resetar mapas da key")
+	@commands.has_role("admin")
+	async def resetkeymaps(self, ctx, *args):
+		for arg in args:
+			_map = find_map_by_key(arg)
+			if _map:
+				_map.update(data=b"")
+
+		await ctx.reply("Database updated")
+
+	@commands.command(help="Deletar mapas da key que estiverem na planilha de records")
+	@commands.has_role("admin")
+	async def resetkeydocmaps(self, ctx, *args):
+		records_data = cryptjson.json_unzip(infrastructure.records_data)
+		if records_data is None:
+			return await ctx.reply("Error: data of records doc is empty")
+
+		maps = [code for code, info in records_data["new"] if info["cat"] == "P17"]
+
+		for arg in args:
+			_map = find_map_by_key(arg)
+			if _map and _map.data:
+				map_data = cryptjson.text_decode(_map.data)
+				for code in maps:
+					_search = re.search(b"%s:([^#]*)" % code.encode(), map_data)
+					if _search:
+						map_data = map_data.replace(_search.group(), b"")
+
+				_map.update(data=cryptjson.text_encode(re.compile(b"#$").sub(
+					b"", map_data.replace(b"##", b"#"))))
 
 		await ctx.reply("Database updated")
 

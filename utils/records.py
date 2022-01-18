@@ -45,7 +45,7 @@ def read_spreadsheet(key: str) -> Dict:
 		for last_map_key in range(1, len(maps), 8):
 			_map = maps[last_map_key]
 			if _map and "@" in _map[0]: # Check if value is truthy
-				result[_map[0]] = temp = {}
+				result[_map[0]] = temp = { "cat": cat }
 
 				player, _time = players[last_player_key], times[last_player_key]
 				if player and _time: # Check if value is truthy
