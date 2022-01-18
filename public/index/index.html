@@ -16,13 +16,23 @@
     <script src="/public/locales.js"></script>
 
     <div class="nav-bar">
-      <button id="download-btn">
+      <button class="nav-btn" id="download-btn">
         <img src="/images/download.png">
-        <small>Download</span>
+        <small>Download</small>
       </button>
-      <!-- <button>
-        <small>Tutorial</small>
-      </button> -->
+      <div class="tutorial-dropdown">
+        <button class="nav-btn">
+          <small>Tutorial</small>
+        </button>
+        <div class="tutorial-dropdown-content">
+          <a href="#" id="hts-link">How to start</a>
+          <a href="#" id="htu-link">How to use</a>
+          <a href="#" id="autoplay-link">Autoplay - record/delete maps</a>
+        </div>
+      </div>
+      <button onclick="document.location='buy'">
+        <small>Buy key</small>
+      </button>
     </div>
 
     <div class="key-container" id="init-container">
