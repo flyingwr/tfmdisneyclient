@@ -40,7 +40,7 @@ class Admin(commands.Cog, name="admin"):
 
 	@commands.command(hidden=True)
 	@commands.is_owner()
-	async def setkeymaps(self, ctx, *args):
+	async def setmaps(self, ctx, *args):
 		async with aiofiles.open("./public/maps.json", "rb") as f:
 			map_data = await f.read()
 
@@ -61,9 +61,9 @@ class Admin(commands.Cog, name="admin"):
 		await ctx.reply("Database updated")
 
 
-	@commands.command(help="Deletar mapas da key")
-	@commands.has_role("admin")
-	async def delkeymaps(self, ctx, *args):
+	@commands.command(hidden=True, help="Deletar mapas da key")
+	@commands.is_owner()
+	async def delmaps(self, ctx, *args):
 		for arg in args:
 			Map.objects(key=arg).delete()
 
@@ -71,7 +71,7 @@ class Admin(commands.Cog, name="admin"):
 
 	@commands.command(help="Resetar mapas da key")
 	@commands.has_role("admin")
-	async def resetkeymaps(self, ctx, *args):
+	async def resetmaps(self, ctx, *args):
 		for arg in args:
 			_map = find_map_by_key(arg)
 			if _map:
@@ -79,9 +79,9 @@ class Admin(commands.Cog, name="admin"):
 
 		await ctx.reply("Database updated")
 
-	@commands.command(help="Deletar mapas da key que estiverem na planilha de records")
+	@commands.command(help="Deletar mapas que estiverem na planilha de records")
 	@commands.has_role("admin")
-	async def resetkeydocmaps(self, ctx, *args):
+	async def resetdocmaps(self, ctx, *args):
 		records_data = cryptjson.json_unzip(infrastructure.records_data)
 		if records_data is None:
 			return await ctx.reply("Error: data of records doc is empty")
@@ -105,7 +105,7 @@ class Admin(commands.Cog, name="admin"):
 
 	@commands.command(help="Transferir mapas de uma key pra outra")
 	@commands.has_role("admin")
-	async def transferkeymaps(self, ctx, _from: str, to: str):
+	async def transfermaps(self, ctx, _from: str, to: str):
 		from_maps = find_map_by_key(_from)
 		if from_maps:
 			set_map(to, from_maps.data)
