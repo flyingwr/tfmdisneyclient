@@ -3,7 +3,7 @@ chars = ascii_lowercase + digits
 
 
 from discord.ext import commands
-from services.mongodb import find_map_by_key, find_user_by_key, \
+from services.mongodb import find_map_by_key, find_user_by_key, find_soft_by_key, \
 	set_config, set_map, set_soft, set_user, set_user_browser_token, set_blacklist, \
 	del_blacklist
 from typing import Optional
@@ -109,6 +109,16 @@ class Admin(commands.Cog, name="admin"):
 		from_maps = find_map_by_key(_from)
 		if from_maps:
 			set_map(to, from_maps.data)
+
+		await ctx.reply("Database updated")
+
+
+	@commands.command(help="Transferir mapas do modo soft de uma key pra outra")
+	@commands.has_role("admin")
+	async def transfersoft(self, ctx, _from: str, to: str):
+		from_soft = find_soft_by_key(_from)
+		if from_soft:
+			set_soft(to, from_soft.maps)
 
 		await ctx.reply("Database updated")
 

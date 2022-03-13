@@ -17,45 +17,48 @@ class GetKeys(web.View):
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 		agent = self.request.headers.get("User-Agent")
 		access_token = self.request.query.get("access_token")
-
 		access_token = server.check_conn(access_token, addr)
-		if access_token is None:
-			response["error"] = "invalid query: `access_token` parameter missing"
 
-			status = 400
-		elif access_token:
-			info = infrastructure.tokens[access_token]
-			level = info["level"]
+		if agent and agent == "Shockwave Flash" or ".NET" in agent:
+			if access_token is None:
+				response["error"] = "invalid query: `access_token` parameter missing"
 
-			key = info["key"]
+				status = 400
+			elif access_token:
+				info = infrastructure.tokens[access_token]
+				level = info["level"]
 
-			passed = True
-			if addr not in info["ips"]:
-				if len(info["ips"]) < info["conn_limit"]:
-					info["ips"].append(addr)
-				else:
-					response["error"] = "connection limit exceeded"
+				key = info["key"]
 
-					passed = False
+				passed = True
+				if addr not in info["ips"]:
+					if len(info["ips"]) < info["conn_limit"]:
+						info["ips"].append(addr)
+					else:
+						response["error"] = "connection limit exceeded"
 
-			if passed:
-				response["success"] = True
-				response["keys"] = {
-					"maps_allowed": bool(find_map_by_key(key, True)) if infrastructure.config["map_storage_fetch"] else False,
-					"client_version": infrastructure.config["client_version"],
-					"discord": infrastructure.discord.discord_names,
-					"premium_level": level
-				}
+						passed = False
 
-				async with infrastructure.session.get(
-					f"{infrastructure.parser_url}/api/tfm_keys?token={infrastructure.tfm_parser_token}&level={level}"
-				) as _response:
-					if _response.status == 200:
-						response["keys"].update(await _response.json())
+				if passed:
+					response["success"] = True
+					response["keys"] = {
+						"maps_allowed": bool(find_map_by_key(key, True)) if infrastructure.config["map_storage_fetch"] else False,
+						"client_version": infrastructure.config["client_version"],
+						"discord": infrastructure.discord.discord_names,
+						"premium_level": level
+					}
 
-				status = 200
+					async with infrastructure.session.get(
+						f"{infrastructure.parser_url}/api/tfm_keys?token={infrastructure.tfm_parser_token}&level={level}"
+					) as _response:
+						if _response.status == 200:
+							response["keys"].update(await _response.json())
+
+					status = 200
+			else:
+				response["error"] = "expired/invalid token"
 		else:
-			response["error"] = "expired/invalid token"
+			response["error"] = "unauthorized"
 
 		if key != "pataticover":
 			infrastructure.loop.create_task(infrastructure.discord.log("TFM", response, status, addr, key, access_token, agent))
