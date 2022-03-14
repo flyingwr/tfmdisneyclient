@@ -71,7 +71,7 @@ class MapStorage(web.View):
 			if _map:
 				if method in ("del", "save"):
 					if code:
-						data_decoded = cryptjson.text_decode(_map.data)
+						data_decoded = cryptjson.text_decode(_map.data) if _map.data else b""
 						_search = re.search(b"%s:([^#]*)" % code.encode(), data_decoded)
 
 						if method == "save":
