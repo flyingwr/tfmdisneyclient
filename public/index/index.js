@@ -9,7 +9,6 @@ const [
 	discord_container,
 	init_container,
 	init_text,
-	uuid_text,
 	result_container,
 	result_text,
 	open_game_btn] = [
@@ -21,7 +20,6 @@ const [
 			"discord-container",
 			"init-container",
 			"init-text",
-			"uuid-text",
 			"fetch-result-container",
 			"fetch-result-text",
 			"open-btn"
@@ -75,12 +73,7 @@ const auth_request = function() {
 		change_elem_display(fetch_text, true);
 		change_button_state(key_button);
 
-		const params = { key: key_text.value };
-		if (is_disney && uuid_text.value !== "") {
-			params.uuid = uuid_text.value;
-		}
-
-		fetch(`${auth_url}?${new URLSearchParams(params)}`)
+		fetch(`${auth_url}?${new URLSearchParams({ key: key_text.value })}`)
 		.then((response) => {
 			fetching = false;
 
@@ -97,9 +90,10 @@ const auth_request = function() {
 
 					result_text.style["user-select"] = "text";
 					result_text.textContent = `${translate("token")} ${rm_time} ${translate("minutes")}:\n`;
-
+					
 					const token_url = `${window.location.origin.replace("https", "http")}/transformice?access_token=${json.access_token}`;
 					const span = document.createElement("span");
+					span.id = "access-token";
 					span.textContent = token_url;
 					result_text.appendChild(span);
 
@@ -128,9 +122,9 @@ const auth_request = function() {
 					if (is_disney) {
 						open_game_btn.style.padding = "5px 5px";
 						change_elem_display(open_game_btn, true);
-					} else {
-						localStorage.setItem("_key", key_text.value);
 					}
+
+					localStorage.setItem("_key", key_text.value);
 				} else {
 					set_fetch_error_message(json.error);
 					
@@ -165,10 +159,8 @@ window.onload = () => {
 	key_title.textContent = translate("enter_key");
 	open_game_btn.textContent = translate("open_game");
 
-	if (!is_disney) {
-		const key = localStorage.getItem("_key");
-		if (key) key_text.value = key;
-	}
+	const key = localStorage.getItem("_key");
+	if (key) key_text.value = key;
 
 	key_text.addEventListener("keydown", ({key}) => {
 		if (key === "Enter") auth_request();

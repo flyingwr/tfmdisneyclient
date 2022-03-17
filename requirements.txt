@@ -1,10 +1,8 @@
 aiofiles
-aiohttp
 asyncio
 discord.py
 dnspython
 gspread
 mongoengine
-numpy
 python-dotenv
 ujson

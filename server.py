@@ -53,7 +53,7 @@ def store_access(key: str, level: str, addr: Optional[str] = None, conn_limit: O
 
 	if addr:
 		if addr not in infrastructure.ips:
-			access_token = gentoken.generate_token()
+			access_token = gentoken.gen_token()
 			infrastructure.ips[addr] = (datetime.datetime.now().timestamp(), access_token)			
 			infrastructure.tokens[access_token] = {"key": key, "level": level, "ips": [addr], "conn_limit": conn_limit}
 			loop.create_task(del_token(addr, access_token))
@@ -97,7 +97,7 @@ async def main():
 	async with aiofiles.open("./config.json") as f:
 		infrastructure.config = ujson.loads(await f.read())
 
-	if True or not infrastructure.is_local:
+	if not infrastructure.is_local:
 		infrastructure.records_data = cryptjson.json_zip({
 			"new": records.read_spreadsheet("1xoPZXT5apgKm1Z5J-YEv-sXTQ6BjB0vnPgrWLxhRpaU"),
 			"old": records.read_spreadsheet("1l3D-tmUAgwqNPjR3qa1rKqNkNYImPLC3dhgHUD3gLjo")

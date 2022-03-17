@@ -133,7 +133,7 @@ class Admin(commands.Cog, name="admin"):
 
 	@commands.command(hidden=True)
 	@commands.has_role("admin")
-	async def resetbrowsertoken(self, ctx, key: str):
+	async def resetbrowser(self, ctx, key: str):
 		if key == "all":
 			for user in User.objects:
 				user.update(browser_access=True, browser_access_token=None)
@@ -205,9 +205,9 @@ class Admin(commands.Cog, name="admin"):
 
 		await ctx.reply("Database updated")
 
-	@commands.command(help="Gerar nova key", usage="`newkey [quantidade]`")
+	@commands.command(help="Gerar nova key", usage="`newkey [quantidade] [nível]`")
 	@commands.has_role("admin")
-	async def newkey(self, ctx, level: Optional[str] = "GOLD_II", quant: Optional[int] = 1):
+	async def newkey(self, ctx, quant: Optional[int] = 1, level: Optional[str] = "GOLD_II"):
 		keys = []
 
 		for _ in range(quant):
@@ -215,7 +215,7 @@ class Admin(commands.Cog, name="admin"):
 				key = "".join(random.sample(chars, 8))
 				user = User.objects(key=key).first()
 				if not user:
-					User(key=key, premium_level=level).save()
+					User(key=key, premium_level=level.upper()).save()
 
 					keys.append(key)
 					break
@@ -227,7 +227,7 @@ class Admin(commands.Cog, name="admin"):
 	async def resetkey(self, ctx, key: str):
 		user = find_user_by_key(key)
 		if user:
-			user.update(browser_access_token=None, uuid=None)
+			user.update(browser_access_token=None, uuid=None, uuid2=None)
 
 		await ctx.reply("Database updated")
 

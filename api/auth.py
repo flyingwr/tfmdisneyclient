@@ -13,7 +13,7 @@ class Auth(web.View):
 
 		key = self.request.query.get("key")
 		client_version = self.request.query.get("version")
-		uuid = self.request.query.get("uuid")
+		cookies = self.request.cookies
 
 		agent = self.request.headers.get("User-Agent")
 
@@ -28,7 +28,6 @@ class Auth(web.View):
 					if user:
 						if "disneyclient" not in agent:
 							if user.browser_access:
-								cookies = self.request.cookies
 								browser_access_token = cookies.get("browser_access_token")
 								if browser_access_token:
 									if user.browser_access_token is None:
@@ -44,18 +43,27 @@ class Auth(web.View):
 							else:
 								response["error"] = "your key is not allowed for browsers"
 						else:
+							uuid = cookies.get("uuid")
+							uuid2 = cookies.get("uuid2")
 							if uuid is None:
-								response["error"] = "invalid query: `uuid` parameter missing"
+								response["error"] = "invalid key"
+								status = 400
 							else:
 								if user.uuid is None:
 									user.update(uuid=uuid)
+									user.update(uuid2=uuid2)
 
 									status = 200
 								elif str(user.uuid).upper() == uuid:
-									status = 200
+									if user.uuid2 is None:
+										user.update(uuid2=uuid2)
+										status = 200
+									elif str(user.uuid2) == uuid2:
+										status = 200
+									else:
+										response["error"] = "this key is used by another device"
 								else:
-									response["error"] = "uuid does not match"
-									status = 451
+									response["error"] = "this key is used by another device"
 
 						if status == 200:
 							response["success"] = True
