@@ -8,7 +8,7 @@ class User(mongoengine.Document):
     
     premium_level = mongoengine.StringField(default="SILVER")
     
-    browser_access = mongoengine.BooleanField(default=False)
+    browser_access = mongoengine.BooleanField(default=True)
     browser_access_token = mongoengine.StringField(null=True)
 
     connection_limit = mongoengine.IntField(default=1)
