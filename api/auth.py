@@ -43,27 +43,7 @@ class Auth(web.View):
 							else:
 								response["error"] = "your key is not allowed for browsers"
 						else:
-							uuid = cookies.get("uuid")
-							uuid2 = cookies.get("uuid2")
-							if uuid is None:
-								response["error"] = "invalid key"
-								status = 400
-							else:
-								if user.uuid is None:
-									user.update(uuid=uuid)
-									user.update(uuid2=uuid2)
-
-									status = 200
-								elif str(user.uuid).upper() == uuid:
-									if user.uuid2 is None:
-										user.update(uuid2=uuid2)
-										status = 200
-									elif str(user.uuid2) == uuid2:
-										status = 200
-									else:
-										response["error"] = "this key is used by another device"
-								else:
-									response["error"] = "this key is used by another device"
+							response["error"] = "disney program is not supported anymore. login on website"
 
 						if status == 200:
 							response["success"] = True

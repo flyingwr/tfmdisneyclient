@@ -25,7 +25,7 @@ async def swf_downloader():
 	while True:
 		try:
 			async with infrastructure.session.get(
-				f"https://tfmdisneyparser.herokuapp.com/transformice?swf&d={datetime.datetime.now().timestamp()}"
+				f"{infrastructure.parser_url}/transformice?swf&d={datetime.datetime.now().timestamp()}"
 			) as response:
 				if response.status == 200:
 					async with aiofiles.open("./tfm.swf", "wb") as f:
@@ -115,7 +115,7 @@ async def main():
 							web.get("/mapstorage", api.MapStorage),
 							web.post("/data", api.Data),
 							web.post("/mapstorage", api.MapStorage)])
-							
+
 	app.router.add_get("/api/discord", api.discord_handler)
 	app.router.add_get("/api/auth", api.Auth)
 	app.router.add_get("/api/update", api.Update)

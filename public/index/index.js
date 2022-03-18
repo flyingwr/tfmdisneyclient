@@ -151,9 +151,6 @@ const auth_request = function() {
 
 window.onload = () => {
 	key_button.onclick = auth_request;
-	
-	const download_btn = document.getElementById("download-btn");
-	download_btn.style.display = "none";
 
 	init_text.textContent = translate("start");
 	key_title.textContent = translate("enter_key");
@@ -191,21 +188,6 @@ window.onload = () => {
 					}
 				}
 			});
-
-			if (!is_disney) {
-				fetch(update_url).then((response) => {
-					if (response.ok) {
-						response.json().then((data) => {
-							if (data.update_url) {
-								download_btn.style.display = "flex";
-								download_btn.onclick = () => {
-									window.open(data.update_url, "_blank");
-								}
-							}
-						});
-					}
-				});
-			}
 		}
 	}).catch(() => {
 		set_fetch_error_message();
