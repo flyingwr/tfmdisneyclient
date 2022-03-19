@@ -11,7 +11,7 @@ const [
 	init_text,
 	result_container,
 	result_text,
-	open_game_btn] = [
+	hts_btn] = [
 		... ["fetch-text",
 			"key-btn",
 			"key-text",
@@ -22,7 +22,7 @@ const [
 			"init-text",
 			"fetch-result-container",
 			"fetch-result-text",
-			"open-btn"
+			"hts-btn"
 		].map((id) => {
 			return document.getElementById(id)
 		})
@@ -119,10 +119,8 @@ const auth_request = function() {
 
 					result_text.appendChild(img);
 
-					if (is_disney) {
-						open_game_btn.style.padding = "5px 5px";
-						change_elem_display(open_game_btn, true);
-					}
+					hts_btn.style.padding = "5px 5px";
+					change_elem_display(hts_btn, true);
 
 					localStorage.setItem("_key", key_text.value);
 				} else {
@@ -152,9 +150,12 @@ const auth_request = function() {
 window.onload = () => {
 	key_button.onclick = auth_request;
 
+	const download_btn = document.getElementById("download-btn");
+	download_btn.style.display = "none";
+
 	init_text.textContent = translate("start");
 	key_title.textContent = translate("enter_key");
-	open_game_btn.textContent = translate("open_game");
+	hts_btn.textContent = translate("hts");
 
 	const key = localStorage.getItem("_key");
 	if (key) key_text.value = key;
@@ -188,6 +189,21 @@ window.onload = () => {
 					}
 				}
 			});
+
+			if (!is_disney) {
+				fetch(update_url).then((response) => {
+					if (response.ok) {
+						response.json().then((data) => {
+							if (data.standalone_url) {
+								download_btn.style.display = "flex";
+								download_btn.onclick = () => {
+									window.open(data.standalone_url, "_blank");
+								}
+							}
+						});
+					}
+				});
+			}
 		}
 	}).catch(() => {
 		set_fetch_error_message();

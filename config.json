@@ -6,8 +6,9 @@
 	"map_storage_fetch": false,
 
 	"client_version": "1.28",
+	"standalone_url": "https://mega.nz/file/WaoBCD7T#Ap_x1ZF3dLuk6ff1BZu4BB8yXnMS9QcL-BvJZqfA9ZI",
 	"update_url": "http://tfmdisney.herokuapp.com/",
-	"version": "1.1.5",
+	"version": "1.1.6",
 
 	"storage_allowed_levels": [
 		"SILVER",

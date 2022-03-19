@@ -29,13 +29,23 @@ class MapStorage(web.View):
 		return access_token if (
 			access_token is not None or access_token in infrastructure.tokens
 		) else False
+
+	def check_req(self):
+		agent = self.request.headers.get("User-Agent")
+		accept = self.request.headers.get("Accept")
+		flash_version = self.request.headers.get("x-flash-version")
+		if not agent or (agent != "Shockwave Flash" and ".NET" not in agent) \
+			or not accept or "application/x-shockwave-flash" not in accept \
+			or not flash_version or "," not in flash_version:
+				return False
+		return True
 		
 	async def get(self):
 		access_token = self.request.query.get("access_token")
 		addr = self.request.headers.get("X-Forwarded-For")
 
 		access_token = server.check_conn(access_token, addr)
-		if access_token is None:
+		if access_token is None or not self.check_conn():
 			raise web.HTTPBadRequest()
 		elif access_token == False:
 			raise web.HTTPUnauthorized()
@@ -56,7 +66,7 @@ class MapStorage(web.View):
 		addr = self.request.headers.get("X-Forwarded-For")
 
 		access_token = server.check_conn(access_token, addr)
-		if access_token is None:
+		if access_token is None or not self.check_conn():
 			raise web.HTTPBadRequest()
 		elif access_token == False:
 			raise web.HTTPUnauthorized()

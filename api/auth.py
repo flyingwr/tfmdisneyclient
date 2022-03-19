@@ -21,15 +21,21 @@ class Auth(web.View):
 		if addr not in infrastructure.blacklisted_ips:
 			if client_version and client_version != infrastructure.config["version"]:
 				response.update(dict(error="outdated version", update_url=infrastructure.config["update_url"]))
+				
 				status = 406
 			else:
 				if key is not None:
 					user = find_user_by_key(key)
 					if user:
-						if "disneyclient" not in agent:
-							if user.browser_access:
-								browser_access_token = cookies.get("browser_access_token")
-								if browser_access_token:
+						if user.browser_access:
+							browser_access_token = cookies.get("browser_access_token")
+							if browser_access_token:
+								if all(
+									(self.request.headers.get(header) for header in (
+										"Connection", "Sec-Fetch-Dest", "Sec-Fetch-Mode",
+										"Sec-Fetch-Site", "Accept-Language"
+									))
+								):
 									if user.browser_access_token is None:
 										user.update(browser_access_token=browser_access_token)
 
@@ -37,13 +43,13 @@ class Auth(web.View):
 									elif user.browser_access_token == browser_access_token:
 										status = 200
 									else:
-										response["error"] = "this key is used by another device"
+										response["error"] = "this key was used by another device"
 								else:
 									response["error"] = "info mismatch. try refreshing the page"
 							else:
-								response["error"] = "your key is not allowed for browsers"
+								response["error"] = "info mismatch. try refreshing the page"
 						else:
-							response["error"] = "disney program is not supported anymore. login on website"
+							response["error"] = "your key is not allowed for browsers"
 
 						if status == 200:
 							response["success"] = True
@@ -63,8 +69,7 @@ class Auth(web.View):
 		else:
 			response["error"] = "ip address blacklisted :P"
 
-		if key != "pataticover":
-			infrastructure.loop.create_task(infrastructure.discord.log(
-				"Login", response, status, addr, key, browser=agent))
+		infrastructure.loop.create_task(infrastructure.discord.log(
+			"Login", response, status, addr, key, browser=agent))
 
 		return web.json_response(response, status=status)
