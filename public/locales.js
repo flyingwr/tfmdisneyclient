@@ -11,7 +11,7 @@ const locales = {
 		"start": "Starting...",
 		"temp_block": "temporarily blocked due to many login attemps",
 		"token": "Your token has been generated and will be expired in",
-		"hts": "See how to start"
+		"hts": "How to start"
 	},
 	"es": {
 		"connecting": "conectando...",
@@ -25,7 +25,7 @@ const locales = {
 		"start": "Inicializando...",
 		"temp_block": "bloqueado temporalmente debido a muchos intentos de login",
 		"token": "Tú token ha sido generado y será expirado en",
-		"hts": "Ver cómo abrir"
+		"hts": "Cómo abrir"
 	},
 	"pt": {
 		"connecting": "conectando...",
@@ -39,7 +39,7 @@ const locales = {
 		"start": "Iniciando...",
 		"temp_block": "bloqueado temporariamente devido a muitas tentativas de login",
 		"token": "Seu token foi gerado e irá expirar em",
-		"hts": "Ver como abrir"
+		"hts": "Como abrir"
 	}
 }
 

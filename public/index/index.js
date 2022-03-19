@@ -11,7 +11,8 @@ const [
 	init_text,
 	result_container,
 	result_text,
-	hts_btn] = [
+	hts_btn,
+	hts_link] = [
 		... ["fetch-text",
 			"key-btn",
 			"key-text",
@@ -22,7 +23,8 @@ const [
 			"init-text",
 			"fetch-result-container",
 			"fetch-result-text",
-			"hts-btn"
+			"hts-btn",
+			"hts-link"
 		].map((id) => {
 			return document.getElementById(id)
 		})
@@ -156,6 +158,7 @@ window.onload = () => {
 	init_text.textContent = translate("start");
 	key_title.textContent = translate("enter_key");
 	hts_btn.textContent = translate("hts");
+	hts_link.textContent = translate("hts");
 
 	const key = localStorage.getItem("_key");
 	if (key) key_text.value = key;
