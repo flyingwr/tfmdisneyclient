@@ -73,7 +73,9 @@ class Auth(web.View):
 
 							response["error"] = "temporarily blocked due to many login attemps"
 				else:
-					response["error"] = "invalid query: `key` parameter missing"
+					response["error"] = "bad request"
+
+					status = 400
 		else:
 			response["error"] = "ip address blacklisted :P"
 

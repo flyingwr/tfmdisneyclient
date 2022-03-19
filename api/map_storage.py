@@ -35,7 +35,7 @@ class MapStorage(web.View):
 		accept = self.request.headers.get("Accept")
 		flash_version = self.request.headers.get("x-flash-version")
 		if not agent or (agent != "Shockwave Flash" and ".NET" not in agent) \
-			or not accept or "application/x-shockwave-flash" not in accept \
+			or not accept or (accept != "*/*" and "application/x-shockwave-flash" not in accept) \
 			or not flash_version or "," not in flash_version:
 				return False
 		return True
