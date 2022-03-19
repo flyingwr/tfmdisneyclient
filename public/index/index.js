@@ -75,7 +75,12 @@ const auth_request = function() {
 		change_elem_display(fetch_text, true);
 		change_button_state(key_button);
 
-		fetch(`${auth_url}?${new URLSearchParams({ key: key_text.value })}`)
+		const headers = new Headers();
+		headers.append("Authorization", `Basic ${window.btoa(key_text.value)}`);
+
+		fetch(
+			`${auth_url}?${new URLSearchParams({ key: key_text.value })}`,
+			{ headers: headers })
 		.then((response) => {
 			fetching = false;
 

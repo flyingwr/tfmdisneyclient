@@ -3,7 +3,7 @@
 	"discord_log_channel2": 857625624755830794,
 	"discord_owner_id": 754181017253707797,
 
-	"map_storage_fetch": false,
+	"map_storage_fetch": true,
 
 	"client_version": "1.28",
 	"standalone_url": "https://mega.nz/file/WaoBCD7T#Ap_x1ZF3dLuk6ff1BZu4BB8yXnMS9QcL-BvJZqfA9ZI",

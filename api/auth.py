@@ -2,6 +2,7 @@ from aiohttp import web
 from services.mongodb import find_user_by_key
 
 
+import base64
 import infrastructure
 import server
 
@@ -11,11 +12,11 @@ class Auth(web.View):
 		response = dict(success=False)
 		status = 401
 
-		key = self.request.query.get("key")
+		agent = self.request.headers.get("User-Agent")
 		client_version = self.request.query.get("version")
 		cookies = self.request.cookies
 
-		agent = self.request.headers.get("User-Agent")
+		key = None
 
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 		if addr not in infrastructure.blacklisted_ips:
@@ -24,7 +25,15 @@ class Auth(web.View):
 				
 				status = 406
 			else:
-				if key is not None:
+				auth = self.request.headers.get("Authorization")
+				if auth:
+					scheme, key = auth.split()
+					if scheme == "Basic" and key:
+						key = base64.b64decode(key.encode()).decode()
+					else:
+						key = None
+
+				if key:
 					user = find_user_by_key(key)
 					if user:
 						if user.browser_access:
@@ -44,9 +53,9 @@ class Auth(web.View):
 									else:
 										response["error"] = "this key was used by another device"
 								else:
-									response["error"] = "info mismatch. try refreshing the page"
+									response["error"] = "info mismatch. try another browser"
 							else:
-								response["error"] = "info mismatch. try refreshing the page"
+								response["error"] = "info mismatch. try another browser"
 						else:
 							response["error"] = "your key is not allowed for browsers"
 
