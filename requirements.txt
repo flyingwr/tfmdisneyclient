@@ -4,6 +4,7 @@ asyncio
 cchardet
 discord.py
 gspread
+mysqlclient
 SQLAlchemy
 python-dotenv
 ujson
