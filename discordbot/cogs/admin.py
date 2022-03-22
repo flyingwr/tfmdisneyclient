@@ -79,15 +79,13 @@ class Admin(commands.Cog, name="admin"):
 
 		await ctx.reply("Mapas deletados")
 
-	@commands.command(help="Resetar mapas da key")
-	@commands.has_role("admin")
+	@commands.command(hidden=True, help="Resetar mapas da key")
+	@commands.is_owner()
 	async def resetmaps(self, ctx, *args):
-		result = []
 		for arg in args:
 			_map = client.find_map_by_key(arg)
 			if _map:
 				_map.data = b""
-				result.append(arg)
 		client.commit()
 
 		await ctx.reply("Mapas resetados")
