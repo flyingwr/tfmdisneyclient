@@ -1,7 +1,8 @@
 {
+	"discord_admins": [754181017253707797, 402280032250232855, 917542755486564362, 897557463908368405],
 	"discord_log_channel": 857625605456789504,
 	"discord_log_channel2": 857625624755830794,
-	"discord_owner_id": 754181017253707797,
+	"discord_priv_channel": 939936024161816577,
 
 	"map_storage_fetch": true,
 

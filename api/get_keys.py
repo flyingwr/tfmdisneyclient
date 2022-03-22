@@ -1,10 +1,8 @@
 from aiohttp import web
-from services.mongodb import find_map_by_key
-
+from data import client
 
 import infrastructure
 import server
-
 
 class GetKeys(web.View):
 	def check_req(self):
@@ -19,10 +17,10 @@ class GetKeys(web.View):
 
 	async def get(self):
 		response = { "success": False }
+		status = 401
 
 		key = None
-
-		status = 401
+		log = True
 
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 		agent = self.request.headers.get("User-Agent")
@@ -39,6 +37,7 @@ class GetKeys(web.View):
 				level = info["level"]
 
 				key = info["key"]
+				log = not info["user"].key_hidden
 
 				passed = True
 				if addr not in info["ips"]:
@@ -52,7 +51,7 @@ class GetKeys(web.View):
 				if passed:
 					response["success"] = True
 					response["keys"] = {
-						"maps_allowed": bool(find_map_by_key(key, True)) if infrastructure.config["map_storage_fetch"] else False,
+						"maps_allowed": bool(client.find_map_by_key(key, True)) if infrastructure.config["map_storage_fetch"] else False,
 						"client_version": infrastructure.config["client_version"],
 						"discord": infrastructure.discord.discord_names,
 						"premium_level": level
@@ -72,6 +71,8 @@ class GetKeys(web.View):
 
 			response["error"] = "bad request"
 
-		infrastructure.loop.create_task(infrastructure.discord.log("TFM", response, status, addr, key, access_token, agent))
+		if log:
+			infrastructure.loop.create_task(infrastructure.discord.log(
+				"TFM", response, status, addr, key, access_token, agent))
 
 		return web.json_response(response, status=status)

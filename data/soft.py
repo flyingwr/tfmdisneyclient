@@ -1,9 +1,9 @@
-import mongoengine
+from data import Base
 
+import sqlalchemy
 
-class Soft(mongoengine.Document):
-    key = mongoengine.StringField(required=True)
+class Soft(Base):
+    __tablename__ = "soft"
 
-    maps = mongoengine.DictField(default={})
-
-    meta = { "collection": "soft" }
+    key =  sqlalchemy.Column(sqlalchemy.String(16), primary_key=True)
+    maps = sqlalchemy.Column(sqlalchemy.JSON)

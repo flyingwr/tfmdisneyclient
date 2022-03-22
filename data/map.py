@@ -1,9 +1,9 @@
-import mongoengine
+from data import Base
 
+import sqlalchemy
 
-class Map(mongoengine.Document):
-    key = mongoengine.StringField(required=True)
+class Map(Base):
+    __tablename__ = "map"
 
-    data = mongoengine.BinaryField(required=True)
-
-    meta = { "collection": "maps" }
+    key =  sqlalchemy.Column(sqlalchemy.String(16), primary_key=True)
+    data = sqlalchemy.Column(sqlalchemy.LargeBinary)

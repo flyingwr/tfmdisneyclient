@@ -1,17 +1,14 @@
 from aiohttp import web
-from services.mongodb import find_map_by_key
+from data import client
 from utils import cryptjson
-
 
 import aiofiles
 import infrastructure
 import re
 import server
 
-
 map_pattern = re.compile(b"(.*?):(.*)")
 map_pattern2 = re.compile(b"#$")
-
 
 class MapStorage(web.View):
 	def check_conn(self):
@@ -51,7 +48,7 @@ class MapStorage(web.View):
 			raise web.HTTPUnauthorized()
 
 		if infrastructure.config["map_storage_fetch"]:
-			_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
+			_map = client.find_map_by_key(infrastructure.tokens[access_token]["key"])
 			if _map:
 				return web.Response(body=_map.data)
 
@@ -77,7 +74,7 @@ class MapStorage(web.View):
 		method = self.request.query.get("method")
 
 		if infrastructure.tokens[access_token]["level"] in infrastructure.config["storage_allowed_levels"]:
-			_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
+			_map = client.find_map_by_key(infrastructure.tokens[access_token]["key"])
 			if _map:
 				if method in ("del", "save"):
 					if code:
@@ -99,8 +96,9 @@ class MapStorage(web.View):
 							if _search:
 								data_decoded = data_decoded.replace(_search.group(), b"")
 
-						_map.update(data=cryptjson.text_encode(map_pattern2.sub(
-							b"", data_decoded.replace(b"##", b"#"))))
+						_map.data=cryptjson.text_encode(map_pattern2.sub(
+							b"", data_decoded.replace(b"##", b"#")))
+						client.commit()
 
 						raise web.HTTPNoContent()
 

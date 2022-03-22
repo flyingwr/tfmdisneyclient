@@ -1,12 +1,10 @@
 from aiohttp import web
-from services.mongodb import find_config_by_key, find_soft_by_key, set_config, set_soft
-
+from data import client
 
 import aiofiles
 import infrastructure
 import server
 import ujson
-
 
 class Data(web.View):
 	async def get(self):
@@ -20,14 +18,14 @@ class Data(web.View):
 			body = b""
 
 			if self.request.query.get("soft") is not None:
-				soft = find_soft_by_key(infrastructure.tokens[access_token]["key"])
+				soft = client.find_soft_by_key(infrastructure.tokens[access_token]["key"])
 				if soft:
 					body = ujson.dumps(soft.maps).encode()
 			elif self.request.query.get("protected") is not None:
 				async with aiofiles.open("./public/protectedmaps.json", "rb") as f:
 					body = await f.read()
 			elif self.request.query.get("config") is not None:
-				config = find_config_by_key(infrastructure.tokens[access_token]["key"])
+				config = client.find_config_by_key(infrastructure.tokens[access_token]["key"])
 				if config:
 					body = ujson.dumps(config.tfm_menu).encode()
 			elif self.request.query.get("record_list") is not None:
@@ -51,14 +49,13 @@ class Data(web.View):
 
 			if soft is not None:
 				if infrastructure.tokens[access_token]["level"] == "PLATINUM":
-					set_soft(infrastructure.tokens[access_token]["key"], ujson.loads(soft))
+					client.set_soft(infrastructure.tokens[access_token]["key"], ujson.loads(soft))
 			elif config is not None:
-				set_config(infrastructure.tokens[access_token]["key"], ujson.loads(config))
+				client.set_config(infrastructure.tokens[access_token]["key"], ujson.loads(config))
 		else:
 			raise web.HTTPUnauthorized()
 		
 		raise web.HTTPNoContent()
-
 
 class Soft(web.View):
 	async def get(self):
@@ -72,4 +69,3 @@ class Soft(web.View):
 			return web.FileResponse("./public/soft/index.html")
 		
 		raise web.HTTPUnauthorized()
-

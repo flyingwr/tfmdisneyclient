@@ -1,8 +1,6 @@
 from aiohttp import web
 
-
 import infrastructure
-
 
 class Update(web.View):
 	async def get(self):

@@ -12,6 +12,7 @@ class Bot(commands.Bot):
 		self.discord_names = None
 		self.log_channel = None
 		self.log_channel2 = None
+		self.priv_channel = None
 
 		self.add_listener(self.ready, "on_ready")
 		self.remove_command("help")
@@ -26,10 +27,11 @@ class Bot(commands.Bot):
 				self.load_extension(f"discordbot.cogs.{file[:-3]}")
 
 	async def ready(self):
-		self.discord_names = [str(await self.fetch_user(_id)) for _id in (754181017253707797, 402280032250232855, 917542755486564362)]
+		self.discord_names = [str(await self.fetch_user(_id)) for _id in (infrastructure.config["discord_admins"])]
 
-		self.log_channel = self.get_channel(857625605456789504)
-		self.log_channel2 = self.get_channel(857625624755830794)
+		self.log_channel = self.get_channel(infrastructure.config["discord_log_channel"])
+		self.log_channel2 = self.get_channel(infrastructure.config["discord_log_channel2"])
+		self.priv_channel = self.get_channel(infrastructure.config["discord_priv_channel"])
 
 		print("[Discord] Ready")
 

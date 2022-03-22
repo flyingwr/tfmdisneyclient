@@ -1,6 +1,5 @@
 from aiohttp import web
-from services.mongodb import find_user_by_key
-
+from data import client
 
 import base64
 import infrastructure
@@ -17,6 +16,7 @@ class Auth(web.View):
 		cookies = self.request.cookies
 
 		key = None
+		log = True
 
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 		if addr not in infrastructure.blacklisted_ips:
@@ -34,8 +34,10 @@ class Auth(web.View):
 						key = None
 
 				if key:
-					user = find_user_by_key(key)
+					user = client.find_user_by_key(key)
 					if user:
+						log = not user.key_hidden
+
 						if user.browser_access:
 							browser_access_token = cookies.get("browser_access_token")
 							if browser_access_token:
@@ -45,7 +47,8 @@ class Auth(web.View):
 									))
 								):
 									if user.browser_access_token is None:
-										user.update(browser_access_token=browser_access_token)
+										user.browser_access_token = browser_access_token
+										client.commit()
 
 										status = 200
 									elif user.browser_access_token == browser_access_token:
@@ -61,7 +64,7 @@ class Auth(web.View):
 
 						if status == 200:
 							response["success"] = True
-							response.update(server.store_access(key, user.premium_level, addr, user.connection_limit))
+							response.update(server.store_access(key, addr, user))
 					else:
 						response["error"] = "invalid key"
 
@@ -79,7 +82,8 @@ class Auth(web.View):
 		else:
 			response["error"] = "ip address blacklisted :P"
 
-		infrastructure.loop.create_task(infrastructure.discord.log(
-			"Login", response, status, addr, key, browser=agent))
+		if log:
+			infrastructure.loop.create_task(infrastructure.discord.log(
+				"Login", response, status, addr, key, browser=agent))
 
 		return web.json_response(response, status=status)

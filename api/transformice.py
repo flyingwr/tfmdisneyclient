@@ -1,9 +1,7 @@
 from aiohttp import web
 
-
 import os
 import server
-
 
 class Transformice(web.View):
 	def check_req(self):
