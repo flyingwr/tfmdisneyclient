@@ -4,7 +4,7 @@
 	"discord_log_channel2": 857625624755830794,
 	"discord_priv_channel": 939936024161816577,
 
-	"map_storage_fetch": true,
+	"map_storage_fetch": false,
 
 	"client_version": "1.28",
 	"standalone_url": "https://mega.nz/file/WaoBCD7T#Ap_x1ZF3dLuk6ff1BZu4BB8yXnMS9QcL-BvJZqfA9ZI",
