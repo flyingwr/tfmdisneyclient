@@ -3,6 +3,7 @@ from discord.errors import NotFound
 from discord.ext import commands
 from typing import  Dict, Optional
 
+import infrastructure
 import os
 
 class Bot(commands.Bot):
