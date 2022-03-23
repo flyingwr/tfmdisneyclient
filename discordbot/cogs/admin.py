@@ -22,7 +22,7 @@ class Admin(commands.Cog, name="admin"):
 
 	async def cog_after_invoke(self, ctx):
 		if not ctx.command_failed:
-			keys = getattr(ctx, "keys", None)
+			keys = getattr(ctx, "_keys", None)
 			keys_msg = f" | Key gerada: {', '.join(keys)}" if keys else ""
 			await self.bot.priv_channel.send(f"`{ctx.author}` usou o comando: `{ctx.message.content}`{keys_msg}")
 
