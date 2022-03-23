@@ -27,12 +27,14 @@ class Auth(web.View):
 			else:
 				auth = self.request.headers.get("Authorization")
 				if auth:
-					scheme, key = auth.split()
-					if scheme == "Basic" and key:
-						key = base64.b64decode(key.encode()).decode()
-					else:
-						key = None
-
+					credentials = auth.split()
+					if len(credentials) == 2:
+						scheme, key = auth.split()
+						if scheme == "Basic" and key:
+							key = base64.b64decode(key.encode()).decode()
+						else:
+							key = None
+							
 				if key:
 					user = client.find_user_by_key(key)
 					if user:
