@@ -66,6 +66,8 @@ class Soft(web.View):
 		if access_token is None:
 			raise web.HTTPBadRequest()
 		elif access_token:
-			return web.FileResponse("./public/soft/index.html")
+			if infrastructure.tokens[access_token]["level"] == "PLATINUM":
+				return web.FileResponse("./public/soft/index.html")
+			raise web.HTTPForbidden()
 		
 		raise web.HTTPUnauthorized()

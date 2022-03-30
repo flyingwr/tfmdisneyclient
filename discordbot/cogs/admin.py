@@ -149,7 +149,7 @@ class Admin(commands.Cog, name="admin"):
 		else:
 			await ctx.reply(f"Key não encontrada")
 
-	@commands.command(hidden=True)
+	@commands.command(help="Resetar mapas soft da key")
 	@commands.has_role("admin")
 	async def resetsoft(self, ctx, key: str):
 		user = client.find_user_by_key(key)
