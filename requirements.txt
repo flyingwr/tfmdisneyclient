@@ -1,10 +1,10 @@
+aiodns
 aiofiles
-aiohttp
 asyncio
+cchardet
 discord.py
-dnspython
 gspread
-mongoengine
-numpy
+mysqlclient
+SQLAlchemy
 python-dotenv
 ujson

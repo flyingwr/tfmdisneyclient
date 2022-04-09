@@ -1,7 +1,7 @@
 from aiohttp import web
-from services.mongodb import find_user_by_key
+from data import client
 
-
+import base64
 import infrastructure
 import server
 
@@ -11,11 +11,12 @@ class Auth(web.View):
 		response = dict(success=False)
 		status = 401
 
-		key = self.request.query.get("key")
-		client_version = self.request.query.get("version")
-		uuid = self.request.query.get("uuid")
-
 		agent = self.request.headers.get("User-Agent")
+		client_version = self.request.query.get("version")
+		cookies = self.request.cookies
+
+		key = None
+		log = True
 
 		print(self.request.raw_headers)
 
@@ -23,45 +24,51 @@ class Auth(web.View):
 		if addr not in infrastructure.blacklisted_ips:
 			if client_version and client_version != infrastructure.config["version"]:
 				response.update(dict(error="outdated version", update_url=infrastructure.config["update_url"]))
+				
 				status = 406
 			else:
-				if key is not None:
-					user = find_user_by_key(key)
+				auth = self.request.headers.get("Authorization")
+				if auth:
+					credentials = auth.split()
+					if len(credentials) == 2:
+						scheme, key = auth.split()
+						if scheme == "Basic" and key:
+							key = base64.b64decode(key.encode()).decode()
+						else:
+							key = None
+							
+				if key:
+					user = client.find_user_by_key(key)
 					if user:
-						if "disneyclient" not in agent:
-							if user.browser_access:
-								cookies = self.request.cookies
-								browser_access_token = cookies.get("browser_access_token")
-								if browser_access_token:
+						log = not user.key_hidden
+
+						if user.browser_access:
+							browser_access_token = cookies.get("browser_access_token")
+							if browser_access_token:
+								if all(
+									(self.request.headers.get(header) for header in (
+										"Connection", "Accept-Language"
+									))
+								):
 									if user.browser_access_token is None:
-										user.update(browser_access_token=browser_access_token)
+										user.browser_access_token = browser_access_token
+										client.commit()
 
 										status = 200
 									elif user.browser_access_token == browser_access_token:
 										status = 200
 									else:
-										response["error"] = "this key is used by another device"
+										response["error"] = "this key was used by another device"
 								else:
-									response["error"] = "info mismatch. try refreshing the page"
+									response["error"] = "info mismatch. try another browser"
 							else:
-								response["error"] = "your key is not allowed for browsers"
+								response["error"] = "info mismatch. try another browser"
 						else:
-							if uuid is None:
-								response["error"] = "invalid query: `uuid` parameter missing"
-							else:
-								if user.uuid is None:
-									user.update(uuid=uuid)
-
-									status = 200
-								elif str(user.uuid).upper() == uuid:
-									status = 200
-								else:
-									response["error"] = "uuid does not match"
-									status = 451
+							response["error"] = "your key is not allowed for browsers"
 
 						if status == 200:
 							response["success"] = True
-							response.update(server.store_access(key, user.premium_level, addr, user.connection_limit))
+							response.update(server.store_access(key, addr, user))
 					else:
 						response["error"] = "invalid key"
 
@@ -73,11 +80,13 @@ class Auth(web.View):
 
 							response["error"] = "temporarily blocked due to many login attemps"
 				else:
-					response["error"] = "invalid query: `key` parameter missing"
+					response["error"] = "bad request"
+
+					status = 400
 		else:
 			response["error"] = "ip address blacklisted :P"
 
-		if key != "pataticover":
+		if log:
 			infrastructure.loop.create_task(infrastructure.discord.log(
 				"Login", response, status, addr, key, browser=agent))
 

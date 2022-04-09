@@ -1,15 +1,15 @@
-import mongoengine
+from data import Base
 
+import sqlalchemy
 
-class User(mongoengine.Document):
-    key = mongoengine.StringField(required=True)
-    uuid = mongoengine.UUIDField(binary=False, null=True)
-    
-    premium_level = mongoengine.StringField(default="SILVER")
-    
-    browser_access = mongoengine.BooleanField(default=True)
-    browser_access_token = mongoengine.StringField(null=True)
+class User(Base):
+    __tablename__ = "users"
 
-    connection_limit = mongoengine.IntField(default=1)
+    key =  sqlalchemy.Column(sqlalchemy.String(16), primary_key=True)
+    level = sqlalchemy.Column(sqlalchemy.String(10), default=str("GOLD_II"))
 
-    meta = { "collection": "users" }
+    browser_access = sqlalchemy.Column(sqlalchemy.Boolean, default=bool(True))
+    browser_access_token = sqlalchemy.Column(sqlalchemy.String(40))
+    key_hidden = sqlalchemy.Column(sqlalchemy.Boolean, default=bool(False))
+
+    connection_limit = sqlalchemy.Column(sqlalchemy.Integer, default=(int(-1)))

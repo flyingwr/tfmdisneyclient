@@ -1,17 +1,14 @@
 from aiohttp import web
-from services.mongodb import find_map_by_key
+from data import client
 from utils import cryptjson
-
 
 import aiofiles
 import infrastructure
 import re
 import server
 
-
 map_pattern = re.compile(b"(.*?):(.*)")
 map_pattern2 = re.compile(b"#$")
-
 
 class MapStorage(web.View):
 	def check_conn(self):
@@ -29,19 +26,29 @@ class MapStorage(web.View):
 		return access_token if (
 			access_token is not None or access_token in infrastructure.tokens
 		) else False
+
+	def check_req(self):
+		agent = self.request.headers.get("User-Agent")
+		accept = self.request.headers.get("Accept")
+		flash_version = self.request.headers.get("x-flash-version")
+		if not agent or (agent != "Shockwave Flash" and ".NET" not in agent) \
+			or not accept or (accept != "*/*" and "application/x-shockwave-flash" not in accept) \
+			or not flash_version or "," not in flash_version:
+				return False
+		return True
 		
 	async def get(self):
 		access_token = self.request.query.get("access_token")
 		addr = self.request.headers.get("X-Forwarded-For")
 
 		access_token = server.check_conn(access_token, addr)
-		if access_token is None:
+		if access_token is None or not self.check_conn():
 			raise web.HTTPBadRequest()
 		elif access_token == False:
 			raise web.HTTPUnauthorized()
 
 		if infrastructure.config["map_storage_fetch"]:
-			_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
+			_map = client.find_map_by_key(infrastructure.tokens[access_token]["key"])
 			if _map:
 				return web.Response(body=_map.data)
 
@@ -56,7 +63,7 @@ class MapStorage(web.View):
 		addr = self.request.headers.get("X-Forwarded-For")
 
 		access_token = server.check_conn(access_token, addr)
-		if access_token is None:
+		if access_token is None or not self.check_conn():
 			raise web.HTTPBadRequest()
 		elif access_token == False:
 			raise web.HTTPUnauthorized()
@@ -67,7 +74,7 @@ class MapStorage(web.View):
 		method = self.request.query.get("method")
 
 		if infrastructure.tokens[access_token]["level"] in infrastructure.config["storage_allowed_levels"]:
-			_map = find_map_by_key(infrastructure.tokens[access_token]["key"])
+			_map = client.find_map_by_key(infrastructure.tokens[access_token]["key"])
 			if _map:
 				if method in ("del", "save"):
 					if code:
@@ -89,8 +96,9 @@ class MapStorage(web.View):
 							if _search:
 								data_decoded = data_decoded.replace(_search.group(), b"")
 
-						_map.update(data=cryptjson.text_encode(map_pattern2.sub(
-							b"", data_decoded.replace(b"##", b"#"))))
+						_map.data=cryptjson.text_encode(map_pattern2.sub(
+							b"", data_decoded.replace(b"##", b"#")))
+						client.commit()
 
 						raise web.HTTPNoContent()
 

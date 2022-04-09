@@ -44,7 +44,7 @@
 }
 .nav-bar button small {
 	margin-top: 5px;
-	padding: 0 7px;
+	padding: 0 10px;
 
 	font-family: "Whitney-Semibold Regular";
 	font-size: small;
@@ -68,14 +68,10 @@
 	text-decoration: none;
 	display: block;
 }
-.tutorial-dropdown-content a:hover { background-color: #f1f1f1; }
+.tutorial-dropdown-content a:hover { background-color: #e0e0e0; }
 
-.tutorial-dropdown:hover .tutorial-dropdown-content {
-	display: block;
-}
-.tutorial-dropdown:hover button {
-	background-color: #54524e;
-}
+.tutorial-dropdown:hover .tutorial-dropdown-content { display: block; }
+.tutorial-dropdown:hover button { background-color: #54524e; }
 
 .key-container {
 	display: flex;
@@ -85,11 +81,8 @@
 	text-align: center;
 	color: white;
 	min-height: 90vh;
-	user-select: none;
 }
-.key-container img {
-	max-width: 80px;
-}
+.key-container img { max-width: 80px; }
 
 @media (max-width: 600px) {
 	.key-container span {
@@ -97,9 +90,7 @@
 		overflow-wrap: break-word;
 	}
 
-	.key-container #fetch-result-text span {
-		font-size: small;
-	}
+	.key-container #fetch-result-text span { font-size: small; }
 }
 
 .key-btn {
@@ -118,9 +109,7 @@
 	text-shadow:0px 1px 0px #ffffff;
 	margin-top: 4px;
 }
-.key-btn:hover {
-	background-color:#e0e0e0;
-}
+.key-btn:hover { background-color:#e0e0e0; }
 .key-btn:active {
 	position:relative;
 	top:1px;
@@ -150,17 +139,9 @@
 	margin-top: 4px;
 	width: 120px;
 }
-.key-input:hover {
-	background-color:#e0e0e0;
-}
-.key-input:focus {
-	outline: none;
-}
+.key-input:hover { background-color:#e0e0e0; }
+.key-input:focus { outline: none; }
 
-.no-display {
-	display: none;
-}
+.no-display { display: none; }
 
-.invisible {
-	visibility: hidden;
-}
+.invisible { visibility: hidden; }

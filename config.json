@@ -1,13 +1,17 @@
 {
+	"discord_admins": [754181017253707797, 402280032250232855, 917542755486564362, 777148030423269397, 766646401198325780],
+	"discord_names": ["reann#9093", "pekfto#0689", "styleking#6666", "bul#6000", "Vio#4485"],
+	
 	"discord_log_channel": 857625605456789504,
 	"discord_log_channel2": 857625624755830794,
-	"discord_owner_id": 754181017253707797,
+	"discord_priv_channel": 939936024161816577,
 
 	"map_storage_fetch": true,
 
 	"client_version": "1.28",
-	"update_url": "https://mega.nz/file/THY1xAwJ#Xh0hA4fzt5yOc96bqOs7nRMBuVHyBF403EPg8_oyjKM",
-	"version": "1.1.5",
+	"standalone_url": "https://mega.nz/file/WaoBCD7T#Ap_x1ZF3dLuk6ff1BZu4BB8yXnMS9QcL-BvJZqfA9ZI",
+	"update_url": "http://tfmdisney.herokuapp.com/",
+	"version": "1.1.6",
 
 	"storage_allowed_levels": [
 		"SILVER",
