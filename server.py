@@ -1,5 +1,7 @@
-from dotenv import load_dotenv
-load_dotenv()
+import os
+if "DYNO" not in os.environ:
+	from dotenv import load_dotenv
+	load_dotenv()
 
 from aiohttp import web
 from data.user import User
@@ -12,7 +14,6 @@ import asyncio
 import datetime
 import discordbot
 import infrastructure
-import os
 import resources
 import ujson
 
