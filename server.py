@@ -97,7 +97,7 @@ async def main():
 	async with aiofiles.open("./config.json") as f:
 		infrastructure.config = ujson.loads(await f.read())
 
-	if True or not infrastructure.is_local:
+	if not infrastructure.is_local:
 		infrastructure.records_data = cryptjson.json_zip({
 			"new": records.read_spreadsheet("1xoPZXT5apgKm1Z5J-YEv-sXTQ6BjB0vnPgrWLxhRpaU"),
 			"old": records.read_spreadsheet("1l3D-tmUAgwqNPjR3qa1rKqNkNYImPLC3dhgHUD3gLjo")

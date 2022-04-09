@@ -17,6 +17,8 @@ class Auth(web.View):
 
 		agent = self.request.headers.get("User-Agent")
 
+		print(self.request.raw_headers)
+
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 		if addr not in infrastructure.blacklisted_ips:
 			if client_version and client_version != infrastructure.config["version"]:
