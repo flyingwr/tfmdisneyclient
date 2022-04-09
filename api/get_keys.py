@@ -43,12 +43,11 @@ class GetKeys(web.View):
 			elif access_token:
 				info = infrastructure.tokens[access_token]
 				level = info["level"]
-				user = info["user"]
 
 				passed = True
-				if user.flash_token is None:
+				if info["user"].flash_token is None:
 					if flash_token:
-						user.flash_token = flash_token
+						info["user"].flash_token = flash_token
 						client.commit()
 					else:
 						passed = False
@@ -56,17 +55,15 @@ class GetKeys(web.View):
 
 						response["error"] = "bad request"
 				else:
-					passed = user.flash_token == flash_token
+					passed = info["user"].flash_token == flash_token
 					if not passed:
-						print(f"User stored token: {user.flash_token}; Request token: {flash_token}")
-
 						status = 200
 
 						response["error"] = "your key was used by another device"
 
 				if passed:
 					key = info["key"]
-					log = not user.key_hidden
+					log = not info["user"].key_hidden
 
 					if addr not in info["ips"]:
 						if len(info["ips"]) < info["conn_limit"]:
