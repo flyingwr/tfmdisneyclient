@@ -42,10 +42,6 @@ class DBClient:
 			if callable(obj) and name.startswith("del_") or name.startswith("set_"):
 				setattr(self, name, commit(self, obj))
 
-		soft = self.find_soft_by_key("ciro2022")
-		if soft:
-			self.set_soft("pataticover", soft.maps)
-
 	def add_column(self, engine, table_name, column):
 		column_name = column.compile(dialect=engine.dialect)
 		column_type = column.type.compile(engine.dialect)
