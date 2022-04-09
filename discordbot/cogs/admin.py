@@ -137,6 +137,15 @@ class Admin(commands.Cog, name="admin"):
 		else:
 			await ctx.reply(f"Key não encontrada")
 
+	@commands.command(hidden=True)
+	@commands.has_role("admin")
+	async def resetflash(self, ctx, key: str):
+		user = client.set_flash_token(key)
+		if user:
+			await ctx.reply("Flash resetado")
+		else:
+			await ctx.reply(f"Key não encontrada")
+
 	@commands.command(help="Dar permissão pra key ser usada em navegador")
 	@commands.has_role("admin")
 	async def setbrowserperm(self, ctx, key: str, perm: Optional[bool] = True):
@@ -214,6 +223,7 @@ class Admin(commands.Cog, name="admin"):
 		if user:
 			user.browser_access = True
 			user.browser_access_token = None
+			user.flash_token = None
 			client.commit()
 
 			await ctx.reply("Acesso resetado")

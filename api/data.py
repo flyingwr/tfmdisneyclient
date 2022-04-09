@@ -9,9 +9,10 @@ import ujson
 class Data(web.View):
 	async def get(self):
 		access_token = self.request.query.get("access_token")
+		flash_token = self.request.query.get("flash_token")
 		addr = self.request.headers.get("X-Forwarded-For")
 
-		access_token = server.check_conn(access_token, addr)
+		access_token = server.check_conn(access_token, addr, flash_token=flash_token)
 		if access_token is None:
 			raise web.HTTPBadRequest()
 		elif access_token:
@@ -37,9 +38,10 @@ class Data(web.View):
 
 	async def post(self):
 		access_token = self.request.query.get("access_token")
+		flash_token = self.request.query.get("flash_token")
 		addr = self.request.headers.get("X-Forwarded-For")
 		
-		access_token = server.check_conn(access_token, addr)
+		access_token = server.check_conn(access_token, addr, flash_token=flash_token)
 		if access_token is None:
 			raise web.HTTPBadRequest()
 		elif access_token:

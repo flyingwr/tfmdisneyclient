@@ -18,8 +18,6 @@ class Auth(web.View):
 		key = None
 		log = True
 
-		print(self.request.raw_headers)
-
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 		if addr not in infrastructure.blacklisted_ips:
 			if client_version and client_version != infrastructure.config["version"]:
@@ -58,7 +56,7 @@ class Auth(web.View):
 									elif user.browser_access_token == browser_access_token:
 										status = 200
 									else:
-										response["error"] = "this key was used by another device"
+										response["error"] = "your key was used by another device"
 								else:
 									response["error"] = "info mismatch. try another browser"
 							else:

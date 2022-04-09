@@ -3,7 +3,7 @@ Base = declarative_base()
 
 from functools import wraps
 from sqlalchemy.orm import load_only
-from typing import Any, ByteString, Dict, List, Optional
+from typing import Any, ByteString, Dict, List, Optional, Union
 
 from data.config import Config
 from data.map import Map
@@ -20,6 +20,9 @@ MutableDict.associate_with(sqlalchemy.JSON)
 class DBClient:
 	def __init__(self, endpoint: str):
 		engine = sqlalchemy.create_engine(endpoint)
+		# self.add_column(engine, "users", sqlalchemy.Column("flash_token", sqlalchemy.String(32)))
+
+		# Base.metadata.create_all(engine)
 
 		Session = sqlalchemy.orm.sessionmaker(bind=engine)
 		self._session: sqlalchemy.orm.session.Session = Session()
@@ -39,6 +42,11 @@ class DBClient:
 			if callable(obj) and name.startswith("del_") or name.startswith("set_"):
 				setattr(self, name, commit(self, obj))
 
+	def add_column(self, engine, table_name, column):
+		column_name = column.compile(dialect=engine.dialect)
+		column_type = column.type.compile(engine.dialect)
+		engine.execute("ALTER TABLE %s ADD COLUMN %s %s" % (table_name, column_name, column_type))
+
 	def commit(self):
 		self._session.commit()
 
@@ -48,7 +56,7 @@ class DBClient:
 	def find_config_by_key(self, key: str) -> Config:
 		return self._session.query(Config).get(key)
 
-	def find_map_by_key(self, key: str, check_exists: Optional[bool] = False) -> bool | Map:
+	def find_map_by_key(self, key: str, check_exists: Optional[bool] = False) -> Union[bool, Map]:
 		if check_exists:
 			return self._session.query(Map).options(load_only(Map.key)).get(key) is not None
 		return self._session.query(Map).get(key)
@@ -124,6 +132,12 @@ class DBClient:
 		user = self.find_user_by_key(key)
 		if user:
 			user.update(browser_access=True, browser_access_token=token)
+		return user
+
+	def set_flash_token(self, key: str, token: Optional[str] = None) -> User:
+		user = self.find_user_by_key(key)
+		if user:
+			user.update(flash_token=token)
 		return user
 
 client = DBClient(os.getenv("MARIADB_ENDPOINT"))

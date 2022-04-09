@@ -10,6 +10,9 @@ class User(Base):
 
     browser_access = sqlalchemy.Column(sqlalchemy.Boolean, default=bool(True))
     browser_access_token = sqlalchemy.Column(sqlalchemy.String(40))
+
+    flash_token = sqlalchemy.Column(sqlalchemy.String(32))
+
     key_hidden = sqlalchemy.Column(sqlalchemy.Boolean, default=bool(False))
 
     connection_limit = sqlalchemy.Column(sqlalchemy.Integer, default=(int(-1)))

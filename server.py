@@ -32,16 +32,20 @@ async def swf_downloader():
 		except Exception:
 			print("Failed to download Transformice SWF")
 
-def check_conn(access_token: str, addr: str):
+def check_conn(access_token: str, addr: str, **kwargs):
 	if access_token is not None:
 		if addr in infrastructure.ips:
 			access_token = infrastructure.ips[addr][1]
 	else:
 		return None
 
-	return access_token if (
-		access_token is not None and access_token in infrastructure.tokens
-	) else False
+	if access_token in infrastructure.tokens:
+		if "flash_token" in kwargs.keys():
+			flash_token = kwargs["flash_token"]
+			if infrastructure.tokens[access_token]["user"].flash_token != flash_token:
+				return False
+		return access_token
+	return False
 
 def store_access(key: str, addr: str, user: User) -> Dict:
 	result = {}

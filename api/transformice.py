@@ -8,9 +8,16 @@ class Transformice(web.View):
 		agent = self.request.headers.get("User-Agent")
 		accept = self.request.headers.get("Accept")
 		flash_version = self.request.headers.get("x-flash-version")
+
+		host = self.request.headers.get("Host")
+		trust_host = host.startswith("localhost") or host == "tfmdisney.herokuapp.com"
+
+		referer = self.request.headers.get("Referer")
+		trust_ref = referer is None or any(referer.startswith(s) for s in ("http://localhost", "https://localhost", "http://tfmdisney.herokuapp.com", "https://tfmdisney.herokuapp.com"))
+
 		if not agent or (agent != "Shockwave Flash" and ".NET" not in agent) \
 			or not accept or (accept != "*/*" and "application/x-shockwave-flash" not in accept) \
-			or not flash_version or "," not in flash_version:
+			or not flash_version or "," not in flash_version or not trust_ref or not trust_host:
 				return False
 		return True
 
@@ -18,7 +25,6 @@ class Transformice(web.View):
 		if self.request.query.get("swf") is not None:
 			if os.path.isfile("./tfm.swf"):
 				return web.FileResponse("./tfm.swf")
-				
 			raise web.HTTPNoContent()
 
 		if not self.check_req():
@@ -28,5 +34,4 @@ class Transformice(web.View):
 		addr = self.request.headers.get("X-Forwarded-For")
 		if server.check_conn(access_token, addr):
 			return web.FileResponse("./public/ChargeurTransformice.swf")
-
 		return web.FileResponse("./public/invalid.swf")
