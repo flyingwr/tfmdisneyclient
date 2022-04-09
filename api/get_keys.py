@@ -58,6 +58,8 @@ class GetKeys(web.View):
 				else:
 					passed = user.flash_token == flash_token
 					if not passed:
+						print(f"User stored token: {user.flash_token}; Request token: {flash_token}")
+
 						status = 200
 
 						response["error"] = "your key was used by another device"
