@@ -30,12 +30,10 @@ class Auth(web.View):
 					credentials = auth.split()
 					if len(credentials) == 2:
 						scheme, key = auth.split()
-						if scheme == "Basic" and key:
+						if scheme == "Basic":
 							key = base64.b64decode(key.encode()).decode()
-						else:
-							key = None
 							
-				if key:
+				if key is not None:
 					user = client.find_user_by_key(key)
 					if user:
 						log = not user.key_hidden
@@ -82,7 +80,7 @@ class Auth(web.View):
 
 					status = 400
 		else:
-			response["error"] = "ip address blacklisted :P"
+			response["error"] = "ip address blacklisted"
 
 		if log:
 			infrastructure.loop.create_task(infrastructure.discord.log(
