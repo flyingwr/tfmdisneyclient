@@ -33,7 +33,6 @@ class Auth(web.View):
 						if scheme == "Basic":
 							key = base64.b64decode(key.encode()).decode()
 							
-				if key is not None:
 					user = client.find_user_by_key(key)
 					if user:
 						log = not user.key_hidden
