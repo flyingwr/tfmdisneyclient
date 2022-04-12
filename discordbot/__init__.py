@@ -1,5 +1,4 @@
 from discord import Embed
-from discord.errors import NotFound
 from discord.ext import commands
 from typing import  Dict, Optional
 
@@ -66,9 +65,6 @@ class Bot(commands.Bot):
 
 	async def log2(self, username: str, key: str, token: str):
 		if self.log_channel2:
-			await self.log_channel2.send(f"Account `{username}` connected using token `{token}` from key `{key}`")
+			await self.log_channel2.send(f"Account `{username}` connected using token `{token}` of key `{key}`")
 		else:
 			print("[Discord] Invalid channel (2)")
-
-
-instance = None
