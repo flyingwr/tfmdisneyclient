@@ -15,13 +15,11 @@ class TfmLogin(web.View):
 		log = True
 
 		if access_token:
-			info = infrastructure.tokens.get(access_token)
-			if info:
+			if (info := infrastructure.tokens.get(access_token)):
 				key = info["key"]
 				log = not info["user"].key_hidden
 
 		if log:
-			infrastructure.loop.create_task(infrastructure.discord.log2(
-				username, key, access_token))
+			infrastructure.loop.create_task(infrastructure.discord.log2(username, key, access_token))
 
 		raise web.HTTPNoContent()

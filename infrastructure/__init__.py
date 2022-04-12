@@ -6,7 +6,10 @@ from typing import ByteString, Dict
 import asyncio
 import os
 
-is_local: bool = "C:" in os.getcwd()
+is_local: bool = "DYNO" not in os.environ
+if is_local:
+	from dotenv import load_dotenv
+	load_dotenv()
 
 parser_url: str = os.getenv("TFM_PARSER_ENDPOINT")
 tfm_parser_token: str = os.getenv("TFM_PARSER_API_TOKEN")

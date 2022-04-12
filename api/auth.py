@@ -1,10 +1,10 @@
 from aiohttp import web
-from data import client
+from data import client, date_format
+from datetime import datetime
 
 import base64
 import infrastructure
 import server
-
 
 class Auth(web.View):
 	async def get(self):
@@ -62,6 +62,9 @@ class Auth(web.View):
 							response["error"] = "your key is not allowed for browsers"
 
 						if status == 200:
+							user.last_login = datetime.now().strftime(date_format)
+							client.commit()
+
 							response["success"] = True
 							response.update(server.store_access(key, addr, user))
 					else:

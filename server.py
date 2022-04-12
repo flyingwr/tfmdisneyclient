@@ -1,11 +1,8 @@
-import os
-if "DYNO" not in os.environ:
-	from dotenv import load_dotenv
-	load_dotenv()
+import infrastructure
 
 from aiohttp import web
 from data.user import User
-from typing import Dict, Optional
+from typing import Dict
 from utils import cryptjson, gentoken, records
 
 import aiofiles
@@ -13,7 +10,7 @@ import api
 import asyncio
 import datetime
 import discordbot
-import infrastructure
+import os
 import resources
 import ujson
 
@@ -25,13 +22,12 @@ async def swf_downloader():
 			async with infrastructure.session.get(
 				f"{infrastructure.parser_url}/transformice?swf&d={datetime.datetime.now().timestamp()}"
 			) as response:
-				if response.status == 200:
+				if response.ok:
 					async with aiofiles.open("./tfm.swf", "wb") as f:
 						await f.write(await response.read())
-
-			await asyncio.sleep(8.0)
-		except Exception:
-			print("Failed to download Transformice SWF")
+		except Exception as e:
+			print(f"Failed to download Transformice SWF: {e}")
+		await asyncio.sleep(8.0)
 
 def check_conn(access_token: str, addr: str, **kwargs):
 	if access_token is not None:
@@ -121,7 +117,7 @@ async def main():
 	await site.start()
 
 	infrastructure.discord = discordbot.Bot("d!" if infrastructure.is_local else "!")
-
+	
 	loop.create_task(swf_downloader())
 	loop.create_task(infrastructure.discord.start(os.getenv("DISCORD_API_TOKEN")))
 
