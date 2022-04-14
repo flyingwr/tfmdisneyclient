@@ -112,7 +112,10 @@ class Admin(commands.Cog, name="admin"):
 	@commands.has_role("admin")
 	async def transfersoft(self, ctx, _from: str, to: str):
 		if _from in infrastructure.config["soft_forbidden_keys"]:
-			if ctx.author.get_role(infrastructure.config["discord_major_role_id"]) is not None:
+			for role in ctx.author.role:
+				if role.id == infrastructure.config["discord_major_role_id"]:
+					break
+			else:
 				await ctx.reply(f"Key `{_from}` não encontrada")
 				return
 
