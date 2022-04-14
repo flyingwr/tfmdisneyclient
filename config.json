@@ -5,6 +5,7 @@
 	"discord_log_channel": 857625605456789504,
 	"discord_log_channel2": 857625624755830794,
 	"discord_priv_channel": 939936024161816577,
+	"discord_major_role_id": 958825737689915402,
 
 	"map_storage_fetch": true,
 
@@ -12,6 +13,10 @@
 	"standalone_url": "https://mega.nz/file/WaoBCD7T#Ap_x1ZF3dLuk6ff1BZu4BB8yXnMS9QcL-BvJZqfA9ZI",
 	"update_url": "http://tfmdisney.herokuapp.com/",
 	"version": "1.1.6",
+
+	"soft_forbidden_keys": [
+		"ciro2022"
+	],
 
 	"storage_allowed_levels": [
 		"SILVER",
