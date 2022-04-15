@@ -29,7 +29,7 @@ class Admin(commands.Cog, name="admin"):
 	@commands.command(help="Gerar uma key específica")
 	@commands.has_role("admin")
 	async def setkey(self, ctx, key: str, level: Optional[str] = "GOLD_II"):
-		user = client.set_user(key, level)
+		client.set_user(key, level)
 		await ctx.reply(f"Nova key gerada: `{key}`")
 
 	@commands.command(help="Adicionar mapas para a key")
