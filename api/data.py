@@ -67,8 +67,7 @@ class Soft(web.View):
 		access_token = self.request.query.get("access_token")
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 
-		if (sockname := self.request.transport.get_extra_info("sockname")) is not None:
-			print(sockname)
+		print(self.request.headers)
 
 		access_token = server.check_conn(access_token, addr)
 		if access_token is None:
