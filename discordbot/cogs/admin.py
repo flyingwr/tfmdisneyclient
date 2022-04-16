@@ -23,7 +23,7 @@ class Admin(commands.Cog, name="admin"):
 		self.map_data: ByteString = b""
 
 	async def cog_after_invoke(self, ctx):
-		if not ctx.command_failed:
+		if not ctx.command_failed and ctx.channel.id != infrastructure["discord_priv_channel2"]:
 			keys = getattr(ctx, "_keys", None)
 			keys_msg = f" | Key gerada: `{', '.join(keys)}`" if keys else ""
 			await self.bot.priv_channel.send(f"`{ctx.author}` usou o comando: `{ctx.message.content}`{keys_msg}")
@@ -149,7 +149,7 @@ class Admin(commands.Cog, name="admin"):
 	async def lssoft(self, ctx, key: Optional[str] = "all", more_than: Optional[int] = None):
 		embed = Embed(title=f"Lista de soft - {key}")
 		if key == "all":			
-			embed.description = "\n".join([f"{soft.key} - {'vazio' if not maps_len else '{} mapas'.format(maps_len)}" for soft in client.load_soft(more_than) if (maps_len := len(soft.maps))])
+			embed.description = "\n".join([f"{soft.key} - {'vazio' if not (maps_len := len(soft.maps)) else '{} mapas'.format(maps_len)}" for soft in client.load_soft(more_than)])
 		elif (soft := client.find_soft_by_key(key)) is not None:
 			embed.description = f"{maps_len} mapas" if (maps_len := len(soft.maps)) else "vazio"
 		await ctx.reply(embed=embed)
