@@ -29,7 +29,7 @@ class Admin(commands.Cog, name="admin"):
 	@commands.command(help="Gerar uma key específica")
 	@commands.has_role("admin")
 	async def setkey(self, ctx, key: str, level: Optional[str] = "GOLD_II"):
-		user = client.set_user(key, level)
+		client.set_user(key, level)
 		await ctx.reply(f"Nova key gerada: `{key}`")
 
 	@commands.command(help="Adicionar mapas para a key")
@@ -93,33 +93,50 @@ class Admin(commands.Cog, name="admin"):
 	@commands.command(help="Transferir mapas de uma key pra outra")
 	@commands.has_role("admin")
 	async def transfermaps(self, ctx, _from: str, to: str):
-		from_maps = client.find_map_by_key(_from)
-		if from_maps:
-			user = client.find_user_by_key(to)
-			if user:
-				client.set_map(to, from_maps.data)
-				await ctx.reply(f"Mapas da key `{_from}` transferidos para `{to}`")
+		from_user = client.find_user_by_key(_from)
+		if from_user is not None:
+			from_maps = client.find_map_by_key(_from)
+			if from_maps is not None:
+				user = client.find_user_by_key(to)
+				if user is not None:
+					client.set_map(to, from_maps.data)
+					await ctx.reply(f"Mapas da key `{_from}` transferidos para `{to}`")
+				else:
+					await ctx.reply(f"Key `{to}` não encontrada")
 			else:
-				await ctx.reply(f"Key `{to}` não encontrada")
+				await ctx.reply(f"Key `{_from}` não tem mapas")
 		else:
-			await ctx.reply(f"Key `{_from}` não tem mapas")
+			await ctx.reply(f"Key `{_from}` não encontrada")
 
 	@commands.command(help="Transferir mapas do modo soft de uma key pra outra")
 	@commands.has_role("admin")
 	async def transfersoft(self, ctx, _from: str, to: str):
-		from_soft = client.find_soft_by_key(_from)
-		if from_soft:
-			user = client.find_user_by_key(to)
-			if user:
-				if user.level == "PLATINUM":
-					client.set_soft(to, from_soft.maps)
-					await ctx.reply(f"Mapas soft da key `{_from}` transferidos para `{to}`")
-				else:
-					await ctx.reply(f"Key `{key}` não tem o nível para mapas soft")
+		if _from in infrastructure.config["soft_forbidden_keys"]:
+			for role in ctx.author.roles:
+				if role.id == infrastructure.config["discord_major_role_id"]:
+					break
 			else:
-				await ctx.reply(f"Key `{to}` não encontrada")
+				await ctx.reply(f"Key `{_from}` não encontrada")
+				return
+
+		from_user = client.find_user_by_key(_from)
+		if from_user is not None:
+			from_soft = client.find_soft_by_key(_from)
+			if from_soft is not None:
+				user = client.find_user_by_key(to)
+				if user is not None:
+					if user.level == "PLATINUM":
+						client.set_soft(to, from_soft.maps)
+						await ctx.reply(f"Mapas soft da key `{_from}` transferidos para `{to}`")
+					else:
+						await ctx.reply(f"Key `{key}` não tem o nível para mapas soft")
+				else:
+					await ctx.reply(f"Key `{to}` não encontrada")
+			else:
+				await ctx.reply(f"Key `{_from}` não tem mapas soft")
 		else:
-			await ctx.reply(f"Key `{_from}` não tem mapas soft")
+			await ctx.reply(f"Key `{_from}` não encontrada")
+
 
 	@commands.command(help="Resetar config da key")
 	@commands.has_role("admin")
@@ -207,7 +224,7 @@ class Admin(commands.Cog, name="admin"):
 			while True:
 				key = "".join(random.sample(chars, 8))
 				user = client.find_user_by_key(key)
-				if not user:
+				if user is None:
 					client.set_user(key=key, level=level)
 
 					keys.append(key)

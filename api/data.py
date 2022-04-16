@@ -12,8 +12,7 @@ class Data(web.View):
 		flash_token = self.request.query.get("flash_token")
 		addr = self.request.headers.get("X-Forwarded-For")
 
-		access_token = server.check_conn(access_token, addr, flash_token=flash_token)
-		if access_token is None:
+		if (access_token := server.check_conn(access_token, addr, flash_token=flash_token)) is None:
 			raise web.HTTPBadRequest()
 		elif access_token:
 			body = b""
@@ -39,9 +38,12 @@ class Data(web.View):
 	async def post(self):
 		access_token = self.request.query.get("access_token")
 		flash_token = self.request.query.get("flash_token")
-		addr = self.request.headers.get("X-Forwarded-For")
+		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 		
-		access_token = server.check_conn(access_token, addr, flash_token=flash_token)
+		if self.request.path_qs.startswith("/data/soft"):
+			access_token = server.check_conn(access_token, addr)
+		else:
+			access_token = server.check_conn(access_token, addr, flash_token=flash_token)
 		if access_token is None:
 			raise web.HTTPBadRequest()
 		elif access_token:
@@ -62,10 +64,9 @@ class Data(web.View):
 class Soft(web.View):
 	async def get(self):
 		access_token = self.request.query.get("access_token")
-		addr = self.request.headers.get("X-Forwarded-For")
+		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
 
-		access_token = server.check_conn(access_token, addr)
-		if access_token is None:
+		if (access_token := server.check_conn(access_token, addr)) is None:
 			raise web.HTTPBadRequest()
 		elif access_token:
 			if infrastructure.tokens[access_token]["level"] == "PLATINUM":
