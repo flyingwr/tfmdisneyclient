@@ -273,5 +273,13 @@ class Admin(commands.Cog, name="admin"):
 		else:
 			await ctx.reply("Key não encontrada")
 
+	@commands.command(help="Mostrar o último login da key no site")
+	@commands.has_role("admin")
+	async def lastlogin(self, ctx, key: str):
+		if (user := client.find_user_by_key(key)) is not None:
+			await ctx.reply(f"Último login: {user.last_login}")
+		else:
+			await ctx.reply("Key não encontrada")
+
 def setup(bot):
 	bot.add_cog(Admin(bot))
