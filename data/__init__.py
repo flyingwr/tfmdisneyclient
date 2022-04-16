@@ -1,8 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.mutable import MutableDict
-
-Base = declarative_base()
-
 from sqlalchemy.orm import load_only
 from sqlalchemy.sql import func
 
@@ -10,8 +7,11 @@ from datetime import datetime, timedelta
 from functools import wraps
 from typing import Any, ByteString, Dict, List, Optional, Union
 
+Base = declarative_base()
+
 from data.config import Config
 from data.map import Map
+from data.mariadbutils import json_length
 from data.soft import Soft
 from data.user import User
 
@@ -44,7 +44,7 @@ class DBClient:
 
 		for name in dir(self):
 			obj = getattr(self, name)
-			if callable(obj) and name.startswith("del_") or name.startswith("set_"):
+			if callable(obj) and (name.startswith("del_") or name.startswith("set_")):
 				setattr(self, name, commit(self, obj))
 
 		self.del_unmodified()
@@ -86,14 +86,29 @@ class DBClient:
 			return self._session.query(Map).options(load_only(Map.key)).get(key)
 		return self._session.query(Map).get(key)
 
-	def find_soft_by_key(self, key: str) -> Soft:
+	def find_soft_by_key(self, key: str, check_exists: Optional[bool] = False) -> Soft:
+		if check_exists:
+			return self._session.query(Soft).options(load_only(Soft.key)).get(key)
 		return self._session.query(Soft).get(key)
 
-	def find_user_by_key(self, key: str) -> User:
+	def find_user_by_key(self, key: str, check_exists: Optional[bool] = False) -> User:
+		if check_exists:
+			return self._session.query(User).options(load_only(User.key)).get(key)
 		return self._session.query(User).get(key)
 
-	def load_maps_keys(self) -> List:
-		return self._session.query(Map).options(load_only(Map.key)).all()
+	def load_maps(self, only_keys: Optional[bool] = False) -> List:
+		if only_keys:
+			return self._session.query(Map).options(load_only(Map.key)).all()
+		return self._session.query(Map).all()
+
+	def load_soft(self, more_than: Optional[int] = None, only_keys: Optional[bool] = False) -> List:
+		if more_than:
+			if only_keys:
+				return self._session.query(Soft).filter(json_length(Soft.maps) >= more_than).options(load_only(Soft.key))
+			return self._session.query(Soft).filter(json_length(Soft.maps) >= more_than)
+		elif only_keys:
+			return self._session.query(Soft).options(load_only(Soft.key)).all()
+		return self._session.query(Soft).all()
 
 	def del_user(self, key: str) -> bool:
 		user = self.find_user_by_key(key)

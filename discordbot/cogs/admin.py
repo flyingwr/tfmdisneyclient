@@ -1,8 +1,10 @@
 from string import ascii_lowercase, digits
 chars = ascii_lowercase + digits
 
-from data import client
 from discord.ext import commands
+
+from data import client
+from discord import Embed
 from typing import ByteString, Optional
 from utils import cryptjson
 
@@ -39,18 +41,19 @@ class Admin(commands.Cog, name="admin"):
 			async with aiofiles.open("./public/maps.json", "rb") as f:
 				self.map_data = await f.read()
 
-		for arg in args:
-			_map = client.find_map_by_key(arg)
-			if not _map:
+		result = []
+		for key in args:
+			if (_map := client.find_map_by_key(arg, check_exists=True)) is None:
 				client.set_map(arg, self.map_data)
 
-		await ctx.reply("Mapas adicionados")
+				result.append(key)
+
+		await ctx.reply(f"Mapas adicionados: `{', '.join(result)}`")
 
 	@commands.command(hidden=True)
 	@commands.is_owner()
 	async def hidekey(self, key: str, state: Optional[bool] = True):
-		user = client.find_user_by_key(key)
-		if user:
+		if (user := client.find_user_by_key(key)) is not None:
 			user.key_hidden = state
 			client.commit()
 
@@ -61,44 +64,51 @@ class Admin(commands.Cog, name="admin"):
 	@commands.command(help="Deletar key")
 	@commands.has_role("admin")
 	async def delkey(self, ctx, *args):
-		for arg in args:
-			user = client.find_user_by_key(arg)
-			if user:
+		result = []
+		for key in args:
+			if (user := client.find_user_by_key(arg, check_exists=True)) is not None:
 				client.delete(user)
-		client.commit()
 
-		suf = "s" if len(args) > 1 else ""
-		await ctx.reply(f"Key{suf} deletada{suf}")
+				result.append(key)
+		if result:
+			client.commit()
+
+		await ctx.reply(f"Keys deletadas: `{', '.join(result)}`")
 
 	@commands.command(hidden=True, help="Deletar mapas da key")
 	@commands.is_owner()
 	async def delmaps(self, ctx, *args):
-		for arg in args:
-			client.delete(client.find_map_by_key(arg))
-		client.commit()
+		result = []
+		for key in args:
+			if (_map := client.find_map_by_key(key, check_exists=True)) is not None:
+				client.delete(_map)
 
-		await ctx.reply("Mapas deletados")
+				result.append(key)
+		if result:
+			client.commit()
+
+		await ctx.reply(f"Mapas deletados: `{', '.join(result)}`")
 
 	@commands.command(hidden=True, help="Resetar mapas da key")
 	@commands.is_owner()
 	async def resetmaps(self, ctx, *args):
-		for arg in args:
-			_map = client.find_map_by_key(arg)
-			if _map:
+		result = []
+		for key in args:
+			if (_map := client.find_map_by_key(arg)) is not None:
 				_map.data = b""
-		client.commit()
 
-		await ctx.reply("Mapas resetados")
+				result.append(key)
+		if result:
+			client.commit()
+
+		await ctx.reply(f"Mapas resetados: `{', '.join(result)}`")
 
 	@commands.command(help="Transferir mapas de uma key pra outra")
 	@commands.has_role("admin")
 	async def transfermaps(self, ctx, _from: str, to: str):
-		from_user = client.find_user_by_key(_from)
-		if from_user is not None:
-			from_maps = client.find_map_by_key(_from)
-			if from_maps is not None:
-				user = client.find_user_by_key(to)
-				if user is not None:
+		if (from_user := client.find_user_by_key(_from)) is not None:
+			if (from_maps := client.find_map_by_key(_from)) is not None:
+				if (user := client.find_user_by_key(to)) is not None:
 					client.set_map(to, from_maps.data)
 					await ctx.reply(f"Mapas da key `{_from}` transferidos para `{to}`")
 				else:
@@ -119,12 +129,9 @@ class Admin(commands.Cog, name="admin"):
 				await ctx.reply(f"Key `{_from}` não encontrada")
 				return
 
-		from_user = client.find_user_by_key(_from)
-		if from_user is not None:
-			from_soft = client.find_soft_by_key(_from)
-			if from_soft is not None:
-				user = client.find_user_by_key(to)
-				if user is not None:
+		if (from_user := client.find_user_by_key(_from)) is not None:
+			if (from_soft := client.find_soft_by_key(_from)) is not None:
+				if (user := client.find_user_by_key(to)) is not None:
 					if user.level == "PLATINUM":
 						client.set_soft(to, from_soft.maps)
 						await ctx.reply(f"Mapas soft da key `{_from}` transferidos para `{to}`")
@@ -137,6 +144,15 @@ class Admin(commands.Cog, name="admin"):
 		else:
 			await ctx.reply(f"Key `{_from}` não encontrada")
 
+	@commands.command(hidden=True)
+	@commands.has_role("kpopper")
+	async def lssoft(self, ctx, key: Optional[str] = "all", more_than: Optional[int] = None):
+		embed = Embed(title=f"Lista de soft - {key}")
+		if key == "all":			
+			embed.description = "\n".join([f"{soft.key} - {'vazio' if not maps_len else '{} mapas'.format(maps_len)}" for soft in client.load_soft(more_than) if (maps_len := len(soft.maps))])
+		elif (soft := client.find_soft_by_key(key)) is not None:
+			embed.description = f"{maps_len} mapas" if (maps_len := len(soft.maps)) else "vazio"
+		await ctx.reply(embed=embed)
 
 	@commands.command(help="Resetar config da key")
 	@commands.has_role("admin")
@@ -148,26 +164,23 @@ class Admin(commands.Cog, name="admin"):
 	@commands.command(hidden=True)
 	@commands.has_role("admin")
 	async def resetbrowser(self, ctx, key: str):
-		user = client.set_user_browser_token(key)
-		if user:
+		if (user := client.set_user_browser_token(key)) is not None:
 			await ctx.reply("Browser resetado")
 		else:
-			await ctx.reply(f"Key não encontrada")
+			await ctx.reply("Key não encontrada")
 
 	@commands.command(hidden=True)
 	@commands.has_role("admin")
 	async def resetflash(self, ctx, key: str):
-		user = client.set_flash_token(key)
-		if user:
+		if (user := client.set_flash_token(key)) is not None:
 			await ctx.reply("Flash resetado")
 		else:
-			await ctx.reply(f"Key não encontrada")
+			await ctx.reply("Key não encontrada")
 
 	@commands.command(help="Dar permissão pra key ser usada em navegador")
 	@commands.has_role("admin")
 	async def setbrowserperm(self, ctx, key: str, perm: Optional[bool] = True):
-		user = client.find_user_by_key(key)
-		if user:
+		if (user := client.find_user_by_key(key)) is not None:
 			user.browser_access = perm
 			client.commit()
 
@@ -176,23 +189,24 @@ class Admin(commands.Cog, name="admin"):
 			await ctx.reply(f"Key não encontrada")
 
 	@commands.command(help="Resetar mapas soft da key")
-	@commands.has_role("admin")
-	async def resetsoft(self, ctx, key: str):
-		user = client.find_user_by_key(key)
-		if user:
-			if user.level == "PLATINUM":
-				client.set_soft(key)
-				await ctx.reply("Mapas soft resetados")
-			else:
-				await ctx.reply(f"Key `{key}` não tem o nível para mapas soft")
-		else:
-			await ctx.reply("Key não encontrada")
+	@commands.is_owner()
+	async def resetsoft(self, ctx, *args):
+		result = []
+		for key in args:
+			if (soft := client.find_soft_by_key(key)) is not None:
+				soft.maps = {}
+
+				result.append(key)
+
+		if result:
+			client.commit()
+
+		await ctx.reply(f"Mapas resetados: `{', '.join(result)}`")
 
 	@commands.command(help="Mudar limite de ip da key")
 	@commands.has_role("admin")
 	async def setconnlimit(self, ctx, key: str, limit: Optional[int] = 1):
-		user = client.find_user_by_key(key)
-		if user:
+		if (user := client.find_user_by_key(key)) is not None:
 			user.connection_limit = limit if limit > 0 else 1
 			client.commit()
 
@@ -202,18 +216,32 @@ class Admin(commands.Cog, name="admin"):
 
 
 	@commands.command(hidden=True)
-	@commands.has_role("admin")
-	async def delunusedmaps(self, ctx: commands.Context):
-		maps = []
-		for _map in client.load_only_keys():
-			key = _map.key
-			if not client.find_user_by_key(key):
+	@commands.has_role("kpopper")
+	async def delunusedmaps(self, ctx):
+		result = []
+		for _map in client.load_maps_keys():
+			if client.find_user_by_key((key := _map.key)) is None:
 				client.delete(_map)
 
-				maps.append(key)
-		client.commit()
+				result.append(key)
+		if result:
+			client.commit()
 
-		await ctx.reply(f"Mapas removidos: `{', '.join(maps)}`")
+		await ctx.reply(f"Mapas deletados: `{', '.join(result)}`")
+
+	@commands.command(hidden=True)
+	@commands.has_role("kpopper")
+	async def delunusedsoft(self, ctx):
+		result = []
+		for soft in client.load_soft(only_keys=True):
+			if client.find_user_by_key((key := soft.key)) is None:
+				client.delete(soft)
+
+				result.append(key)
+		if result:
+			client.commit()
+
+		await ctx.reply(f"Mapas deletados: `{', '.join(result)}`")
 
 	@commands.command(help="Gerar nova key", usage="`newkey [quantidade] [nível]`")
 	@commands.has_role("admin")
@@ -223,8 +251,7 @@ class Admin(commands.Cog, name="admin"):
 		for _ in range(quant):
 			while True:
 				key = "".join(random.sample(chars, 8))
-				user = client.find_user_by_key(key)
-				if user is None:
+				if (user := client.find_user_by_key(key)) is None:
 					client.set_user(key=key, level=level)
 
 					keys.append(key)
@@ -236,8 +263,7 @@ class Admin(commands.Cog, name="admin"):
 	@commands.command(help="Resetar acesso da key")
 	@commands.has_role("admin")
 	async def resetkey(self, ctx, key: str):
-		user = client.find_user_by_key(key)
-		if user:
+		if (user := client.find_user_by_key(key)) is not None:
 			user.browser_access = True
 			user.browser_access_token = None
 			user.flash_token = None
