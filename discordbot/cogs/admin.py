@@ -43,8 +43,8 @@ class Admin(commands.Cog, name="admin"):
 
 		result = []
 		for key in args:
-			if (_map := client.find_map_by_key(arg, check_exists=True)) is None:
-				client.set_map(arg, self.map_data)
+			if (_map := client.find_map_by_key(key, check_exists=True)) is None:
+				client.set_map(key, self.map_data)
 
 				result.append(key)
 
@@ -66,7 +66,7 @@ class Admin(commands.Cog, name="admin"):
 	async def delkey(self, ctx, *args):
 		result = []
 		for key in args:
-			if (user := client.find_user_by_key(arg, check_exists=True)) is not None:
+			if (user := client.find_user_by_key(key, check_exists=True)) is not None:
 				client.delete(user)
 
 				result.append(key)
@@ -94,7 +94,7 @@ class Admin(commands.Cog, name="admin"):
 	async def resetmaps(self, ctx, *args):
 		result = []
 		for key in args:
-			if (_map := client.find_map_by_key(arg)) is not None:
+			if (_map := client.find_map_by_key(key)) is not None:
 				_map.data = b""
 
 				result.append(key)
