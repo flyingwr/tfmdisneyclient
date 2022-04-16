@@ -23,7 +23,7 @@ class Admin(commands.Cog, name="admin"):
 		self.map_data: ByteString = b""
 
 	async def cog_after_invoke(self, ctx):
-		if not ctx.command_failed and ctx.channel.id != infrastructure["discord_priv_channel2"]:
+		if not ctx.command_failed and ctx.channel.id != infrastructure.config["discord_priv_channel2"]:
 			keys = getattr(ctx, "_keys", None)
 			keys_msg = f" | Key gerada: `{', '.join(keys)}`" if keys else ""
 			await self.bot.priv_channel.send(f"`{ctx.author}` usou o comando: `{ctx.message.content}`{keys_msg}")
