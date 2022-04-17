@@ -273,6 +273,14 @@ class Admin(commands.Cog, name="admin"):
 		else:
 			await ctx.reply("Key não encontrada")
 
+	@commands.command(hidden=True)
+	@command.is_owner()
+	async def resetallkeys(self, ctx):
+		for user in client.load_users():
+			user.flash_token = None
+
+		await ctx.reply("Todas as keys foram resetadas")
+
 	@commands.command(help="Mostrar o último login da key no site")
 	@commands.has_role("admin")
 	async def lastlogin(self, ctx, key: str):

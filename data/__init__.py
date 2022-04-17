@@ -110,6 +110,11 @@ class DBClient:
 			return self._session.query(Soft).options(load_only(Soft.key)).all()
 		return self._session.query(Soft).all()
 
+	def load_users(self, only_keys: Optional[bool] = False) -> List:
+		if only_keys:
+			return self._session.query(User).options(load_only(User.key)).all()
+		return self._session.query(User).all()
+
 	def del_user(self, key: str) -> bool:
 		user = self.find_user_by_key(key)
 		if user:
