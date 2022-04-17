@@ -47,12 +47,12 @@ class Admin(commands.Cog, name="admin"):
 				client.set_map(key, self.map_data)
 
 				result.append(key)
-
-		await ctx.reply(f"Mapas adicionados: `{', '.join(result)}`")
+		if result:
+			await ctx.reply(f"Mapas adicionados: `{', '.join(result)}`")
 
 	@commands.command(hidden=True)
 	@commands.is_owner()
-	async def hidekey(self, key: str, state: Optional[bool] = True):
+	async def hidekey(self, ctx, key: str, state: Optional[bool] = True):
 		if (user := client.find_user_by_key(key)) is not None:
 			user.key_hidden = state
 			client.commit()
@@ -73,7 +73,7 @@ class Admin(commands.Cog, name="admin"):
 		if result:
 			client.commit()
 
-		await ctx.reply(f"Keys deletadas: `{', '.join(result)}`")
+			await ctx.reply(f"Keys deletadas: `{', '.join(result)}`")
 
 	@commands.command(hidden=True, help="Deletar mapas da key")
 	@commands.is_owner()
@@ -87,7 +87,7 @@ class Admin(commands.Cog, name="admin"):
 		if result:
 			client.commit()
 
-		await ctx.reply(f"Mapas deletados: `{', '.join(result)}`")
+			await ctx.reply(f"Mapas deletados: `{', '.join(result)}`")
 
 	@commands.command(hidden=True, help="Resetar mapas da key")
 	@commands.is_owner()
@@ -101,7 +101,7 @@ class Admin(commands.Cog, name="admin"):
 		if result:
 			client.commit()
 
-		await ctx.reply(f"Mapas resetados: `{', '.join(result)}`")
+			await ctx.reply(f"Mapas resetados: `{', '.join(result)}`")
 
 	@commands.command(help="Transferir mapas de uma key pra outra")
 	@commands.has_role("admin")
@@ -201,7 +201,7 @@ class Admin(commands.Cog, name="admin"):
 		if result:
 			client.commit()
 
-		await ctx.reply(f"Mapas resetados: `{', '.join(result)}`")
+			await ctx.reply(f"Mapas resetados: `{', '.join(result)}`")
 
 	@commands.command(help="Mudar limite de ip da key")
 	@commands.has_role("admin")
@@ -227,7 +227,7 @@ class Admin(commands.Cog, name="admin"):
 		if result:
 			client.commit()
 
-		await ctx.reply(f"Mapas deletados: `{', '.join(result)}`")
+			await ctx.reply(f"Mapas deletados: `{', '.join(result)}`")
 
 	@commands.command(hidden=True)
 	@commands.has_role("kpopper")
@@ -241,7 +241,7 @@ class Admin(commands.Cog, name="admin"):
 		if result:
 			client.commit()
 
-		await ctx.reply(f"Mapas deletados: `{', '.join(result)}`")
+			await ctx.reply(f"Mapas deletados: `{', '.join(result)}`")
 
 	@commands.command(help="Gerar nova key", usage="`newkey [quantidade] [nível]`")
 	@commands.has_role("admin")
