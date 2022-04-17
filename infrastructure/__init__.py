@@ -25,3 +25,5 @@ auth_attempts: defaultdict = defaultdict(int)
 blacklisted_ips: Dict = {}
 ips: Dict = {}
 tokens: Dict = {}
+
+tfm_swf_expected_len: int = 0

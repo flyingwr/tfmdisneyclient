@@ -1,5 +1,5 @@
 """Read records spreadsheets of Transformice"""
-
+from concurrent.futures import ThreadPoolExecutor
 from typing import Dict
 
 import gspread
@@ -21,45 +21,42 @@ def read_spreadsheet(key: str) -> Dict:
 		}
 	:rtype: dict
 	"""
-
-	_range = range(3)
-
 	result = {}
 
 	spreadsheet = gc.open_by_key(key)
 
-	for cat in cats:
-		left_side = spreadsheet.values_batch_get([f"{cat}!B:B", f"{cat}!C:C", f"{cat}!D:D"])
-		maps, players, times = (left_side["valueRanges"][i]["values"] for i in _range)
+	with ThreadPoolExecutor() as executor:
+		futures = [(
+			executor.submit(
+				spreadsheet.values_batch_get, [f"{cat}!B:B", f"{cat}!C:C", f"{cat}!D:D"]
+			), executor.submit(
+				spreadsheet.values_batch_get, [f"{cat}!J:J", f"{cat}!K:K", f"{cat}!L:L"]
+			) if cat != "V" else None
+		) for cat in cats]
+		for left, right in futures:
+			left = left.result()
+			maps, players, times = (left["valueRanges"][i]["values"] for i in range(3))
 
-		_reversed = None
+			if (check_right := right is not None):
+				right = right.result()
+				rmaps, rplayers, rtimes = (right["valueRanges"][i]["values"] for i in range(3)[::-1]) # Reversed range
 
-		"""Fetching reversed records
-		`V` category is not included as it has no reversed records
-		"""
-		if cat != "V":
-			_reversed = spreadsheet.values_batch_get([f"{cat}!J:J", f"{cat}!K:K", f"{cat}!L:L"])
-			rmaps, rplayers, rtimes = (_reversed["valueRanges"][i]["values"] for i in _range[::-1]) # Reversed range
+			last_player_key = 2
+			for last_map_key in range(1, len(maps), 8):
+				if (_map := maps[last_map_key]) and (map_code := _map[0]).startswith("@"):
+					result[map_code] = temp = {}
 
-		last_player_key = 2
-		for last_map_key in range(1, len(maps), 8):
-			_map = maps[last_map_key]
-			if _map and "@" in _map[0]: # Check if value is truthy
-				result[_map[0]] = temp = { "cat": cat }
+					if (player := players[last_player_key]) and (_time := times[last_player_key]):
+						temp["left"] = (player[0], _time[0])
 
-				player, _time = players[last_player_key], times[last_player_key]
-				if player and _time: # Check if value is truthy
-					temp["left"] = (player[0], _time[0])
+					"""Dealing with reversed records"""
+					if check_right:
+						if last_map_key < len(rmaps) and last_player_key < len(rplayers):
+							if (rplayer := rplayers[last_player_key]) and (rtime := rtimes[last_player_key]):
+								temp["right"] = (rplayer[0], rtime[0])
 
-				"""Dealing with reversed records"""
-				if _reversed is not None:
-					if last_map_key < len(rmaps) and last_player_key < len(rplayers):
-						rplayer, rtime = rplayers[last_player_key], rtimes[last_player_key]
-						if rplayer and rtime: # Check if value is truthy
-							temp["right"] = (rplayer[0], rtime[0])
-
-			last_player_key += 8
-			if last_player_key > len(players):
-				break
+				last_player_key += 8
+				if last_player_key > len(players):
+					break
 
 	return result

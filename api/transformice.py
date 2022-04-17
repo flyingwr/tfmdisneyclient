@@ -1,5 +1,7 @@
 from aiohttp import web
 
+import asyncio
+import infrastructure
 import os
 import server
 
@@ -24,6 +26,8 @@ class Transformice(web.View):
 	async def get(self):
 		if self.request.query.get("swf") is not None:
 			if os.path.isfile("./tfm.swf"):
+				while os.path.getsize("./tfm.swf") != infrastructure.tfm_swf_expected_len:
+					await asyncio.sleep(.5)
 				return web.FileResponse("./tfm.swf")
 			raise web.HTTPNoContent()
 

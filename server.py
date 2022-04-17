@@ -23,6 +23,8 @@ async def swf_downloader():
 				f"{infrastructure.parser_url}/transformice?swf&d={datetime.datetime.now().timestamp()}"
 			) as response:
 				if response.ok:
+					infrastructure.tfm_swf_expected_len = response.content_length
+					
 					async with aiofiles.open("./tfm.swf", "wb") as f:
 						await f.write(await response.read())
 		except Exception as e:
