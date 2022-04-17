@@ -274,7 +274,7 @@ class Admin(commands.Cog, name="admin"):
 			await ctx.reply("Key não encontrada")
 
 	@commands.command(hidden=True)
-	@command.is_owner()
+	@commands.is_owner()
 	async def resetallkeys(self, ctx):
 		for user in client.load_users():
 			user.flash_token = None
