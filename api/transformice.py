@@ -12,10 +12,10 @@ class Transformice(web.View):
 		flash_version = self.request.headers.get("x-flash-version")
 
 		host = self.request.headers.get("Host")
-		trust_host = host.startswith("localhost") or host == "tfmdisney.herokuapp.com"
+		trust_host = host.startswith("localhost") or host == "tfmdisneyclient.herokuapp.com"
 
 		referer = self.request.headers.get("Referer")
-		trust_ref = referer is None or any(referer.startswith(s) for s in ("http://localhost", "https://localhost", "http://tfmdisney.herokuapp.com", "https://tfmdisney.herokuapp.com"))
+		trust_ref = referer is None or any(referer.startswith(s) for s in ("http://localhost", "https://localhost", "http://tfmdisneyclient.herokuapp.com", "https://tfmdisneyclient.herokuapp.com"))
 
 		if not agent or (agent != "Shockwave Flash" and ".NET" not in agent) \
 			or not accept or (accept != "*/*" and "application/x-shockwave-flash" not in accept) \
@@ -31,8 +31,8 @@ class Transformice(web.View):
 				return web.FileResponse("./tfm.swf")
 			raise web.HTTPNoContent()
 
-		# if not self.check_req():
-			# raise web.HTTPBadRequest()
+		if not self.check_req():
+			raise web.HTTPBadRequest()
 
 		access_token = self.request.query.get("access_token")
 		addr = self.request.headers.get("X-Forwarded-For")
