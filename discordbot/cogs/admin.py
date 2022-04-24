@@ -219,7 +219,7 @@ class Admin(commands.Cog, name="admin"):
 	@commands.has_role("kpopper")
 	async def delunusedmaps(self, ctx):
 		result = []
-		for _map in client.load_maps_keys():
+		for _map in client.load_maps(only_keys=True):
 			if client.find_user_by_key((key := _map.key)) is None:
 				client.delete(_map)
 
