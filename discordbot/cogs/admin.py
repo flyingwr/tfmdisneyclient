@@ -277,7 +277,11 @@ class Admin(commands.Cog, name="admin"):
 	@commands.is_owner()
 	async def resetallkeys(self, ctx):
 		for user in client.load_users():
+			user.browser_access = True
+			user.browser_access_token = None
 			user.flash_token = None
+
+		client.commit()
 
 		await ctx.reply("Todas as keys foram resetadas")
 
