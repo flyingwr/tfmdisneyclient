@@ -31,8 +31,8 @@ class Transformice(web.View):
 				return web.FileResponse("./tfm.swf")
 			raise web.HTTPNoContent()
 
-		if not self.check_req():
-			raise web.HTTPBadRequest()
+		# if not self.check_req():
+			# raise web.HTTPBadRequest()
 
 		access_token = self.request.query.get("access_token")
 		addr = self.request.headers.get("X-Forwarded-For")
