@@ -61,8 +61,8 @@ class Admin(commands.Cog, name="admin"):
 		else:
 			await ctx.reply("Key não encontrada")
 
-	@commands.command(help="Deletar key")
-	@commands.has_role("admin")
+	@commands.command(hidden=True, help="Deletar key")
+	@commands.is_owner()
 	async def delkey(self, ctx, *args):
 		result = []
 		for key in args:
