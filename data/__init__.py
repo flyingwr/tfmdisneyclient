@@ -65,7 +65,7 @@ class DBClient:
 
 	def del_unmodified(self):
 		for user in self._session.query(User).options(load_only(User.key, User.last_login)).all():
-			if self.get_date_diff(user.last_login).days >= 30:
+			if self.get_date_diff(user.last_login).days >= 60:
 				if (_map := self.find_map_by_key(user.key, True)) is not None:
 					self.delete(_map)
 
