@@ -91,7 +91,7 @@ class GetKeys(web.View):
 							if _response.ok:
 								response["keys"].update(await _response.json())
 						
-						response["keys"] = cryptjson.json_zip(response["keys"])
+						response["keys"] = cryptjson.json_zip(response["keys"]).decode()
 
 						status = 200
 			else:
