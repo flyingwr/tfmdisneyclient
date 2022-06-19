@@ -19,4 +19,4 @@ class User(Base):
 
     key_hidden = sqlalchemy.Column(sqlalchemy.Boolean, default=bool(False))
 
-    connection_limit = sqlalchemy.Column(sqlalchemy.Integer, default=(int(-1)))
+    connection_limit = sqlalchemy.Column(sqlalchemy.Integer, default=(int(2)))
