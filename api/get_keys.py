@@ -1,5 +1,6 @@
 from aiohttp import web
 from data import client
+from utils import cryptjson
 
 import infrastructure
 import server
@@ -84,10 +85,13 @@ class GetKeys(web.View):
 						}
 
 						async with infrastructure.session.get(
-							f"{infrastructure.parser_url}/api/tfm_keys?token={infrastructure.tfm_parser_token}&level={level}"
+							f"{infrastructure.parser_url}/api/tfm_keys",
+							headers={"Authorization": f"Bearer {infrastructure.tfm_parser_token}"}
 						) as _response:
 							if _response.ok:
 								response["keys"].update(await _response.json())
+						
+						response["keys"] = cryptjson.json(response["keys"])
 
 						status = 200
 			else:

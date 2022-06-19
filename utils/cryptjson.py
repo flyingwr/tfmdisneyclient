@@ -4,7 +4,7 @@ import base64, ujson, zlib
 def json_zip(j: Union[Dict, List]) -> AnyStr:
 	return base64.b64encode(
 		zlib.compress(
-			ujson.dumps(j).encode("utf-8")
+			ujson.dumps(j).encode()
 		)
 	)
 
