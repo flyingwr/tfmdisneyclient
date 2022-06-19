@@ -50,14 +50,16 @@ class Bot(commands.Bot):
 			sleep = f"(:timer: {response.get('sleep', 0)} min)"
 			success = status == 200
 
+			error = response.get('error')
+
 			embed = Embed(title=f"Log - {method}",
 				description=f":computer: IP address: {addr}\n"
 				f":mag: Browser: {browser}\n"
 				f":placard: Status: {status} {':white_check_mark:' if success else ':x:'}\n"
-				f":warning: Error: {response.get('error')}\n\n"
+				f":warning: Error: {error}\n\n"
 				f":credit_card: Key: {key}\n"
 				f":credit_card: Token: {access_token} {sleep if response.get('sleep') is not None else ''}",
-				colour=0x00FF00 if success else 0xFF0000
+				colour=0x00FF00 if success or error is not None else 0xFF0000
 			)
 			await self.log_channel.send(embed=embed)
 		else:

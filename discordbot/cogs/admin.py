@@ -1,6 +1,3 @@
-from string import ascii_lowercase, digits
-chars = ascii_lowercase + digits
-
 from discord.ext import commands
 
 from data import client
@@ -12,6 +9,7 @@ import aiofiles
 import infrastructure
 import random
 import re
+import secrets
 
 class Admin(commands.Cog, name="admin"):
 	"""
@@ -205,7 +203,7 @@ class Admin(commands.Cog, name="admin"):
 
 	@commands.command(help="Mudar limite de ip da key")
 	@commands.has_role("admin")
-	async def setconnlimit(self, ctx, key: str, limit: Optional[int] = 1):
+	async def setconnlimit(self, ctx, key: str, limit: Optional[int] = 2):
 		if (user := client.find_user_by_key(key)) is not None:
 			user.connection_limit = limit if limit > 0 else 1
 			client.commit()
@@ -250,7 +248,7 @@ class Admin(commands.Cog, name="admin"):
 
 		for _ in range(quant):
 			while True:
-				key = "".join(random.sample(chars, 8))
+				key = secrets.token_hex(4)
 				if (user := client.find_user_by_key(key)) is None:
 					client.set_user(key=key, level=level)
 
