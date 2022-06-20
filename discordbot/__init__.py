@@ -59,7 +59,7 @@ class Bot(commands.Bot):
 				f":warning: Error: {error}\n\n"
 				f":credit_card: Key: {key}\n"
 				f":credit_card: Token: {access_token} {sleep if response.get('sleep') is not None else ''}",
-				colour=0x00FF00 if success or error is not None else 0xFF0000
+				colour=0x00FF00 if success and error is None else 0xFF0000
 			)
 			await self.log_channel.send(embed=embed)
 		else:
