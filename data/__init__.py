@@ -6,6 +6,7 @@ from sqlalchemy.sql import func
 from datetime import datetime, timedelta
 from functools import wraps
 from typing import Any, ByteString, Dict, List, Optional, Union
+from utils import cryptjson
 
 Base = declarative_base()
 
@@ -59,9 +60,18 @@ class DBClient:
 		column_type = column.type.compile(engine.dialect)
 		engine.execute("ALTER TABLE %s ADD COLUMN %s %s" % (table_name, column_name, column_type))
 
+	def alter_column(self, engine, table_name, column):
+		column_name = column.compile(dialect=engine.dialect)
+		column_type = column.type.compile(engine.dialect)
+		engine.execute("ALTER TABLE %s MODIFY COLUMN %s %s" % (table_name, column_name, column_type))
+
 	def del_column(self, table, column_name):
 		columns = table.columns
-		columns.remove([c for c in columns if c.name == column_name][0])
+		result = [c for c in columns if c.name == column_name]
+		if result:
+			columns.remove(result[0])
+		else:
+			print(f"Column {column_name} doest not exist")
 
 	def del_unmodified(self):
 		for user in self._session.query(User).options(load_only(User.key, User.last_login)).all():
@@ -102,11 +112,7 @@ class DBClient:
 		return self._session.query(Map).all()
 
 	def load_soft(self, more_than: Optional[int] = None, only_keys: Optional[bool] = False) -> List:
-		if more_than:
-			if only_keys:
-				return self._session.query(Soft).filter(json_length(Soft.maps) >= more_than).options(load_only(Soft.key))
-			return self._session.query(Soft).filter(json_length(Soft.maps) >= more_than)
-		elif only_keys:
+		if only_keys:
 			return self._session.query(Soft).options(load_only(Soft.key)).all()
 		return self._session.query(Soft).all()
 
@@ -142,20 +148,23 @@ class DBClient:
 
 		return _map
 
-	def set_soft(self, key: str, maps: Optional[Dict] = {}) -> Soft:
+	def set_soft(self, key: str, data: Optional[ByteString] = b"") -> Soft:
 		soft = self.find_soft_by_key(key)
 		if soft:
-			if not soft.maps:
-				soft.maps = maps
+			if not soft.data:
+				soft.data = data
 			else:
+				maps = cryptjson.json_unzip(data)
+				soft_maps = cryptjson.json_unzip(soft.data)
 				for code, info in maps.items():
 					if bool(info):
-						soft.maps[code] = info
+						soft_maps[code] = info
 					else:
-						if code in soft.maps:
-							del soft.maps[code]
+						if code in soft_maps:
+							del soft_maps[code]
+				soft.data = cryptjson.json_zip(soft_maps)
 		else:
-			soft = Soft(key=key, maps=maps)
+			soft = Soft(key=key, data=data)
 			self.add(soft)
 
 		return soft

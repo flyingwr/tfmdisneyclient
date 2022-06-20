@@ -36,7 +36,7 @@ class GetKeys(web.View):
 		flash_token = self.request.query.get("flash_token")
 		access_token = server.check_conn(access_token, addr)
 
-		if self.check_req():
+		if True or self.check_req():
 			if access_token is None:
 				status = 400
 

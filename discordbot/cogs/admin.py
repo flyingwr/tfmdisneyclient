@@ -131,7 +131,7 @@ class Admin(commands.Cog, name="admin"):
 			if (from_soft := client.find_soft_by_key(_from)) is not None:
 				if (user := client.find_user_by_key(to)) is not None:
 					if user.level == "PLATINUM":
-						client.set_soft(to, from_soft.maps)
+						client.set_soft(to, from_soft.data)
 						await ctx.reply(f"Mapas soft da key `{_from}` transferidos para `{to}`")
 					else:
 						await ctx.reply(f"Key `{key}` não tem o nível para mapas soft")
@@ -144,12 +144,12 @@ class Admin(commands.Cog, name="admin"):
 
 	@commands.command(hidden=True)
 	@commands.has_role("kpopper")
-	async def lssoft(self, ctx, key: Optional[str] = "all", more_than: Optional[int] = None):
+	async def lssoft(self, ctx, key: Optional[str] = "all"):
 		embed = Embed(title=f"Lista de soft - {key}")
 		if key == "all":			
-			embed.description = "\n".join([f"{soft.key} - {'vazio' if not (maps_len := len(soft.maps)) else '{} mapas'.format(maps_len)}" for soft in client.load_soft(more_than)])
+			embed.description = "\n".join([f"{soft.key} - {'vazio' if not (maps_len := len(cryptjson.json_unzip(soft.data))) and soft.data else '{} mapas'.format(maps_len)}" for soft in client.load_soft()])
 		elif (soft := client.find_soft_by_key(key)) is not None:
-			embed.description = f"{maps_len} mapas" if (maps_len := len(soft.maps)) else "vazio"
+			embed.description = f"{maps_len} mapas" if (maps_len := len(cryptjson.json_unzip(soft.data))) and soft.data else "vazio"
 		await ctx.reply(embed=embed)
 
 	@commands.command(help="Resetar config da key")
@@ -192,7 +192,7 @@ class Admin(commands.Cog, name="admin"):
 		result = []
 		for key in args:
 			if (soft := client.find_soft_by_key(key)) is not None:
-				soft.maps = {}
+				soft.data = b""
 
 				result.append(key)
 

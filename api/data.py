@@ -20,7 +20,7 @@ class Data(web.View):
 			if self.request.query.get("soft") is not None:
 				soft = client.find_soft_by_key(infrastructure.tokens[access_token]["key"])
 				if soft:
-					body = ujson.dumps(soft.maps).encode()
+					body = soft.data
 			elif self.request.query.get("protected") is not None:
 				async with aiofiles.open("./public/protectedmaps.json", "rb") as f:
 					body = await f.read()
@@ -53,7 +53,7 @@ class Data(web.View):
 
 			if soft is not None:
 				if infrastructure.tokens[access_token]["level"] == "PLATINUM":
-					client.set_soft(infrastructure.tokens[access_token]["key"], ujson.loads(soft))
+					client.set_soft(infrastructure.tokens[access_token]["key"], soft.encode())
 			elif config is not None:
 				client.set_config(infrastructure.tokens[access_token]["key"], ujson.loads(config))
 		else:
