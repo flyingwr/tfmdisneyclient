@@ -68,7 +68,7 @@ def store_access(key: str, addr: str, user: User) -> Dict:
 	return result
 
 async def del_token(ip: str, token: str):
-	await asyncio.sleep(3600.0)
+	await asyncio.sleep(10800.0)
 
 	if ip in infrastructure.ips:
 		del infrastructure.ips[ip]
