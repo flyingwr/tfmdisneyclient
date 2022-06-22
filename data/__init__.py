@@ -157,10 +157,10 @@ class DBClient:
 				maps = cryptjson.json_unzip(data)
 				soft_maps = cryptjson.json_unzip(soft.data)
 				for code, info in maps.items():
-					if bool(info):
+					if code.startswith("@") and bool(info):
 						soft_maps[code] = info
 					else:
-						if code in soft_maps:
+						if code in soft_maps.keys():
 							del soft_maps[code]
 				soft.data = cryptjson.json_zip(soft_maps)
 		else:
