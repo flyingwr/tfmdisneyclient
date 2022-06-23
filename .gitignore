@@ -3,6 +3,7 @@ ChargeurTransformice current version/
 .env
 
 _index.js
+_locales.js
 
 tfm.swf
 Transformice.swf

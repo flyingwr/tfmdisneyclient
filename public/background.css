@@ -3,10 +3,23 @@ html {
 }
 
 body {
+	color: white;
+
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(#3d3b38 50%, #2e2c29 50%);
+	background: linear-gradient(90deg, #302e2c 50%, #53514c 80%);
+
 	height: 100%;
 	overflow: hidden;
+}
+
+body::after {
+	content: "";
+	background-image: url("/images/background.png");
+	opacity: 0.3;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: -1;   
 }

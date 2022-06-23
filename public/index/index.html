@@ -15,7 +15,7 @@
     <script defer src="/public/index/index.js"></script>
     <script src="/public/locales.js"></script>
 
-    <div class="nav-bar">
+    <header class="nav-bar">
       <button class="nav-btn" id="download-btn">
         <img src="/images/download.png">
         <small>Download standalone</small>
@@ -33,22 +33,35 @@
       <!-- <button onclick="document.location='buy'">
         <small>Buy key</small>
       </button> -->
-    </div>
+    </header>
 
-    <div class="key-container" id="init-container">
-      <img src="/images/icon.ico">
-      <h1 class="key-text" id="init-text"></h1>
+    <div class="page-main-container">
+      <main class="page-main">
+        <h1>DisneyClient</h1>
+        <p id="main-text">
+          Official version. The best, most safe and easy to use.
+          <br>
+          We DON'T steal your passwords like other clients do.
+        </p>
+        <span class="discord-container invisible" id="discord-container">Wanna buy a key? Contact us on Discord:<br></span>
+      </main>
+
+      <aside>
+        <div class="key-container" id="init-container">
+          <img src="/images/icon.ico">
+          <h1 class="key-text" id="init-text"></h1>
+        </div>
+        <div class="key-container no-display" id="auth-container">
+          <span class="key-text" id="key-title">Enter your key</span>
+          <input type="text" class="key-input" maxlength="17" id="key-text">
+          <a class="key-btn" id="key-btn">Login</a>
+          <span class="key-text fetch-text invisible" id="fetch-text">connecting...</span>
+        </div>
+        <div class="key-container no-display" id="fetch-result-container">
+          <span class="key-text" id="fetch-result-text"></span>
+          <a href="https://youtu.be/gfTqYqGVOS4" target="_blank" class="key-btn no-display" id="hts-btn">See how to start</a>
+        </div>
+      </aside>
     </div>
-    <div class="key-container no-display" id="auth-container">
-      <span class="key-text" id="key-title">Enter your key</span>
-      <input type="text" class="key-input" maxlength="17" id="key-text">
-      <a class="key-btn" id="key-btn">Login</a>
-      <span class="key-text fetch-text invisible" id="fetch-text">connecting...</span>
-    </div>
-    <div class="key-container no-display" id="fetch-result-container">
-      <span class="key-text" id="fetch-result-text"></span>
-      <a href="https://youtu.be/gfTqYqGVOS4" target="_blank" class="key-btn no-display" id="hts-btn">See how to start</a>
-    </div>
-    <span class="discord-container invisible" id="discord-container"></span>
   </body>
 </html>

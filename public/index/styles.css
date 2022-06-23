@@ -5,21 +5,46 @@
 	src: local("Whitney-Semibold Regular"), url("whitneysemibold.woff") format("woff");
 }
 
+.page-main-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 100%;
+}
+
+.page-main {
+	font-family: "Whitney-Semibold Regular";
+	margin-left: 5vh;
+	margin-top: -80px;
+
+	flex-grow: 1;
+}
+
+.page-main p {
+	margin-top: -14px;
+}
+
+.page-main-container aside {
+	flex-grow: 1;
+}
+
+@media (max-width: 600px) {
+	.page-main-container { justify-content: center; }
+	.page-main-container aside { margin-right: 0;}
+	.page-main { display: none; }
+}
+
 .discord-container {
 	color: white;
 	font-family: "Whitney-Semibold Regular";
 	font-size: 16px;
-	user-select: none;
 	position: fixed;
-	bottom: 0;
-	left: 0;
-	margin-bottom: 5px;
-	margin-left: 5px;
+	margin-top: 40px;
 }
 .discord-container small {
 	position: relative;
 	top: -7px;
-	user-select: text;
 }
 
 .nav-bar {
@@ -83,20 +108,12 @@
 	min-height: 90vh;
 }
 .key-container img { max-width: 80px; }
-
-@media (max-width: 600px) {
-	.key-container span {
-		max-width: 290px;
-		overflow-wrap: break-word;
-	}
-
-	.key-container #fetch-result-text span { font-size: small; }
-}
+.key-container #fetch-result-text span { font-size: small; }
 
 .key-btn {
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background-color:#ffffff;
-	border-radius:1px;
+	border-radius:2px;
 	border:1px solid #dcdcdc;
 	display:inline-block;
 	cursor:pointer;
@@ -104,15 +121,16 @@
 	font-family:"Whitney-Semibold Regular";
 	font-size:18px;
 	font-weight:normal;
-	padding:34px 40px;
+	padding:4px 80px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
 	margin-top: 4px;
+	transition: all 0.2s;
 }
 .key-btn:hover { background-color:#e0e0e0; }
 .key-btn:active {
-	position:relative;
-	top:1px;
+	position: relative;
+	top: 1px;
 }
 
 .key-text {
@@ -131,13 +149,14 @@
 .key-input {
 	padding: 2px;
 	font-size: 14px;
-	border: 1px solid #000000;
-	border-radius: 1px;
+	border: 1px solid #dcdcdc;
+	border-radius: 2px;
 	background-color: #ffffff;
 	color: #2e2c29;
 	box-shadow: 0px 0px 10px rgba(66,66,66,.75);
 	margin-top: 4px;
-	width: 120px;
+	width: 197px;
+	transition: all 0.2s;
 }
 .key-input:hover { background-color:#e0e0e0; }
 .key-input:focus { outline: none; }
