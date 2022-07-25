@@ -108,7 +108,7 @@ class Admin(commands.Cog, name="admin"):
 			if (from_maps := client.find_map_by_key(_from)) is not None:
 				if (user := client.find_user_by_key(to)) is not None:
 					client.set_map(to, from_maps.data)
-					await ctx.message.add_reaction(":white_check_mark:")
+					await ctx.message.add_reaction("✅")
 					# await ctx.reply(f"Mapas da key `{_from}` transferidos para `{to}`")
 				else:
 					await ctx.reply(f"Key `{to}` não encontrada")
@@ -133,7 +133,7 @@ class Admin(commands.Cog, name="admin"):
 				if (user := client.find_user_by_key(to)) is not None:
 					if user.level == "PLATINUM":
 						client.set_soft(to, from_soft.data)
-						await ctx.message.add_reaction(":white_check_mark:")
+						await ctx.message.add_reaction("✅")
 						# await ctx.reply(f"Mapas soft da key `{_from}` transferidos para `{to}`")
 					else:
 						await ctx.reply(f"Key `{key}` não tem o nível para mapas soft")
@@ -158,13 +158,13 @@ class Admin(commands.Cog, name="admin"):
 	@commands.has_role("admin")
 	async def resetconfig(self, ctx, key: str):
 		client.set_config(key, None)
-		await ctx.message.add_reaction(":white_check_mark:")
+		await ctx.message.add_reaction("✅")
 
 	@commands.command(hidden=True)
 	@commands.has_role("admin")
 	async def resetbrowser(self, ctx, key: str):
 		if (user := client.set_user_browser_token(key)) is not None:
-			await ctx.message.add_reaction(":white_check_mark:")
+			await ctx.message.add_reaction("✅")
 		else:
 			await ctx.reply("Key não encontrada")
 
@@ -172,7 +172,7 @@ class Admin(commands.Cog, name="admin"):
 	@commands.has_role("admin")
 	async def resetflash(self, ctx, key: str):
 		if (user := client.set_flash_token(key)) is not None:
-			await ctx.message.add_reaction(":white_check_mark:")
+			await ctx.message.add_reaction("✅")
 		else:
 			await ctx.reply("Key não encontrada")
 
@@ -183,7 +183,7 @@ class Admin(commands.Cog, name="admin"):
 			user.browser_access = perm
 			client.commit()
 
-			await ctx.message.add_reaction(":white_check_mark:")
+			await ctx.message.add_reaction("✅")
 		else:
 			await ctx.reply(f"Key não encontrada")
 
@@ -209,7 +209,7 @@ class Admin(commands.Cog, name="admin"):
 			user.connection_limit = limit if limit > 0 else 1
 			client.commit()
 
-			await ctx.message.add_reaction(":white_check_mark:")
+			await ctx.message.add_reaction("✅")
 		else:
 			await ctx.reply("Key não encontrada")
 
@@ -268,7 +268,7 @@ class Admin(commands.Cog, name="admin"):
 			user.flash_token = None
 			client.commit()
 
-			await ctx.message.add_reaction(":white_check_mark:")
+			await ctx.message.add_reaction("✅")
 		else:
 			await ctx.reply("Key não encontrada")
 
@@ -282,7 +282,7 @@ class Admin(commands.Cog, name="admin"):
 
 		client.commit()
 
-		await ctx.message.add_reaction(":white_check_mark:")
+		await ctx.message.add_reaction("✅")
 
 	@commands.command(help="Mostrar o último login da key no site")
 	@commands.has_role("admin")
