@@ -18,17 +18,14 @@ loop = infrastructure.loop
 
 async def swf_downloader():
 	while True:
-		try:
-			async with infrastructure.session.get(
-				f"{infrastructure.parser_url}/transformice?swf&d={datetime.datetime.now().timestamp()}"
-			) as response:
-				if response.ok:
-					infrastructure.tfm_swf_expected_len = response.content_length
-					
-					async with aiofiles.open("./tfm.swf", "wb") as f:
-						await f.write(await response.read())
-		except Exception as e:
-			print(f"Failed to download Transformice SWF: {e}")
+		async with infrastructure.session.get(
+			f"{infrastructure.parser_url}/transformice?swf"
+		) as response:
+			if response.ok:
+				infrastructure.tfm_swf_expected_len = response.content_length
+				
+				async with aiofiles.open("./tfm.swf", "wb") as f:
+					await f.write(await response.read())
 		await asyncio.sleep(8.0)
 
 def check_conn(access_token: str, addr: str, **kwargs):
@@ -39,14 +36,16 @@ def check_conn(access_token: str, addr: str, **kwargs):
 		return None
 
 	if access_token in infrastructure.tokens:
-		if "flash_token" in kwargs.keys():
-			flash_token = kwargs["flash_token"]
+		if (flash_token := kwargs.get("flash_token")) is not None:
 			if infrastructure.tokens[access_token]["user"].flash_token != flash_token:
+				return False
+		if (session_token := kwargs.get("session_token")) is not None:
+			if infrastructure.sessions.get(session_token) is None:
 				return False
 		return access_token
 	return False
 
-def store_access(key: str, addr: str, user: User) -> Dict:
+def store_access(key: str, addr: str, user: User, session_token: str) -> Dict:
 	result = {}
 
 	if addr:
@@ -55,7 +54,8 @@ def store_access(key: str, addr: str, user: User) -> Dict:
 		if addr not in infrastructure.ips:
 			access_token = gentoken.gen_token()
 			infrastructure.ips[addr] = (now, access_token)			
-			infrastructure.tokens[access_token] = { "key": key, "user": user, "level": user.level, "ips": [addr], "conn_limit": user.connection_limit }
+			infrastructure.tokens[access_token] = temp = { "key": key, "user": user, "level": user.level, "ips": [addr], "conn_limit": user.connection_limit }
+			infrastructure.sessions[session_token] = (key, user, access_token)
 			loop.create_task(del_token(addr, access_token))
 		else:
 			access_token = infrastructure.ips[addr][1]
@@ -95,6 +95,7 @@ async def main():
 	app = web.Application()
 	app.router.add_get("/", resources.index)
 	app.router.add_get("/auth", api.Auth)
+	app.router.add_get("/dashboard", resources.dashboard)
 	app.router.add_get("/get_keys", api.GetKeys)
 	app.router.add_get("/tfmlogin", api.TfmLogin)
 	app.router.add_get("/transformice", api.Transformice)
@@ -107,6 +108,7 @@ async def main():
 
 	app.router.add_get("/api/discord", api.discord_handler)
 	app.router.add_get("/api/auth", api.Auth)
+	app.router.add_get("/api/fetch", api.Fetch)
 	app.router.add_get("/api/update", api.Update)
 	
 	app.router.add_static("/images", "./images")
