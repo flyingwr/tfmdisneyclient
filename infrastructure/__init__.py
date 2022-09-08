@@ -24,6 +24,7 @@ session: ClientSession = ClientSession()
 auth_attempts: defaultdict = defaultdict(int)
 blacklisted_ips: Dict = {}
 ips: Dict = {}
+sessions: Dict = {}
 tokens: Dict = {}
 
 tfm_swf_expected_len: int = 0

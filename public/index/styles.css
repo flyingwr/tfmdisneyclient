@@ -133,6 +133,12 @@
 	top: 1px;
 }
 
+.link-btn {
+	margin-top: 8px;
+	font-size: 12px;
+	color: white;
+}
+
 .key-text {
 	color: white;
 	font-family: "Whitney-Semibold Regular";

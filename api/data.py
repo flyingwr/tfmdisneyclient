@@ -18,15 +18,13 @@ class Data(web.View):
 			body = b""
 
 			if self.request.query.get("soft") is not None:
-				soft = client.find_soft_by_key(infrastructure.tokens[access_token]["key"])
-				if soft:
+				if (soft := client.find_soft_by_key(infrastructure.tokens[access_token]["key"])):
 					body = soft.data
 			elif self.request.query.get("protected") is not None:
 				async with aiofiles.open("./public/protectedmaps.json", "rb") as f:
 					body = await f.read()
 			elif self.request.query.get("config") is not None:
-				config = client.find_config_by_key(infrastructure.tokens[access_token]["key"])
-				if config:
+				if (config := client.find_config_by_key(infrastructure.tokens[access_token]["key"])):
 					body = ujson.dumps(config.tfm_menu).encode()
 			elif self.request.query.get("record_list") is not None:
 				body = infrastructure.records_data or b""

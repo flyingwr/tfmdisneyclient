@@ -1,5 +1,7 @@
+from aiohttp import streamer
 from aiohttp import web
 from data import client
+from io import BytesIO
 from utils import cryptjson
 
 import aiofiles
@@ -8,6 +10,16 @@ import re
 import server
 
 map_pattern2 = re.compile(b"#$")
+
+@streamer
+async def data_sender(writer, **kwargs):
+	if (file_path := kwargs.get("file_path")) is not None:
+		with open(file_path, "rb") as f:
+			while (chink := data.read(2 ** 16)):
+				await writer.write(chunk)
+	elif (data := kwargs.get("data")) is not None:
+		while (chunk := data.read(2 ** 16)):
+			await writer.write(chunk)
 
 class MapStorage(web.View):
 	def check_req(self):
@@ -32,20 +44,22 @@ class MapStorage(web.View):
 		flash_token = self.request.query.get("flash_token")
 		addr = self.request.headers.get("X-Forwarded-For")
 
-		access_token = server.check_conn(access_token, addr, flash_token=flash_token)
+		if (session_token := self.request.cookies.get("session")) is None:
+			access_token = server.check_conn(access_token, addr, flash_token=flash_token)
+		else:
+			access_token = server.check_conn(access_token, addr, session_token=session_token)
 		if access_token is None:
 			raise web.HTTPBadRequest()
 		elif access_token == False:
 			raise web.HTTPUnauthorized()
 
 		if infrastructure.config["map_storage_fetch"]:
-			_map = client.find_map_by_key(infrastructure.tokens[access_token]["key"])
-			if _map:
-				return web.Response(body=_map.data)
+			if (_map := client.find_map_by_key(infrastructure.tokens[access_token]["key"])):
+				data = _map.data
+				return web.Response(body=data)
 
 		if infrastructure.tokens[access_token]["level"] in infrastructure.config["storage_allowed_levels"]:
-			async with aiofiles.open("./public/maps.json", "rb") as f:
-				return web.Response(body=await f.read())
+			return web.Response(body=data_sender(file_path="./public/maps.json"))
 
 		raise web.HTTPForbidden()
 				

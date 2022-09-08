@@ -1,1 +1,109 @@
-function _0x275b(){const _0x204b5e=['Versão\x20oficial.\x20O\x20melhor,\x20mais\x20seguro\x20e\x20fácil\x20de\x20usar.<br>Nós\x20NÃO\x20roubamos\x20suas\x20senhas\x20como\x20fazem\x20em\x20outros\x20clients.','6184nIUErr','Cómo\x20abrir','17074ZaZxbz','105808BdFabn','minutes','Inicializando...','erro\x20ao\x20enviar','Choose\x20XML\x20files\x20to\x20upload','Inserta\x20tu\x20llave','Versión\x20oficial.\x20Lo\x20mejor,\x20lo\x20más\x20seguro\x20y\x20fácil\x20de\x20usar.<br>NO\x20robamos\x20sus\x20contraseñas\x20como\x20lo\x20hacen\x20otros\x20clients.','Enviar','conectando...','failed\x20to\x20send','bloqueado\x20temporalmente\x20debido\x20a\x20muchos\x20intentos\x20de\x20login','2156901oCQozC','Deseja\x20comprar\x20uma\x20key?\x20Nos\x20chame\x20no\x20Discord:<br>','bloqueado\x20temporariamente\x20devido\x20a\x20muitas\x20tentativas\x20de\x20login','70sDmjWW','Send','11uNlFUK','Starting...','salvo','split','13932210yUCRxM','1540848fUJoHn','minutos','Abrir\x20juego','error\x20al\x20enviar','3438rRSmrR','temporarily\x20blocked\x20due\x20to\x20many\x20login\x20attemps','Wanna\x20buy\x20a\x20key?\x20Contact\x20us\x20on\x20Discord:<br>','Open\x20game','Insira\x20sua\x20chave','guardado','Official\x20version.\x20The\x20best,\x20most\x20safe\x20and\x20easy\x20to\x20use.<br>We\x20DON\x27T\x20steal\x20your\x20passwords\x20like\x20other\x20clients\x20do.','Seleccione\x20archivos\x20XML\x20para\x20cargar','3653839IWuAzK','Como\x20abrir','¿Deseas\x20comprar\x20una\x20key?\x20Contáctanos\x20en\x20Discord:<br>','Enter\x20your\x20key'];_0x275b=function(){return _0x204b5e;};return _0x275b();}const _0x52e601=_0x9a06;(function(_0x5cff24,_0xd0413){const _0x1de8db=_0x9a06,_0x49f31d=_0x5cff24();while(!![]){try{const _0x659cfd=parseInt(_0x1de8db(0x1c6))/(0xfc1+-0x11cb+-0x20b*-0x1)*(-parseInt(_0x1de8db(0x1b5))/(0x20f+-0x1*0x2686+0x2479*0x1))+-parseInt(_0x1de8db(0x1c1))/(0x59*0x3b+-0x380*0x2+-0x1*0xd80)+parseInt(_0x1de8db(0x1b6))/(-0x1*0x2513+-0x9d5+0x2eec)*(parseInt(_0x1de8db(0x1c4))/(0x15*0x19c+-0x2*-0x853+-0x326d))+-parseInt(_0x1de8db(0x1a2))/(0x1*0x270d+0x49*-0x88+-0x1*0x3f)+-parseInt(_0x1de8db(0x1ae))/(0x1*-0x248d+0x264e+-0x1ba)+-parseInt(_0x1de8db(0x1b3))/(0x195e+-0x18f9+-0x5d*0x1)*(-parseInt(_0x1de8db(0x1a6))/(0x1*-0xea2+-0x21ce*0x1+-0x3079*-0x1))+parseInt(_0x1de8db(0x1a1))/(-0x1*-0x1f4b+-0x341+-0x1c00);if(_0x659cfd===_0xd0413)break;else _0x49f31d['push'](_0x49f31d['shift']());}catch(_0x3af75e){_0x49f31d['push'](_0x49f31d['shift']());}}}(_0x275b,0x685a2+-0xb*0xd791+0x3825*0x2d));function _0x9a06(_0x45f703,_0x4651b3){const _0x5e533c=_0x275b();return _0x9a06=function(_0x119629,_0x3bb100){_0x119629=_0x119629-(0x10e2+0xb3c+0x1a7e*-0x1);let _0x26b437=_0x5e533c[_0x119629];return _0x26b437;},_0x9a06(_0x45f703,_0x4651b3);}const locales={'en':{'buy':_0x52e601(0x1a8),'connecting':'connecting...','enter_key':_0x52e601(0x1b1),'main':_0x52e601(0x1ac),'minutes':_0x52e601(0x1b7),'open_game':_0x52e601(0x1a9),'send':_0x52e601(0x1c5),'soft_input':_0x52e601(0x1ba),'soft_ok':'saved','soft_not_ok':_0x52e601(0x1bf),'start':_0x52e601(0x1c7),'temp_block':_0x52e601(0x1a7),'token':'Your\x20token\x20has\x20been\x20generated\x20and\x20will\x20be\x20expired\x20in','hts':'How\x20to\x20start'},'es':{'buy':_0x52e601(0x1b0),'connecting':'conectando...','enter_key':_0x52e601(0x1bb),'main':_0x52e601(0x1bc),'minutes':_0x52e601(0x1a3),'open_game':_0x52e601(0x1a4),'send':_0x52e601(0x1bd),'soft_input':_0x52e601(0x1ad),'soft_ok':_0x52e601(0x1ab),'soft_not_ok':_0x52e601(0x1a5),'start':_0x52e601(0x1b8),'temp_block':_0x52e601(0x1c0),'token':'Tú\x20token\x20ha\x20sido\x20generado\x20y\x20será\x20expirado\x20en','hts':_0x52e601(0x1b4)},'pt':{'buy':_0x52e601(0x1c2),'connecting':_0x52e601(0x1be),'enter_key':_0x52e601(0x1aa),'main':_0x52e601(0x1b2),'minutes':'minutos','open_game':'Abrir\x20jogo','send':_0x52e601(0x1bd),'soft_input':'Selecione\x20arquivos\x20XML\x20para\x20enviar','soft_ok':_0x52e601(0x1c8),'soft_not_ok':_0x52e601(0x1b9),'start':'Iniciando...','temp_block':_0x52e601(0x1c3),'token':'Seu\x20token\x20foi\x20gerado\x20e\x20irá\x20expirar\x20em','hts':_0x52e601(0x1af)}},language=navigator['language'][_0x52e601(0x1a0)]('-')[-0x1*-0xa4e+0x4*-0x869+0x1756],translate=function(_0xece453){if(language in locales){if(_0xece453 in locales[language])return locales[language][_0xece453];}return locales['en'][_0xece453]||_0xece453;};
+const locales = {
+	"en": {
+		"buy": "Wanna buy a key? Contact us on Discord:<br>",
+		"connecting": "connecting...",
+		"enter_key": "Enter your key",
+		"main": "Official version. The best, most safe and easy to use.<br>We DON'T steal your passwords like other clients do.",
+		"minutes": "minutes",
+		"open_game": "Open game",
+		"send": "Send",
+		"soft_input": "Choose XML files to upload",
+		"soft_ok": "saved",
+		"soft_not_ok": "failed to send",
+		"stop_play": "Stop with a move key (WASD/arrow keys)",
+		"movement": "Movement speed",
+		"window_align": "Window align",
+		"open_menu": "Open menu",
+		"shortcuts": "Keyboard shortcuts",
+		"anti_leve": "Check anti-leve",
+		"soft": "Soft mode",
+		"menu_y": "Menu Y",
+		"insta_death": "Die instantly if someone has won",
+		"jump": "Jump height",
+		"death": "Quick death",
+		"menu_x": "Menu X",
+		"mass": "Reduce mass by %",
+		"insta_win": "Auto win",
+		"animations": "Disable animations",
+		"macro": "Macro",
+		"scoreboard": "Disable scoreboard",
+		"insta_death2": "Auto mort",
+		"ping": "Low ping (VISUAL)",
+		"timer": "Spawn delay",
+		"delay": "No delay (VISUAL)",
+		"objects": "Hide objects",
+		"hide_players": "Hide players",
+		"auto_play": "Auto play",
+		"start": "Starting...",
+		"temp_block": "temporarily blocked due to many login attemps",
+		"token": "Your token has been generated and will be expired in",
+		"hts": "How to start"
+	},
+	"es": {
+		"buy": "¿Deseas comprar una key? Contáctanos en Discord:<br>",
+		"connecting": "conectando...",
+		"enter_key": "Inserta tu llave",
+		"main": "Versión oficial. Lo mejor, lo más seguro y fácil de usar.<br>NO robamos sus contraseñas como lo hacen otros clients.",
+		"minutes": "minutos",
+		"open_game": "Abrir juego",
+		"send": "Enviar",
+		"soft_input": "Seleccione archivos XML para cargar",
+		"soft_ok": "guardado",
+		"soft_not_ok": "error al enviar",
+		"start": "Inicializando...",
+		"temp_block": "bloqueado temporalmente debido a muchos intentos de login",
+		"token": "Tú token ha sido generado y será expirado en",
+		"hts": "Cómo abrir"
+	},
+	"pt": {
+		"buy": "Deseja comprar uma key? Nos chame no Discord:<br>",
+		"connecting": "conectando...",
+		"enter_key": "Insira sua chave",
+		"main": "Versão oficial. O melhor, mais seguro e fácil de usar.<br>Nós NÃO roubamos suas senhas como fazem em outros clients.",
+		"minutes": "minutos",
+		"open_game": "Abrir jogo",
+		"send": "Enviar",
+		"soft_input": "Selecione arquivos XML para enviar",
+		"soft_ok": "salvo",
+		"soft_not_ok": "erro ao enviar",
+		"stop_play": "Parar com uma tecla de movimento (WASD/setas)",
+		"movement": "Velocidade de movimento",
+		"window_align": "Alinhamento da tela",
+		"open_menu": "Abrir menu",
+		"shortcuts": "Teclas de atalho",
+		"anti_leve": "Checar anti-leve",
+		"soft": "Modo soft",
+		"menu_y": "Posição vertical do menu",
+		"insta_death": "Morrer quando alguém entrar na toca",
+		"jump": "Altura do pulo",
+		"death": "Morte rápida",
+		"menu_x": "Posição horizontal do menu",
+		"mass": "Reduzir massa em %",
+		"insta_win": "Auto win",
+		"animations": "Desativar animações",
+		"macro": "Macro",
+		"scoreboard": "Desativar placar",
+		"insta_death2": "Auto mort",
+		"ping": "Ping baixo (VISUAL)",
+		"timer": "Delay para nascer",
+		"delay": "Sem delay (VISUAL)",
+		"objects": "Esconder objectos",
+		"hide_players": "Esconder jogadores",
+		"auto_play": "Auto play",
+		"start": "Iniciando...",
+		"temp_block": "bloqueado temporariamente devido a muitas tentativas de login",
+		"token": "Seu token foi gerado e irá expirar em",
+		"hts": "Como abrir"
+	}
+}
+
+const language = navigator.language.split("-")[0];
+const translate = function(key) {
+	if (language in locales) {
+		if (key in locales[language]) {
+			return locales[language][key];
+		}
+	}
+
+	return locales.en[key] || key;
+}

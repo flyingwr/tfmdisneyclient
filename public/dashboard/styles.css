@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Whitney-Semibold Regular";
+    background: #53514c;
+}
+
+ul {
+    list-style-type: none;
+    top: 0;
+    left: 0;
+    width: 15%;
+    background-color: #302e2c;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    font-size: 14px;
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+li a.active {
+    background-color: #161615;
+}
+
+li a:hover:not(.active) {
+    background-color: #53514c;
+}
+
+aside {
+    margin-left: 16%;
+    flex-grow: 1;
+
+    font-size: 14px;
+
+    overflow: auto;
+}
+
+.info-d {
+    display: none;
+}
+
+.info-d.active {
+    display: block;
+}
+
+p {
+    margin: 8px 0;
+}
+
+.shortcut {
+    margin-top: 18px;
+    max-width: 300px;
+}
+
+.shortcut input[type=checkbox] {
+    vertical-align: middle;
+}

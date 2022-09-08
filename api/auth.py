@@ -4,6 +4,7 @@ from datetime import datetime
 
 import base64
 import infrastructure
+import secrets
 import server
 
 class Auth(web.View):
@@ -15,7 +16,7 @@ class Auth(web.View):
 		client_version = self.request.query.get("version")
 		cookies = self.request.cookies
 
-		key = None
+		key, session_token = None, None
 		log = True
 
 		addr = "127.0.0.1" if infrastructure.is_local else self.request.headers.get("X-Forwarded-For")
@@ -65,8 +66,11 @@ class Auth(web.View):
 							user.last_login = datetime.now().strftime(date_format)
 							client.commit()
 
+							if cookies.get("session") is None:
+								session_token = base64.b64encode(secrets.token_hex(16).encode()).decode()
+
 							response["success"] = True
-							response.update(server.store_access(key, addr, user))
+							response.update(server.store_access(key, addr, user, session_token))
 					else:
 						response["error"] = "invalid key"
 
@@ -88,4 +92,7 @@ class Auth(web.View):
 			infrastructure.loop.create_task(infrastructure.discord.log(
 				"Login", response, status, addr, key, browser=agent))
 
-		return web.json_response(response, status=status)
+		server_response = web.json_response(response, status=status)
+		if session_token is not None:
+			server_response.set_cookie("session", session_token)
+		return server_response

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>DisneyClient Dashboard</title>
+
+        <link rel="icon" href="/images/icon.ico">
+        <link rel="stylesheet" href="/public/background.css">
+        <link rel="stylesheet" href="/public/index/styles.css">
+        <link rel="stylesheet" href="/public/dashboard/styles.css">
+    </head>
+    <body>
+        <nav id="menu">
+            <ul>
+                <li><a class="active" href="#user">User</a></li>
+                <li><a href="#config">Config</a></li>
+                <li><a href="#maps">Autoplay maps</a></li>
+                <li><a href="#soft">Soft maps</a></li>
+            </ul>
+        </nav>
+        <aside>
+            <div class="active info-d" id="user"></div>
+            <div class="info-d" id="config"></div>
+            <div class="info-d" id="maps"></div>
+            <div class="info-d" id="soft"></div>
+        </aside>
+
+        <script src="/public/dashboard/index.js"></script>
+        <script src="/public/locales.js"></script>
+    </body>
+</html>

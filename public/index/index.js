@@ -1,1 +1,225 @@
-const _0xa05d73=_0x2355;function _0x2355(_0x396798,_0x374fef){const _0x3a7764=_0x59fa();return _0x2355=function(_0x3b839c,_0x35a028){_0x3b839c=_0x3b839c-(-0x3*0x7c9+-0x1ba7+-0x3*-0x1156);let _0x386cb3=_0x3a7764[_0x3b839c];return _0x386cb3;},_0x2355(_0x396798,_0x374fef);}(function(_0x136ce6,_0x198aa5){const _0x163db5=_0x2355,_0x16150e=_0x136ce6();while(!![]){try{const _0x1f13c5=-parseInt(_0x163db5(0x178))/(-0xc3c+0xc*-0x50+0xffd*0x1)+parseInt(_0x163db5(0x162))/(0x2e2+0x6d*-0x7+0x1b)*(parseInt(_0x163db5(0x104))/(0x1*-0x18e5+0x129*-0xf+0x2a4f))+parseInt(_0x163db5(0x163))/(-0xdaa+-0x22b*0x6+0x1ab0)+parseInt(_0x163db5(0x135))/(-0xc84+0x20cc+-0x1443)+-parseInt(_0x163db5(0x151))/(0x1218+-0x750+0x11*-0xa2)+parseInt(_0x163db5(0x131))/(-0x2*0x116e+0x3d0+0xd7*0x25)*(parseInt(_0x163db5(0x136))/(0x3*-0x671+-0x1*0x1bc+0x1517))+parseInt(_0x163db5(0x115))/(-0x2549+0xdaa+0x17a8)*(-parseInt(_0x163db5(0x106))/(0x1c46+-0x1243+0x1*-0x9f9));if(_0x1f13c5===_0x198aa5)break;else _0x16150e['push'](_0x16150e['shift']());}catch(_0x33cab8){_0x16150e['push'](_0x16150e['shift']());}}}(_0x59fa,0x886bf+0x91c6f+-0x81fd5*0x1));const is_disney=navigator[_0xa05d73(0x174)][_0xa05d73(0x145)](_0xa05d73(0x132)),[fetch_text,key_button,key_text,key_title,auth_container,discord_container,init_container,init_text,main_text,result_container,result_text,hts_btn,hts_link]=[...[_0xa05d73(0x15f),_0xa05d73(0x103),_0xa05d73(0x110),_0xa05d73(0x152),_0xa05d73(0x17d),_0xa05d73(0x140),'init-container',_0xa05d73(0x124),_0xa05d73(0x11a),_0xa05d73(0x16a),_0xa05d73(0x161),_0xa05d73(0x17c),_0xa05d73(0x176)][_0xa05d73(0x12b)](_0x20a8a1=>{return document['getElementById'](_0x20a8a1);})];function _0x59fa(){const _0x5e06ef=['fetch-result-container','0\x205px','token','names','minutes','hts','onload','standalone_url','flex','visibility','userAgent','btoa','hts-link','value','1196093QVonhz','padding-left','Zfvqq','Authorization','hts-btn','auth-container','textContent','color','xvQrR','download-btn','location','start','key-btn','1311aeRtOK','/update','2811860SGgqBG','5px','http','cursor','_blank','default','kQgDf','kEPKl','text','length','key-text','access_token','position','style','connecting','9RhKhzi','Enter','createRange','json','keydown','main-text','max-height','none','./images/discord.png','then','img','Basic\x20','lEduT','pointer-events','innerHTML','init-text','initial','lhVeZ','appendChild','FuUfp','replace','/auth','map','#2e2c29','ewvNb','createElement','main','static','1515115lawOKu','disneyclient','getElementById','api','4416615bQUINP','16MexoRM','getComputedStyle','./images/copy.png','tnrxX','5px\x205px','src','getSelection','sleep','gray','addRange','discord-container','margin-top','auto','max-width','display','includes','setItem','open','onclick','setStart','small','copy','Copy\x20to\x20clipboard','setEnd','append','user-select','enter_key','3425568FrULvH','key-title','temp_block','https','addEventListener','gAEHm','_key','10px','HpWxi','span','execCommand','remove','catch','bxcto','fetch-text','removeAllRanges','fetch-result-text','3838SAxUyg','2067360SuFjqA','childNodes','getItem','padding','inherit','pointer','buy'];_0x59fa=function(){return _0x5e06ef;};return _0x59fa();}let api_url,auth_url,fails=-0x12b6*-0x2+-0x1f91+-0x5db,fetching=![];const init_color=_0xa05d73(0x12c),change_button_state=function(_0x209743,_0x522bd9){const _0x2d1e7c=_0xa05d73;_0x209743[_0x2d1e7c(0x113)][_0x2d1e7c(0x122)]=_0x522bd9?_0x2d1e7c(0x142):_0x2d1e7c(0x11c),_0x209743['style'][_0x2d1e7c(0x109)]=_0x522bd9?_0x2d1e7c(0x168):_0x2d1e7c(0x10b),_0x209743['style'][_0x2d1e7c(0x17f)]=_0x522bd9?init_color:_0x2d1e7c(0x13e);},change_elem_display=function(_0x39de40,_0x38a79f,_0xc9f9b9){const _0x57e5c4=_0xa05d73,_0x49b9c9=window[_0x57e5c4(0x137)](_0x39de40,null);if(_0x49b9c9!==null){if('yoqGb'===_0x57e5c4(0x128))return _0x386cb3[_0x57e5c4(0x133)](_0x4a4051);else{if(_0x49b9c9[_0x57e5c4(0x173)]==='hidden')return _0x39de40[_0x57e5c4(0x113)][_0x57e5c4(0x173)]='visible';}}_0x38a79f?_0xc9f9b9=_0xc9f9b9||_0x57e5c4(0x125):_0xc9f9b9=_0xc9f9b9||_0x57e5c4(0x11c),_0x39de40[_0x57e5c4(0x113)][_0x57e5c4(0x144)]=_0xc9f9b9;},set_fetch_message=function(_0x5fd6a8){const _0x4d9a94=_0xa05d73;fetch_text['style'][_0x4d9a94(0x17f)]=_0x4d9a94(0x167),fetch_text[_0x4d9a94(0x17e)]=_0x5fd6a8||translate('connecting');},set_fetch_error_message=function(_0x301cbd){const _0x5bb49b=_0xa05d73;fetch_text[_0x5bb49b(0x113)][_0x5bb49b(0x17f)]='red',fetch_text['textContent']=_0x301cbd||'error';},auth_request=function(){const _0x1b1536=_0xa05d73;if(!fetching){if(_0x1b1536(0x15e)!==_0x1b1536(0x126)){fetching=!![],set_fetch_message(),change_elem_display(fetch_text,!![]),change_button_state(key_button);const _0x5de6a2=new Headers();_0x5de6a2[_0x1b1536(0x14e)](_0x1b1536(0x17b),_0x1b1536(0x120)+window[_0x1b1536(0x175)](key_text[_0x1b1536(0x177)])),fetch(auth_url,{'headers':_0x5de6a2})[_0x1b1536(0x11e)](_0x25ca6e=>{const _0x392417=_0x1b1536;fetching=![],_0x25ca6e[_0x392417(0x118)]()[_0x392417(0x11e)](_0xb8a5be=>{const _0x4502c2=_0x392417;if(_0x4502c2(0x10d)!=='kEPKl')_0x4300e8=_0x342f0a||_0x4502c2(0x125);else{if(_0x25ca6e['ok']){auth_container[_0x4502c2(0x15c)]();let _0x4c1db0=0x1*-0xf7f+-0x21d5+-0x641*-0x8;const _0x58af1a=_0xb8a5be[_0x4502c2(0x13d)];if(_0x58af1a)_0x4c1db0=_0x58af1a>=0x13cf+0x10eb*-0x1+-0x231?0x61a+0xd87+-0x13a0:0xc7*0xb+0x2f*0x81+-0xfc4*0x2-_0x58af1a;change_elem_display(result_container,!![],_0x4502c2(0x172)),result_text[_0x4502c2(0x113)][_0x4502c2(0x14f)]=_0x4502c2(0x10e),result_text[_0x4502c2(0x17e)]=translate(_0x4502c2(0x16c))+'\x20'+_0x4c1db0+'\x20'+translate(_0x4502c2(0x16e))+':\x0a';const _0x53dadd=window[_0x4502c2(0x101)]['origin'][_0x4502c2(0x129)](_0x4502c2(0x154),_0x4502c2(0x108))+'/transformice?access_token='+_0xb8a5be[_0x4502c2(0x111)],_0x2dea6e=document['createElement'](_0x4502c2(0x15a));_0x2dea6e['id']='access-token',_0x2dea6e[_0x4502c2(0x17e)]=_0x53dadd,result_text[_0x4502c2(0x127)](_0x2dea6e);const _0x50217e=document['createElement'](_0x4502c2(0x11f));_0x50217e[_0x4502c2(0x13b)]=_0x4502c2(0x138),_0x50217e['style'][_0x4502c2(0x112)]=_0x4502c2(0x130),_0x50217e['style'][_0x4502c2(0x11b)]=_0x4502c2(0x158),_0x50217e[_0x4502c2(0x113)][_0x4502c2(0x143)]='10px',_0x50217e['style'][_0x4502c2(0x179)]=_0x4502c2(0x107),_0x50217e['style']['cursor']=_0x4502c2(0x168),_0x50217e['title']=_0x4502c2(0x14c),_0x50217e[_0x4502c2(0x148)]=()=>{const _0x3dca78=_0x4502c2;if(_0x3dca78(0x180)===_0x3dca78(0x180)){window[_0x3dca78(0x13c)]()['removeAllRanges']();const _0x164dc2=document[_0x3dca78(0x117)]();_0x164dc2[_0x3dca78(0x149)](_0x2dea6e,0x105*0x1d+0xb96+-0x83b*0x5),_0x164dc2['setEnd'](_0x2dea6e,_0x2dea6e[_0x3dca78(0x164)][_0x3dca78(0x10f)]),window[_0x3dca78(0x13c)]()['addRange'](_0x164dc2),document[_0x3dca78(0x15b)](_0x3dca78(0x14b));}else _0x3ec2f5=0x22c9+-0xb37+-0x1792,_0x19cd0a(_0x25e0d6,!![]);},result_text[_0x4502c2(0x127)](_0x50217e),hts_btn[_0x4502c2(0x113)][_0x4502c2(0x166)]=_0x4502c2(0x13a),change_elem_display(hts_btn,!![]),localStorage[_0x4502c2(0x146)](_0x4502c2(0x157),key_text[_0x4502c2(0x177)]);}else set_fetch_error_message(_0xb8a5be['error']),fails+=0x67*0x59+-0x1a9f+-0x92f*0x1,fails>=0x1*0x1ff3+-0x1*-0xe52+-0x2e3d&&(change_button_state(key_button),set_fetch_error_message(translate('temp_block')),setTimeout(()=>{const _0x2b9c6b=_0x4502c2;if(_0x2b9c6b(0x159)==='HpWxi')fails=-0x2443+-0x61b*-0x4+0xbd7,change_button_state(key_button,!![]);else{if(_0x40c7de===_0x2b9c6b(0x116))_0x1d05a();}},0x3bdd5+-0x3882a+0x1*0x373d5));}}),change_button_state(key_button,!![]);})[_0x1b1536(0x15d)](()=>{const _0x13cee2=_0x1b1536;'ewvNb'!==_0x13cee2(0x12d)?_0x575bff[_0x13cee2(0x118)]()[_0x13cee2(0x11e)](_0x248e00=>{const _0x556dc2=_0x13cee2;_0x248e00[_0x556dc2(0x171)]&&(_0x1c0d8a[_0x556dc2(0x113)][_0x556dc2(0x144)]=_0x556dc2(0x172),_0x23e1c2[_0x556dc2(0x148)]=()=>{const _0x22dce2=_0x556dc2;_0x4ff1c3[_0x22dce2(0x147)](_0x248e00[_0x22dce2(0x171)],_0x22dce2(0x10a));});}):set_fetch_error_message();});}else{_0x5251a5[_0x1b1536(0x13c)]()[_0x1b1536(0x160)]();const _0x539153=_0x7ce854['createRange']();_0x539153[_0x1b1536(0x149)](_0x53d895,0x2c5*-0xe+0x16*0x3+0x2684),_0x539153[_0x1b1536(0x14d)](_0x23e0e9,_0x2bf845[_0x1b1536(0x164)][_0x1b1536(0x10f)]),_0x58a9fd[_0x1b1536(0x13c)]()[_0x1b1536(0x13f)](_0x539153),_0xfd0ca4[_0x1b1536(0x15b)]('copy');}}};window[_0xa05d73(0x170)]=()=>{const _0x5948db=_0xa05d73;key_button[_0x5948db(0x148)]=auth_request;const _0x3b34be=document['getElementById'](_0x5948db(0x100));_0x3b34be[_0x5948db(0x113)][_0x5948db(0x144)]=_0x5948db(0x11c),discord_container[_0x5948db(0x123)]=translate(_0x5948db(0x169)),init_text[_0x5948db(0x17e)]=translate(_0x5948db(0x102)),key_title['textContent']=translate(_0x5948db(0x150)),hts_btn[_0x5948db(0x17e)]=translate('hts'),hts_link[_0x5948db(0x17e)]=translate(_0x5948db(0x16f)),main_text[_0x5948db(0x123)]=translate(_0x5948db(0x12f));const _0xe23ec7=localStorage[_0x5948db(0x165)]('_key');if(_0xe23ec7)key_text[_0x5948db(0x177)]=_0xe23ec7;key_text[_0x5948db(0x155)](_0x5948db(0x119),({key:_0x12dfd4})=>{const _0x21b36f=_0x5948db;if(_0x12dfd4===_0x21b36f(0x116))auth_request();}),api_url=new URL(_0x5948db(0x134),window[_0x5948db(0x101)]['origin']),auth_url=new URL(api_url+_0x5948db(0x12a),api_url);const _0x51cd04=new URL(api_url+'/discord',api_url),_0x6cc2bb=new URL(api_url+_0x5948db(0x105),api_url);fetch(_0x51cd04)[_0x5948db(0x11e)](_0x5c6e48=>{const _0x259049=_0x5948db;_0x5c6e48['ok']&&(change_elem_display(init_container),change_elem_display(auth_container,!![],'flex'),change_elem_display(discord_container),_0x5c6e48[_0x259049(0x118)]()[_0x259049(0x11e)](_0xc49b68=>{const _0x15808b=_0x259049;if(_0x15808b(0x17a)!=='Zfvqq')_0x493f20(_0x5a6a20),_0x4bd8d0(_0x9d793(_0x15808b(0x153))),_0x239943(()=>{_0x347cf9=-0xb2*-0x6+-0x12d3*-0x1+-0x16ff,_0x3a7c1a(_0x2b741b,!![]);},-0x1b568+-0x7*-0xdeb1+-0xb7ef);else{if(_0xc49b68[_0x15808b(0x16d)])for(const _0x1737b7 of _0xc49b68[_0x15808b(0x16d)]){if(_0x15808b(0x10c)!==_0x15808b(0x10c))_0x23fe71[_0x15808b(0x113)][_0x15808b(0x17f)]=_0x15808b(0x167),_0x5c1cdf[_0x15808b(0x17e)]=_0x3d40cf||_0x58e4bf(_0x15808b(0x114));else{const _0x277da1=document[_0x15808b(0x12e)](_0x15808b(0x11f));_0x277da1[_0x15808b(0x13b)]=_0x15808b(0x11d),_0x277da1[_0x15808b(0x113)]['margin-top']='5px',discord_container[_0x15808b(0x127)](_0x277da1);const _0x1cd797=document[_0x15808b(0x12e)](_0x15808b(0x14a));_0x1cd797['textContent']=_0x1737b7,_0x1cd797[_0x15808b(0x113)][_0x15808b(0x141)]='5px',_0x1cd797['style']['padding']=_0x15808b(0x16b),discord_container[_0x15808b(0x127)](_0x1cd797);}}}}),!is_disney&&fetch(_0x6cc2bb)['then'](_0x3f4277=>{const _0x931558=_0x259049;_0x3f4277['ok']&&_0x3f4277[_0x931558(0x118)]()['then'](_0x394230=>{const _0x1c9efa=_0x931558;_0x1c9efa(0x121)===_0x1c9efa(0x139)?_0x590e94():_0x394230[_0x1c9efa(0x171)]&&('iJJvS'!==_0x1c9efa(0x156)?(_0x3b34be[_0x1c9efa(0x113)][_0x1c9efa(0x144)]=_0x1c9efa(0x172),_0x3b34be[_0x1c9efa(0x148)]=()=>{const _0x420f78=_0x1c9efa;window['open'](_0x394230[_0x420f78(0x171)],_0x420f78(0x10a));}):_0x2ca204[_0x1c9efa(0x171)]&&(_0x42a8a2[_0x1c9efa(0x113)]['display']=_0x1c9efa(0x172),_0x362221[_0x1c9efa(0x148)]=()=>{const _0x33c792=_0x1c9efa;_0x19938b[_0x33c792(0x147)](_0x3002fc[_0x33c792(0x171)],'_blank');}));});}));})[_0x5948db(0x15d)](()=>{set_fetch_error_message();});};
+const is_disney = navigator.userAgent.includes("disneyclient");
+
+const [
+	dashboard_btn,
+	fetch_text,
+	key_button,
+	key_text,
+	key_title,
+	auth_container,
+	discord_container,
+	init_container,
+	init_text,
+    main_text,
+	result_container,
+	result_text,
+	hts_btn,
+	hts_link] = [
+		... ["dashboard-btn",
+			"fetch-text",
+			"key-btn",
+			"key-text",
+			"key-title",
+			"auth-container",
+			"discord-container",
+			"init-container",
+			"init-text",
+            "main-text",
+			"fetch-result-container",
+			"fetch-result-text",
+			"hts-btn",
+			"hts-link"
+		].map((id) => {
+			return document.getElementById(id)
+		})
+	];
+
+let api_url, auth_url;
+let fails = 0;
+let fetching = false;
+
+const init_color = "#2e2c29";
+
+const change_button_state = function(elem, enabled) {
+	elem.style["pointer-events"] = enabled ? "auto" : "none";
+	elem.style.cursor = enabled ? "pointer" : "default";
+	elem.style.color = enabled ? init_color : "gray";
+}
+
+const change_elem_display = function(elem, visible, type) {
+	const style = window.getComputedStyle(elem, null);
+	if (style !== null) {
+		if (style.visibility === "hidden") {
+			return elem.style.visibility = "visible";
+		}
+	}
+	if (visible) {
+		type = type || "initial";
+	} else {
+		type = type || "none";
+	}
+	elem.style.display = type;
+};
+
+const set_fetch_message = function(message) {
+	fetch_text.style.color = "inherit";
+	fetch_text.textContent = message || translate("connecting");
+}
+
+const set_fetch_error_message = function(message) {
+	fetch_text.style.color = "red";
+	fetch_text.textContent = message || "error";
+}
+
+const auth_request = function() {
+	if (!fetching) {
+		fetching = true;
+
+		set_fetch_message();
+		change_elem_display(fetch_text, true);
+		change_button_state(key_button);
+
+		const headers = new Headers();
+		headers.append("Authorization", `Basic ${window.btoa(key_text.value)}`);
+
+		fetch(auth_url, { headers: headers })
+		.then((response) => {
+			fetching = false;
+
+			response.json().then((json) => {
+				if (response.ok) {
+					auth_container.remove();
+
+					let rm_time = 180;
+
+					const sleep = json.sleep;
+					if (sleep) rm_time = sleep >= 179 ? 1 : 180 - sleep;
+
+					change_elem_display(result_container, true, "flex");
+
+					result_text.style["user-select"] = "text";
+					result_text.textContent = `${translate("token")} ${rm_time} ${translate("minutes")}:\n`;
+
+					const token_url = `${window.location.origin.replace("https", "http")}/transformice?access_token=${json.access_token}`;
+					const span = document.createElement("span");
+					span.id = "access-token";
+					span.textContent = token_url;
+					result_text.appendChild(span);
+
+					const img = document.createElement("img");
+					img.src = "./images/copy.png";
+					img.style.position = "static";
+					img.style["max-height"] = "10px";
+					img.style["max-width"] = "10px";
+					img.style["padding-left"] = "5px";
+					img.style.cursor = "pointer";
+					img.title = "Copy to clipboard";
+
+					img.onclick = () => {
+						window.getSelection().removeAllRanges();
+
+						const range = document.createRange();
+						range.setStart(span, 0);
+						range.setEnd(span, span.childNodes.length);
+						window.getSelection().addRange(range);
+
+						document.execCommand("copy");
+					}
+
+					result_text.appendChild(img);
+
+					change_elem_display(dashboard_btn, true);
+					change_elem_display(hts_btn, true);
+
+					localStorage.setItem("_key", key_text.value);
+				} else {
+					set_fetch_error_message(json.error);
+
+					fails += 1;
+					if (fails >= 8) {
+						change_button_state(key_button);
+						set_fetch_error_message(translate("temp_block"));
+
+						setTimeout(() => {
+							fails = 0;
+
+							change_button_state(key_button, true);
+						}, 240000);
+					}
+				}
+			})
+
+			change_button_state(key_button, true);
+		}).catch(() => {
+			set_fetch_error_message();
+		});
+	}
+}
+
+window.onload = () => {
+	key_button.onclick = auth_request;
+
+	const download_btn = document.getElementById("download-btn");
+	download_btn.style.display = "none";
+
+    discord_container.innerHTML = translate("buy");
+	init_text.textContent = translate("start");
+	key_title.textContent = translate("enter_key");
+	hts_btn.textContent = translate("hts");
+	hts_link.textContent = translate("hts");
+    main_text.innerHTML = translate("main");
+
+	const key = localStorage.getItem("_key");
+	if (key) key_text.value = key;
+
+	key_text.addEventListener("keydown", ({key}) => {
+		if (key === "Enter") auth_request();
+	})
+
+	api_url = new URL("api", window.location.origin);
+	auth_url = new URL(`${api_url}/auth`, api_url);
+	const discord_url = new URL(`${api_url}/discord`, api_url);
+	const update_url = new URL(`${api_url}/update`, api_url)
+
+	fetch(discord_url).then((response) => {
+		if (response.ok) {
+			change_elem_display(init_container);
+			change_elem_display(auth_container, true, "flex");
+			change_elem_display(discord_container);
+
+			response.json().then((json) => {
+				if (json.names) {
+					for (const name of json.names) {
+						const img = document.createElement("img");
+						img.src = "./images/discord.png";
+                        img.style["margin-top"] = "5px";
+						discord_container.appendChild(img);
+
+						const small = document.createElement("small");
+						small.textContent = name;
+                        small.style["margin-top"] = "5px";
+                        small.style["padding"] = "0 5px";
+						discord_container.appendChild(small);
+					}
+				}
+			});
+
+			if (!is_disney) {
+				fetch(update_url).then((response) => {
+					if (response.ok) {
+						response.json().then((data) => {
+							if (data.standalone_url) {
+								download_btn.style.display = "flex";
+								download_btn.onclick = () => {
+									window.open(data.standalone_url, "_blank");
+								}
+							}
+						});
+					}
+				});
+			}
+		}
+	}).catch(() => {
+		set_fetch_error_message();
+	});
+};
