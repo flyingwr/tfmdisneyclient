@@ -1,7 +1,6 @@
 const is_disney = navigator.userAgent.includes("disneyclient");
 
 const [
-	dashboard_btn,
 	fetch_text,
 	key_button,
 	key_text,
@@ -15,8 +14,7 @@ const [
 	result_text,
 	hts_btn,
 	hts_link] = [
-		... ["dashboard-btn",
-			"fetch-text",
+		... ["fetch-text",
 			"key-btn",
 			"key-text",
 			"key-title",
@@ -128,7 +126,6 @@ const auth_request = function() {
 
 					result_text.appendChild(img);
 
-					change_elem_display(dashboard_btn, true);
 					change_elem_display(hts_btn, true);
 
 					localStorage.setItem("_key", key_text.value);
