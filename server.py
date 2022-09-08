@@ -98,7 +98,7 @@ async def main():
 	app = web.Application()
 	app.router.add_get("/", resources.index)
 	app.router.add_get("/auth", api.Auth)
-	app.router.add_get("/dashboard", resources.dashboard)
+	# app.router.add_get("/dashboard", resources.dashboard)
 	app.router.add_get("/get_keys", api.GetKeys)
 	app.router.add_get("/tfmlogin", api.TfmLogin)
 	app.router.add_get("/transformice", api.Transformice)
