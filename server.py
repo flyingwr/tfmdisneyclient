@@ -18,14 +18,17 @@ loop = infrastructure.loop
 
 async def swf_downloader():
 	while True:
-		async with infrastructure.session.get(
-			f"{infrastructure.parser_url}/transformice?swf"
-		) as response:
-			if response.ok:
-				infrastructure.tfm_swf_expected_len = response.content_length
-				
-				async with aiofiles.open("./tfm.swf", "wb") as f:
-					await f.write(await response.read())
+		try:
+			async with infrastructure.session.get(
+				f"{infrastructure.parser_url}/transformice?swf&d={datetime.datetime.now().timestamp()}"
+			) as response:
+				if response.ok:
+					infrastructure.tfm_swf_expected_len = response.content_length
+					
+					async with aiofiles.open("./tfm.swf", "wb") as f:
+						await f.write(await response.read())
+		except Exception as e:
+			print(f"Failed to download Transformice SWF: {e}")
 		await asyncio.sleep(8.0)
 
 def check_conn(access_token: str, addr: str, **kwargs):
