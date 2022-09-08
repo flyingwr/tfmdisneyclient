@@ -15,7 +15,7 @@ map_pattern2 = re.compile(b"#$")
 async def data_sender(writer, **kwargs):
 	if (file_path := kwargs.get("file_path")) is not None:
 		with open(file_path, "rb") as f:
-			while (chunk := kwargs.get("data").read(2 ** 16)):
+			while f.read(2 ** 16):
 				await writer.write(chunk)
 	elif (data := kwargs.get("data")) is not None:
 		while (chunk := data.read(2 ** 16)):
