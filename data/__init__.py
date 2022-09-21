@@ -28,7 +28,7 @@ class DBClient:
 	def __init__(self, endpoint: str):
 		engine = sqlalchemy.create_engine(endpoint)
 		# Base.metadata.create_all(engine)
-		# self.add_column(engine, "users", sqlalchemy.Column("last_login", sqlalchemy.TIMESTAMP, server_default=func.now()))
+		# self.add_column(engine, "users", sqlalchemy.Column("unknown_device_block", sqlalchemy.Boolean, default=bool(True)))
 
 		Session = sqlalchemy.orm.sessionmaker(engine)
 		self._session: sqlalchemy.orm.session.Session = Session()
@@ -116,7 +116,7 @@ class DBClient:
 			return self._session.query(Soft).options(load_only(Soft.key)).all()
 		return self._session.query(Soft).all()
 
-	def load_users(self, only_keys: Optional[bool] = False) -> List:
+	def load_users(self, only_keys: Optional[bool] = False) -> List[User]:
 		if only_keys:
 			return self._session.query(User).options(load_only(User.key)).all()
 		return self._session.query(User).all()
