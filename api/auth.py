@@ -51,7 +51,7 @@ class Auth(web.View):
 										client.commit()
 
 										status = 200
-									elif user.browser_access_token == browser_access_token:
+									elif user.browser_access_token == browser_access_token or not user.unknown_device_block:
 										status = 200
 									else:
 										response["error"] = "your key was used by another device"

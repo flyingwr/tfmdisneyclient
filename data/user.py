@@ -20,3 +20,5 @@ class User(Base):
     key_hidden = sqlalchemy.Column(sqlalchemy.Boolean, default=bool(False))
 
     connection_limit = sqlalchemy.Column(sqlalchemy.Integer, default=(int(2)))
+
+    unknown_device_block = sqlalchemy.Column(sqlalchemy.Boolean, default=bool(True))

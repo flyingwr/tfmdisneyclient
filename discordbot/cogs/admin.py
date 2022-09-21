@@ -213,6 +213,16 @@ class Admin(commands.Cog, name="admin"):
 		else:
 			await ctx.reply("Key não encontrada")
 
+	@commands.command(help="Remover bloqueio de login de outro dispositivo")
+	@commands.has_role("admin")
+	async def nolimit(self, ctx, key: str, limit: Optional[bool] = False):
+		if (user := client.find_user_by_key(key)) is not None:
+			user.unknown_device_block = limit
+			client.commit()
+
+			await ctx.message.add_reaction("✅")
+		else:
+			await ctx.reply("Key não encontrada")
 
 	@commands.command(hidden=True)
 	@commands.has_role("kpopper")
