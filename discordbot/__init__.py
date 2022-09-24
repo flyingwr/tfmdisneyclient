@@ -7,7 +7,7 @@ import os
 
 class Bot(commands.Bot):
 	def __init__(self, command_prefix="!"):
-		super().__init__(command_prefix, intents=Intents.all())
+		super().__init__(command_prefix)
 
 		self.discord_names = None
 		self.log_channel = None

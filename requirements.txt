@@ -2,7 +2,7 @@ aiodns
 aiofiles
 asyncio
 cchardet
-discord.py
+discord.py==1.7.3
 gspread
 mysqlclient
 SQLAlchemy
