@@ -1,4 +1,4 @@
-from discord import Embed
+from discord import Embed, Intents
 from discord.ext import commands
 from typing import  Dict, Optional
 
@@ -7,7 +7,7 @@ import os
 
 class Bot(commands.Bot):
 	def __init__(self, command_prefix="!"):
-		super().__init__(command_prefix)
+		super().__init__(command_prefix, intents=Intents.all())
 
 		self.discord_names = None
 		self.log_channel = None
