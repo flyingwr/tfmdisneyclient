@@ -1,4 +1,4 @@
-# fly.toml file generated for tfmdisneyclient on 2022-11-26T20:17:15-03:00
+# fly.toml file generated for tfmdisneyclient on 2022-11-26T20:27:38-03:00
 
 app = "tfmdisneyclient"
 kill_signal = "SIGINT"
