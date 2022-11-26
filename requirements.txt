@@ -4,7 +4,7 @@ asyncio
 cchardet; sys_platform != 'win32'
 discord.py==1.7.3
 gspread
-mysqlclient
+gunicorn
 SQLAlchemy
 python-dotenv
 ujson
