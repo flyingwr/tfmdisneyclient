@@ -4,6 +4,7 @@ cchardet; sys_platform != 'win32'
 discord.py==1.7.3
 gspread
 gunicorn
+myqslclient
 SQLAlchemy
 python-dotenv
 ujson
