@@ -6,7 +6,7 @@ from typing import ByteString, Dict
 import asyncio
 import os
 
-is_local: bool = "DYNO" not in os.environ
+is_local: bool = os.environ.get("USERNAME") == "Renan"
 if is_local:
 	from dotenv import load_dotenv
 	load_dotenv()
