@@ -39,13 +39,8 @@ class Auth(web.View):
 						log = not user.key_hidden
 
 						if user.browser_access:
-							browser_access_token = cookies.get("browser_access_token")
-							if browser_access_token:
-								if all(
-									(self.request.headers.get(header) for header in (
-										"Accept-Language"
-									))
-								):
+							if (browser_access_token := cookies.get("browser_access_token")):
+								if all((headers := (self.request.headers.get(header) for header in ("Accept-Language")))):
 									if user.browser_access_token is None:
 										user.browser_access_token = browser_access_token
 										client.commit()
@@ -56,8 +51,10 @@ class Auth(web.View):
 									else:
 										response["error"] = "your key was used by another device"
 								else:
+									print(headers)
 									response["error"] = "info mismatch. try another browser"
 							else:
+								print(0)
 								response["error"] = "info mismatch. try another browser"
 						else:
 							response["error"] = "your key is not allowed for browsers"
