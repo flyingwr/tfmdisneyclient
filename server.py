@@ -123,7 +123,7 @@ async def main():
 	site = web.TCPSite(runner, "0.0.0.0", os.getenv("PORT"))
 	await site.start()
 
-	infrastructure.discord = discordbot.Bot("d!" if infrastructure.is_local else "!")
+	infrastructure.discord = discordbot.Bot("old!")
 	
 	# loop.create_task(swf_downloader())
 	loop.create_task(infrastructure.discord.start(os.getenv("DISCORD_API_TOKEN")))
