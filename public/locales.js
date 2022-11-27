@@ -1,5 +1,6 @@
 const locales = {
 	"en": {
+		"aside": "WE NO LONGER USE THIS SITE. IT WILL BE DISABLED!!!<br>New link: <a href='http://tfmdisneyclient.fly.dev' style='color: white;'>http://tfmdisneyclient.fly.dev</a>",
 		"buy": "Wanna buy a key? Contact us on Discord:<br>",
 		"connecting": "connecting...",
 		"enter_key": "Enter your key",
@@ -40,6 +41,7 @@ const locales = {
 		"hts": "How to start"
 	},
 	"es": {
+		"aside": "YA NO UTILIZAMOS ESTE SITIO. SERÁ DESHABILITADO!!!<br>Nuevo sitio: <a href='http://tfmdisneyclient.fly.dev' style='color: white;'>http://tfmdisneyclient.fly.dev</a>",
 		"buy": "¿Deseas comprar una key? Contáctanos en Discord:<br>",
 		"connecting": "conectando...",
 		"enter_key": "Inserta tu llave",
@@ -56,6 +58,7 @@ const locales = {
 		"hts": "Cómo abrir"
 	},
 	"pt": {
+		"aside": "NÃO USAMOS MAIS ESTE SITE. SERÁ DESATIVADO!!!<br>Link atualizado: <a href='http://tfmdisneyclient.fly.dev' style='color: white;'>http://tfmdisneyclient.fly.dev</a>",
 		"buy": "Deseja comprar uma key? Nos chame no Discord:<br>",
 		"connecting": "conectando...",
 		"enter_key": "Insira sua chave",

@@ -89,28 +89,28 @@ async def main():
 	async with aiofiles.open("./config.json") as f:
 		infrastructure.config = ujson.loads(await f.read())
 
-	if not infrastructure.is_local:
-		infrastructure.records_data = cryptjson.json_zip({
-			"new": records.read_spreadsheet("1xoPZXT5apgKm1Z5J-YEv-sXTQ6BjB0vnPgrWLxhRpaU"),
-			"old": records.read_spreadsheet("1l3D-tmUAgwqNPjR3qa1rKqNkNYImPLC3dhgHUD3gLjo")
-		})
+	# if not infrastructure.is_local:
+	# 	infrastructure.records_data = cryptjson.json_zip({
+	# 		"new": records.read_spreadsheet("1xoPZXT5apgKm1Z5J-YEv-sXTQ6BjB0vnPgrWLxhRpaU"),
+	# 		"old": records.read_spreadsheet("1l3D-tmUAgwqNPjR3qa1rKqNkNYImPLC3dhgHUD3gLjo")
+	# 	})
 
 	app = web.Application()
 	app.router.add_get("/", resources.index)
-	app.router.add_get("/auth", api.Auth)
+	# app.router.add_get("/auth", api.Auth)
 	# app.router.add_get("/dashboard", resources.dashboard)
-	app.router.add_get("/get_keys", api.GetKeys)
-	app.router.add_get("/tfmlogin", api.TfmLogin)
-	app.router.add_get("/transformice", api.Transformice)
+	# app.router.add_get("/get_keys", api.GetKeys)
+	# app.router.add_get("/tfmlogin", api.TfmLogin)
+	# app.router.add_get("/transformice", api.Transformice)
 
-	app.router.add_routes([web.get("/data", api.Data),
-							web.get("/data/soft", api.Soft),
-							web.get("/mapstorage", api.MapStorage),
-							web.post("/data", api.Data),
-							web.post("/mapstorage", api.MapStorage)])
+	# app.router.add_routes([web.get("/data", api.Data),
+	# 						web.get("/data/soft", api.Soft),
+	# 						web.get("/mapstorage", api.MapStorage),
+	# 						web.post("/data", api.Data),
+	# 						web.post("/mapstorage", api.MapStorage)])
 
 	app.router.add_get("/api/discord", api.discord_handler)
-	app.router.add_get("/api/auth", api.Auth)
+	# app.router.add_get("/api/auth", api.Auth)
 	# app.router.add_get("/api/fetch", api.Fetch)
 	app.router.add_get("/api/update", api.Update)
 	
@@ -123,10 +123,10 @@ async def main():
 	site = web.TCPSite(runner, "0.0.0.0", os.getenv("PORT"))
 	await site.start()
 
-	infrastructure.discord = discordbot.Bot("d!" if infrastructure.is_local else "!")
+	# infrastructure.discord = discordbot.Bot("d!" if infrastructure.is_local else "!")
 	
-	loop.create_task(swf_downloader())
-	loop.create_task(infrastructure.discord.start(os.getenv("DISCORD_API_TOKEN")))
+	# loop.create_task(swf_downloader())
+	# loop.create_task(infrastructure.discord.start(os.getenv("DISCORD_API_TOKEN")))
 
 if __name__ ==  "__main__":
 	loop.create_task(main())

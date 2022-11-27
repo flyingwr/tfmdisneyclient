@@ -9,6 +9,7 @@ const [
 	discord_container,
 	init_container,
 	init_text,
+	aside_text,
     main_text,
 	result_container,
 	result_text,
@@ -22,6 +23,7 @@ const [
 			"discord-container",
 			"init-container",
 			"init-text",
+			"aside-text",
             "main-text",
 			"fetch-result-container",
 			"fetch-result-text",
@@ -165,6 +167,7 @@ window.onload = () => {
 	hts_btn.textContent = translate("hts");
 	hts_link.textContent = translate("hts");
     main_text.innerHTML = translate("main");
+	aside_text.innerHTML = translate("aside");
 
 	const key = localStorage.getItem("_key");
 	if (key) key_text.value = key;

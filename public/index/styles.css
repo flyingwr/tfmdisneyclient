@@ -145,6 +145,7 @@
 	font-weight: normal;
 	font-size: 18px;
 	white-space: pre-line;
+	text-decoration: none;
 }
 
 .fetch-text {
