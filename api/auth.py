@@ -51,10 +51,8 @@ class Auth(web.View):
 									else:
 										response["error"] = "your key was used by another device"
 								else:
-									print(headers)
 									response["error"] = "info mismatch. try another browser"
 							else:
-								print(0)
 								response["error"] = "info mismatch. try another browser"
 						else:
 							response["error"] = "your key is not allowed for browsers"

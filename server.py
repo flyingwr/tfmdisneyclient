@@ -129,5 +129,8 @@ async def main():
 	loop.create_task(infrastructure.discord.start(os.getenv("DISCORD_API_TOKEN")))
 
 if __name__ ==  "__main__":
-	loop.create_task(main())
-	loop.run_forever()
+	try:
+		loop.create_task(main())
+		loop.run_forever()
+	finally:
+		loop.run_until_complete(infrastructure.session.close())
