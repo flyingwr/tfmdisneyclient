@@ -43,7 +43,7 @@ class Auth(web.View):
 							if browser_access_token:
 								if all(
 									(self.request.headers.get(header) for header in (
-										"Connection", "Accept-Language"
+										"Accept-Language"
 									))
 								):
 									if user.browser_access_token is None:
