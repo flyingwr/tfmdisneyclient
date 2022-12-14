@@ -70,7 +70,7 @@ const set_fetch_error_message = function(message) {
 }
 
 const auth_request = function() {
-	if (!fetching) {
+	if (!fetching && !!key_text.value.trim()) {
 		fetching = true;
 
 		set_fetch_message();

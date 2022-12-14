@@ -1,20 +1,15 @@
-# fly.toml file generated for tfmdisneyclient on 2022-11-27T08:53:25-03:00
+# fly.toml file generated for tfmdisneyclient on 2022-12-10T16:15:32-03:00
 
 app = "tfmdisneyclient"
 kill_signal = "SIGINT"
 kill_timeout = 5
+processes = []
 
 [env]
 
 [experimental]
   allowed_public_ports = []
   auto_rollback = true
-  cmd = []
-  entrypoint = []
-  exec = []
-
-[processes]
-  app = "python server.py"
 
 [[services]]
   http_checks = []

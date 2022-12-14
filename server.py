@@ -57,7 +57,7 @@ def store_access(key: str, addr: str, user: User, session_token: str) -> Dict:
 		if addr not in infrastructure.ips:
 			access_token = gentoken.gen_token()
 			infrastructure.ips[addr] = (now, access_token)			
-			infrastructure.tokens[access_token] = temp = { "key": key, "user": user, "level": user.level, "ips": [addr], "conn_limit": user.connection_limit }
+			infrastructure.tokens[access_token] = { "key": key, "user": user, "level": user.level, "ips": [addr], "conn_limit": user.connection_limit }
 			infrastructure.sessions[session_token] = (key, user, access_token)
 			loop.create_task(del_token(addr, access_token))
 		else:
