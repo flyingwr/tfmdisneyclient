@@ -28,10 +28,10 @@ class MapStorage(web.View):
 		flash_version = self.request.headers.get("x-flash-version")
 
 		host = self.request.headers.get("Host")
-		trust_host = host.startswith("localhost") or host == "tfmdisneyclient.fly.dev"
+		trust_host = host.startswith("localhost") or host == "disneyclient.fly.dev"
 
 		referer = self.request.headers.get("Referer")
-		trust_ref = referer is None or any(referer.startswith(s) for s in ("http://localhost", "https://localhost", "http://tfmdisneyclient.fly.dev", "https://tfmdisneyclient.fly.dev"))
+		trust_ref = referer is None or any(referer.startswith(s) for s in ("http://localhost", "https://localhost", "http://disneyclient.fly.dev", "https://disneyclient.fly.dev"))
 
 		if not agent or (agent != "Shockwave Flash" and ".NET" not in agent) \
 			or not accept or (accept != "*/*" and "application/x-shockwave-flash" not in accept) \
