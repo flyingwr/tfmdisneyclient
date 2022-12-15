@@ -40,7 +40,7 @@ class Auth(web.View):
 
 						if user.browser_access:
 							if (browser_access_token := cookies.get("browser_access_token")):
-								if all([headers := (self.request.headers.get(header) for header in ("Accept-Language"))]):
+								if agent is not None and all([headers := (self.request.headers.get(header) for header in ("Accept-Language"))]):
 									if user.browser_access_token is None:
 										user.browser_access_token = browser_access_token
 										client.commit()
