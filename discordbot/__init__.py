@@ -29,9 +29,9 @@ class Bot(commands.Bot):
 	async def ready(self):
 		self.discord_names = [str(await self.fetch_user(_id)) for _id in (infrastructure.config["discord_admins"])]
 
-		self.log_channel = self.get_channel(infrastructure.config["discord_log_channel"])
-		self.log_channel2 = self.get_channel(infrastructure.config["discord_log_channel2"])
-		self.priv_channel = self.get_channel(infrastructure.config["discord_priv_channel"])
+		# self.log_channel = self.get_channel(infrastructure.config["discord_log_channel"])
+		# self.log_channel2 = self.get_channel(infrastructure.config["discord_log_channel2"])
+		# self.priv_channel = self.get_channel(infrastructure.config["discord_priv_channel"])
 
 		print("[Discord] Ready")
 
